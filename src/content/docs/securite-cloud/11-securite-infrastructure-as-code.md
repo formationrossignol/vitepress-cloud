@@ -8,8 +8,6 @@ title: "11. Sécurité de l'Infrastructure as Code"
 
 l’Infrastructure as Code
 
-![Slide 263](/securite-cloud/11-securite-infrastructure-as-code/p263_00_Image13.jpg)
-
 ## Sécuriser le Code de l’Infrastructure
 
 - Le code IaC (Terraform, CloudFormation, Bicep, etc.) est du code à part entière.
@@ -111,10 +109,6 @@ pip install checkov && checkov -d . --framework terraform --output junitxml > ch
 
 de l’infrastructure as code
 
-![Slide 269](/securite-cloud/11-securite-infrastructure-as-code/p269_01_Image29.jpg)
-
 ## QCM : Sécurité
 
 de l’infrastructure as code
-
-![Slide 270](/securite-cloud/11-securite-infrastructure-as-code/p270_02_Image22.jpg)

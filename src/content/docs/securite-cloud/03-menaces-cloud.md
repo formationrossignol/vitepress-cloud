@@ -18,6 +18,10 @@ Contenu Description, produit concerné, références, statut
 Usage sécurité Détection, priorisation, correction et reporting
 Source d’enrichissement NVD, éditeurs, CERT, bulletins de sécurité, outils de scan
 
+## cycle de traitement d’une CVE
+
+![Slide 48](/securite-cloud/03-menaces-cloud/p048_00_Image30.jpg)
+
 ## Common Vulnerability Scoring System
 
 Le CVSS est un standard ouvert qui permet de décrire les caractéristiques principales d’une vulnérabilité et de produire un score numérique de
@@ -84,13 +88,13 @@ Injection
 Trouver, prioriser et corriger les failles avant l'attaquant. Un CVE non patché en prod = une fenêtre d'opportunité
 ouverte.
 
-![Slide 52](/securite-cloud/03-menaces-cloud/p052_00_Image31.jpg)
+![Slide 52](/securite-cloud/03-menaces-cloud/p052_01_Image31.jpg)
 
 ## gestion des vulnérabilités cloud : vulnerabil y management program
 
 (VMP)
 
-![Slide 53](/securite-cloud/03-menaces-cloud/p053_01_Image32.jpg)
+![Slide 53](/securite-cloud/03-menaces-cloud/p053_02_Image32.jpg)
 
 ## cycle de traitement d’une CVE vs VPM
 
@@ -191,6 +195,10 @@ sauvegardes, voler des credentials cloud, compromettre IAM / CI-CD / Kubernetes,
   - Chiffrement / Double extorsion
 Le ransomware moderne ne cible plus uniquement les postes utilisateurs : il vise désormais toute
 l’infrastructure cloud.
+
+## Ransomwares ciblés cloud
+
+![Slide 59](/securite-cloud/03-menaces-cloud/p059_03_Image33.jpg)
 
 ## LE Shadow IT c’est quoi ?
 
@@ -378,17 +386,19 @@ PDP (Policy Decision Point) = décide / PEP (Policy Enforcement Point)= applique
 Le NIST SP 800-207 formalise l’architecture Zero Trust autour d’un principe simple : chaque demande d’accès est évaluée
 dynamiquement par un moteur de décision, puis appliquée par un point de contrôle avant d’atteindre la ressource.
 
-![Slide 71](/securite-cloud/03-menaces-cloud/p071_02_Image35.jpg)
+![Slide 71](/securite-cloud/03-menaces-cloud/p071_04_Image35.jpg)
 
 ## BeyondCorp (google) : exemple d’implémentation réelle
 
 BeyondCorp illustre le passage d’une sécurité fondée sur le réseau interne à une sécurité fondée sur l’identité, le
 terminal et le contexte d’accès.
 
-![Slide 72](/securite-cloud/03-menaces-cloud/p072_03_Image36.jpg)
+![Slide 72](/securite-cloud/03-menaces-cloud/p072_05_Image36.jpg)
+
+## CISA Zero Trust Maturity Model (ZTMM v2.0)
+
+![Slide 73](/securite-cloud/03-menaces-cloud/p073_06_Image37.jpg)
 
 ## LAB : les menaces du cloud
 
 dhdfhfgh
-
-![Slide 74](/securite-cloud/03-menaces-cloud/p074_04_Image29.jpg)

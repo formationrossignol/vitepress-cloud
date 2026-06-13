@@ -15,8 +15,6 @@ développement afin de détecter et corriger les problèmes avant la mise en pro
 
 Security Testing
 
-![Slide 233](/securite-cloud/10-securite-devsecops-cicd/p233_01_Image3.jpg)
-
 ## Static Application Security Testing (sast)
 
 - Le SAST (Static Application Security Testing) analyse le code source , le bytecode (code intermédiaire entre les
@@ -41,11 +39,13 @@ Fortify SCA Commercial
 Veracode Static Analysis SaaS
 CodeQL Open source (GitHub)
 
+## FONCTIONNEMENT
+
+![Slide 235](/securite-cloud/10-securite-devsecops-cicd/p235_01_Image72.jpg)
+
 ## DYNAMIC Application
 
 Security Testing
-
-![Slide 236](/securite-cloud/10-securite-devsecops-cicd/p236_02_Image3.jpg)
 
 ## Dynamic Application Security Testing (Dast)
 
@@ -68,6 +68,10 @@ Invicti (Netsparker) Commercial
 Acunetix Commercial
 Rapid7 InsightAppSec SaaS
 StackHawk Cloud Native
+
+## FONCTIONNEMENT
+
+![Slide 238](/securite-cloud/10-securite-devsecops-cicd/p238_02_Image73.jpg)
 
 ## Nuclei : Scanner de Vulnérabilités Applicatives
 
@@ -99,6 +103,10 @@ accessibles depuis Internet
 - Contrôle de sécurité avant mise en
 production
 
+## FONCTIONNEMENT
+
+![Slide 241](/securite-cloud/10-securite-devsecops-cicd/p241_03_Image74.jpg)
+
 ## Software Composition Anal ysis
 
 - Le Software Composition Analysis (SCA) consiste à analyser les bibliothèques et dépendances
@@ -120,6 +128,10 @@ Mon application
             ├── body-parser
             ├── send
             └── debug
+
+## Fonctionnement
+
+![Slide 244](/securite-cloud/10-securite-devsecops-cicd/p244_04_Image75.jpg)
 
 ## Comparaison de solutions
 
@@ -152,6 +164,10 @@ connues.
   - Intégration GitHub, GitLab, Azure DevOps, Bitbucket
 https://github.com/renovatebot/renovate
 
+## RENOVATE : Fonctionnement
+
+![Slide 247](/securite-cloud/10-securite-devsecops-cicd/p247_05_Image76.jpg)
+
 ## Software Bill of Materials (SBOM)
 
 Un SBOM fournit la liste complète des composants d'un logiciel afin d'améliorer la visibilité, la sécurité et la
@@ -174,6 +190,10 @@ Supply Chain
 - Inventaire logiciel centralisé
 - Suivi des versions utilisées
 - Gestion des risques fournisseurs
+
+## Fonctionnement
+
+![Slide 250](/securite-cloud/10-securite-devsecops-cicd/p250_06_Image77.jpg)
 
 ## Comparatif des Formats SBOM
 
@@ -256,7 +276,7 @@ Helm chart
 Approche consistant à surveiller, vérifier et améliorer en permanence la sécurité des systèmes, applications,
 infrastructures et identités tout au long de leur cycle de vie.
 
-![Slide 255](/securite-cloud/10-securite-devsecops-cicd/p255_03_Image78.jpg)
+![Slide 255](/securite-cloud/10-securite-devsecops-cicd/p255_07_Image78.jpg)
 
 ## Lambda, Step Functions, Cloud Run
 
@@ -287,5 +307,3 @@ syft . -o cyclonedx-json > sbom.json && grype sbom:sbom.json
 ## LAB : Sécurité DevSecOps & CI/CD
 
 dhdfhfgh
-
-![Slide 261](/securite-cloud/10-securite-devsecops-cicd/p261_04_Image29.jpg)

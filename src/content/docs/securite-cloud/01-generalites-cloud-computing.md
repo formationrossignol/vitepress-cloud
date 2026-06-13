@@ -8,8 +8,6 @@ title: "01. Généralités sur le cloud computing"
 
 le cloud computing
 
-![Slide 11](/securite-cloud/01-generalites-cloud-computing/p011_00_Image13.jpg)
-
 ## Qu’est-ce que le « cloud » ?
 
 Selon l’Institut National des Normes et de la Technologie (NIST).
@@ -40,6 +38,14 @@ et confidentialité.
 - Service mesuré :
 - L'utilisation est mesurée, les utilisateurs paient correctement pour ce qu'ils ont utilisé.
 
+## Les modèles de cloud computing
+
+![Slide 14](/securite-cloud/01-generalites-cloud-computing/p014_00_Image14.jpg)
+
+## Avantages des différents types de cloud
+
+![Slide 15](/securite-cloud/01-generalites-cloud-computing/p015_01_Image15.jpg)
+
 ## Limites de l’approche traditionnelle (on-premises)
 
 - Payer le loyer du datacenter.
@@ -50,6 +56,18 @@ et confidentialité.
 - Comment faire face aux catastrophes (tremblement de terre, coupure de courant,
 incendie, etc.) ?
 - Peut-on externaliser tout cela ?
+
+## Le modèle As a Service
+
+![Slide 17](/securite-cloud/01-generalites-cloud-computing/p017_02_Image16.jpg)
+
+## Extension du modèle As a Service
+
+![Slide 18](/securite-cloud/01-generalites-cloud-computing/p018_03_Image17.jpg)
+
+## Histoire du cloud & évolution de la sécurité
+
+![Slide 19](/securite-cloud/01-generalites-cloud-computing/p019_04_Image18.jpg)
 
 ## Quelques cas d’usage
 
@@ -69,6 +87,14 @@ spécialisés.
 - Déporter ses applications d’entreprise :
   - Stratégie de migration 7R (Rehost, Replatform, Refactor, Repurchase, Retain, Retire, Relocate), lift & shift ou
 modernisation (transformer pour améliorer).
+
+## Lift & Shift
+
+![Slide 21](/securite-cloud/01-generalites-cloud-computing/p021_05_Image19.jpg)
+
+## RTO et RPO (et MTD)
+
+![Slide 22](/securite-cloud/01-generalites-cloud-computing/p022_06_Image20.jpg)
 
 ## Qu'est-ce qu'une application « Cloud Native » ?
 
@@ -115,8 +141,6 @@ Vérifier vos responsabilités dans vos contrats cloud
 ## QCM : Généralités sur
 
 le cloud computing
-
-![Slide 26](/securite-cloud/01-generalites-cloud-computing/p026_01_Image22.jpg)
 
 ## Pour aller plus loin
 

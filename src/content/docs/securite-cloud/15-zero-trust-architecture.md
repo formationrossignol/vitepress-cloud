@@ -8,8 +8,6 @@ title: "15. Zero Trust : Architecture Avancée"
 
 Architecture Avancée
 
-![Slide 360](/securite-cloud/15-zero-trust-architecture/p360_00_Image13.jpg)
-
 ## © 2026, Loïc Rossignol, IAWS010
 
 mTLS (Mutual TLS) : authentification mutuelle
@@ -32,7 +30,7 @@ industrie.
 Workloads hybrides Sécuriser les échanges entre Kubernetes, VM, cloud et environnements hors cluster
 avec une CA commune.
 
-![Slide 361](/securite-cloud/15-zero-trust-architecture/p361_01_Image100.jpg)
+![Slide 361](/securite-cloud/15-zero-trust-architecture/p361_00_Image100.jpg)
 
 ## © 2026, Loïc Rossignol, IAWS010
 
@@ -62,7 +60,13 @@ automatiquement renouvelées.
 
 FONCTIONNEMENT DE SPIFFE/SPIRE
 
-![Slide 363](/securite-cloud/15-zero-trust-architecture/p363_02_Image101.jpg)
+![Slide 363](/securite-cloud/15-zero-trust-architecture/p363_01_Image101.jpg)
+
+## Les règles de détection falco
+
+![Slide 364](/securite-cloud/15-zero-trust-architecture/p364_02_Image90.jp2)
+
+![Slide 364](/securite-cloud/15-zero-trust-architecture/p364_03_Image91.jpg)
 
 ## © 2026, Loïc Rossignol, IAWS010
 
@@ -77,7 +81,7 @@ latence)
 - Les règles sont écritent en
 YAML
 
-![Slide 365](/securite-cloud/15-zero-trust-architecture/p365_03_Image102.jpg)
+![Slide 365](/securite-cloud/15-zero-trust-architecture/p365_04_Image102.jpg)
 
 ## © 2026, Loïc Rossignol, IAWS010
 
@@ -127,13 +131,19 @@ Transformation Formatage JSON / webhook / payload
 Filtrage Exclusion ou routage conditionnel
 Automatisation Déclenchement d’actions ou workflows
 
-![Slide 368](/securite-cloud/15-zero-trust-architecture/p368_04_Image103.jp2)
+![Slide 368](/securite-cloud/15-zero-trust-architecture/p368_05_Image103.jp2)
 
 ## © 2026, Loïc Rossignol, IAWS010
 
 falco et Falcosidekick
 
-![Slide 369](/securite-cloud/15-zero-trust-architecture/p369_05_Image104.jpg)
+![Slide 369](/securite-cloud/15-zero-trust-architecture/p369_06_Image104.jpg)
+
+## Systèmes d'Exploitation Immuables
+
+![Slide 370](/securite-cloud/15-zero-trust-architecture/p370_07_Image90.jp2)
+
+![Slide 370](/securite-cloud/15-zero-trust-architecture/p370_08_Image91.jpg)
 
 ## © 2026, Loïc Rossignol, IAWS010
 
@@ -241,5 +251,3 @@ encodées en Base64)
 ## QCM : Zero Trust :
 
 Architecture Avancée
-
-![Slide 376](/securite-cloud/15-zero-trust-architecture/p376_06_Image22.jpg)

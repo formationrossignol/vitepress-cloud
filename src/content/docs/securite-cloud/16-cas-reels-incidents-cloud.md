@@ -8,8 +8,6 @@ title: "16. Cas réels : incidents cloud majeurs"
 
 incidents cloud majeurs
 
-![Slide 377](/securite-cloud/16-cas-reels-incidents-cloud/p377_00_Image13.jpg)
-
 ## Exposition de Bucket S3 (Capital One 2019)
 
 Données
@@ -361,5 +359,3 @@ certification Microsoft SC-200
 ## La sécurité n'est pas un état à atteindre,
 
 c'est une pratique à maintenir.
-
-![Slide 391](/securite-cloud/16-cas-reels-incidents-cloud/p391_01_Image13.jpg)

@@ -8,8 +8,6 @@ title: "07. Sécurité des données cloud"
 
 données cloud
 
-![Slide 144](/securite-cloud/07-securite-donnees-cloud/p144_00_Image13.jpg)
-
 ## Chiffrement des Données : At Rest & In Transit
 
 Objectif : Processus de transformation des données en un format illisible sans la clé de déchiffrement
@@ -126,7 +124,7 @@ de facturation, adresse du domicile,
 IBAN, emails, clés APi, mots de passe,
 etc.)
 
-![Slide 149](/securite-cloud/07-securite-donnees-cloud/p149_01_Image50.jpg)
+![Slide 149](/securite-cloud/07-securite-donnees-cloud/p149_00_Image50.jpg)
 
 ## Cloud Act & Souveraineté des Données
 
@@ -168,5 +166,3 @@ vvv vvvv
 ## LAB : IAM
 
 dhdfhfgh
-
-![Slide 152](/securite-cloud/07-securite-donnees-cloud/p152_02_Image29.jpg)

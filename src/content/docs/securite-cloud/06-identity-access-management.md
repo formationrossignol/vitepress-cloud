@@ -8,8 +8,6 @@ title: "06. Identity & Access Management (IAM)"
 
 Management (IAM)
 
-![Slide 110](/securite-cloud/06-identity-access-management/p110_00_Image13.jpg)
-
 ## Les fondamentaux de l’IAM cloud
 
 Ensemble des politiques, processus et technologies permettant de gérer les identités numériques et de contrôler
@@ -108,6 +106,14 @@ Certificat client (mTLS) Expert Idéal pour service accounts,
 automatisé
 PKI complexe, rotation des certificats
 
+## AiTM (Adversary-in-the-Middle)
+
+![Slide 115](/securite-cloud/06-identity-access-management/p115_00_Image41.jpg)
+
+## MFA Fatigue : Contourner le MFA Sans Jamais le Craquer
+
+![Slide 116](/securite-cloud/06-identity-access-management/p116_01_Image42.jpg)
+
 ## Vol de Token de Session Cloud : Bypasser IAM Sans MFA Ni Mot de
 
 Passe
@@ -158,6 +164,10 @@ Renforcement de la sécurité et de la conformité Fédération entre partenaire
 La fédération d'identité permet à une organisation d'utiliser une identité unique et de confiance pour authentifier ses
 utilisateurs et leur donner accès de manière sécurisée à plusieurs applications, services cloud ou ressources externes.
 
+## SSO : Single Sign-On
+
+![Slide 120](/securite-cloud/06-identity-access-management/p120_02_Image43.jpg)
+
 ## Authentication unique (SSO : Single Sign-On)
 
 Le Single Sign-On (SSO) permet à un utilisateur de s'authentifier une seule fois afin d'accéder de manière sécurisée à plusieurs
@@ -174,30 +184,62 @@ Cas d'usage :
 - Portails d'entreprise et intranets
 - Collaboration entre partenaires et filiales
 
+## Authentification unique (SSO : Single Sign-On)
+
+![Slide 122](/securite-cloud/06-identity-access-management/p122_03_Image44.jpg)
+
 ## SAML 2.0 :
 
 Security Assertion Markup Language
 
-![Slide 123](/securite-cloud/06-identity-access-management/p123_01_Image43.jpg)
+![Slide 123](/securite-cloud/06-identity-access-management/p123_04_Image43.jpg)
 
 ## SAML 2.0 : Security Assertion Markup Language
 
 Le Single Sign-On (SSO) permet à un utilisateur de s'authentifier une seule fois afin d'accéder de manière sécurisée à plusieurs
 applications ou services, sans avoir à se reconnecter ni à gérer plusieurs mots de passe.
 
+## Fonctionnement
+
+![Slide 125](/securite-cloud/06-identity-access-management/p125_05_Image45.jpg)
+
+## OAuth 2.0
+
+![Slide 126](/securite-cloud/06-identity-access-management/p126_06_Image43.jpg)
+
 ## OAuth 2.0 : Délégation d'Autorisation
 
 Standard d'autorisation (2012) · Délègue l'accès SANS partager le mot de passe · Base de OIDC · 4 flows selon le
 contexte
 
+## Fonctionnement
+
+![Slide 128](/securite-cloud/06-identity-access-management/p128_07_Image46.jpg)
+
+## OIDC : OpenID Connect
+
+![Slide 129](/securite-cloud/06-identity-access-management/p129_08_Image43.jpg)
+
 ## OpenID Connect (OIDC) : Couche d'identité sur OAuth 2.0
 
 Standard moderne (2014) · Tokens JWT · API-first · Utilisé : GitHub Actions, Google, AWS Cognito, Kubernetes IRSA
+
+## Fonctionnement
+
+![Slide 131](/securite-cloud/06-identity-access-management/p131_09_Image48.jpg)
+
+## Workload Identity Federation
+
+![Slide 132](/securite-cloud/06-identity-access-management/p132_10_Image43.jpg)
 
 ## Workload Identity Federation
 
 Standard d'autorisation (2012) · Délègue l'accès SANS partager le mot de passe · Base de OIDC · 4 flows selon le
 contexte
+
+## Fonctionnement
+
+![Slide 134](/securite-cloud/06-identity-access-management/p134_11_Image49.jpg)
 
 ## Synthèse
 
@@ -318,10 +360,6 @@ aws ec2 modify-instance-metadata-options --instance-id i-xxx --http-tokens requi
 
 dhdfhfgh
 
-![Slide 142](/securite-cloud/06-identity-access-management/p142_02_Image29.jpg)
-
 ## QCM : Identity & Access
 
 Management
-
-![Slide 143](/securite-cloud/06-identity-access-management/p143_03_Image22.jpg)

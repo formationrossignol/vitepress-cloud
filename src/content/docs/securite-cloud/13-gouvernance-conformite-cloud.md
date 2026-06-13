@@ -8,8 +8,6 @@ title: "13. Gouvernance & Conformité Cloud"
 
 Conformité Cloud
 
-![Slide 283](/securite-cloud/13-gouvernance-conformite-cloud/p283_00_Image13.jpg)
-
 ## LEs Certifications de personnes de sécurité du Cloud
 
 Certification Organisme Positionnement
@@ -37,6 +35,10 @@ Les objectifs sont de :
 - Communiquer aux équipes techniques et à la direction
 - Etc.
 
+## Tableau de Bord CISO : KPIs Sécurité Cloud
+
+![Slide 292](/securite-cloud/13-gouvernance-conformite-cloud/p292_00_Image82.jpg)
+
 ## La Défense en Profondeur
 
 - La défense en profondeur consiste à superposer plusieurs couches de sécurité
@@ -53,14 +55,14 @@ protéger les actifs.
   - SIEM, SOAR et détection comportementale
   - Sauvegardes et plans de reprise
 
+## Les huit couches de la Défense en Profondeur
+
+![Slide 294](/securite-cloud/13-gouvernance-conformite-cloud/p294_01_Image83.jpg)
+
 ## LAB : Gouvernance &
 
 Conformité Cloud
 
-![Slide 295](/securite-cloud/13-gouvernance-conformite-cloud/p295_01_Image29.jpg)
-
 ## QCM : Gouvernance &
 
 Conformité Cloud
-
-![Slide 296](/securite-cloud/13-gouvernance-conformite-cloud/p296_02_Image22.jpg)

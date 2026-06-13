@@ -8,8 +8,6 @@ title: "14. Outils de Sécurité : AWS, Azure et GCP"
 
 AWS, Azure et GCP
 
-![Slide 297](/securite-cloud/14-outils-securite-aws-azure-gcp/p297_00_Image13.jpg)
-
 ## © 2026, Loïc Rossignol, IAWS010
 
 identité & accès
@@ -166,7 +164,7 @@ AWS Lambda, Amazon SNS ou AWS Security Hub.
 
 AWS GuardDuty
 
-![Slide 308](/securite-cloud/14-outils-securite-aws-azure-gcp/p308_01_Image84.jpg)
+![Slide 308](/securite-cloud/14-outils-securite-aws-azure-gcp/p308_00_Image84.jpg)
 
 ## AWS Security Hub : Agrégateur Central de Sécurité
 
@@ -179,6 +177,10 @@ provenant des services AWS, des comptes cloud et des outils tiers.
   - Custom Actions : envoyer findings vers Lambda · SNS · EventBridge
   - Cross-account aggregation : vue unifiée de toute l'organization
 - Il agit comme un point central de visibilité pour la posture de sécurité AWS.
+
+## AWS Security Hub : Agrégateur Central de Sécurité
+
+![Slide 310](/securite-cloud/14-outils-securite-aws-azure-gcp/p310_01_Image85.jpg)
 
 ## © 2026, Loïc Rossignol, IAWS010
 
@@ -477,6 +479,10 @@ employés
 Faible, pay-per-use Faible si déjà Azure Faible à modéré selon services activés Élevé, licences
 annuelles
 
+## WIZ
+
+![Slide 335](/securite-cloud/14-outils-securite-aws-azure-gcp/p335_08_Image43.jpg)
+
 ## © 2026, Loïc Rossignol, IAWS010
 
 Wiz : CNAPP Leader du Marché
@@ -494,7 +500,11 @@ risques les plus critiques.
 
 fonctionnement
 
-![Slide 337](/securite-cloud/14-outils-securite-aws-azure-gcp/p337_08_Image92.jpg)
+![Slide 337](/securite-cloud/14-outils-securite-aws-azure-gcp/p337_09_Image92.jpg)
+
+## Sécurité IA
+
+![Slide 338](/securite-cloud/14-outils-securite-aws-azure-gcp/p338_10_Image43.jpg)
 
 ## © 2026, Loïc Rossignol, IAWS010
 
@@ -526,7 +536,7 @@ l’injection de Prompts : Risque n°1 des applications LLM
 L’injection de prompt consiste à manipuler les instructions fournies à un modèle d'IA afin de
 contourner les règles prévues par l'application et influencer son comportement.
 
-![Slide 341](/securite-cloud/14-outils-securite-aws-azure-gcp/p341_09_Image93.jpg)
+![Slide 341](/securite-cloud/14-outils-securite-aws-azure-gcp/p341_11_Image93.jpg)
 
 ## © 2026, Loïc Rossignol, IAWS010
 
@@ -606,7 +616,7 @@ de secrets
 
 fonctionnement des Guardrails
 
-![Slide 344](/securite-cloud/14-outils-securite-aws-azure-gcp/p344_10_Image94.jpg)
+![Slide 344](/securite-cloud/14-outils-securite-aws-azure-gcp/p344_12_Image94.jpg)
 
 ## © 2026, Loïc Rossignol, IAWS010
 
@@ -637,7 +647,7 @@ Hallucination Les faits sont-ils vérifiables ?
 
 Fonctionnement d’un LLM-as-a-judge
 
-![Slide 347](/securite-cloud/14-outils-securite-aws-azure-gcp/p347_11_Image95.jpg)
+![Slide 347](/securite-cloud/14-outils-securite-aws-azure-gcp/p347_13_Image95.jpg)
 
 ## © 2026, Loïc Rossignol, IAWS010
 
@@ -647,7 +657,7 @@ générative.
 - Il permet d’identifier les vulnérabilités de sécurité, de sûreté et de conformité des LLM, des systèmes RAG et des agents IA
 avant qu’elles ne puissent être exploitées en production.
 
-![Slide 348](/securite-cloud/14-outils-securite-aws-azure-gcp/p348_12_Image96.jpg)
+![Slide 348](/securite-cloud/14-outils-securite-aws-azure-gcp/p348_14_Image96.jpg)
 
 ## © 2026, Loïc Rossignol, IAWS010
 
@@ -655,7 +665,7 @@ Sécuriser un Pipeline RAG sur AWS Bedrock
 La sécurisation d'Amazon Bedrock repose sur une approche de défense en profondeur combinant IAM, Bedrock Guardrails,
 contrôle d'accès aux bases de connaissances, chiffrement des données et surveillance continue des usages du modèle.
 
-![Slide 349](/securite-cloud/14-outils-securite-aws-azure-gcp/p349_13_Image97.jpg)
+![Slide 349](/securite-cloud/14-outils-securite-aws-azure-gcp/p349_15_Image97.jpg)
 
 ## © 2026, Loïc Rossignol, IAWS010
 
@@ -702,7 +712,11 @@ gouvernance des données
 
 Les nouveaux risques introduits par l'IA selon gartner
 
-![Slide 352](/securite-cloud/14-outils-securite-aws-azure-gcp/p352_14_Image98.jpg)
+![Slide 352](/securite-cloud/14-outils-securite-aws-azure-gcp/p352_16_Image98.jpg)
+
+## IAM Avancé
+
+![Slide 353](/securite-cloud/14-outils-securite-aws-azure-gcp/p353_17_Image43.jpg)
 
 ## © 2026, Loïc Rossignol, IAWS010
 
@@ -733,7 +747,7 @@ pmapper --account 123456789012 query 'who can becomeadmin?'
 
 PMapper : EXEMPLE
 
-![Slide 356](/securite-cloud/14-outils-securite-aws-azure-gcp/p356_15_Image99.jpg)
+![Slide 356](/securite-cloud/14-outils-securite-aws-azure-gcp/p356_18_Image99.jpg)
 
 ## © 2026, Loïc Rossignol, IAWS010
 
@@ -743,5 +757,3 @@ AWS STS : Sessions Temporaires & AssumeRole
 ## QCM : Outils de Sécurité :
 
 AWS, Azure et GCP
-
-![Slide 359](/securite-cloud/14-outils-securite-aws-azure-gcp/p359_16_Image22.jpg)

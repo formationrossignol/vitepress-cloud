@@ -8,8 +8,6 @@ title: "12. Monitoring, Détection & Réponse aux Incidents"
 
 & Réponse aux Incidents
 
-![Slide 271](/securite-cloud/12-monitoring-detection-incidents/p271_00_Image13.jpg)
-
 ## AWS CloudTrail : Journal de Toutes les Actions Cloud
 
 AWS CloudTrail est le service d'audit natif d'AWS qui enregistre les actions effectuées dans un compte
@@ -27,6 +25,10 @@ CloudTrail capture les appels API réalisés via … Pour chaque action, CloudTr
 - Sur quelle ressource
 - Quel a été le résultat
 
+## AWS CloudTrail : FONCTIONNEMENT
+
+![Slide 273](/securite-cloud/12-monitoring-detection-incidents/p273_00_Image79.jpg)
+
 ## MITRE ATT&CK pour le Cloud : Tactiques et Techniques
 
 - MITRE ATT&CK Cloud est une déclinaison du référentiel MITRE ATT&CK dédiée aux
@@ -35,6 +37,14 @@ techniques d’attaque observées dans les environnements cloud.
 identités, services, workloads, données et ressources cloud.
 - Objectif : Comprendre comment un attaquant progresse dans un environnement cloud
 afin d’améliorer la détection, la réponse à incident et le durcissement des configurations.
+
+## Inventaire des techniques
+
+![Slide 278](/securite-cloud/12-monitoring-detection-incidents/p278_01_Image80.jpg)
+
+## EXEMPLES de techniques courantes
+
+![Slide 279](/securite-cloud/12-monitoring-detection-incidents/p279_02_Image81.jpg)
 
 ## Réponse aux Incidents Cloud : Phases PICERL
 
@@ -82,10 +92,6 @@ d'expérience
 
 & Réponse aux Incidents
 
-![Slide 281](/securite-cloud/12-monitoring-detection-incidents/p281_01_Image29.jpg)
-
 ## QCM : Monitoring, Détection
 
 & Réponse aux Incidents
-
-![Slide 282](/securite-cloud/12-monitoring-detection-incidents/p282_02_Image22.jpg)

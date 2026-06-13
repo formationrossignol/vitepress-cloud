@@ -8,8 +8,6 @@ title: "09. Sécurité des conteneurs & Kubernetes"
 
 & kubernetes
 
-![Slide 192](/securite-cloud/09-securite-conteneurs-kubernetes/p192_00_Image13.jpg)
-
 ## Sécurité de Docker : Hardening des Images et des Conteneurs
 
 Images de base minimales Utilisateur non-root obligatoire
@@ -110,6 +108,10 @@ spec:
     - port: 443
       protocol: TCP
 
+## Fonctionnement
+
+![Slide 198](/securite-cloud/09-securite-conteneurs-kubernetes/p198_00_Image63.jpg)
+
 ## Pod Security Standards (PSS)
 
 Privileged Baseline Restricted
@@ -152,6 +154,10 @@ restreintes
 Les Pod Security Standards (PSS) définissent des niveaux de sécurité prédéfinis qui contrôlent les
 configurations autorisées des Pods Kubernetes afin de réduire les risques de compromission.
 
+## Fonctionnement
+
+![Slide 201](/securite-cloud/09-securite-conteneurs-kubernetes/p201_01_Image64.jpg)
+
 ## Admission Controllers : contrôler les ressources avant leur
 
 création
@@ -180,7 +186,7 @@ ressource
 7 La ressource est acceptée ou refusée avant
 création
 
-![Slide 204](/securite-cloud/09-securite-conteneurs-kubernetes/p204_01_Image65.jpg)
+![Slide 204](/securite-cloud/09-securite-conteneurs-kubernetes/p204_02_Image65.jpg)
 
 ## Admission Controllers courants
 
@@ -208,6 +214,10 @@ Type Validating et mutating webhook
 Langage Rego
 Objets clés ConstraintTemplate et Constraint
 Objectif Imposer automatiquement des règles de sécurité, conformité et gouvernance
+
+## Fonctionnement
+
+![Slide 208](/securite-cloud/09-securite-conteneurs-kubernetes/p208_03_Image66.jpg)
 
 ## Exemples de politiques
 
@@ -278,6 +288,10 @@ metadata:
 Ici, les labels obligatoires
 sont owner et environment
 
+## Synthèse
+
+![Slide 211](/securite-cloud/09-securite-conteneurs-kubernetes/p211_04_Image67.jpg)
+
 ## Polaris : Validateur des meilleures pratiques Kubernetes
 
 (Fairwinds)
@@ -337,6 +351,10 @@ ALL)
 - Security Context conforme
 - Image versionnée avec un tag
 explicite
+
+## fonctionnement
+
+![Slide 215](/securite-cloud/09-securite-conteneurs-kubernetes/p215_05_Image68.jpg)
 
 ## Falco : Runtime Security & Détection Comportementale
 
@@ -400,7 +418,7 @@ automatise les processus de réponse aux incidents et assiste les équipes SOC d
 Exemples de solutions : Cortex XSOAR, Splunk SOAR, Microsoft Sentinel, IBM QRadar SOAR, FortiSOAR, Google Security
 Operations et Tines.
 
-![Slide 219](/securite-cloud/09-securite-conteneurs-kubernetes/p219_02_Image69.jpg)
+![Slide 219](/securite-cloud/09-securite-conteneurs-kubernetes/p219_06_Image69.jpg)
 
 ## NeuVector : Sécurité Containers & K8s Full Lifecycle
 
@@ -430,6 +448,10 @@ référentiels CIS Kubernetes, PCI-DSS et HIPAA
 flux HTTP/HTTPS (couche 7)
 - Prévention des fuites de données (DLP) : détection des
 données sensibles circulant dans les communications réseau
+
+## FONCTIONNEMENT
+
+![Slide 222](/securite-cloud/09-securite-conteneurs-kubernetes/p222_07_Image70.jpg)
 
 ## NeuVector vs Falco
 

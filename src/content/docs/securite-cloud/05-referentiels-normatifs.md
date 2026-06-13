@@ -209,6 +209,10 @@ Contrôle des accès
 - Gestion stricte des privilèges
 - Traçabilité complète des accès
 
+## Le processus de qualification
+
+![Slide 97](/securite-cloud/05-referentiels-normatifs/p097_01_Image39.jpg)
+
 ## Les fournisseurs qualifiés
 
 Fournisseur Particularité
@@ -255,6 +259,10 @@ DPIA / AIPD Réaliser une analyse d’impact pour les traitements présentant un
 Violation de données Notifier l’autorité de contrôle sous 72 h en cas de violation de données personnelles.
 Sanctions Jusqu’à 20 M€ ou 4 % du chiffre d’affaires mondial annuel.
 
+## RGPD En résumé
+
+![Slide 102](/securite-cloud/05-referentiels-normatifs/p102_02_Image40.jpg)
+
 ## EU Cyber Resilience Act (CRA)
 
 Thème Exigence principale
@@ -276,8 +284,6 @@ La cybersécurité devient une obligation réglementaire et non plus une simple 
 ## la directive NIS2
 
 (Network and Information Security)
-
-![Slide 105](/securite-cloud/05-referentiels-normatifs/p105_01_Image3.jpg)
 
 ## La directive NIS2
 

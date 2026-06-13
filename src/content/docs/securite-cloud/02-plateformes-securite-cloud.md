@@ -8,8 +8,6 @@ title: "02. Plateformes de sécurité cloud"
 
 sécurité cloud
 
-![Slide 28](/securite-cloud/02-plateformes-securite-cloud/p028_00_Image13.jpg)
-
 ## Cloud Security Posture Management (CSPM)
 
 - Un CSPM surveille la posture de sécurité des environnements cloud : comptes, subscriptions, projets, ressources,
@@ -28,6 +26,10 @@ préparation à la conformité, réduction du risque de misconfiguration, contr�
 - Solutions : Wiz Cloud Security Platform, Prisma Cloud CSPM, Orca Cloud Security Platform, Lacework FortiCNAPP ,
 Microsoft Defender for Cloud, AWS Security Hub, Google Security Command Center, Prowler, Steampipe,
 ScoutSuite, etc.
+
+## Cloud Security Posture Management (CSPM)
+
+![Slide 30](/securite-cloud/02-plateformes-securite-cloud/p030_00_Image23.jpg)
 
 ## Cloud Infrastructure Entitlement Management (CIEM)
 
@@ -48,6 +50,10 @@ des comptes privilégiés, audit des accès sensibles, contrôle des environneme
 Command Center (CIEM), Prisma Cloud CIEM, Wiz CIEM, Orca Security CIEM, Sonrai Dig, Ermetic CIEM
 (désormais Tenable Cloud Security), Lacework Polygraphe, etc.
 
+## Cloud Infrastructure Entitlement Management (CIEM)
+
+![Slide 32](/securite-cloud/02-plateformes-securite-cloud/p032_01_Image24.jpg)
+
 ## Kubernetes Security Posture Management (KSPM)
 
 - Un KSPM surveille la posture de sécurité des environnements Kubernetes : clusters, nœuds, pods,
@@ -64,6 +70,10 @@ conformité Kubernetes.
 des permissions et des workloads.
 - Solutions : Kubescape, Wiz KSPM, Prisma Cloud, Orca Security, Sysdig Secure, Aqua Security, Microsoft
 Defender for Containers, Red Hat ACS, Check Point CloudGuard, etc.
+
+## Kubernetes Security Posture Management (KSPM)
+
+![Slide 34](/securite-cloud/02-plateformes-securite-cloud/p034_02_Image25.jpg)
 
 ## Cloud Workload Protection Platform (CWPP)
 
@@ -83,6 +93,10 @@ vulnérabilités, etc.
 Defender for Containers, Prisma Cloud Compute, Wiz Runtime Sensor, Orca Cloud Security Platform,
 AWS GuardDuty Runtime Monitoring, Google Security Command Center Enterprise, etc.
 
+## Cloud Workload Protection Platform (CWPP)
+
+![Slide 36](/securite-cloud/02-plateformes-securite-cloud/p036_03_Image26.jpg)
+
 ## Data Security Posture Management (DSPM)
 
 - Un DSPM surveille la posture de sécurité des données sensibles dans les environnements cloud : bases de
@@ -101,6 +115,10 @@ sensibles, réduction du risque de fuite de données, conformité réglementaire
 multi-cloud et SaaS.
 - Solutions : Microsoft Purview DSPM, Google Cloud DSPM, AWS Macie, Wiz DSPM, Prisma Cloud DSPM, Orca
 Security DSPM, Varonis, Securiti, BigID, etc.
+
+## Data Security Posture Management (DSPM)
+
+![Slide 38](/securite-cloud/02-plateformes-securite-cloud/p038_04_Image27.jpg)
 
 ## Cloud-Native Application Protection Platform (CNAPP)
 
@@ -132,6 +150,10 @@ DSPM Peu mature en open source (solution la plus crédible mais limité : OpenMe
 KSPM Kubescape, kube-bench, kube-hunter
 Analyse des chemins d'attaque Cartography, PMapper, BloodHound (adapté cloud)
 
+## Cloud-Native Application Protection Platform (CNAPP)
+
+![Slide 41](/securite-cloud/02-plateformes-securite-cloud/p041_05_Image28.jpg)
+
 ## Synthèse
 
 Outil La question principale à se poser
@@ -147,10 +169,6 @@ CNAPP Comment tout centraliser ?
 sécurité cloud
 dhdfhfgh
 
-![Slide 43](/securite-cloud/02-plateformes-securite-cloud/p043_01_Image29.jpg)
-
 ## QCM : Plateformes de
 
 sécurité cloud
-
-![Slide 44](/securite-cloud/02-plateformes-securite-cloud/p044_02_Image22.jpg)

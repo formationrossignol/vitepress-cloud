@@ -8,8 +8,6 @@ title: "08. Sécurité réseau cloud"
 
 PRIVATE CLOUD
 
-![Slide 154](/securite-cloud/08-securite-reseau-cloud/p154_00_Image3.jpg)
-
 ## Virtual Private Cloud, c'est quoi ?
 
 Un Nuage Privé Virtuel, ou Cloud Virtuel Privé,
@@ -20,7 +18,7 @@ public, qui fournit un certain niveau
 d'isolement entre les différentes organisations
 qui utilisent ces ressources.
 
-![Slide 155](/securite-cloud/08-securite-reseau-cloud/p155_01_Image51.jpg)
+![Slide 155](/securite-cloud/08-securite-reseau-cloud/p155_00_Image51.jpg)
 
 ## Amazon Virtual Private Cloud
 
@@ -32,11 +30,13 @@ Compute Cloud (EC2) et Amazon Relational Database Service (RDS).
   - Enfin, vous pourrez définir comment vos VPC communiquent entre eux, entre les
 comptes, les zones de disponibilité (AZ) ou les régions.
 
+## Fonctionnement
+
+![Slide 157](/securite-cloud/08-securite-reseau-cloud/p157_01_Image52.jpg)
+
 ## Les groupes de sécurité &
 
 NACLs
-
-![Slide 158](/securite-cloud/08-securite-reseau-cloud/p158_02_Image3.jpg)
 
 ## Les groupes de sécurité
 
@@ -69,7 +69,7 @@ réseau entrant.
   - Le contrôle du
 réseau sortant.
 
-![Slide 160](/securite-cloud/08-securite-reseau-cloud/p160_03_Image53.jpg)
+![Slide 160](/securite-cloud/08-securite-reseau-cloud/p160_02_Image53.jpg)
 
 ## Quelques informations supplémentaires sur les groupes de
 
@@ -101,6 +101,10 @@ premier match.
 - Deny explicite : possibilité de bloquer directement des plages IP , ports ou protocoles.
 - Cas d’usage : segmentation réseau, blocage d’adresses IP malveillantes, contrôle des flux
 entre sous-réseaux, couche de protection complémentaire aux Security Groups.
+
+## listes de contrôle d'accès réseau (NACLs)
+
+![Slide 163](/securite-cloud/08-securite-reseau-cloud/p163_03_Image54.jpg)
 
 ## Groupe de sécurité vs nacls
 
@@ -136,6 +140,10 @@ requêtes
 AWS WAF protège la couche applicative web, là où les Security Groups et NACL protègent surtout la
 couche réseau.
 
+## AWS WEB APPLICATION Firewall
+
+![Slide 168](/securite-cloud/08-securite-reseau-cloud/p168_04_Image55.jpg)
+
 ## Hôte Bastion
 
 - Un hôte bastion est un serveur sécurisé servant de point d'entrée unique pour accéder aux
@@ -154,6 +162,10 @@ environnements de production, gestion des infrastructures cloud privées.
 - Solutions : AWS Bastion Host, Azure Bastion, Google Cloud Bastion Host, Teleport, Apache
 Guacamole, JumpServer.
 
+## Hôte Bastion
+
+![Slide 171](/securite-cloud/08-securite-reseau-cloud/p171_05_Image56.jpg)
+
 ## Zero Trust Network Access (ZTNA)
 
 - Le ZTNA est un modèle de contrôle d'accès qui applique le principe « Ne jamais faire confiance,
@@ -170,6 +182,14 @@ de risque.
 - Journalisation et traçabilité : suivi des accès, activités et décisions de sécurité.
 - Solutions : Cloudflare Access, Zscaler Private Access, Microsoft Entra Private Access, Google
 BeyondCorp Enterprise, Netskope Private Access, Palo Alto Prisma Access.
+
+## Zero Trust Network Access (ZTNA)
+
+![Slide 173](/securite-cloud/08-securite-reseau-cloud/p173_06_Image57.jpg)
+
+## Réseau privé virtuel (VPN)
+
+![Slide 174](/securite-cloud/08-securite-reseau-cloud/p174_07_Image58.jpg)
 
 ## Zero Trust Network Access (ZTNA) vs VPN
 
@@ -193,6 +213,10 @@ Vision réseau Vision identité
 - Cas d'usage : administration Linux, Windows, dépannage, accès aux environnements de
 production, automatisation opérationnelle.
 - Services associés : Systems Manager, IAM, CloudTrail, CloudWatch Logs, AWS Identity Center.
+
+## AWS Systems Manager Session Manager
+
+![Slide 177](/securite-cloud/08-securite-reseau-cloud/p177_08_Image59.jpg)
 
 ## EN résumé
 
@@ -218,12 +242,16 @@ Session Manager Accès aux ressources privées sans bastion
   - Protéger et contrôler l’usage d’une API.
 - En résumé : API Gateway expose une API et les services backend exécutent le traitement.
 
+## Amazon API Gateway
+
+![Slide 181](/securite-cloud/08-securite-reseau-cloud/p181_09_Image60.jpg)
+
 ## Service mesh
 
 - Service Mesh = couche réseau intelligente entre microservices (sécurité, observabilité, trafic
 management sans modifier le code applicatif).
 
-![Slide 183](/securite-cloud/08-securite-reseau-cloud/p183_04_Image61.jpg)
+![Slide 183](/securite-cloud/08-securite-reseau-cloud/p183_10_Image61.jpg)
 
 ## Service Mesh (Istio/Linkerd) : Zero Trust entre Microservices
 
@@ -249,6 +277,10 @@ garantie SLA.
 - GCP Cloud Armor : WAF + DDoS avec Adaptive Protection ML : apprend le trafic normal et détecte les anomalies.
 Bonnes pratiques : Définir une architecture distribuée (multi-AZ, CDN) · Rate limiting WAF · Plan de réponse DDoS
 documenté
+
+## Fonctionnement Protection DDoS
+
+![Slide 187](/securite-cloud/08-securite-reseau-cloud/p187_11_Image62.jp2)
 
 ## VPC Flow Logs : Anal yse et Détection du Trafic Réseau
 
@@ -281,5 +313,3 @@ aws rds describe-db-instances --query
 ## LAB : Sécurité réseau cloud
 
 dhdfhfgh
-
-![Slide 190](/securite-cloud/08-securite-reseau-cloud/p190_05_Image29.jpg)
