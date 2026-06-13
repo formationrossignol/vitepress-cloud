@@ -8,6 +8,7 @@ title: "01. Généralités sur le cloud computing"
 
 le cloud computing
 
+
 ## Qu’est-ce que le « cloud » ?
 
 Selon l’Institut National des Normes et de la Technologie (NIST).
@@ -21,30 +22,23 @@ Ce modèle de cloud favorise la disponibilité et est composé de :
 - Et de quatre modèles de déploiement : Cloud privé, cloud communautaire, cloud public,
 cloud hybride.
 
-## Les 5 caractéristiques essentielles du cloud
 
-- Libre-service à la demande :
-- Les utilisateurs peuvent provisionner des ressources et les utiliser sans intervention humaine du
-service.
-- Large accès au réseau :
-- Ressources disponibles sur le réseau et accessibles par diverses plates-formes clientes.
-- Mise en commun des ressources :
-- Plusieurs clients peuvent partager la même infrastructure et les mêmes applications avec sécurité
-et confidentialité.
-- Plusieurs clients sont desservis à partir des mêmes ressources physiques.
-- Une flexibilité rapide :
-- Acquérir et disposer automatiquement et rapidement des ressources en cas de besoin.
-- Évoluez rapidement et facilement en fonction de la demande.
-- Service mesuré :
-- L'utilisation est mesurée, les utilisateurs paient correctement pour ce qu'ils ont utilisé.
+| Les 5 caractéristiques essentielles du cloud |
+|---|
+| • Libre-service à la demande : • Les utilisateurs peuvent provisionner des ressources et les utiliser sans intervention humaine du service. • Large accès au réseau : • Ressources disponibles sur le réseau et accessibles par diverses plates-formes clientes. • Mise en commun des ressources : • Plusieurs clients peuvent partager la même infrastructure et les mêmes applications avec sécurité et confidentialité. • Plusieurs clients sont desservis à partir des mêmes ressources physiques. • Une flexibilité rapide : • Acquérir et disposer automatiquement et rapidement des ressources en cas de besoin. • Évoluez rapidement et facilement en fonction de la demande. • Service mesuré : • L'utilisation est mesurée, les utilisateurs paient correctement pour ce qu'ils ont utilisé. |
+
 
 ## Les modèles de cloud computing
 
+
 ![Slide 14](/securite-cloud/01-generalites-cloud-computing/p014_00_Image14.jpg)
+
 
 ## Avantages des différents types de cloud
 
+
 ![Slide 15](/securite-cloud/01-generalites-cloud-computing/p015_01_Image15.jpg)
+
 
 ## Limites de l’approche traditionnelle (on-premises)
 
@@ -57,44 +51,41 @@ et confidentialité.
 incendie, etc.) ?
 - Peut-on externaliser tout cela ?
 
+
 ## Le modèle As a Service
+
 
 ![Slide 17](/securite-cloud/01-generalites-cloud-computing/p017_02_Image16.jpg)
 
+
 ## Extension du modèle As a Service
+
 
 ![Slide 18](/securite-cloud/01-generalites-cloud-computing/p018_03_Image17.jpg)
 
+
 ## Histoire du cloud & évolution de la sécurité
+
 
 ![Slide 19](/securite-cloud/01-generalites-cloud-computing/p019_04_Image18.jpg)
 
-## Quelques cas d’usage
 
-- Faire face à des pics d’activité :
-  - Auto-scaling pendant le Black Friday, événements sportifs, soldes, etc. (payer uniquement la capacité
-consommée).
-- Sauvegarder ses données quotidiennement :
-  - Snapshots automatisés, réplication multi-région, Plan de Reprise d'Activité (PRA) cloud (RTO/RPO) maîtrisés
-et testables.
-- Se libérer des machines physiques :
-  - Réduction CAPEX, virtualisation totale, fin de vie datacenter, migration datacenter-out
-- Porter des projets de nouvelles technologies :
-  - IA/ML managé (SageMaker, Vertex AI, etc.), IoT, Big Data (Spark/EMR) : accès immédiat aux services
-spécialisés.
-- Créer une nouvelle activité, un nouveau produit :
-  - Time-to-market réduit, MVPs en quelques jours, pas d'investissement initial lourd, fail fast & scale fast.
-- Déporter ses applications d’entreprise :
-  - Stratégie de migration 7R (Rehost, Replatform, Refactor, Repurchase, Retain, Retire, Relocate), lift & shift ou
-modernisation (transformer pour améliorer).
+| Quelques cas d’usage |
+|---|
+| ● Faire face à des pics d’activité : ○ Auto-scaling pendant le Black Friday, événements sportifs, soldes, etc. (payer uniquement la capacité consommée). ● Sauvegarder ses données quotidiennement : ○ Snapshots automatisés, réplication multi-région, Plan de Reprise d'Activité (PRA) cloud (RTO/RPO) maîtrisés et testables. ● Se libérer des machines physiques : ○ Réduction CAPEX, virtualisation totale, fin de vie datacenter, migration datacenter-out ● Porter des projets de nouvelles technologies : ○ IA/ML managé (SageMaker, Vertex AI, etc.), IoT, Big Data (Spark/EMR) : accès immédiat aux services spécialisés. ● Créer une nouvelle activité, un nouveau produit : ○ Time-to-market réduit, MVPs en quelques jours, pas d'investissement initial lourd, fail fast & scale fast. ● Déporter ses applications d’entreprise : ○ Stratégie de migration 7R (Rehost, Replatform, Refactor, Repurchase, Retain, Retire, Relocate), lift & shift ou modernisation (transformer pour améliorer). |
+
 
 ## Lift & Shift
 
+
 ![Slide 21](/securite-cloud/01-generalites-cloud-computing/p021_05_Image19.jpg)
+
 
 ## RTO et RPO (et MTD)
 
+
 ![Slide 22](/securite-cloud/01-generalites-cloud-computing/p022_06_Image20.jpg)
+
 
 ## Qu'est-ce qu'une application « Cloud Native » ?
 
@@ -107,6 +98,7 @@ distribué.
   - Scalabilité accrue pour les applications.
   - La stack peut être immédiatement transférée vers une autre région.
   - Gestion des applications Cloud Native est entièrement automatisée.
+
 
 ## Les “12-factors app”
 
@@ -125,29 +117,30 @@ swapper facilement).
 11. Logs : Traiter les logs comme des flux continus (streams). L'application écrit dans la console, c'est l'infrastructure qui les collecte.
 12. Admin Processes : Exécuter les tâches d'administration (migrations de BDD) dans le même environnement que les processus applicatifs.
 
+
 ## Prêt pour lundi
 
-Scanner tous vos buckets/blobs publics
-aws s3api list-buckets | jq -r '.Buckets[].Name' | xargs -I{} aws s3api get-bucket-acl --bucket {}
-< 5 min / Gratuit · Impact immédiat / Trouver les public-read avant un attaquant1
-Activer S3 Block Public Access au niveau organisation
-aws s3control put-public-access-block --account-id $ACCOUNT_ID
---public-access-block-configuration BlockPublicAcls=true,...
-< 2 min / Gratuit / Prévention définitive des buckets publics accidentels
-Vérifier vos responsabilités dans vos contrats cloud
-# Ouvrir AWS Customer Agreement Section 4 - Security & Compliance
-< 30 min / Gratuit / Savoir exactement ce que AWS garantit (et ce qu'il ne garantit PAS)mo
+| # | Action | Commande | Durée / Coût | Impact |
+|---|--------|----------|--------------|--------|
+| 1 | Scanner tous vos buckets/blobs publics | `aws s3api list-buckets | jq -r '.Buckets[].Name' | xargs -I{} aws s3api get-bucket-acl --bucket {}` | 5 min / Gratuit | Impact immédiat / Trouver les public-read avant un attaquant |
+| 2 | Activer S3 Block Public Access au niveau organisation | `aws s3control put-public-access-block --account-id $ACCOUNT_ID --public-access-block-configuration BlockPublicAcls=true,...` | 2 min / Gratuit | Prévention définitive des buckets publics accidentels |
+| 3 | Vérifier vos responsabilités dans vos contrats cloud | `# Ouvrir AWS Customer Agreement Section 4 - Security & Compliance` | 30 min / Gratuit | Savoir exactement ce que AWS garantit (et ce qu'il ne garantit PAS) |
 
 ## QCM : Généralités sur
 
 le cloud computing
 
-## Pour aller plus loin
 
-- https://geekflare.com/fr/cloud-service-models/
-- https://www.ionos.fr/digitalguide/serveur/know-how/caas-comparaison-des-offres-de-
-container-as-a-service/
-- https://www.slideshare.net/OCTOTechnologySuisse/cloud-en-2017-sortez-du-status
-- https://www.objectif-cloud.com/modele-eco-cloud
-- https://www.stordata.fr/8-usages-intelligents-du-cloud-public/
-- https://www.lebigdata.fr/cloud-native-definition-2
+| Pour aller plus loin |
+|---|
+| ● https://geekflare.com/fr/cloud-service-models/ ● https://www.ionos.fr/digitalguide/serveur/know-how/caas-comparaison-des-offres-de- container-as-a-service/ ● https://www.slideshare.net/OCTOTechnologySuisse/cloud-en-2017-sortez-du-status ● https://www.objectif-cloud.com/modele-eco-cloud ● https://www.stordata.fr/8-usages-intelligents-du-cloud-public/ ● https://www.lebigdata.fr/cloud-native-definition-2 |
+
+| https://geekflare.com/fr/cloud-service-models/ |
+|---|
+| https://www.ionos.fr/digitalguide/serveur/know-how/caas-comparaison-des-offres-de- |
+| container-as-a-service/ |
+| https://www.slideshare.net/OCTOTechnologySuisse/cloud-en-2017-sortez-du-status |
+| https://www.objectif-cloud.com/modele-eco-cloud |
+| https://www.stordata.fr/8-usages-intelligents-du-cloud-public/ |
+| https://www.lebigdata.fr/cloud-native-definition-2 |
+
