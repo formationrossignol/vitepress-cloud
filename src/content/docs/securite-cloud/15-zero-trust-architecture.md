@@ -8,9 +8,8 @@ title: "15. Zero Trust : Architecture Avancée"
 
 Architecture Avancée
 
-## © 2026, Loïc Rossignol, IAWS010
+## mTLS (Mutual TLS) : authentification mutuelle
 
-mTLS (Mutual TLS) : authentification mutuelle
 mTLS étend le protocole TLS classique : non seulement le client vérifie l'identité du serveur,
 mais le serveur vérifie également l'identité du client via un certificat. Les deux parties
 s'authentifient mutuellement avant l'établissement de la connexion chiffrée.
@@ -32,9 +31,8 @@ avec une CA commune.
 
 ![Slide 361](/securite-cloud/15-zero-trust-architecture/p361_00_Image100.jpg)
 
-## © 2026, Loïc Rossignol, IAWS010
+## SPIFFE/SPIRE : identité des workloads
 
-SPIFFE/SPIRE : identité des workloads
 SPIFFE définit l’identité, SPIRE la délivre, le SVID la prouve, et mTLS l’utilise pour authentifier les workloads entre eux.
 Élément Message clé
 SPIFFE (Secure Production
@@ -56,9 +54,7 @@ Lien avec mTLS Les certificats X.509-SVID peuvent être utilisés pour authentif
 Bénéfice sécurité Remplacer la confiance réseau et les secrets statiques par des identités courtes durées, vérifiables et
 automatiquement renouvelées.
 
-## © 2026, Loïc Rossignol, IAWS010
-
-FONCTIONNEMENT DE SPIFFE/SPIRE
+## FONCTIONNEMENT DE SPIFFE/SPIRE
 
 ![Slide 363](/securite-cloud/15-zero-trust-architecture/p363_01_Image101.jpg)
 
@@ -68,9 +64,8 @@ FONCTIONNEMENT DE SPIFFE/SPIRE
 
 ![Slide 364](/securite-cloud/15-zero-trust-architecture/p364_03_Image91.jpg)
 
-## © 2026, Loïc Rossignol, IAWS010
+## Informations générales
 
-Informations générales
 - Falco intercepte les
 syscalls Linux via eBPF →
 compare aux règles →
@@ -83,9 +78,8 @@ YAML
 
 ![Slide 365](/securite-cloud/15-zero-trust-architecture/p365_04_Image102.jpg)
 
-## © 2026, Loïc Rossignol, IAWS010
+## Ecrire une alerte
 
-Ecrire une alerte
 Structure Exemple : Détection d’un shell dans un conteneur
 - rule: Nom de la règle
   desc: Description de la détection
@@ -102,9 +96,8 @@ cmd=%proc.cmdline)
 priority: WARNING
 tags: [container, runtime]
 
-## © 2026, Loïc Rossignol, IAWS010
+## Priorité des alertes
 
-Priorité des alertes
 Priorité Description Exemple concret
 EMERGENCY Compromission critique Exécution d’un ransomware sur plusieurs conteneurs Kubernetes
 ALERT Menace majeure Reverse shell détecté depuis un pod vers une IP externe
@@ -115,9 +108,8 @@ NOTICE Événement notable Nouveau pod privilégié créé dans Kubernetes
 INFO Information Nouveau conteneur démarré dans le cluster
 DEBUG Debug / diagnostic Logs détaillés Falco pour analyse technique ou troubleshooting
 
-## © 2026, Loïc Rossignol, IAWS010
+## Falcosidekick
 
-Falcosidekick
 - Falcosidekick est un composant complémentaire de Falco permettant de
 router, enrichir et distribuer les alertes runtime vers des systèmes externes.
 - Il agit comme une couche d’intégration entre Falco et les outils de sécurité,
@@ -133,9 +125,7 @@ Automatisation Déclenchement d’actions ou workflows
 
 ![Slide 368](/securite-cloud/15-zero-trust-architecture/p368_05_Image103.jp2)
 
-## © 2026, Loïc Rossignol, IAWS010
-
-falco et Falcosidekick
+## falco et Falcosidekick
 
 ![Slide 369](/securite-cloud/15-zero-trust-architecture/p369_06_Image104.jpg)
 
@@ -145,9 +135,8 @@ falco et Falcosidekick
 
 ![Slide 370](/securite-cloud/15-zero-trust-architecture/p370_08_Image91.jpg)
 
-## © 2026, Loïc Rossignol, IAWS010
+## Systèmes d'Exploitation Immuables (Sécurité Cloud par Design)
 
-Systèmes d'Exploitation Immuables (Sécurité Cloud par Design)
 Un OS immuable ne peut pas être modifié en runtime. Toute configuration est déclarative et versionnée. Le
 rollback est instantané. Idéal pour les nœuds K8s.
 Aspect OS Traditionnel OS Immutable
@@ -158,9 +147,8 @@ Mise à jour Rolling update risqué : état inconsistant Atomique : basculement 
 Rollback Manuel et difficile Automatique : version précédente intacte
 Auditabilité Difficile : état peut diverger Totale : infrastructure as code = source de vérité
 
-## © 2026, Loïc Rossignol, IAWS010
+## FOCUS SUR NIXOS
 
-FOCUS SUR NIXOS
 - Distribution Linux basée sur le gestionnaire de paquets Nix.
 - Créateur : Eelco Dolstra
 - Origine :
@@ -177,9 +165,8 @@ l’identique, sur n’importe quelle machine.
 - Alternatives : Flatcar Container Linux, Bottlerocket (AWS), Talos Linux, RHCOS (OpenShift), etc.
 https://www.it-connect.fr/quest-ce-que-nixos-la-distribution-linux-que-letat-pourrait-utiliser/
 
-## © 2026, Loïc Rossignol, IAWS010
+## Checklist de Hardening Production (CIS K8s Benchmark)
 
-Checklist de Hardening Production (CIS K8s Benchmark)
 Control Plane Worker Nodes
 - API Server :
   - --anonymous-auth=false
@@ -204,9 +191,8 @@ Control Plane Worker Nodes
   - auditd configuré
   - SELinux/AppArmor activé
 
-## © 2026, Loïc Rossignol, IAWS010
+## Checklist de Hardening Production (CIS K8s Benchmark)
 
-Checklist de Hardening Production (CIS K8s Benchmark)
 Workloads & Pods Réseau
 - Pod Security Standards :
   - profil Restricted pour les workloads critiques
@@ -225,9 +211,8 @@ Workloads & Pods Réseau
 - Ingress avec TLS obligatoire :
   - cert-manager pour rotation automatique des certificats
 
-## © 2026, Loïc Rossignol, IAWS010
+## Checklist de Hardening Production (CIS K8s Benchmark)
 
-Checklist de Hardening Production (CIS K8s Benchmark)
 RBAC & ServiceAccounts Secrets & Config
 - automountServiceAccountToken: false
   - si le pod n’a pas besoin de l’ API Kubernetes

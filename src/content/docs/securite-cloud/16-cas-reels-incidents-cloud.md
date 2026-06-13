@@ -33,9 +33,8 @@ similaires
 GoDaddy (2021, 1.2M clients) · Twitch (2021, code source) · Samsung (2022, données
 clients) · Toyota (2022, 2M véhicules)
 
-## © 2026, Loïc Rossignol, IAWS010
+## SolarWinds Suppl y Chain Attack (2020)
 
-SolarWinds Suppl y Chain Attack (2020)
 18 000 organisations infectées : Agences US gouvernementales, Microsoft, FireEye / Attribué : APT29 (Cozy Bear, SVR russe)
 Chaîne de compromission Techniques d'attaque (MITRE ATT&CK)
 - Oct 2019 : accès initial au build system SolarWinds Orion
@@ -63,9 +62,8 @@ Leçons et contrôles anti-supply-chain
 - Détection réseau : alertes sur connexions DNS vers domaines générés algorithmiquement (DGA) · UEBA sur comportement applicatif
 - Principe du moindre privilège pour les tokens SAML : limiter la durée de vie et les scopes (évite le golden SAML attack)
 
-## © 2026, Loïc Rossignol, IAWS010
+## Log4Shell CVE-2021-44228 (Décembre 2021)
 
-Log4Shell CVE-2021-44228 (Décembre 2021)
 CVSS 10.0 · RCE sans authentification · Affecté : Apple, Amazon, Google, Tesla, Minecraft, Twitter, etc. + de 100M instances vulnérables
 Mécanisme de la vulnérabilité Détection et réponse
 - Log4j2 interprète les expressions JNDI (${jndi:ldap://...}) dans les
@@ -97,9 +95,8 @@ java -jar log4j-detector.jar /opt/myapp /var/lib
 un SBOM aurait permis de répondre à 'quels services utilisent
 Log4j ?' en quelques secondes vs. jours d'investigation
 
-## © 2026, Loïc Rossignol, IAWS010
+## XZ Utils Backdoor : Social Engineering Avancé (Avril 2024)
 
-XZ Utils Backdoor : Social Engineering Avancé (Avril 2024)
 Backdoor dans xz/liblzma (dépendance SSH sur Debian/Ubuntu/Fedora) · Découverte par hasard par un développeur Microsoft via un benchmark CPU
 Timeline de l'attaque (+ 2ans de préparation) Mécanisme technique du backdoor
 - Juin 2021 : création du compte GitHub 'JiaT75' (fausse identité
@@ -131,9 +128,8 @@ Leçons pour les équipes DevSecOps
 - SBOM avec sources vérifiées
 - Alertes sur changements de mainteneurs de projets critiques
 
-## © 2026, Loïc Rossignol, IAWS010
+## Sécurité de la CLI AWS
 
-Sécurité de la CLI AWS
 IAM : Audit et investigation S3 : Sécurité des buckets
 aws iam generate-credential-report && aws iam
 get-credential-report | base64 -d
@@ -169,9 +165,8 @@ vérifier si actif
 - aws logs filter-log-events --log-group-name CloudTrail/logs
 --filter-pattern 'errorCode'
 
-## © 2026, Loïc Rossignol, IAWS010
+## Sécurité de kubernetes
 
-Sécurité de kubernetes
 RBAC : Audit des droits Pods : Détection de mauvaises configs
 kubectl auth can-i --list
 --as=system:serviceaccount:default:mysa  # ce que le SA peut
@@ -208,9 +203,8 @@ règles disponibles
 # Test : spawner un shell dans un pod (doit déclencher Falco) :
 kubectl exec -it mypod -- /bin/bash  # → alerte Falco dans les logs
 
-## © 2026, Loïc Rossignol, IAWS010
+## sécurité terraform et iac
 
-sécurité terraform et iac
 tfsec : Scanner Terraform Checkov : Multi-IaC Scanner
 tfsec . --minimum-severity HIGH  # scan sécurité du répertoire
 courant
@@ -240,9 +234,8 @@ Dockerfile)
 trivy sbom --format cyclonedx myapp:latest > sbom.json  # générer
 SBOM
 
-## © 2026, Loïc Rossignol, IAWS010
+## DE A à F : Termes et Acronymes Essentiels
 
-DE A à F : Termes et Acronymes Essentiels
 ABAC Attribute-Based Access Control : contrôle d’accès basé sur les
 attributs contextuels (user, device, time, location) CVE Common Vulnerabilities and Exposures : identifiant unique d’une
 vulnérabilité (ex : CVE-2021-44228 = Log4Shell)
@@ -268,9 +261,8 @@ CSPM Cloud Security Posture Management : surveillance continue de la
 configuration des ressources cloud vs. référentiels FaaS Function as a Service : modèle serverless où le code s’exécute à la
 demande sans gestion de serveur (Lambda, Functions)
 
-## © 2026, Loïc Rossignol, IAWS010
+## DE G à Z : Termes et Acronymes Essentiels (suite)
 
-DE G à Z : Termes et Acronymes Essentiels (suite)
 HSM Hardware Security Module : module matériel dédié à la
 protection des clés cryptographiques (FIPS 140-2 L3) MFA Multi-Factor Authentication : authentification
 multi-facteurs : something you know + have + are
@@ -299,9 +291,8 @@ KMS Key Management Service : service de gestion des clés de
 chiffrement (AWS KMS, Azure Key Vault, Cloud KMS) RBAC Role-Based Access Control — contrôle d'accès basé sur
 les rôles attribués aux utilisateurs
 
-## © 2026, Loïc Rossignol, IAWS010
+## DE G à Z : Termes et Acronymes Essentiels
 
-DE G à Z : Termes et Acronymes Essentiels
 SBOM
 Software Bill of Materials : inventaire exhaustif des
 composants logiciels (format SPDX ou CycloneDX) STS
@@ -334,9 +325,8 @@ Server-Side Request Forgery : vulnérabilité
 permettant de forger des requêtes depuis le
 serveur (ex : vers IMDS)
 
-## © 2026, Loïc Rossignol, IAWS010
+## Ressources pour aller plus loin
 
-Ressources pour aller plus loin
 - Standards & frameworks
   - https://attack.mitre.org : MITRE ATT&CK for Cloud (tactiques + techniques + navigator)
   - https://owasp.org/Top10/2025 : OWASP Cloud Security Top 10

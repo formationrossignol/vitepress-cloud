@@ -8,9 +8,8 @@ title: "14. Outils de Sécurité : AWS, Azure et GCP"
 
 AWS, Azure et GCP
 
-## © 2026, Loïc Rossignol, IAWS010
+## identité & accès
 
-identité & accès
 AWS Azure GCP
 IAM Identity Center Microsoft Entra ID Identity Platform Authentification centralisée (SSO)
 Cognito External ID / B2C Identity Platform Gestion des identités clients
@@ -23,9 +22,8 @@ Verified Permissions Permissions
 Management
 IAM Conditions Contrôle fin des autorisations
 
-## © 2026, Loïc Rossignol, IAWS010
+## Réseau & Accès Sécurisés
 
-Réseau & Accès Sécurisés
 AWS Azure GCP Rôle
 WAF Front Door WAF Cloud Armor Protection des applications web
 Shield Advanced DDoS Protection Cloud Armor Enterprise Protection contre les attaques DDoS
@@ -42,9 +40,8 @@ Route 53 DNS Firewall Azure DNS Private
 Resolver
 Cloud DNS + Policy Protection et contrôle DNS
 
-## © 2026, Loïc Rossignol, IAWS010
+## AWS Azure GCP Rôle
 
-AWS Azure GCP Rôle
 KMS Key Vault Cloud KMS Gestion des clés de chiffrement
 Secrets Manager Key Vault Secret Manager Stockage sécurisé des secrets
 CloudHSM Managed HSM Cloud HSM Gestion des clés dans un HSM dédié
@@ -55,9 +52,8 @@ sensibles
 Backup Azure Backup Backup & DR Sauvegarde et reprise après incident
 Protection des données
 
-## © 2026, Loïc Rossignol, IAWS010
+## Protection des données
 
-Protection des données
 AWS Azure GCP Rôle
 GuardDuty Microsoft Sentinel Event Threat Detection Détection des menaces
 Detective Microsoft Sentinel
@@ -71,9 +67,8 @@ Platform
 Centralisation des données de
 sécurité
 
-## © 2026, Loïc Rossignol, IAWS010
+## Sécurité des charges de travail
 
-Sécurité des charges de travail
 AWS Azure GCP Rôle
 Inspector Defender for
 Cloud
@@ -88,9 +83,8 @@ Detection
 Détection des comportements
 malveillants en exécution
 
-## © 2026, Loïc Rossignol, IAWS010
+## Gouvernance & Conformité
 
-Gouvernance & Conformité
 AWS Azure GCP Rôle
 Organizations Management Groups Organization Policies Gouvernance multi-comptes / multi-projets
 Control Tower Landing Zones Assured Workloads Mise en place d'environnements sécurisés
@@ -99,9 +93,8 @@ Service
 Contrôle et application des règles de conformité
 Audit Manager Compliance Manager Assured Workloads Pilotage de la conformité réglementaire
 
-## © 2026, Loïc Rossignol, IAWS010
+## Panaroma des services de sécurité AWS
 
-Panaroma des services de sécurité AWS
 Identité Réseau Données
 IAM
 Identity Center
@@ -142,9 +135,8 @@ Control Tower
 Trusted Advisor
  Artifact
 
-## © 2026, Loïc Rossignol, IAWS010
+## AWS GuardDuty
 
-AWS GuardDuty
 - Détection intelligente des menaces pour protéger le compte AWS.
 - Utilise des algorithmes de machine learning, détection d'anomalies, des données tierces.
 - Un clic pour activer (essai de 30 jours), pas besoin d'installer de logiciel.
@@ -160,9 +152,7 @@ requêtes DNS.
 - Les alertes de sécurité (findings) GuardDuty peuvent être routés via Amazon EventBridge vers
 AWS Lambda, Amazon SNS ou AWS Security Hub.
 
-## © 2026, Loïc Rossignol, IAWS010
-
-AWS GuardDuty
+## AWS GuardDuty
 
 ![Slide 308](/securite-cloud/14-outils-securite-aws-azure-gcp/p308_00_Image84.jpg)
 
@@ -182,9 +172,8 @@ provenant des services AWS, des comptes cloud et des outils tiers.
 
 ![Slide 310](/securite-cloud/14-outils-securite-aws-azure-gcp/p310_01_Image85.jpg)
 
-## © 2026, Loïc Rossignol, IAWS010
+## Amazon Inspector
 
-Amazon Inspector
 - Amazon Inspector est un service de gestion des vulnérabilités :
   - Analyse automatiquement les workloads AWS.
   - Détecte les vulnérabilités logicielles et les expositions réseau involontaires.
@@ -199,15 +188,12 @@ Amazon Inspector
 - En résumé : Amazon Inspector identifie les vulnérabilités sur les workloads AWS pour aider
 à prioriser les remédiations.
 
-## © 2026, Loïc Rossignol, IAWS010
-
-Amazon Inspector
+## Amazon Inspector
 
 ![Slide 312](/securite-cloud/14-outils-securite-aws-azure-gcp/p312_02_Image86.jpg)
 
-## © 2026, Loïc Rossignol, IAWS010
+## AWS Network Firewall
 
-AWS Network Firewall
 - AWS Network Firewall est un service de pare-feu réseau managé pour les VPC :
   - Permet de filtrer le trafic entrant, sortant et entre VPC.
   - Fonctionne avec des règles stateless et stateful.
@@ -224,15 +210,12 @@ AWS Network Firewall
 pare-feu avancées, au-delà des Security Groups et des NACL (liste de contrôle d'accès
 réseau).
 
-## © 2026, Loïc Rossignol, IAWS010
-
-AWS Network Firewall
+## AWS Network Firewall
 
 ![Slide 314](/securite-cloud/14-outils-securite-aws-azure-gcp/p314_03_Image87.jpg)
 
-## © 2026, Loïc Rossignol, IAWS010
+## AWS CloudTrail Lake : Anal yse et Investigation des Journaux
 
-AWS CloudTrail Lake : Anal yse et Investigation des Journaux
 CloudTraiL
 - Service AWS managé permettant de centraliser, conserver et interroger les événements CloudTrail via
 SQL, sans infrastructure Athena, S3 ou Glue à administrer.
@@ -250,15 +233,12 @@ inhabituels et les pics d'activité API.
   - Investigation et analyse forensique : Recherche rapide des actions réalisées par un utilisateur
 IAM, un rôle ou une adresse IP sur plusieurs mois ou années.
 
-## © 2026, Loïc Rossignol, IAWS010
-
-AWS CloudTrail Lake : FONCTIONNEMENT
+## AWS CloudTrail Lake : FONCTIONNEMENT
 
 ![Slide 316](/securite-cloud/14-outils-securite-aws-azure-gcp/p316_04_Image88.jpg)
 
-## © 2026, Loïc Rossignol, IAWS010
+## IAM Identity Center
 
-IAM Identity Center
 - Service AWS pour centraliser les accès des utilisateurs.
 - Permet le SSO (Single Sign-On) vers plusieurs comptes AWS et applications.
 - Peut se connecter à un fournisseur d’identité existant :
@@ -275,15 +255,12 @@ IAM Identity Center
   - IAM Identity Center centralise les accès humains aux comptes AWS.
   - IAM reste utilisé pour gérer les permissions, rôles et politiques AWS.
 
-## © 2026, Loïc Rossignol, IAWS010
-
-IAM Identity Center
+## IAM Identity Center
 
 ![Slide 318](/securite-cloud/14-outils-securite-aws-azure-gcp/p318_05_Image89.jpg)
 
-## © 2026, Loïc Rossignol, IAWS010
+## Panaroma des services de sécurité azure
 
-Panaroma des services de sécurité azure
 Identité Réseau Données
 Microsoft Entra ID
 Conditional Access
@@ -327,30 +304,12 @@ Cost Management
 Microsoft Priva
 Compliance Manager
 
-## © 2026, Loïc Rossignol, IAWS010
+## Microsoft Defender for Cloud : CSPM + CWPP Intégré
 
-Microsoft Defender for Cloud : CSPM + CWPP Intégré
 - jh
 
-## © 2026, Loïc Rossignol, IAWS010
+## Panaroma des services de sécurité GCP
 
-Microsoft Sentinel : SIEM/SOAR Cloud-Native
-
-## © 2026, Loïc Rossignol, IAWS010
-
-Microsoft Entra ID : Identité et Accès Zero Trust
-
-## © 2026, Loïc Rossignol, IAWS010
-
-Entra ID (Conditional Access) : Exemples de Politiques
-
-## © 2026, Loïc Rossignol, IAWS010
-
-Microsoft Purview : Data Governance & DLP Mul ti-Cloud
-
-## © 2026, Loïc Rossignol, IAWS010
-
-Panaroma des services de sécurité GCP
 Identité Réseau Données
 Cloud IAM
 Identity Platform
@@ -400,9 +359,8 @@ Risk Manager
 Cloud Compliance
 Access Transparency
 
-## © 2026, Loïc Rossignol, IAWS010
+## Security Command Center : CSPM Natif GCP
 
-Security Command Center : CSPM Natif GCP
 - Tableau de bord centralisé de sécurité GCP . Agrège les findings de tous les services de
 sécurité GCP + détecte les menaces via l'intégration Mandiant Threat Intelligence.
 - Asset Inventory : découverte automatique de toutes les ressources GCP (Compute · GCS ·
@@ -416,9 +374,8 @@ attribution groupes APT en temps réel
 - SIEM Export : findings vers Chronicle (natif) · Pub/Sub → Splunk/Sentinel · BigQuery pour
 analyse historique
 
-## © 2026, Loïc Rossignol, IAWS010
+## Google Chronicle : SIEM Cloud-Native à Rétention Illimitée
 
-Google Chronicle : SIEM Cloud-Native à Rétention Illimitée
 - SIEM cloud-native développé par Google, basé sur l'infrastructure Bigtable et Spanner.
 Ingestion et rétention de logs à grande échelle avec un pricing fixe (pas au volume),
 intégration Mandiant.
@@ -433,10 +390,6 @@ intelligence enrichissement automatique
 - Connecteurs : GCP nativement, AWS (CloudTrail, VPC Flow et GuardDuty), Azure, Okta,
 CrowdStrike, Palo Alto Networks.
 
-## © 2026, Loïc Rossignol, IAWS010
-
-GCP Cloud Armor & IAM Recommender : WAF + ML IAM
-
 ## Outils Tiers :
 
 CNAPP & Solutions Indépendantes
@@ -445,9 +398,8 @@ CNAPP & Solutions Indépendantes
 
 ![Slide 333](/securite-cloud/14-outils-securite-aws-azure-gcp/p333_07_Image91.jpg)
 
-## © 2026, Loïc Rossignol, IAWS010
+## Comparatif : Quel Outil pour Quel Besoin ?
 
-Comparatif : Quel Outil pour Quel Besoin ?
 Besoin AWS natif Azure natif GCP natif Tiers
 CSPM, posture
 management
@@ -483,9 +435,8 @@ annuelles
 
 ![Slide 335](/securite-cloud/14-outils-securite-aws-azure-gcp/p335_08_Image43.jpg)
 
-## © 2026, Loïc Rossignol, IAWS010
+## Wiz : CNAPP Leader du Marché
 
-Wiz : CNAPP Leader du Marché
 - Wiz est une plateforme CNAPP qui corrèle configurations, vulnérabilités, identités, expositions réseau
 et données sensibles afin d'identifier les chemins d'attaque réellement exploitables et de prioriser les
 risques les plus critiques.
@@ -496,9 +447,7 @@ risques les plus critiques.
   - Corrélation automatique des risques
   - Priorisation basée sur l'exploitabilité réelle
 
-## © 2026, Loïc Rossignol, IAWS010
-
-fonctionnement
+## fonctionnement
 
 ![Slide 337](/securite-cloud/14-outils-securite-aws-azure-gcp/p337_09_Image92.jpg)
 
@@ -506,18 +455,16 @@ fonctionnement
 
 ![Slide 338](/securite-cloud/14-outils-securite-aws-azure-gcp/p338_10_Image43.jpg)
 
-## © 2026, Loïc Rossignol, IAWS010
+## Top 10 OWASP pour les LLM 2025 & Surface d'Attaque Cloud IA
 
-Top 10 OWASP pour les LLM 2025 & Surface d'Attaque Cloud IA
 - AWS Bedrock, Azure OpenAI et Vertex AI facilitent le déploiement de LLM en production,
 mais créent une nouvelle surface d'attaque.
 - Les principaux risques concernent les injections de prompts, les fuites de données
 sensibles, les attaques sur les modèles et les données, ainsi que l'excès d'autonomie
 accordé aux systèmes d'IA.
 
-## © 2026, Loïc Rossignol, IAWS010
+## Top 10 OWASP pour les LLM 2025 & Surface d'Attaque Cloud IA
 
-Top 10 OWASP pour les LLM 2025 & Surface d'Attaque Cloud IA
 Risque Retenir
 LLM01 - Prompt Injection Manipulation du modèle via des instructions malveillantes
 LLM02 - Sensitive Information Disclosure Divulgation de données sensibles ou confidentielles
@@ -530,17 +477,15 @@ LLM08 - Vector and Embedding Weaknesses Attaques sur les bases vectorielles et m
 LLM09 - Misinformation Production d'informations erronées ou trompeuses
 LLM10 - Unbounded Consumption Consommation excessive de ressources et coûts incontrôlés
 
-## © 2026, Loïc Rossignol, IAWS010
+## l’injection de Prompts : Risque n°1 des applications LLM
 
-l’injection de Prompts : Risque n°1 des applications LLM
 L’injection de prompt consiste à manipuler les instructions fournies à un modèle d'IA afin de
 contourner les règles prévues par l'application et influencer son comportement.
 
 ![Slide 341](/securite-cloud/14-outils-securite-aws-azure-gcp/p341_11_Image93.jpg)
 
-## © 2026, Loïc Rossignol, IAWS010
+## Guardials
 
-Guardials
 - Les Guardrails sont une couche de sécurité placée autour du LLM afin de :
   - Contrôler les entrées
   - Contrôler les sorties
@@ -555,9 +500,8 @@ et d'exécution d'actions non autorisées.
   - Les groupes de sécurité pour un serveur
   - Admission Controller pour Kubernetes
 
-## © 2026, Loïc Rossignol, IAWS010
+## Cinq grande famille de Guardials
 
-Cinq grande famille de Guardials
 Famille de
 Guardrails
 Rôle principal Exemples de contrôles Risques atténués
@@ -612,15 +556,12 @@ Exposition de données sensibles,
 violation de confidentialité, fuite
 de secrets
 
-## © 2026, Loïc Rossignol, IAWS010
-
-fonctionnement des Guardrails
+## fonctionnement des Guardrails
 
 ![Slide 344](/securite-cloud/14-outils-securite-aws-azure-gcp/p344_12_Image94.jpg)
 
-## © 2026, Loïc Rossignol, IAWS010
+## LLM-as-a-judge
 
-LLM-as-a-judge
 - Le LLM as a Judge agit comme un contrôleur qualité automatisé capable d'évaluer les
 réponses d'un autre modèle selon des critères de pertinence, de sécurité et de conformité.
 - Il constitue aujourd'hui un composant clé des plateformes d'IA générative en production.
@@ -632,9 +573,8 @@ Détection rapide des dérives et anomalies Les résultats peuvent varier selon 
 Amélioration continue des modèles et des prompts Les évaluations critiques doivent être échantillonnées ou revues par
 des humains
 
-## © 2026, Loïc Rossignol, IAWS010
+## LLM-as-a-judge et Critères d'évaluation
 
-LLM-as-a-judge et Critères d'évaluation
 Critère Exemple
 Pertinence La réponse répond-elle à la question ?
 Exactitude Les informations sont-elles correctes ?
@@ -643,15 +583,12 @@ Conformité Respecte-t-elle les politiques définies ?
 Toxicité Contient-elle du contenu inapproprié ?
 Hallucination Les faits sont-ils vérifiables ?
 
-## © 2026, Loïc Rossignol, IAWS010
-
-Fonctionnement d’un LLM-as-a-judge
+## Fonctionnement d’un LLM-as-a-judge
 
 ![Slide 347](/securite-cloud/14-outils-securite-aws-azure-gcp/p347_13_Image95.jpg)
 
-## © 2026, Loïc Rossignol, IAWS010
+## Tests de red teaming IA
 
-Tests de red teaming IA
 - Le Red Teaming IA reproduit les comportements d’attaquants réels afin d’évaluer la robustesse des systèmes d’IA
 générative.
 - Il permet d’identifier les vulnérabilités de sécurité, de sûreté et de conformité des LLM, des systèmes RAG et des agents IA
@@ -659,17 +596,15 @@ avant qu’elles ne puissent être exploitées en production.
 
 ![Slide 348](/securite-cloud/14-outils-securite-aws-azure-gcp/p348_14_Image96.jpg)
 
-## © 2026, Loïc Rossignol, IAWS010
+## Sécuriser un Pipeline RAG sur AWS Bedrock
 
-Sécuriser un Pipeline RAG sur AWS Bedrock
 La sécurisation d'Amazon Bedrock repose sur une approche de défense en profondeur combinant IAM, Bedrock Guardrails,
 contrôle d'accès aux bases de connaissances, chiffrement des données et surveillance continue des usages du modèle.
 
 ![Slide 349](/securite-cloud/14-outils-securite-aws-azure-gcp/p349_15_Image97.jpg)
 
-## © 2026, Loïc Rossignol, IAWS010
+## Gouvernance IA
 
-Gouvernance IA
 La gouvernance de l’IA est l’ensemble des règles, processus, contrôles et responsabilités mis en place pour garantir que les
 systèmes d’intelligence artificielle sont développés, déployés et exploités de manière sécurisée, fiable, éthique, conforme et
 maîtrisée.
@@ -681,9 +616,8 @@ Transparence Comprendre les capacités, limites et décisions des modèles
 Qualité Garantir la pertinence, la robustesse et la fiabilité des résultats
 Responsabilité Définir qui décide, valide et supervise les usages de l’IA
 
-## © 2026, Loïc Rossignol, IAWS010
+## AI-TRiSM Framework (Gartner) : Gouvernance IA en Production
 
-AI-TRiSM Framework (Gartner) : Gouvernance IA en Production
 - AI TRiSM (AI Trust, Risk and Security Management) est un cadre de gouvernance permettant de sécuriser les systèmes d’IA
 générative en production en adressant les enjeux de confiance, de risque, de sécurité et d’exploitation.
 Domaine Objectif Exemples
@@ -708,9 +642,7 @@ conformité
 Audit des usages, surveillance continue, gestion des versions,
 gouvernance des données
 
-## © 2026, Loïc Rossignol, IAWS010
-
-Les nouveaux risques introduits par l'IA selon gartner
+## Les nouveaux risques introduits par l'IA selon gartner
 
 ![Slide 352](/securite-cloud/14-outils-securite-aws-azure-gcp/p352_16_Image98.jpg)
 
@@ -718,14 +650,12 @@ Les nouveaux risques introduits par l'IA selon gartner
 
 ![Slide 353](/securite-cloud/14-outils-securite-aws-azure-gcp/p353_17_Image43.jpg)
 
-## © 2026, Loïc Rossignol, IAWS010
+## Limites d'autorisation : Délégation sécurisée
 
-Limites d'autorisation : Délégation sécurisée
 - jh
 
-## © 2026, Loïc Rossignol, IAWS010
+## PMapper : Anal yse des Chemins d'Escalade de Privilèges
 
-PMapper : Anal yse des Chemins d'Escalade de Privilèges
 - PMapper (Principal Mapper) est un outil open source permettant d’analyser les relations IAM AWS afin
 d’identifier :
   - les chemins d’escalade de privilèges
@@ -743,15 +673,12 @@ pmapper --account 123456789012 graph create
 pmapper --account 123456789012 analysis find_risks
 pmapper --account 123456789012 query 'who can becomeadmin?'
 
-## © 2026, Loïc Rossignol, IAWS010
-
-PMapper : EXEMPLE
+## PMapper : EXEMPLE
 
 ![Slide 356](/securite-cloud/14-outils-securite-aws-azure-gcp/p356_18_Image99.jpg)
 
-## © 2026, Loïc Rossignol, IAWS010
+## AWS STS : Sessions Temporaires & AssumeRole
 
-AWS STS : Sessions Temporaires & AssumeRole
 - jh
 
 ## QCM : Outils de Sécurité :
