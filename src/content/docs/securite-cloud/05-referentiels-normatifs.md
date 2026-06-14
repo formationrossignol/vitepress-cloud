@@ -7,11 +7,6 @@ title: "05. Les référentiels normatifs"
 ## ISO/CEI 27017 : Sécurité des services cloud
 
 
-|  | •  L'ISO/CEI 27017 est une norme internationale qui complète l'ISO/CEI 27002 en<br>fournissant des recommandations spécifiques à la sécurité des environnements cloud.<br>•  Elle s'adresse à la fois :<br>  ◦  Aux fournisseurs de services cloud (CSP)<br>  ◦  Aux clients utilisateurs de services cloud (CSC)<br>•  Objectif : renforcer la sécurité des services cloud en clarifiant les responsabilités et en<br>appliquant des contrôles adaptés aux modèles IaaS, PaaS et SaaS. |  |
-| --- | --- | --- |
-| I | SO/CEI 27017 est le guide de référence pour appliquer les bonnes pratiques de sécurité dans le cloud en tenant<br>compte des spécificités des environnements mutualisés et du modèle de responsabilité partagée. |  |
-|  |  | 7 |
-
 
 ## ISO/CEI 27017 : Principes clés
 
@@ -33,18 +28,10 @@ title: "05. Les référentiels normatifs"
 ## Bénéfices
 
 
-| •  Réduction des risques liés au cloud<br>•  Clarification des responsabilités fournisseur/client<br>•  Renforcement de la conformité réglementaire<br>•  Amélioration de la confiance des clients<br>•  Alignement avec les référentiels ISO 27001 et sécurité cloud |  |
-| --- | --- |
-|  | 8 |
-
 
 ## ISO/CEI 27018 : Protection des données personnelles dans le
 
 Cloud
-
-| Cloud<br>•  L'ISO/CEI 27018 est une norme internationale dédiée à la protection des données à<br>caractère personnel (PII : Personally Identifiable Information) dans les services cloud<br>publics.<br>•  Elle fournit des mesures complémentaires à l'ISO/CEI 27001 et à l'ISO/CEI 27017 pour<br>les fournisseurs cloud agissant comme sous-traitants de données personnelles.<br>•  Objectif : garantir que les données personnelles confiées au cloud sont collectées,<br>traitées, stockées et supprimées de manière sécurisée et transparente. |  |
-| --- | --- |
-|  | 8 |
 
 
 
@@ -63,25 +50,13 @@ Cloud
 ## Bénéfices & lien avec RGPD
 
 
-| Bénéfices<br>•  Renforcement de la protection des données personnelles<br>•  Réduction des risques de fuite ou d'usage abusif<br>•  Amélioration de la transparence vis-à-vis des clients<br>•  Facilitation de la conformité réglementaire<br>•  Renforcement de la confiance dans les services cloud<br>Lien avec le RGPD<br>•  L'ISO/CEI 27018 n'est pas une certification RGPD, mais elle apporte des mesures concrètes<br>permettant de soutenir plusieurs exigences du RGPD :<br>  ◦  Protection des données dès la conception (Privacy by Design)<br>  ◦  Confidentialité et intégrité des données<br>  ◦  Limitation des finalités<br>  ◦  Gestion des sous-traitants<br>  ◦  Notification des violations de données |  |
-| --- | --- |
-|  | 8 |
-
 
 ## CIS Benchmarks : Configurations sécurisées de référence
 
 
-| •  Extension d'ISO 27002 spécifique aux services cloud computing.<br>•  Définit des contrôles de sécurité supplémentaires pour les fournisseurs de services cloud (CSP) et leurs clients.<br>•  Clarifie les responsabilités partagées. |  |
-| --- | --- |
-|  | 8 |
-
 
 ## SOC 2 : Standard de confiance pour les fournisseurs saas
 
-
-| •  Développé par l’American Institute of CPAs (AICPA), SOC 2 permet de démontrer, via un audit indépendant, l'efficacité des contrôles<br>de sécurité et la fiabilité d'un fournisseur de services numériques, tandis qu'ISO 27017 complète ISO 27002 avec des<br>recommandations spécifiques au cloud et clarifie les responsabilités entre fournisseur et client.<br>•  Objectifs :<br>  ◦  Démontrer la maturité des contrôles de sécurité<br>  ◦  Renforcer la confiance des clients et partenaires<br>  ◦  Répondre aux exigences des grandes entreprises<br>  ◦  Faciliter les audits fournisseurs (Vendor Assessment)<br>Type I Type II<br>Évalue la conception des contrôles Évalue l'efficacité des contrôles<br>Photo à un instant donné Observation sur plusieurs mois<br>Mise en place des processus Vérification de leur fonctionnement<br>Audit ponctuelen Audit continu (généralement 6 à 12 mois) |  |
-| --- | --- |
-|  | 9 |
 
 | Type I | Type II |
 | --- | --- |
@@ -101,10 +76,6 @@ Le critère Sécurité est obligatoire !
 ## Les points de contrôle
 
 
-| •  Gestion des accès et des identités<br>•  Authentification multifacteur (MFA)<br>•  Journalisation et audit<br>•  Gestion des vulnérabilités<br>•  Gestion des incidents de sécurité<br>•  Sauvegardes et reprise d'activité<br>•  Gestion des changements<br>•  Sécurité des fournisseurs tier |  |
-| --- | --- |
-|  | 9 |
-
 
 ## SOC 2 et ISO 27001
 
@@ -121,11 +92,6 @@ Le critère Sécurité est obligatoire !
 
 SecNumCloud est la qualification de l'ANSSI garantissant un cloud de confiance alliant sécurité renforcée,
 souveraineté numérique et protection contre les législations extraterritoriales.
-
-| Objectifs<br>•  Garantir un niveau élevé de cybersécurité<br>•  Assurer la souveraineté des données sensibles<br>•  Réduire les risques liés aux fournisseurs étrangers<br>•  Renforcer la confiance dans les services cloud |  |
-| --- | --- |
-| Texte officiel de la qualification SecNumCloud 3.2 |  |
-|  | 9 |
 
 
 ## Principes fondamentaux, exigences de sécurité
@@ -181,17 +147,16 @@ souveraineté numérique et protection contre les législations extraterritorial
 Dans le cloud, le RGPD impose de maîtriser où, comment et par qui les données personnelles sont traitées, y compris lorsque l’infrastructure est
 opérée par un fournisseur externe.
 
-| Domaine | Obligation principale |  |
-| --- | --- | --- |
-| Rôles & responsabilités | Identifier le responsable de traitement, le sous-traitant et les éventuels sous-traitants ultérieurs. |  |
-| Contrat cloud | Mettre en place un DPA (Data Processing Agreement) conforme à l’article 28 avec chaque fournisseur traitant des données<br>personnelles. |  |
-| Transferts hors UE | Encadrer les transferts vers pays tiers avec des mécanismes légaux adaptés : CCT, garanties complémentaires, analyse de<br>transfert. |  |
-| Sécurité des données | Appliquer chiffrement, contrôle d’accès, journalisation, sauvegardes et séparation des environnements. |  |
-| Privacy by Design | Intégrer la protection des données dès la conception des services cloud. |  |
-| DPIA / AIPD | Réaliser une analyse d’impact pour les traitements présentant un risque élevé. |  |
-| Violation de données | Notifier l’autorité de contrôle sous 72 h en cas de violation de données personnelles. |  |
-| Sanctions | Jusqu’à 20 M€ ou 4 % du chiffre d’affaires mondial annuel.<br>1 |  |
-|  |  | 1 |
+| Domaine | Obligation principale |
+| --- | --- |
+| Rôles & responsabilités | Identifier le responsable de traitement, le sous-traitant et les éventuels sous-traitants ultérieurs. |
+| Contrat cloud | Mettre en place un DPA (Data Processing Agreement) conforme à l’article 28 avec chaque fournisseur traitant des données<br>personnelles. |
+| Transferts hors UE | Encadrer les transferts vers pays tiers avec des mécanismes légaux adaptés : CCT, garanties complémentaires, analyse de<br>transfert. |
+| Sécurité des données | Appliquer chiffrement, contrôle d’accès, journalisation, sauvegardes et séparation des environnements. |
+| Privacy by Design | Intégrer la protection des données dès la conception des services cloud. |
+| DPIA / AIPD | Réaliser une analyse d’impact pour les traitements présentant un risque élevé. |
+| Violation de données | Notifier l’autorité de contrôle sous 72 h en cas de violation de données personnelles. |
+| Sanctions | Jusqu’à 20 M€ ou 4 % du chiffre d’affaires mondial annuel. |
 
 
 ## RGPD en résumé
@@ -203,9 +168,8 @@ opérée par un fournisseur externe.
 ## EU Cyber resilience act (CRA)
 
 
-| Le Cyber Resilience Act (CRA) impose aux produits numériques vendus dans l'Union Européenne des exigences de sécurité, de gestion des<br>vulnérabilités et de transparence tout au long de leur cycle de vie.<br>La cybersécurité devient une obligation réglementaire et non plus une simple bonne pratique ! |  |  |  |
-| --- | --- | --- | --- |
 |  | vulnérabilités et de transparence tout au long de leur cycle de vie.<br>La cybersécurité devient une obligation réglementaire et non plus une simple bonne pratique ! |  |  |
+| --- | --- | --- | --- |
 |  | Thème | Exigence principale |  |
 | Sé<br>by | curité dès la conception (Security<br>Design & by Default) | Les produits doivent intégrer des mécanismes de sécurité dès leur conception et être sécurisés par défaut. |  |
 | SB | OM obligatoire | Inventaire complet des composants logiciels afin d'assurer la traçabilité de la chaîne d'approvisionnement. |  |
@@ -214,7 +178,6 @@ opérée par un fournisseur externe.
 | Su | pport et mises à jour de sécurité | Fourniture de correctifs et de mises à jour de sécurité pendant toute la durée de vie prévue du produit. |  |
 | Sa | nctions | Jusqu'à 15 M€ ou 2,5 % du chiffre d'affaires mondial annuel en cas de non-conformité. |  |
 | Impact Cloud & SaaS | pact Cloud & SaaS | Les éditeurs SaaS, fournisseurs cloud et fabricants de produits connectés doivent démontrer leur conformit<br>(SBOM, gestion des vulnérabilités, processus de mise à jour). | é |
-|  |  |  | 1 |
 
 
 ## La directive NIS2
@@ -225,10 +188,6 @@ opérée par un fournisseur externe.
 
 NIS2 impose aux organisations essentielles et importantes de maîtriser leurs risques cyber, sécuriser leur chaîne d'approvisionnement et
 démontrer une gestion efficace des incidents, y compris ceux liés à leurs fournisseurs et services cloud.
-
-| •  En France, les Opérateur d'Importance Vitale (OIV) constituent déjà les acteurs les plus critiques pour la Nation.<br>NIS2 étend les exigences de cybersécurité à un périmètre beaucoup plus large d'organisations essentielles et<br>importantes à l'échelle européenne.<br>•  D'un point de vue sécurité, NIS2 n'est pas une norme technique comme ISO 27001 ou un framework comme NIST.<br>•  NIS2 oblige les organisations à mettre en place un niveau minimum de cybersécurité proportionné à leurs risques. |  |
-| --- | --- |
-|  | 1 |
 
 
 ## La cyber-résilience selon NIS2

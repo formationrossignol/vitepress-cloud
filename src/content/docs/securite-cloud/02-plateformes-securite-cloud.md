@@ -4,12 +4,6 @@ title: "02. Plateformes de sécurité cloud"
 
 # 02. Plateformes de sécurité cloud
 
-| Cloud Security Posture Management (CSPM) |  |
-| --- | --- |
-| •  Un CSPM surveille la posture de sécurité des environnements cloud : comptes, subscriptions, projets, ressources,<br>réseaux, stockages, bases de données et services managés.<br>•  Il détecte les mauvaises configurations, les écarts de conformité et les dérives par rapport aux bonnes pratiques<br>de sécurité.<br>•  Fonctionne en continu via l’analyse des configurations cloud.<br>•  Détection des mauvaises configurations : bucket public, Security Group ouvert en 0.0.0.0/0, CloudTrail désactivé,<br>chiffrement absent.<br>•  Contrôle de conformité : vérification automatique par rapport aux référentiels CIS Benchmarks, ISO 27001,<br>PCI-DSS, SOC 2, NIST.<br>•  Gestion de la posture cloud : score de sécurité, priorisation des risques, recommandations de remédiation, suivi<br>des écarts.<br>•  Cas d’usage : détection des ressources exposées publiquement, audit continu de la configuration cloud,<br>préparation à la conformité, réduction du risque de misconfiguration, contrôle des environnements multi-cloud.<br>•  Solutions : Wiz Cloud Security Platform, Prisma Cloud CSPM, Orca Cloud Security Platform, Lacework FortiCNAPP,<br>Microsoft Defender for Cloud, AWS Security Hub, Google Security Command Center, Prowler, Steampipe,<br>ScoutSuite, etc. |  |
-|  | 2 |
-
-
 ## Cloud security posture management (CSPM)
 
 
@@ -64,22 +58,10 @@ Defender for Containers, Red Hat ACS, Check Point CloudGuard, etc.
 ![Slide 34](/securite-cloud/02-plateformes-securite-cloud/p034_02_Image25.jpg)
 
 
-| Cloud Workload Protection Platform (CWPP) |  |
-| --- | --- |
-| •  Un CWPP protège les workloads cloud : VM, conteneurs, clusters Kubernetes et parfois serverless<br>contre les vulnérabilités, mauvaises configurations, malwares et comportements anormaux.<br>•  Il apporte de la visibilité, du scan de vulnérabilités, du contrôle de conformité et de la détection en<br>runtime.<br>•  Fonctionne en temps réel pendant l'exécution (runtime security).<br>•  Scan de vulnérabilités : images Docker, packages OS, bibliothèques applicatives<br>•  Environnement d'exécution de sécurité : détection comportementale (spawn shell inattendu,<br>lecture /etc/shadow, connexion réseau suspecte)<br>•  Conformité CIS Benchmarks : vérification automatique des hardening guides<br>•  Cas d’usage : Protection contre les malwares et ransomwares, détection d’activités anormales dans<br>les workloads, sécurisation des conteneurs et des images, contrôle de conformité et gestion des<br>vulnérabilités, etc.<br>•  Solutions : Aqua Cloud Security Platform, Lacework FortiCNAPP, Sysdig Secure, Falco, Microsoft<br>Defender for Containers, Prisma Cloud Compute, Wiz Runtime Sensor, Orca Cloud Security Platform,<br>AWS GuardDuty Runtime Monitoring, Google Security Command Center Enterprise, etc.<br>3 |  |
-|  | 3 |
-
-
 ## Cloud workload protection platform (CWPP)
 
 
 ![Slide 36](/securite-cloud/02-plateformes-securite-cloud/p036_03_Image26.jpg)
-
-
-| Data Security Posture Management (DSPM) |  |
-| --- | --- |
-| •  Un DSPM surveille la posture de sécurité des données sensibles dans les environnements cloud : bases de<br>données, data lakes, buckets S3, stockages blob, SaaS, entrepôts de données et services managés.<br>•  Il détecte les données sensibles exposées, les accès excessifs, les mauvaises classifications et les écarts de<br>conformité liés à la protection des données.<br>•  Fonctionne en continu via la découverte, la classification et l’analyse des accès aux données.<br>•  Découverte des données sensibles : identification automatique des PII, données financières, données de santé,<br>secrets, données réglementées (RGPD, PCI, HIPAA).<br>•  Contrôle de conformité : vérification automatique des accès, du chiffrement, des partages externes, des<br>politiques DLP et des référentiels RGPD, PCI-DSS, ISO 27001, HIPAA.<br>•  Gestion de la posture des données : score de risque data, priorisation des expositions critiques,<br>recommandations de remédiation, suivi des écarts et des accès sensibles.<br>•  Cas d’usage : détection des buckets contenant des données clients exposées, contrôle des accès aux données<br>sensibles, réduction du risque de fuite de données, conformité réglementaire, audit continu des environnements<br>multi-cloud et SaaS.<br>•  Solutions : Microsoft Purview DSPM, Google Cloud DSPM, AWS Macie, Wiz DSPM, Prisma Cloud DSPM, Orca<br>Security DSPM, Varonis, Securiti, BigID, etc. |  |
-|  | 3 |
 
 
 ## Data security posture management (DSPM)
@@ -87,15 +69,6 @@ Defender for Containers, Red Hat ACS, Check Point CloudGuard, etc.
 
 ![Slide 38](/securite-cloud/02-plateformes-securite-cloud/p038_04_Image27.jpg)
 
-
-| Cloud-Native Application Protection Platform (CNAPP) |
-| --- |
-| •  Un CNAPP unifie les principales capacités de sécurité cloud au sein d'une plateforme unique.<br>•  Il fournit une visibilité centralisée sur les configurations, les workloads, les identités, les données sensibles et les environnements<br>Kubernetes.<br>•  Fonctionne en continu via la corrélation des risques provenant des différentes couches de sécurité cloud.<br>•  Capacités intégrées : CSPM + CWPP + CIEM + DSPM + KSPM + Analyse des chemins d'attaque (corrélation des vulnérabilités,<br>expositions réseau, permissions IAM et données sensibles afin d'identifier les risques réellement exploitables).<br>•  Valeur apportée :<br>  ◦  Visibilité unifiée multi-cloud<br>  ◦  Corrélation des risques entre les différentes couches de sécurité<br>  ◦  Priorisation des remédiations<br>  ◦  Gestion centralisée de la conformité<br>  ◦  Score de risque global<br>  ◦  Tableaux de bord et reporting centralisés<br>•  Solutions : Wiz, Prisma Cloud, Orca Security, Microsoft Defender for Cloud, Lacework, Check Point CloudGuard, Sysdig Secure, Trend<br>Vision One Cloud Security, SentinelOne Singularity Cloud Security, etc. |
-
-
-| Une solution CNAPP open-source ? |
-| --- |
-| •  Aujourd'hui, il n'existe pas de solution open source qui couvre de manière mature et intégrée l'ensemble du périmètre CNAPP<br>•  Le plus proche est généralement un assemblage de plusieurs outils open source. |
 
 | Domaine | Open Source |
 | --- | --- |
@@ -124,15 +97,4 @@ Defender for Containers, Red Hat ACS, Check Point CloudGuard, etc.
 | KSPM | Mon Kubernetes est-il sécurisé ? |
 | DSPM | Où sont mes données sensibles ? |
 | CNAPP | Comment tout centraliser ? |
-
-
-## LAB : Les plateformes de
-
-sécurité cloud
-dhdfhfgh
-
-
-## QCM : Plateformes de
-
-sécurité cloud
 

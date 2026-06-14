@@ -7,10 +7,6 @@ title: "07. Sécurité des données cloud"
 ## Chiffrement des données : At rest & in transit
 
 
-| Objectif : Processus de transformation des données en un format illisible sans la clé de déchiffrement<br>appropriée. Protège la confidentialité même en cas d'accès non autorisé aux supports de stockage.<br>•  At Rest (données stockées) : S3 SSE-KMS, SSE-S3, SSE-C · EBS chiffré · RDS TDE · Snapshots<br>chiffrés.<br>•  In Transit (données en mouvement) : TLS 1.2 minimum (TLS 1.3 recommandé) · mTLS pour<br>service-to-service · VPN ou Direct Connect.<br>•  Algorithmes : AES-256 (symétrique, standard) · RSA-2048/4096 (asymétrique, échange de clés) ·<br>ECDSA (signatures).<br>•  Séparation clé/données : stocker les clés de chiffrement séparément des données chiffrées (KMS,<br>HSM dédié).<br>•  Politique : activer le chiffrement par défaut sur tous les services cloud (pas d'exception pour les<br>environnements dev). |  |
-| --- | --- |
-|  | 1 |
-
 
 ## KMS & Hiérarchie des Clés : AWS, Azure, GCP
 
@@ -23,21 +19,16 @@ title: "07. Sécurité des données cloud"
 ## Bring your own key (BYOK)
 
 
-| Objectif : Modèle où le client génère sa propre clé de chiffrement maîtresse en dehors du cloud<br>provider, puis l'importe dans le service KMS du provider. Le client conserve une copie externe et peut<br>révoquer l'accès à tout moment.<br>•  Avantage principal : séparation cryptographique entre les données et le provider cloud = le<br>provider n'a jamais accès à votre clé en clair<br>•  Processus AWS : Générer en HSM externe → Importer via CLI avec wrapping key → AWS KMS<br>stocke le ciphertext de votre key<br>•  Processus Azure : Générer en Azure Key Vault Premium (HSM) ou HSM externe → Import via Key<br>Transfer Blob<br>•  Cas d'usage obligatoire : SecNumCloud · HDS (Hébergement Données de Santé) · données de<br>souveraineté · finance réglementée<br>•  Risque BYOK : perte de votre clé externe = perte DÉFINITIVE de l'accès à vos données — backup<br>sécurisé obligatoire |  |
-| --- | --- |
-|  | 1 |
-
 
 ## Classification des données : Niveaux et outils
 
 
-| Niveau de classification | Description et exemples | Mesures de sécurité |  |
-| --- | --- | --- | --- |
-| Public | Données librement accessibles, sans impact si divulguées<br>Ex: Plaquettes commerciales, site web public, communiqués de<br>presse | Aucun contrôle spécifique : vérifier<br>qu'elles ne contiennent pas de<br>méta-données sensibles |  |
-| Interne | Données à usage interne uniquement, impact limité si<br>divulguées<br>Ex: Politiques internes, présentations internes, organigrammes | Authentification requise, Pas de partage,<br>externe sans autorisation, Logs d'accès |  |
-| Confidentiel | Données sensibles pouvant causer un préjudice si divulguées<br>Ex: Données clients, contrats, code source, données financières | Chiffrement at rest/in transit, MFA, DLP,<br>Accès restreint, Audit trail |  |
-| Secret / très sensible | Données critiques : divulgation = impact majeur<br>Ex: PII, données de santé, données paiement, secrets<br>industriels | BYOK, HSM, Accès JIT PAM, DLP strict,<br>DSPM, Notification CNIL si violation |  |
-|  |  |  | 1 |
+| Niveau de classification | Description et exemples | Mesures de sécurité |
+| --- | --- | --- |
+| Public | Données librement accessibles, sans impact si divulguées<br>Ex: Plaquettes commerciales, site web public, communiqués de<br>presse | Aucun contrôle spécifique : vérifier<br>qu'elles ne contiennent pas de<br>méta-données sensibles |
+| Interne | Données à usage interne uniquement, impact limité si<br>divulguées<br>Ex: Politiques internes, présentations internes, organigrammes | Authentification requise, Pas de partage,<br>externe sans autorisation, Logs d'accès |
+| Confidentiel | Données sensibles pouvant causer un préjudice si divulguées<br>Ex: Données clients, contrats, code source, données financières | Chiffrement at rest/in transit, MFA, DLP,<br>Accès restreint, Audit trail |
+| Secret / très sensible | Données critiques : divulgation = impact majeur<br>Ex: PII, données de santé, données paiement, secrets<br>industriels | BYOK, HSM, Accès JIT PAM, DLP strict,<br>DSPM, Notification CNIL si violation |
 
 
 ## Amazon Macie
@@ -74,9 +65,4 @@ stockées n'importe où dans le monde, y compris en Europe.
 ## WAF, API gateway, service mesh : Lequel choisir ?
 
 Ces 3 outils se complètent mais ne se remplacent pas. Choisir le mauvais = protection incomplète ou coût inutile.
-
-
-## LAB : IAM
-
-dhdfhfgh
 

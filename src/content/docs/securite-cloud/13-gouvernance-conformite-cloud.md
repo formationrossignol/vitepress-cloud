@@ -61,13 +61,3 @@ protéger les actifs.
 
 ![Slide 294](/securite-cloud/13-gouvernance-conformite-cloud/p294_01_Image83.jpg)
 
-
-## LAB : Gouvernance &
-
-Conformité Cloud
-
-
-## QCM : Gouvernance &
-
-Conformité Cloud
-

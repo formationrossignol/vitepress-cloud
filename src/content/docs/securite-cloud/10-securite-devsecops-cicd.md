@@ -20,17 +20,15 @@ Security Testing
 ## Static application security testing (SAST)
 
 
-| •  Le SAST (Static Application Security Testing) analyse le code source , le bytecode (code intermédiaire entre les<br>instructions machines et le code source) ou les fichiers compilés afin de détecter des vulnérabilités de sécurité avant<br>l'exécution de l'application.<br>•  Objectif : identifier les failles de sécurité le plus tôt possible dans le cycle de développement (Shift-Left).<br>•  Ce que vérifie un SAST :<br>Outil Type<br>  ◦  Injections SQL<br>  ◦  Cross-Site Scripting (XSS)<br>Semgrep Open source<br>  ◦  Injections de commandes système<br>  ◦  Contrôles d'accès défaillants<br>SonarQube Qualité & sécurité<br>  ◦  Gestion incorrecte des secrets<br>  ◦  Validation insuffisante des entrées GitHub Advanced Security Intégré GitHub<br>  ◦  Utilisation dangereuse d'API<br>Checkmarx Commercial<br>  ◦  Algorithmes ou configurations cryptographiques faibles<br>Fortify SCA Commercial<br>Veracode Static Analysis SaaS |  |  |  |
-| --- | --- | --- | --- |
-|  | Outil | Type |  |
-|  | Semgrep | Open source |  |
-|  | SonarQube | Qualité & sécurité |  |
-|  | GitHub Advanced Security | Intégré GitHub |  |
-|  | Checkmarx | Commercial |  |
-|  | Fortify SCA | Commercial |  |
-|  | Veracode Static Analysis | SaaS |  |
-|  | CodeQL | Open source (GitHub)<br>2 |  |
-|  |  |  | 2 |
+| Outil | Type |
+| --- | --- |
+| Semgrep | Open source |
+| SonarQube | Qualité & sécurité |
+| GitHub Advanced Security | Intégré GitHub |
+| Checkmarx | Commercial |
+| Fortify SCA | Commercial |
+| Veracode Static Analysis | SaaS |
+| CodeQL | Open source (GitHub) |
 
 
 ## Fonctionnement
@@ -47,15 +45,14 @@ Security Testing
 ## Dynamic application security testing (DAST)
 
 
-| •  Le DAST (Dynamic Application Security Testing) analyse une application en cours d'exécution afin d'identifier des<br>vulnérabilités exploitables depuis l'extérieur.<br>•  Objectif : détecter les failles visibles par un attaquant sans accéder au code source.<br>•  Ce que vérifie un DAST :<br>  ◦  Injections SQL<br>  ◦  Cross-Site Scripting (XSS) Outil Type<br>  ◦  Authentification faible<br>  ◦  Contrôles d'accès défaillants OWASP ZAP Open source<br>  ◦  Mauvaises configurations HTTP<br>Burp Suite Référence du marché<br>  ◦  Exposition d'informations sensibles<br>  ◦  Vulnérabilités des API<br>Invicti (Netsparker) Commercial<br>  ◦  Erreurs de gestion des sessions<br>Acunetix Commercial<br>Rapid7 InsightAppSec SaaS<br>StackHawk Cloud Native |  |  |
-| --- | --- | --- |
-|  | Outil | Type |
-|  | OWASP ZAP | Open source |
-|  | Burp Suite | Référence du marché |
-|  | Invicti (Netsparker) | Commercial |
-|  | Acunetix | Commercial |
-|  | Rapid7 InsightAppSec | SaaS |
-|  | StackHawk | Cloud Native |
+| Outil | Type |
+| --- | --- |
+| OWASP ZAP | Open source |
+| Burp Suite | Référence du marché |
+| Invicti (Netsparker) | Commercial |
+| Acunetix | Commercial |
+| Rapid7 InsightAppSec | SaaS |
+| StackHawk | Cloud Native |
 
 
 
@@ -123,9 +120,8 @@ tierces.
 ## Software bill of materials (SBOM)
 
 
-| •  Le Software Bill of Materials (SBOM) est un inventaire structuré de tous les composants logiciels utilisés dans une<br>application : bibliothèques, dépendances, frameworks, conteneurs et métadonnées associées.<br>•  Objectif : connaître précisément ce qui compose un logiciel afin d'améliorer sa sécurité, sa conformité et sa<br>traçabilité. |  |  |
-| --- | --- | --- |
 | Pourquoi utiliser un SBOM ? |  |  |
+| --- | --- | --- |
 | Sécurité | Conformité | Gouvernance |
 | •  Identification rapide des<br>composants vulnérables<br>•  Réponse accélérée aux nouvelles<br>CVE<br>•  Amélioration de la visibilité sur la<br>Supply Chain | •  Gestion des licences open source<br>•  Réponse aux exigences réglementaires<br>•  Facilitation des audits | •  Inventaire logiciel centralisé<br>•  Suivi des versions utilisées<br>•  Gestion des risques fournisseurs |
 | Un SBOM fournit la liste complète des composants d'un logiciel afin d'améliorer la visibilité, la sécurité et la |  |  |
@@ -151,15 +147,11 @@ tierces.
 | Support VEX | Partiel | Natif | Non |
 | Écosystème | GitHub, NTIA, conformité fournisseurs | AWS, Docker, GitHub, Trivy, Snyk, Dependency-Track | ITAM, SAM, grands SI |
 | Points faibles | Plus verbeux et complexe | Moins centré sur les licences | Peu utilisé pour la sécurité<br>applicative |
-| Cas d'usage idéal | Audit, conformité, licences | DevSecOps, SBOM sécurité, CI/CD | Inventaire logiciel d'entreprise<br>2 |
+| Cas d'usage idéal | Audit, conformité, licences | DevSecOps, SBOM sécurité, CI/CD | Inventaire logiciel d'entreprise |
 
 
 ## Choix du format
 
-
-| •  CycloneDX = Recommandé pour les projets DevSecOps et Cloud Native<br>•  SPDX = Recommandé pour la conformité et les licences open source<br>•  SWID = Recommandé pour l'inventaire logiciel et la gestion d'actifs |
-| --- |
-| Aujourd'hui, dans les pipelines modernes (Trivy, Syft, Dependency-Track, Snyk, GitHub, Docker), CycloneDX est<br>généralement le format SBOM privilégié, tandis que SPDX reste la référence pour les exigences<br>réglementaires et de conformité. SWID est beaucoup moins présent dans les chaînes DevSecOps. |
 
 
 ## Vulnerability exploitability exchange (vex) : Réduire le bruit
@@ -172,9 +164,8 @@ Intégré nativement dans CycloneDX 1.4+.
 ## Dependency-Track : Plateforme de gestion continue des sboms
 
 
-|  | Dependency-Track ingère vos SBOMs, les corrèle avec NVD/OSV/GitHub Advisory et vous alerte dès qu'un nouveau<br>CVE impacte un composant déjà inventorié. |  |  |
-| --- | --- | --- | --- |
 |  | Concept | Workflow intégré | Architecture |
+| --- | --- | --- | --- |
 | •  Plateforme SBOM-native (OWASP) :<br>ingère SPDX et CycloneDX<br>•  Corrèle chaque composant avec<br>NVD, OSV, VulnDB, GitHub Advisory<br>•  Alerte proactive : nouveau CVE =<br>notification immédiate<br>•  Dashboard de risque par projet /<br>équipe / organisation<br>•  API REST pour intégration CI/CD et<br>SIEM<br>•  Alternatives : Snyk (commercial) ·<br>Mend · FOSSA<br>•  éploiement : Docker self-hosted ou<br>Dependency-Track Cloud | •  Plateforme SBOM-native (OWASP) :<br>ingère SPDX et CycloneDX<br>•  Corrèle chaque composant avec<br>NVD, OSV, VulnDB, GitHub Advisory<br>•  Alerte proactive : nouveau CVE =<br>notification immédiate<br>•  Dashboard de risque par projet /<br>équipe / organisation<br>•  API REST pour intégration CI/CD et<br>SIEM<br>•  Alternatives : Snyk (commercial) ·<br>Mend · FOSSA<br>•  éploiement : Docker self-hosted ou<br>Dependency-Track Cloud | •  CI/CD génère SBOM (Syft/cdxgen) à<br>chaque build<br>•  Upload automatique vers<br>Dependency-Track (API)<br>•  D-Track corrèle avec toutes les bases CVE<br>•  Si CVE critique → webhook → alert<br>Slack/PagerDuty<br>•  VEX peut être émis directement depuis<br>D-Track<br>•  Tableau de bord CISO : risque agrégé par<br>portfolio<br>•  Historique : évolution du score de risque<br>dans le temps | •  Frontend : Vue.js SPA (UI de gestion<br>•  Backend : Quarkus (Java) REST API<br>•  Base de données : PostgreSQL<br>•  Message queue : Alpine (events asy<br>•  Intégrations : Jira · GitHub · GitLab<br>Slack · Teams<br>•  Auth : OIDC / LDAP / AD (SSO<br>enterprise)<br>•  Déploiement : docker-compose ou<br>Helm chart |
 
 
@@ -207,8 +198,3 @@ de l'ensemble du pipeline.
 | 1 | Installer Gitleaks en pre-commit hook | `pip install pre-commit && echo 'repos:\n- repo: https://github.com/gitleaks/gitleaks\n  hooks:\n - id: gitleaks' > .pre-commit-config.yaml` | 15 min / Gratuit | Bloque les secrets avant le commitcloud |
 | 2 | Remplacer les clés statiques par OIDC federation | `# GitHub Actions: permissions: id-token: write + aws-actions/configure-aws-credentials@v4 avec role-to-assume` | 1h / Gratuit | Plus jamais de clé AWS dans votre pipeline (credentials temporaires uniquement) |
 | 3 | Générer un SBOM sur votre application principale | `syft . -o cyclonedx-json > sbom.json && grype sbom:sbom.json` | 20 min / Gratuit | Inventaire de toutes vos dépendances + CVEs connues en une commande |
-
-## LAB : Sécurité DevSecOps & CI/CD
-
-dhdfhfgh
-

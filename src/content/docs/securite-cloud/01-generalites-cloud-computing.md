@@ -18,11 +18,6 @@ Ce modèle de cloud favorise la disponibilité et est composé de :
 cloud hybride.
 
 
-| Les 5 caractéristiques essentielles du cloud |
-| --- |
-| • Libre-service à la demande :<br>• Les utilisateurs peuvent provisionner des ressources et les utiliser sans intervention humaine du<br>service.<br>• Large accès au réseau :<br>• Ressources disponibles sur le réseau et accessibles par diverses plates-formes clientes.<br>• Mise en commun des ressources :<br>• Plusieurs clients peuvent partager la même infrastructure et les mêmes applications avec sécurité<br>et confidentialité.<br>• Plusieurs clients sont desservis à partir des mêmes ressources physiques.<br>• Une flexibilité rapide :<br>• Acquérir et disposer automatiquement et rapidement des ressources en cas de besoin.<br>• Évoluez rapidement et facilement en fonction de la demande.<br>• Service mesuré :<br>• L'utilisation est mesurée, les utilisateurs paient correctement pour ce qu'ils ont utilisé. |
-
-
 ## Les modèles de cloud computing
 
 
@@ -63,11 +58,6 @@ incendie, etc.) ?
 
 
 ![Slide 19](/securite-cloud/01-generalites-cloud-computing/p019_04_Image18.jpg)
-
-
-| Quelques cas d’usage |
-| --- |
-| •  Faire face à des pics d’activité :<br>  ◦  Auto-scaling pendant le Black Friday, événements sportifs, soldes, etc. (payer uniquement la capacité<br>consommée).<br>•  Sauvegarder ses données quotidiennement :<br>  ◦  Snapshots automatisés, réplication multi-région, Plan de Reprise d'Activité (PRA) cloud (RTO/RPO) maîtrisés<br>et testables.<br>•  Se libérer des machines physiques :<br>  ◦  Réduction CAPEX, virtualisation totale, fin de vie datacenter, migration datacenter-out<br>•  Porter des projets de nouvelles technologies :<br>  ◦  IA/ML managé (SageMaker, Vertex AI, etc.), IoT, Big Data (Spark/EMR) : accès immédiat aux services<br>spécialisés.<br>•  Créer une nouvelle activité, un nouveau produit :<br>  ◦  Time-to-market réduit, MVPs en quelques jours, pas d'investissement initial lourd, fail fast & scale fast.<br>•  Déporter ses applications d’entreprise :<br>  ◦  Stratégie de migration 7R (Rehost, Replatform, Refactor, Repurchase, Retain, Retire, Relocate), lift & shift ou<br>modernisation (transformer pour améliorer). |
 
 
 ## Lift & shift
@@ -121,18 +111,8 @@ swapper facilement).
 | 2 | Activer S3 Block Public Access au niveau organisation | `aws s3control put-public-access-block --account-id $ACCOUNT_ID --public-access-block-configuration BlockPublicAcls=true,...` | 2 min / Gratuit | Prévention définitive des buckets publics accidentels |
 | 3 | Vérifier vos responsabilités dans vos contrats cloud | `# Ouvrir AWS Customer Agreement Section 4 - Security & Compliance` | 30 min / Gratuit | Savoir exactement ce que AWS garantit (et ce qu'il ne garantit PAS)mo |
 
-## QCM : Généralités sur
-
-le cloud computing
-
-
-| Pour aller plus loin |
-| --- |
-| •  https://geekflare.com/fr/cloud-service-models/<br>•  https://www.ionos.fr/digitalguide/serveur/know-how/caas-comparaison-des-offres-de-<br>container-as-a-service/<br>•  https://www.slideshare.net/OCTOTechnologySuisse/cloud-en-2017-sortez-du-status<br>•  https://www.objectif-cloud.com/modele-eco-cloud<br>•  https://www.stordata.fr/8-usages-intelligents-du-cloud-public/<br>•  https://www.lebigdata.fr/cloud-native-definition-2 |
-
-| https://geekflare.com/fr/cloud-service-models/ |
-| --- |
 | https://www.ionos.fr/digitalguide/serveur/know-how/caas-comparaison-des-offres-de- |
+| --- |
 | container-as-a-service/ |
 | https://www.slideshare.net/OCTOTechnologySuisse/cloud-en-2017-sortez-du-status |
 | https://www.objectif-cloud.com/modele-eco-cloud |

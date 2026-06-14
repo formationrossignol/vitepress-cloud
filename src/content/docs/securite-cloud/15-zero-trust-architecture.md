@@ -34,10 +34,6 @@ s'authentifient mutuellement avant l'établissement de la connexion chiffrée.
 | Lien avec mTLS | Les certificats X.509-SVID peuvent être utilisés pour authentifier deux workloads et établir un canal mTLS. |
 | Bénéfice sécurité | Remplacer la confiance réseau et les secrets statiques par des identités courtes durées, vérifiables et<br>automatiquement renouvelées. |
 
-| SPIFFE définit l’identité, SPIRE la délivre, le SVID la prouve, et mTLS l’utilise pour authentifier les workloads entre eux.<br>3 |  |
-| --- | --- |
-|  | 3 |
-
 
 ## Fonctionnement de spiffe/spire
 
@@ -116,27 +112,4 @@ rollback est instantané. Idéal pour les nœuds K8s.
 
 ## Checklist de hardening production (CIS k8s benchmark)
 
-
-| Control Plane |  |
-| --- | --- |
-| •  API Server :<br>  ◦  --anonymous-auth=false<br>  ◦  --authorization-mode=Node,RBAC<br>•  etcd :<br>  ◦  chiffrement au repos (encryption-config)<br>  ◦  TLS client auth<br>•  Controller Manager :<br>  ◦  --use-service-account-credentials=true<br>•  Scheduler :<br>  ◦  --authorization-mode=RBAC<br>•  pas de Webhook sans authentification | •  Kubelet :<br>  ◦  --anonymous-auth=false<br>  ◦  --authorization-mode=Webhook<br>•  Fichiers de config :<br>  ◦  droits 600 sur kubelet.conf, ca.crt, etc.<br>•  Pas de ports inutiles ouverts sur les nodes :<br>  ◦  SSH (22) uniquement via bastion<br>•  OS :<br>  ◦  CIS Linux Benchmark niveau 2<br>  ◦  auditd configuré<br>  ◦  SELinux/AppArmor activé |
-
-
-
-
-| Workloads & Pods |  |
-| --- | --- |
-| •  Pod Security Standards :<br>  ◦  profil Restricted pour les workloads critiques<br>•  Pas de containers root :<br>  ◦  runAsNonRoot: true<br>  ◦  runAsUser > 1000<br>•  ReadOnlyRootFilesystem: true sur tous les containers<br>•  resources.limits obligatoires :<br>  ◦  Requests + limits CPU et mémoire | •  Network Policies :<br>  ◦  default deny all dans chaque namespace<br>•  Pas de hostNetwork: true<br>  ◦  Sauf cas très spécifiques (CNI plugins)<br>•  Services de type LoadBalancer uniquement si nécessaire :<br>  ◦  Préférer Ingress<br>•  Ingress avec TLS obligatoire :<br>  ◦  cert-manager pour rotation automatique des certificats |
-
-
-
-
-| RBAC & ServiceAccounts |  |
-| --- | --- |
-| •  automountServiceAccountToken: false<br>  ◦  si le pod n’a pas besoin de l’API Kubernetes<br>•  ServiceAccounts dédiés par application<br>  ◦  ne jamais utiliser le ServiceAccount par défaut<br>•  Pas de ClusterRoleBinding avec wildcards :<br>  ◦  * dans verbs ou resources interdit<br>•  Revues régulières des accès :<br>  ◦  kubectl auth can-i --list --as=system:serviceaccount:... | •  Encryption at rest activée pour les secrets etcd<br>  ◦  EncryptionConfiguration<br>•  Secrets Kubernetes uniquement pour données<br>temporaires :<br>  ◦  Préférer Vault / Secrets Manager<br>•  ConfigMaps :<br>  ◦  Ne pas stocker de données sensibles (même<br>encodées en Base64)<br>•  IRSA / Workload Identity pour accès cloud provider<br>  ◦  Pas de clés statiques |
-
-
-## QCM : Zero trust : 
-
-Architecture Avancée
 

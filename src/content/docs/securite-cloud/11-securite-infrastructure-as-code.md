@@ -7,10 +7,6 @@ title: "11. Sécurité de l'Infrastructure as Code"
 ## Sécuriser le code de l’infrastructure
 
 
-| •  Le code IaC (Terraform, CloudFormation, Bicep, etc.) est du code à part entière.<br>•  Une mauvaise configuration dans ce code peut déployer des centaines de ressources vulnérables en<br>secondes et à grande échelle.<br>•  Amplificateur de risques : un seul module Terraform vulnérable peut affecter toutes les régions et tous<br>les comptes.<br>•  Drift de configuration : la réalité cloud peut diverger de l'IaC après des modifications manuelles —<br>source de vulnérabilités non tracées.<br>•  Security-as-Code : tfsec + Checkov + KICS dans la PR → correction avant apply → coût de remédiation<br>minimal.<br>•  Historique Git = historique de sécurité : chaque changement d'infra tracé, reviewé, réversible — audit<br>facilité. |
-| --- |
-| Aucun déploiement Terraform ne doit être autorisé sans validation préalable des contrôles de sécurité dans la<br>chaîne CI/CD. L'application de cette règle est assurée par les protections de Pull Request. |
-
 
 ## Mauvaises configurations Terraform fréquentes (ici AWS)
 
@@ -46,10 +42,6 @@ title: "11. Sécurité de l'Infrastructure as Code"
 }
 }
 
-| •  Le fichier tfstate contient l'état réel de l'infrastructure Terraform. Sa compromission peut exposer des<br>informations sensibles et faciliter une attaque de l'environnement cloud.<br>•  Pourquoi protéger le tfstate ?<br>  ◦  Contient l'inventaire complet des ressources déployées<br>  ◦  Peut contenir des secrets en clair selon les providers utilisés<br>  ◦  Référence les identifiants, URLs, IP publiques et informations réseau<br>  ◦  Utilisé par Terraform pour déterminer les changements à appliquer<br>  ◦  Constitue une cible privilégiée pour un attaquant |
-| --- |
-| terraform {<br>backend "s3" {<br>bucket = "my-terraform-state-prod"<br>key = "global/s3/terraform.tfstate"<br>region = "eu-west-1"<br>encrypt = true # SSE-KMS obligatoire<br>kms_key_id = var.kms_key_arn<br>dynamodb_table = "terraform-state-locks" # évite les conflits |
-
 
 ## Prêt pour lundi
 
@@ -58,13 +50,3 @@ title: "11. Sécurité de l'Infrastructure as Code"
 | 1 | Scanner votre code Terraform existant avec tfsec | `docker run --rm -it -v $(pwd):/src aquasecurity/tfsec /src --format sarif > tfsec-results.json` | 5 min / Gratuit | Identifier les mauvaises configurations dans votre IaC existant avant le prochain apply |
 | 2 | Migrer votre tfstate vers un backend S3 chiffré avec locking | `# backend.tf : bucket = 'nexapay-tfstate' · encrypt = true · dynamodb_table = 'tfstate-lock' · kms_key_id = 'arn:aws:kms:...'` | 30 min / < 5€ | mois / Un tfstate en local ou dans Git = clés, IPs, passwords en clair accessibles |
 | 3 | Ajouter Checkov dans votre pipeline CI/CD | `pip install checkov && checkov -d . --framework terraform --output junitxml > checkov-results.xml` | 15 min / Gratuit | Bloquer les merge requests qui introduisent des misconfigs Terraform critiques |
-
-## LAB : Sécurité
-
-de l’infrastructure as code
-
-
-## QCM : Sécurité
-
-de l’infrastructure as code
-

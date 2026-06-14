@@ -7,10 +7,6 @@ title: "06. Identity & Access Management (IAM)"
 ## Les fondamentaux de l’IAM cloud
 
 
-| Ensemble des politiques, processus et technologies permettant de gérer les identités numériques et de contrôler<br>quelles ressources elles peuvent accéder, quand et comment.<br>Authentification (AuthN) Qui es-tu ? Vérification de l'identité (password, MFA, certificat,<br>biométrie)<br>Autorisation (AuthZ) Que peux-tu faire ? Contrôle des permissions sur les ressources<br>4 entités IAM AWS Users (humains) · Groups (groupes d'users) · Roles (entités<br>assumables) · Policies (politiques JSON)<br>Concept de compte root Le compte le plus “puissant” : NE JAMAIS l'utiliser au quotidien ·<br>MFA obligatoire · Verrouiller les clés root<br>IAM Cloud providers AWS IAM · Azure AD (Entra ID) · Google Cloud IAM : concepts<br>similaires, syntaxes différentes |  |
-| --- | --- |
-|  | 1 |
-
 | Authentification (AuthN) | Qui es-tu ? Vérification de l'identité (password, MFA, certificat,<br>biométrie) |
 | --- | --- |
 | Autorisation (AuthZ) | Que peux-tu faire ? Contrôle des permissions sur les ressources |
@@ -43,9 +39,8 @@ plus, jamais.
 ## Multi-Factor authentication : Types et bonnes pratiques
 
 
-|  | MFA = quelque chose que vous SAVEZ (mot de passe, code PIN, etc.) + quelque chose que vous AVEZ (téléphone<br>recevant un code par SMS, carte à puce, et.) + quelque chose que vous ÊTES (voix, iris, empreinte digitale, etc.) |  |  |  |
-| --- | --- | --- | --- | --- |
 |  | Méthode MFA | Niveau de sécurité | Avantages | Risques / Limites |
+| --- | --- | --- | --- | --- |
 |  | SMS / Email OTP | Faible | Facile à déployer | SIM swapping, phishing,<br>man-in-the-middle |
 |  | TOTP (Google Auth,<br>Authy) | Moyen | Gratuit, offline, portable | Phishable (si pas FIDO2), perte du<br>device |
 |  | Push (Okta, Duo, MS<br>Auth) | Bon | UX simple, contexte de la<br>demande visible | MFA Fatigue attack possible si mal<br>configuré |
@@ -88,15 +83,14 @@ utilisateurs et leur donner accès de manière sécurisée à plusieurs applicat
 Le Single Sign-On (SSO) permet à un utilisateur de s'authentifier une seule fois afin d'accéder de manière sécurisée à plusieurs
 applications ou services, sans avoir à se reconnecter ni à gérer plusieurs mots de passe.
 
-| Avantages | Bénéfices |  |
-| --- | --- | --- |
-| Une seule authentification | Améliore l'expérience utilisateur |  |
-| Moins de mots de passe | Réduit les risques liés aux mots de passe |  |
-| Gestion centralisée | Simplifie l'administration des accès |  |
-| Révocation unique | Désactive immédiatement l'accès à toutes les applications |  |
-| MFA centralisé | Renforce la sécurité globale |  |
-| Cas d'usage :<br>•  Accès aux environnements cloud (AWS, Azure, GCP)<br>•  Accès aux applications SaaS (Microsoft 365, Salesforce, Jira, ServiceNow)<br>•  Portails d'entreprise et intranets<br>•  Collaboration entre partenaires et filiales |  |  |
-|  |  | 1 |
+| Avantages | Bénéfices |
+| --- | --- |
+| Une seule authentification | Améliore l'expérience utilisateur |
+| Moins de mots de passe | Réduit les risques liés aux mots de passe |
+| Gestion centralisée | Simplifie l'administration des accès |
+| Révocation unique | Désactive immédiatement l'accès à toutes les applications |
+| MFA centralisé | Renforce la sécurité globale |
+| Cas d'usage :<br>•  Accès aux environnements cloud (AWS, Azure, GCP)<br>•  Accès aux applications SaaS (Microsoft 365, Salesforce, Jira, ServiceNow)<br>•  Portails d'entreprise et intranets<br>•  Collaboration entre partenaires et filiales |  |
 
 
 ## Authentification unique (SSO : Single sign-on)
@@ -125,10 +119,6 @@ applications ou services, sans avoir à se reconnecter ni à gérer plusieurs mo
 ## OAuth 2.0 : Délégation d'autorisation
 
 
-| Standard d'autorisation (2012) · Délègue l'accès SANS partager le mot de passe · Base de OIDC · 4 flows selon le<br>contexte |  |
-| --- | --- |
-|  | 1 |
-
 
 
 
@@ -138,10 +128,6 @@ applications ou services, sans avoir à se reconnecter ni à gérer plusieurs mo
 ## OpenID connect (OIDC) : Couche d'identité sur OAuth 2.0
 
 
-| Standard moderne (2014) · Tokens JWT · API-first · Utilisé : GitHub Actions, Google, AWS Cognito, Kubernetes IRSA |  |
-| --- | --- |
-|  | 1 |
-
 
 
 
@@ -150,10 +136,6 @@ applications ou services, sans avoir à se reconnecter ni à gérer plusieurs mo
 
 ## Workload identity federation
 
-
-| Standard d'autorisation (2012) · Délègue l'accès SANS partager le mot de passe · Base de OIDC · 4 flows selon le<br>contexte |  |
-| --- | --- |
-|  | 1 |
 
 
 
@@ -177,21 +159,18 @@ applications ou services, sans avoir à se reconnecter ni à gérer plusieurs mo
 ## Gestion des secrets
 
 
-|  | Anti-pattern absolu : credentials en dur dans le code → git blame révèle tout, même après suppression (git history) |  |  |
-| --- | --- | --- | --- |
-|  | AWS Secrets Manager | Azure Key Vault |  |
-| • <br>• <br>• <br>• <br>• | Rotation automatique des secrets<br>Intégration native RDS, Redshift, DocumentDB<br>Audit complet via CloudTrail<br>Cross-account via Resource Policy<br>Coût : 0.40$/secret/mois + 0.05$/10K appels | •  Secrets + Clés + Certificats dans une seule solution<br>•  Backing HSM FIPS 140-2 Level 2/3 (Premium)<br>•  RBAC granulaire avec Azure AD<br>•  Soft-delete + Purge Protection obligatoires<br>•  Intégration App Service, AKS, VMSS native |  |
-|  | HashiCorp Vault | GCP Secret Manager |  |
-| • <br>• <br>• <br>• <br>• | Open source + Enterprise — multi-cloud<br>Dynamic secrets (credentials éphémères DB)<br>Leasing & renewal — durée de vie contrôlée<br>Secret engines : AWS, Azure, GCP, DB, SSH, PKI<br>Transit encryption — Vault as encryption-as-a-service | •  Versionning des secrets (rollback possible)<br>•  IAM intégré avec conditions fines<br>•  Audit logs automatiques dans Cloud Audit Logs<br>•  Réplication régionale ou globale configurable<br>•  CMEK (Customer-Managed Encryption Keys) |  |
-|  |  |  | 1 |
+|  | AWS Secrets Manager | Azure Key Vault |
+| --- | --- | --- |
+| • <br>• <br>• <br>• <br>• | Rotation automatique des secrets<br>Intégration native RDS, Redshift, DocumentDB<br>Audit complet via CloudTrail<br>Cross-account via Resource Policy<br>Coût : 0.40$/secret/mois + 0.05$/10K appels | •  Secrets + Clés + Certificats dans une seule solution<br>•  Backing HSM FIPS 140-2 Level 2/3 (Premium)<br>•  RBAC granulaire avec Azure AD<br>•  Soft-delete + Purge Protection obligatoires<br>•  Intégration App Service, AKS, VMSS native |
+|  | HashiCorp Vault | GCP Secret Manager |
+| • <br>• <br>• <br>• <br>• | Open source + Enterprise — multi-cloud<br>Dynamic secrets (credentials éphémères DB)<br>Leasing & renewal — durée de vie contrôlée<br>Secret engines : AWS, Azure, GCP, DB, SSH, PKI<br>Transit encryption — Vault as encryption-as-a-service | •  Versionning des secrets (rollback possible)<br>•  IAM intégré avec conditions fines<br>•  Audit logs automatiques dans Cloud Audit Logs<br>•  Réplication régionale ou globale configurable<br>•  CMEK (Customer-Managed Encryption Keys) |
 
 
 ## Gestion des secrets : Les anti-patterns
 
 
-| Clés AWS_ACCESS_KEY en dur dans le code source : git history conserve tout, même après suppression du commit |
-| --- |
 | Secrets dans les variables d'environnement non chiffrées : visibles dans les logs, les ps aux, les inspections Docker |
+| --- |
 | Partage de credentials via Slack, email ou fichiers texte : non traçable, non révocable |
 | Tokens de service non rotés depuis > 90 jours : fenêtre d'exploitation croissante en cas de compromission |
 | Secrets partagés entre plusieurs services : impossible de déterminer qui a utilisé quoi en cas d'incident |
@@ -201,19 +180,14 @@ applications ou services, sans avoir à se reconnecter ni à gérer plusieurs mo
 ## Attaques IAM : Privilege escalation (MITRE ATT&CK t1098)
 
 
-| La technique Account Manipulation (T1098) décrit les actions d'un attaquant visant à modifier un compte<br>existant afin de maintenir son accès ou d'obtenir davantage de privilèges. Cette technique est utilisée<br>principalement pour la persistance et l'élévation de privilèges.<br>Objectifs de l'attaquant :<br>•  Maintenir un accès persistant<br>  ◦  Ajouter ses propres identifiants<br>  ◦  Modifier un mot de passe<br>  ◦  Ajouter une clé SSH<br>  ◦  Créer une méthode d'authentification alternative<br>•  Augmenter ses privilèges<br>  ◦  Ajouter un utilisateur à un groupe administrateur<br>  ◦  Attribuer un rôle IAM privilégié<br>  ◦  Accorder des permissions supplémentaires<br>  ◦  Contourner les politiques de sécurité |  |
-| --- | --- |
-|  | 1 |
-
 
 ## MITRE ATT&CK t1098 : Indicateurs de compromission & mesures de
 
 protection
 
-| Indicateurs de compromission | Prévention | Détection |  |
-| --- | --- | --- | --- |
-| •  Création inhabituelle de clés<br>d'accès IAM<br>•  Attribution de privilèges<br>administrateur<br>•  Ajout d'utilisateurs à des groupes<br>sensibles<br>•  Création de comptes de service<br>non autorisés<br>•  Modification des rôles<br>Kubernetes RBAC<br>•  Changement de permissions en<br>dehors des processus normaux | •  Principe du moindre<br>privilège<br>•  MFA obligatoire<br>•  Contrôle des<br>changements IAM<br>•  Revue périodique des<br>rôles et permissions | •  Surveillance des événements<br>IAM<br>•  Alertes sur les changements<br>de rôles<br>•  Journalisation CloudTrail /<br>Entra Audit Logs / GCP Audit<br>Logs<br>•  Détection des élévations de<br>privilèges |  |
-|  |  |  | 1 |
+| Indicateurs de compromission | Prévention | Détection |
+| --- | --- | --- |
+| •  Création inhabituelle de clés<br>d'accès IAM<br>•  Attribution de privilèges<br>administrateur<br>•  Ajout d'utilisateurs à des groupes<br>sensibles<br>•  Création de comptes de service<br>non autorisés<br>•  Modification des rôles<br>Kubernetes RBAC<br>•  Changement de permissions en<br>dehors des processus normaux | •  Principe du moindre<br>privilège<br>•  MFA obligatoire<br>•  Contrôle des<br>changements IAM<br>•  Revue périodique des<br>rôles et permissions | •  Surveillance des événements<br>IAM<br>•  Alertes sur les changements<br>de rôles<br>•  Journalisation CloudTrail /<br>Entra Audit Logs / GCP Audit<br>Logs<br>•  Détection des élévations de<br>privilèges |
 
 
 ## Prêt pour lundi
@@ -223,13 +197,3 @@ protection
 | 1 | Identifier tous les utilisateurs IAM sans MFA | `aws iam get-account-summary && aws iam list-users | jq '.Users[].UserName' | xargs -I{} aws iam list-mfa-devices --user-name {}` | 3 min / Gratuit | SCP préventive : aws iam list-virtual-mfa-devices pour visualiser l'exposition |
 | 2 | Chercher les AdministratorAccess sur des rôles non-humains | `aws iam list-entities-for-policy --policy-arn arn:aws:iam::aws:policy/AdministratorAccess` | 2 min / Gratuit | Chaque rôle non-humain avec admin = bombe à retardement |
 | 3 | Activer IMDSv2 sur toutes les instances EC2/Lambda | `aws ec2 modify-instance-metadata-options --instance-id i-xxx --http-tokens required --http-put-response-hop-limit 1` | 10 min / Gratuit | Bloque les attaques SSRF : metadata exploitation (T1552.005) |
-
-## LAB : IAM
-
-dhdfhfgh
-
-
-## QCM : Identity & access
-
-Management
-

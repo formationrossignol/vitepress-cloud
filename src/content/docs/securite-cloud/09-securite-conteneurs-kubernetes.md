@@ -20,19 +20,17 @@ title: "09. Sécurité des conteneurs & Kubernetes"
 
 RBAC K8s : Sujets (Users/Groups/ServiceAccounts) → Verbs (get/list/create/delete) → Resources (pods/secrets/deployments)
 
-| Objets RBAC Kubernetes | Anti-patterns K8S à éviter |  |
-| --- | --- | --- |
-| •  Role : permissions dans un namespace spécifique<br>•  ClusterRole : permissions cluster-wide (tous namespaces)<br>•  RoleBinding : lie un Role à des sujets dans un namespace<br>•  ClusterRoleBinding : lie un ClusterRole à des sujets globalement<br>•  ServiceAccount : identité pour les pods (≠ user humain) | •  Wildcard dans les verbes : verbs: ["*"] : JAMAIS<br>•  ClusterAdmin bindé à un ServiceAccount applicatif<br>•  Default ServiceAccount avec des droits (le désactiver)<br>•  Partage de ServiceAccount entre plusieurs apps<br>•  Oublier de désactiver automountServiceAccountToken |  |
-| apiVersion: rbac.authorization.k8s.io/v1<br>kind: Role<br>metadata:<br>name: pod-reader<br>namespace: default<br>rules:<br>- apiGroups: [""]<br>resources: ["pods"]<br>verbs: ["get", "list", "watch"] # jamais "*" |  |  |
-|  |  | 1 |
+| Objets RBAC Kubernetes | Anti-patterns K8S à éviter |
+| --- | --- |
+| •  Role : permissions dans un namespace spécifique<br>•  ClusterRole : permissions cluster-wide (tous namespaces)<br>•  RoleBinding : lie un Role à des sujets dans un namespace<br>•  ClusterRoleBinding : lie un ClusterRole à des sujets globalement<br>•  ServiceAccount : identité pour les pods (≠ user humain) | •  Wildcard dans les verbes : verbs: ["*"] : JAMAIS<br>•  ClusterAdmin bindé à un ServiceAccount applicatif<br>•  Default ServiceAccount avec des droits (le désactiver)<br>•  Partage de ServiceAccount entre plusieurs apps<br>•  Oublier de désactiver automountServiceAccountToken |
+| apiVersion: rbac.authorization.k8s.io/v1<br>kind: Role<br>metadata:<br>name: pod-reader<br>namespace: default<br>rules:<br>- apiGroups: [""]<br>resources: ["pods"]<br>verbs: ["get", "list", "watch"] # jamais "*" |  |
 
 
 ## Network policies : Micro-segmentation dans Kubernetes
 
 
-| •  Les Network Policies permettent de contrôler les communications réseau entre les Pods Kubernetes.<br>•  Par défaut, un cluster Kubernetes autorise généralement toutes les communications internes (flat network). Les<br>Network Policies appliquent le principe du Zero Trust en autorisant uniquement les flux explicitement<br>nécessaires.<br>•  Objectif : limiter les mouvements latéraux d'un attaquant et réduire la surface d'attaque du cluster.<br>Principe de fonctionnement |  |  |
-| --- | --- | --- |
 | Principe de fonctionnement |  |  |
+| --- | --- | --- |
 | Contrôle du trafic Est-Ouest | Contrôle du trafic Nord-Sud | Approche "Default Deny" |
 | •  Pod → Pod<br>•  Namespace → Namespace<br>•  Pod → Service | •  Entrées depuis l'extérieur<br>•  Sorties vers Internet ou<br>vers des services externes | •  Tout est interdit par défaut<br>•  Les flux nécessaires sont<br>explicitement autorisés<br>•  Les autres communications<br>restent bloquées |
 
@@ -81,9 +79,8 @@ modifier, valider ou refuser une ressource afin d’appliquer des règles de sé
 
 
 
-| Actions |  |
-| --- | --- |
 | 1 | Un utilisateur, une CI/CD ou un contrôleur envoie<br>une requête à l’API Kubernetes |
+| --- | --- |
 | 2 | Kubernetes authentifie l’identité |
 | 3 | Kubernetes vérifie les droits avec RBAC |
 | 4 | L’Admission Controller intercepte la requête |
@@ -115,16 +112,15 @@ Agent. Il permet de refuser ou modifier des ressources qui ne respectent pas les
 documentation officielle le décrit comme un webhook validating et mutating qui applique des politiques basées sur des CRD et
 exécutées par OPA.
 
-| Élément | Description |  |
-| --- | --- | --- |
-| Rôle | Contrôler les ressources Kubernetes avant leur création ou modification |  |
-| Position | S’appuie sur les Admission Controllers Kubernetes |  |
-| Moteur | Open Policy Agent |  |
-| Type | Validating et mutating webhook |  |
-| Langage | Rego |  |
-| Objets clés | ConstraintTemplate et Constraint |  |
-| Objectif | Imposer automatiquement des règles de sécurité, conformité et gouvernance<br>2 |  |
-|  |  | 2 |
+| Élément | Description |
+| --- | --- |
+| Rôle | Contrôler les ressources Kubernetes avant leur création ou modification |
+| Position | S’appuie sur les Admission Controllers Kubernetes |
+| Moteur | Open Policy Agent |
+| Type | Validating et mutating webhook |
+| Langage | Rego |
+| Objets clés | ConstraintTemplate et Constraint |
+| Objectif | Imposer automatiquement des règles de sécurité, conformité et gouvernance |
 
 
 
@@ -159,11 +155,10 @@ l’entrée du cluster.
 Polaris valide que vos ressources K8s suivent les meilleurs pratiques de sécurité et de fiabilité. Il peut fonctionner en audit, en
 CI/CD ou en admission webhook en temps réel.
 
-| Concept | Fonctionnement |  |
-| --- | --- | --- |
-| •  Validateur des meilleurs pratiques K8s (Fairwinds, OSS)<br>•  3 modes : CLI audit, CI/CD check, Admission webhook<br>•  Vérifie : security contexts, resource limits et health<br>checks<br>•  Checks par catégorie : sécurité, fiabilité et efficacité<br>•  Profils de sévérité configurables<br>(danger/warning/ignore)<br>•  Score global 0-100 : 'fiabilité et sécurité du cluster'<br>•  Alternatives : Kubescape (plus complet) · kube-score | •  Mode webhook : bloque les déploiements non conformes<br>•  Checks clés : runAsNonRoot, readOnlyRootFilesystem,<br>resource limits/requests, liveness probe<br>•  Intégration Helm |  |
-|  | $> polaris audit --format=pretty (audit cluster)<br>$> polaris audit --audit-path=./k8s/ (audit<br>manifestes locaux)<br>$> polaris audit --format=score (score 0-100) |  |
-|  |  | 2 |
+| Concept | Fonctionnement |
+| --- | --- |
+| •  Validateur des meilleurs pratiques K8s (Fairwinds, OSS)<br>•  3 modes : CLI audit, CI/CD check, Admission webhook<br>•  Vérifie : security contexts, resource limits et health<br>checks<br>•  Checks par catégorie : sécurité, fiabilité et efficacité<br>•  Profils de sévérité configurables<br>(danger/warning/ignore)<br>•  Score global 0-100 : 'fiabilité et sécurité du cluster'<br>•  Alternatives : Kubescape (plus complet) · kube-score | •  Mode webhook : bloque les déploiements non conformes<br>•  Checks clés : runAsNonRoot, readOnlyRootFilesystem,<br>resource limits/requests, liveness probe<br>•  Intégration Helm |
+|  | $> polaris audit --format=pretty (audit cluster)<br>$> polaris audit --audit-path=./k8s/ (audit<br>manifestes locaux)<br>$> polaris audit --format=score (score 0-100) |
 
 
 ## Les vérifications
@@ -212,10 +207,6 @@ Operations et Tines.
 ![Slide 219](/securite-cloud/09-securite-conteneurs-kubernetes/p219_06_Image69.jpg)
 
 
-| NeuVector : Sécurité Containers & K8s Full Lifecycle |  |
-| --- | --- |
-|  | •  NeuVector (open source depuis 2022, racheté par SUSE) est une plateforme CWPP complète pour Kubernetes : Réseau Zero Trust,<br>analyse des vulnérabilités et conformité. |
-
 | Concept & position | Fonctionnalités clés |
 | --- | --- |
 | •  CWPP (Cloud Workload Protection Platform) pour<br>Kubernetes<br>•  Concurrent : Falco (runtime) + Trivy (scan) + Calico<br>•  NeuVector = solution tout-en-un : scan + runtime +<br>réseau<br>•  Déployé en DaemonSet sur chaque nœud Kubernetes<br>•  Alternatives : Aqua Security, Sysdig, Prisma Cloud<br>Compute<br>•  Forces : réseau Zero Trust natif, sans agent séparé | •  Sécurité réseau : micro-segmentation automatique des Pods<br>et contrôle des communications<br>•  Apprentissage comportemental : identification automatique<br>des flux et comportements légitimes<br>•  Protection à l'exécution (runtime) : détection et blocage des<br>activités anormales ou malveillantes<br>•  Analyse des vulnérabilités : scan continu des images de<br>conteneurs et des nœuds Kubernetes<br>•  Conformité réglementaire : vérification automatisée des<br>référentiels CIS Kubernetes, PCI-DSS et HIPAA<br>•  Pare-feu applicatif (WAF) : protection des applications et des<br>flux HTTP/HTTPS (couche 7)<br>•  Prévention des fuites de données (DLP) : détection des<br>données sensibles circulant dans les communications réseau |
@@ -247,10 +238,9 @@ cluster.
 - Kubescape est le scanner KSPM de référence de la CNCF.
 - Il audite votre cluster K8s contre les frameworks CIS Benchmark, NSA/CISA, MITRE ATT&CK et les contrôles RBAC.
 
-| Concept & position | Commandes clés | vs kube-bench & Polaris |  |
-| --- | --- | --- | --- |
-| •  KSPM (K8s Security Posture<br>Management) open source CNCF<br>•  Audite clusters K8s / EKS / AKS /<br>GKE / OpenShift<br>•  Frameworks : CIS K8s 1.8 ·<br>NSA/CISA · MITRE ATT&CK<br>•  Analyse : RBAC · Network Policies ·<br>PSS · Images<br>•  Score de risque 0-100 par<br>namespace et par cluster<br>•  Alternatives : kube-bench (CIS<br>uniquement) · Polaris · Trivy<br>•  ARMO Platform : version cloud<br>avec monitoring continu | $> kubescape scan --submit (scan +<br>dashboard cloud)<br>$> kubescape scan framework cis-eks<br>(scan CIS EKS spécifique)<br>$> kubescape scan framework nsa<br>(framework NSA/CISA)<br>$> kubescape scan control C-0013 (1<br>contrôle précis)<br>$> kubescape scan --severity critical<br>(filtrer par criticité)<br>$> kubescape scan --exceptions<br>./exceptions.json<br>$> kubescape scan image nginx:latest<br>(scan image) | •  kube-bench : CIS K8s uniquement, très<br>léger, nodes only<br>•  Kubescape : multi-framework,<br>ressources K8s + images<br>•  Polaris : best practices Fairwinds, UX<br>orientée devs<br>•  Kubescape : plus complet mais plus<br>lourd que kube-bench<br>•  Trivy : scan images + misconfigs K8s (alt.<br>léger)<br>•  Recommandation : Kubescape (complet)<br>+ kube-bench (CIS nodes)<br>•  Tous peuvent coexister dans un pipeline<br>CI/CD |  |
-|  |  |  | 2 |
+| Concept & position | Commandes clés | vs kube-bench & Polaris |
+| --- | --- | --- |
+| •  KSPM (K8s Security Posture<br>Management) open source CNCF<br>•  Audite clusters K8s / EKS / AKS /<br>GKE / OpenShift<br>•  Frameworks : CIS K8s 1.8 ·<br>NSA/CISA · MITRE ATT&CK<br>•  Analyse : RBAC · Network Policies ·<br>PSS · Images<br>•  Score de risque 0-100 par<br>namespace et par cluster<br>•  Alternatives : kube-bench (CIS<br>uniquement) · Polaris · Trivy<br>•  ARMO Platform : version cloud<br>avec monitoring continu | $> kubescape scan --submit (scan +<br>dashboard cloud)<br>$> kubescape scan framework cis-eks<br>(scan CIS EKS spécifique)<br>$> kubescape scan framework nsa<br>(framework NSA/CISA)<br>$> kubescape scan control C-0013 (1<br>contrôle précis)<br>$> kubescape scan --severity critical<br>(filtrer par criticité)<br>$> kubescape scan --exceptions<br>./exceptions.json<br>$> kubescape scan image nginx:latest<br>(scan image) | •  kube-bench : CIS K8s uniquement, très<br>léger, nodes only<br>•  Kubescape : multi-framework,<br>ressources K8s + images<br>•  Polaris : best practices Fairwinds, UX<br>orientée devs<br>•  Kubescape : plus complet mais plus<br>lourd que kube-bench<br>•  Trivy : scan images + misconfigs K8s (alt.<br>léger)<br>•  Recommandation : Kubescape (complet)<br>+ kube-bench (CIS nodes)<br>•  Tous peuvent coexister dans un pipeline<br>CI/CD |
 
 
 ## Prêt pour lundi

