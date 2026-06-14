@@ -85,7 +85,13 @@ export default defineConfig({
               ],
             },
             { label: '05. Les référentiels normatifs', slug: 'securite-cloud/05-referentiels-normatifs' },
-            { label: '06. Identity & Access Management', slug: 'securite-cloud/06-identity-access-management' },
+            {
+              label: '06. Identity & Access Management',
+              items: [
+                { label: 'Cours', slug: 'securite-cloud/06-identity-access-management' },
+                { label: 'TP : Utilisateurs, groupes, rôles et policies avec JSON IAM et Parliament', slug: 'securite-cloud/tp-iam-json-parliament' },
+              ],
+            },
             { label: '07. Sécurité des données cloud', slug: 'securite-cloud/07-securite-donnees-cloud' },
             { label: '08. Sécurité réseau cloud', slug: 'securite-cloud/08-securite-reseau-cloud' },
             { label: '09. Sécurité des conteneurs & Kubernetes', slug: 'securite-cloud/09-securite-conteneurs-kubernetes' },
