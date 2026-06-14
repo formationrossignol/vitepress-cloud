@@ -71,7 +71,13 @@ export default defineConfig({
             { label: 'Cours : Sécurité AWS', slug: 'cours/securite-aws' },
             { label: '01. Généralités sur le cloud computing', slug: 'securite-cloud/01-generalites-cloud-computing' },
             { label: '02. Plateformes de sécurité cloud', slug: 'securite-cloud/02-plateformes-securite-cloud' },
-            { label: '03. Les menaces cloud', slug: 'securite-cloud/03-menaces-cloud' },
+            {
+              label: '03. Les menaces cloud',
+              items: [
+                { label: 'Cours', slug: 'securite-cloud/03-menaces-cloud' },
+                { label: 'TP : Scanner une image vulnérable', slug: 'securite-cloud/tp-trivy-scan-image' },
+              ],
+            },
             { label: '05. Les référentiels normatifs', slug: 'securite-cloud/05-referentiels-normatifs' },
             { label: '06. Identity & Access Management', slug: 'securite-cloud/06-identity-access-management' },
             { label: '07. Sécurité des données cloud', slug: 'securite-cloud/07-securite-donnees-cloud' },
