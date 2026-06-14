@@ -102,7 +102,13 @@ export default defineConfig({
                 { label: 'TP : Mini-DSPM local avec MinIO, scripts de classification et Gitleaks', slug: 'securite-cloud/tp-mini-dspm-local' },
               ],
             },
-            { label: '08. Sécurité réseau cloud', slug: 'securite-cloud/08-securite-reseau-cloud' },
+            {
+              label: '08. Sécurité réseau cloud',
+              items: [
+                { label: 'Cours', slug: 'securite-cloud/08-securite-reseau-cloud' },
+                { label: 'TP : Sécuriser un VPC avec Security Group, NACL et Session Manager', slug: 'securite-cloud/tp-vpc-sg-nacl-session-manager' },
+              ],
+            },
             { label: '09. Sécurité des conteneurs & Kubernetes', slug: 'securite-cloud/09-securite-conteneurs-kubernetes' },
             { label: '10. Sécurité DevSecOps & CI/CD', slug: 'securite-cloud/10-securite-devsecops-cicd' },
             { label: "11. Sécurité de l'Infrastructure as Code", slug: 'securite-cloud/11-securite-infrastructure-as-code' },
