@@ -90,6 +90,7 @@ export default defineConfig({
               items: [
                 { label: 'Cours', slug: 'securite-cloud/06-identity-access-management' },
                 { label: 'TP : Utilisateurs, groupes, rôles et policies avec JSON IAM et Parliament', slug: 'securite-cloud/tp-iam-json-parliament' },
+                { label: 'TP : Détecter des permissions IAM excessives avec Cloudsplaining et Parliament', slug: 'securite-cloud/tp-iam-permissions-excessives' },
               ],
             },
             { label: '07. Sécurité des données cloud', slug: 'securite-cloud/07-securite-donnees-cloud' },
