@@ -110,7 +110,13 @@ export default defineConfig({
                 { label: 'TP : Protéger une API locale avec limitation de débit', slug: 'securite-cloud/tp-api-rate-limit' },
               ],
             },
-            { label: '09. Sécurité des conteneurs & Kubernetes', slug: 'securite-cloud/09-securite-conteneurs-kubernetes' },
+            {
+              label: '09. Sécurité des conteneurs & Kubernetes',
+              items: [
+                { label: 'Cours', slug: 'securite-cloud/09-securite-conteneurs-kubernetes' },
+                { label: 'TP : Créer un cluster Kind vulnérable et manipuler pods, namespaces et RBAC', slug: 'securite-cloud/tp-kind-cluster-vulnerable' },
+              ],
+            },
             {
               label: '10. Sécurité DevSecOps & CI/CD',
               items: [
