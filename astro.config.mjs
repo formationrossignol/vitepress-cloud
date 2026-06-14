@@ -113,7 +113,13 @@ export default defineConfig({
             { label: '09. Sécurité des conteneurs & Kubernetes', slug: 'securite-cloud/09-securite-conteneurs-kubernetes' },
             { label: '10. Sécurité DevSecOps & CI/CD', slug: 'securite-cloud/10-securite-devsecops-cicd' },
             { label: "11. Sécurité de l'Infrastructure as Code", slug: 'securite-cloud/11-securite-infrastructure-as-code' },
-            { label: '12. Monitoring, Détection & Réponse aux incidents', slug: 'securite-cloud/12-monitoring-detection-incidents' },
+            {
+              label: '12. Monitoring, Détection & Réponse aux incidents',
+              items: [
+                { label: 'Cours', slug: 'securite-cloud/12-monitoring-detection-incidents' },
+                { label: 'TP : Mettre en place une alerte basique avec Amazon CloudWatch', slug: 'securite-cloud/tp-cloudwatch-alerte-basique' },
+              ],
+            },
             { label: '13. Gouvernance & Conformité cloud', slug: 'securite-cloud/13-gouvernance-conformite-cloud' },
             { label: '14. Outils de sécurité : AWS, Azure et GCP', slug: 'securite-cloud/14-outils-securite-aws-azure-gcp' },
             { label: '15. Zero Trust : Architecture avancée', slug: 'securite-cloud/15-zero-trust-architecture' },
