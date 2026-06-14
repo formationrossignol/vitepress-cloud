@@ -118,6 +118,7 @@ export default defineConfig({
               items: [
                 { label: 'Cours', slug: 'securite-cloud/12-monitoring-detection-incidents' },
                 { label: 'TP : Mettre en place une alerte basique avec Amazon CloudWatch', slug: 'securite-cloud/tp-cloudwatch-alerte-basique' },
+                { label: 'TP : Mini-SIEM local avec Wazuh', slug: 'securite-cloud/tp-mini-siem-local-wazuh' },
               ],
             },
             { label: '13. Gouvernance & Conformité cloud', slug: 'securite-cloud/13-gouvernance-conformite-cloud' },
