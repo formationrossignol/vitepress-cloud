@@ -99,6 +99,7 @@ export default defineConfig({
                 { label: 'Cours', slug: 'securite-cloud/07-securite-donnees-cloud' },
                 { label: 'TP : Détecter des secrets dans un dépôt Git avec Gitleaks, TruffleHog et detect-secrets', slug: 'securite-cloud/tp-detection-secrets-gitleaks' },
                 { label: 'TP : Sécuriser un bucket S3 avec Block Public Access, chiffrement et policy restrictive', slug: 'securite-cloud/tp-s3-bucket-securise' },
+                { label: 'TP : Mini-DSPM local avec MinIO, scripts de classification et Gitleaks', slug: 'securite-cloud/tp-mini-dspm-local' },
               ],
             },
             { label: '08. Sécurité réseau cloud', slug: 'securite-cloud/08-securite-reseau-cloud' },
