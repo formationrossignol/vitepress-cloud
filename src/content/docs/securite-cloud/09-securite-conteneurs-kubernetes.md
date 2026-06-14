@@ -4,52 +4,46 @@ title: "09. Sécurité des conteneurs & Kubernetes"
 
 # 09. Sécurité des conteneurs & Kubernetes
 
-## 09. Sécurité des conteneurs
-
-& kubernetes
-
-
-## Sécurité de Docker : Hardening des Images et des Conteneurs
+## Sécurité de Docker : Hardening des images et des conteneurs
 
 
 | Images de base minimales | Utilisateur non-root obligatoire |
-|---|---|
-| FROM ubuntu:latest FROM alpine:3.19 | # Pas de USER → root par défaut RUN adduser -D appuser && USER appuser |
+| --- | --- |
+| FROM ubuntu:latest<br>FROM alpine:3.19 | # Pas de USER → root par défaut<br>RUN adduser -D appuser && USER appuser |
 | Pas de secrets dans les couches | Filesystem en lecture seule |
-| ENV DB_PASSWORD=secret123 ARG DB_PASSWORD (build-time) + Secrets manager runtime | docker run myapp docker run --read-only --tmpfs /tmp myapp |
+| ENV DB_PASSWORD=secret123<br>ARG DB_PASSWORD (build-time) + Secrets manager runtime | docker run myapp<br>docker run --read-only --tmpfs /tmp myapp |
 | Capabilities Linux limitées | Scan CVE obligatoire |
-| # Toutes les capabilities accordées --cap-drop=ALL --cap-add=NET_BIND_SERVICE | # Image déployée sans scan trivy image myapp:latest (gate CI bloquant) |
+| # Toutes les capabilities accordées<br>--cap-drop=ALL --cap-add=NET_BIND_SERVICE | # Image déployée sans scan<br>trivy image myapp:latest (gate CI bloquant) |
 
 
-## Kubernetes RBAC : Contrôle d'Accès au Cluster
+## Kubernetes RBAC : Contrôle d'accès au cluster
 
 RBAC K8s : Sujets (Users/Groups/ServiceAccounts) → Verbs (get/list/create/delete) → Resources (pods/secrets/deployments)
 
 | Objets RBAC Kubernetes | Anti-patterns K8S à éviter |  |
-|---|---|---|
-| ● Role : permissions dans un namespace spécifique ● ClusterRole : permissions cluster-wide (tous namespaces) ● RoleBinding : lie un Role à des sujets dans un namespace ● ClusterRoleBinding : lie un ClusterRole à des sujets globalement ● ServiceAccount : identité pour les pods (≠ user humain) | ● Wildcard dans les verbes : verbs: ["*"] : JAMAIS ● ClusterAdmin bindé à un ServiceAccount applicatif ● Default ServiceAccount avec des droits (le désactiver) ● Partage de ServiceAccount entre plusieurs apps ● Oublier de désactiver automountServiceAccountToken |  |
-| apiVersion: rbac.authorization.k8s.io/v1 kind: Role metadata: name: pod-reader namespace: default rules: - apiGroups: [""] resources: ["pods"] verbs: ["get", "list", "watch"] # jamais "*" |  |  |
+| --- | --- | --- |
+| •  Role : permissions dans un namespace spécifique<br>•  ClusterRole : permissions cluster-wide (tous namespaces)<br>•  RoleBinding : lie un Role à des sujets dans un namespace<br>•  ClusterRoleBinding : lie un ClusterRole à des sujets globalement<br>•  ServiceAccount : identité pour les pods (≠ user humain) | •  Wildcard dans les verbes : verbs: ["*"] : JAMAIS<br>•  ClusterAdmin bindé à un ServiceAccount applicatif<br>•  Default ServiceAccount avec des droits (le désactiver)<br>•  Partage de ServiceAccount entre plusieurs apps<br>•  Oublier de désactiver automountServiceAccountToken |  |
+| apiVersion: rbac.authorization.k8s.io/v1<br>kind: Role<br>metadata:<br>name: pod-reader<br>namespace: default<br>rules:<br>- apiGroups: [""]<br>resources: ["pods"]<br>verbs: ["get", "list", "watch"] # jamais "*" |  |  |
 |  |  | 1 |
 
 
-## Network Policies : Micro-segmentation dans Kubernetes
+## Network policies : Micro-segmentation dans Kubernetes
 
 
-| ● Les Network Policies permettent de contrôler les communications réseau entre les Pods Kubernetes. ● Par défaut, un cluster Kubernetes autorise généralement toutes les communications internes (flat network). Les Network Policies appliquent le principe du Zero Trust en autorisant uniquement les flux explicitement nécessaires. ● Objectif : limiter les mouvements latéraux d'un attaquant et réduire la surface d'attaque du cluster. Principe de fonctionnement |  |  |
-|---|---|---|
+| •  Les Network Policies permettent de contrôler les communications réseau entre les Pods Kubernetes.<br>•  Par défaut, un cluster Kubernetes autorise généralement toutes les communications internes (flat network). Les<br>Network Policies appliquent le principe du Zero Trust en autorisant uniquement les flux explicitement<br>nécessaires.<br>•  Objectif : limiter les mouvements latéraux d'un attaquant et réduire la surface d'attaque du cluster.<br>Principe de fonctionnement |  |  |
+| --- | --- | --- |
 | Principe de fonctionnement |  |  |
 | Contrôle du trafic Est-Ouest | Contrôle du trafic Nord-Sud | Approche "Default Deny" |
-| ● Pod → Pod ● Namespace → Namespace ● Pod → Service | ● Entrées depuis l'extérieur ● Sorties vers Internet ou vers des services externes | ● Tout est interdit par défaut ● Les flux nécessaires sont explicitement autorisés ● Les autres communications restent bloquées |
+| •  Pod → Pod<br>•  Namespace → Namespace<br>•  Pod → Service | •  Entrées depuis l'extérieur<br>•  Sorties vers Internet ou<br>vers des services externes | •  Tout est interdit par défaut<br>•  Les flux nécessaires sont<br>explicitement autorisés<br>•  Les autres communications<br>restent bloquées |
 
 
-## Network Policies : Micro-segmentation dans Kubernetes
 
 Attention : Par défaut dans Kubernetes, tout le trafic est autorisé entre tous les pods de tous les namespaces !
 
 | Default Deny All | Allow Namespace → Namespace | Allow Egress HTTPS |
-|---|---|---|
-| Première règle déployée dans chaque namespace. Bloque tout trafic IN et OUT. Puis ouvrir uniquement les flux nécessaires. | Autoriser uniquement le trafic entre namespaces spécifiques. Ex: ns/frontend → ns/backend uniquement via port 8080. | Autoriser uniquement le trafic sortant HTTPS vers Internet pour les mises à jour, webhooks, API externes. |
-| spec: podSelector: {} policyTypes: - Ingress - Egress # bloque TOUT # puis ouvrir sélectivement | spec: ingress: - from: - namespaceSelector: matchLabels: name: frontend - podSelector: {} | spec: podSelector: matchLabels: app: myapp egress: - ports: - port: 443 protocol: TCP |
+| --- | --- | --- |
+| Première règle déployée dans chaque<br>namespace. Bloque tout trafic IN et<br>OUT. Puis ouvrir uniquement les flux<br>nécessaires. | Autoriser uniquement le trafic entre<br>namespaces spécifiques. Ex: ns/frontend →<br>ns/backend uniquement via port 8080. | Autoriser uniquement le trafic sortant<br>HTTPS vers Internet pour les mises à jour,<br>webhooks, API externes. |
+| spec:<br>podSelector: {}<br>policyTypes:<br>- Ingress<br>- Egress<br># bloque TOUT<br># puis ouvrir sélectivement | spec:<br>ingress:<br>- from:<br>- namespaceSelector:<br>matchLabels:<br>name: frontend<br>- podSelector: {} | spec:<br>podSelector:<br>matchLabels:<br>app: myapp<br>egress:<br>- ports:<br>- port: 443<br>protocol: TCP |
 
 
 ## Fonctionnement
@@ -58,19 +52,18 @@ Attention : Par défaut dans Kubernetes, tout le trafic est autorisé entre tous
 ![Slide 198](/securite-cloud/09-securite-conteneurs-kubernetes/p198_00_Image63.jpg)
 
 
-## Pod Security Standards (PSS)
+## Pod security standards (PSS)
 
 Les Pod Security Standards (PSS) définissent des niveaux de sécurité prédéfinis qui contrôlent les
 configurations autorisées des Pods Kubernetes afin de réduire les risques de compromission.
 
 
-## Fonctionnement
 
 
 ![Slide 201](/securite-cloud/09-securite-conteneurs-kubernetes/p201_01_Image64.jpg)
 
 
-## Admission Controllers : contrôler les ressources avant leur
+## Admission controllers : Contrôler les ressources avant leur
 
 création
 Un Admission Controller est un mécanisme (plugin) Kubernetes qui intercepte les requêtes envoyées à l’API Server
@@ -78,45 +71,44 @@ après l’authentification et l’autorisation, mais avant l’enregistrement d
 modifier, valider ou refuser une ressource afin d’appliquer des règles de sécurité, de conformité ou de gouvernance.
 
 | Élément | Description |
-|---|---|
-| Rôle | Intercepter les requêtes envoyées à l’API Server avant l’enregistrement de la ressource |
+| --- | --- |
+| Rôle | Intercepter les requêtes envoyées à l’API Server avant l’enregistrement de la<br>ressource |
 | Position | Après l’authentification et l’autorisation RBAC, avant la persistance dans etcd |
 | Types | Mutating Admission Controller et Validating Admission Controller |
 | Objectif sécurité | Empêcher l’entrée de configurations dangereuses ou non conformes dans le cluster |
 | Résultat | La ressource est modifiée, acceptée ou refusée |
 
 
-## Fonctionnement
 
 
 | Actions |  |
-|---|---|
-| 1 | Un utilisateur, une CI/CD ou un contrôleur envoie une requête à l’API Kubernetes |
+| --- | --- |
+| 1 | Un utilisateur, une CI/CD ou un contrôleur envoie<br>une requête à l’API Kubernetes |
 | 2 | Kubernetes authentifie l’identité |
 | 3 | Kubernetes vérifie les droits avec RBAC |
 | 4 | L’Admission Controller intercepte la requête |
-| 5 | Un contrôleur mutating peut modifier la ressource |
+| 5 | Un contrôleur mutating peut modifier la<br>ressource |
 | 6 | Un contrôleur validating vérifie la conformité |
-| 7 | La ressource est acceptée ou refusée avant création |
+| 7 | La ressource est acceptée ou refusée avant<br>création |
 
 ![Slide 204](/securite-cloud/09-securite-conteneurs-kubernetes/p204_02_Image65.jpg)
 
 
-## Admission Controllers courants
+## Admission controllers courants
 
 
 | Contrôleur | Type | Rôle dans l’admission |
-|---|---|---|
+| --- | --- | --- |
 | PodSecurity | Validating | Applique les niveaux PSS Privileged, Baseline, Restricted aux Pods |
 | ResourceQuota | Validating | Refuse les créations qui dépassent les quotas d’un namespace |
 | LimitRanger | Mutating / Validating | Définit des valeurs par défaut ou vérifie les limites CPU / mémoire |
 | ValidatingAdmissionWebhook | Validating | Délègue la validation à un webhook externe |
 | MutatingAdmissionWebhook | Mutating | Délègue la modification d’une ressource à un webhook externe |
 | ValidatingAdmissionPolicy | Validating | Applique des règles d’admission déclaratives avec CEL |
-| ServiceAccount | Mutating / Validating | Associe les Pods à une identité Kubernetes et vérifie certains prérequis |
+| ServiceAccount | Mutating / Validating | Associe les Pods à une identité Kubernetes et vérifie certains<br>prérequis |
 
 
-## OPA Gatekeeper : appliquer des politiques Kubernetes
+## OPA Gatekeeper : Appliquer des politiques Kubernetes
 
 OPA Gatekeeper est un contrôleur d’admission Kubernetes qui applique des politiques déclaratives exécutées par Open Policy
 Agent. Il permet de refuser ou modifier des ressources qui ne respectent pas les règles définies pour le cluster. La
@@ -124,18 +116,17 @@ documentation officielle le décrit comme un webhook validating et mutating qui 
 exécutées par OPA.
 
 | Élément | Description |  |
-|---|---|---|
+| --- | --- | --- |
 | Rôle | Contrôler les ressources Kubernetes avant leur création ou modification |  |
 | Position | S’appuie sur les Admission Controllers Kubernetes |  |
 | Moteur | Open Policy Agent |  |
 | Type | Validating et mutating webhook |  |
 | Langage | Rego |  |
 | Objets clés | ConstraintTemplate et Constraint |  |
-| Objectif | Imposer automatiquement des règles de sécurité, conformité et gouvernance 2 |  |
+| Objectif | Imposer automatiquement des règles de sécurité, conformité et gouvernance<br>2 |  |
 |  |  | 2 |
 
 
-## Fonctionnement
 
 
 ![Slide 208](/securite-cloud/09-securite-conteneurs-kubernetes/p208_03_Image66.jpg)
@@ -147,7 +138,7 @@ OPA Gatekeeper transforme les règles de sécurité Kubernetes en politiques ex�
 l’entrée du cluster.
 
 | Politique | Contrôle appliqué |
-|---|---|
+| --- | --- |
 | Interdire les Pods privilégiés | Bloque les configurations à risque |
 | Imposer des labels obligatoires | Renforce la traçabilité |
 | Interdire les images latest | Améliore la reproductibilité |
@@ -169,9 +160,9 @@ Polaris valide que vos ressources K8s suivent les meilleurs pratiques de sécuri
 CI/CD ou en admission webhook en temps réel.
 
 | Concept | Fonctionnement |  |
-|---|---|---|
-| ● Validateur des meilleurs pratiques K8s (Fairwinds, OSS) ● 3 modes : CLI audit, CI/CD check, Admission webhook ● Vérifie : security contexts, resource limits et health checks ● Checks par catégorie : sécurité, fiabilité et efficacité ● Profils de sévérité configurables (danger/warning/ignore) ● Score global 0-100 : 'fiabilité et sécurité du cluster' ● Alternatives : Kubescape (plus complet) · kube-score | ● Mode webhook : bloque les déploiements non conformes ● Checks clés : runAsNonRoot, readOnlyRootFilesystem, resource limits/requests, liveness probe ● Intégration Helm |  |
-|  | $> polaris audit --format=pretty (audit cluster) $> polaris audit --audit-path=./k8s/ (audit manifestes locaux) $> polaris audit --format=score (score 0-100) |  |
+| --- | --- | --- |
+| •  Validateur des meilleurs pratiques K8s (Fairwinds, OSS)<br>•  3 modes : CLI audit, CI/CD check, Admission webhook<br>•  Vérifie : security contexts, resource limits et health<br>checks<br>•  Checks par catégorie : sécurité, fiabilité et efficacité<br>•  Profils de sévérité configurables<br>(danger/warning/ignore)<br>•  Score global 0-100 : 'fiabilité et sécurité du cluster'<br>•  Alternatives : Kubescape (plus complet) · kube-score | •  Mode webhook : bloque les déploiements non conformes<br>•  Checks clés : runAsNonRoot, readOnlyRootFilesystem,<br>resource limits/requests, liveness probe<br>•  Intégration Helm |  |
+|  | $> polaris audit --format=pretty (audit cluster)<br>$> polaris audit --audit-path=./k8s/ (audit<br>manifestes locaux)<br>$> polaris audit --format=score (score 0-100) |  |
 |  |  | 2 |
 
 
@@ -179,17 +170,16 @@ CI/CD ou en admission webhook en temps réel.
 
 
 | Critique | Warning | Conforme |
-|---|---|---|
-| ● privileged = true ● allowPrivilegeEscalation = true ● hostPID = true ● hostIPC = true ● hostNetwork = true ● Exécution en root (runAsNonRoot = false) | ● runAsNonRoot non défini ● readOnlyRootFilesystem non défini ● securityContext absent ou incomplet ● CPU requests non définies ● Memory requests non définies ● CPU limits non définies ● Memory limits non définies ● livenessProbe absente ● readinessProbe absente ● startupProbe absente ● Image utilisant le tag latest ● Image sans tag explicite | ● Exécution non-root (runAsNonRoot = true) ● allowPrivilegeEscalation = false ● readOnlyRootFilesystem = true ● privileged = false ● Capabilities Linux réduites (drop: ALL) ● Requests et Limits définies ● Probes configurées ● Security Context conforme ● Image versionnée avec un tag explicite |
+| --- | --- | --- |
+| •  privileged = true<br>•  allowPrivilegeEscalation = true<br>•  hostPID = true<br>•  hostIPC = true<br>•  hostNetwork = true<br>•  Exécution en root<br>(runAsNonRoot = false) | •  runAsNonRoot non défini<br>•  readOnlyRootFilesystem non défini<br>•  securityContext absent ou<br>incomplet<br>•  CPU requests non définies<br>•  Memory requests non définies<br>•  CPU limits non définies<br>•  Memory limits non définies<br>•  livenessProbe absente<br>•  readinessProbe absente<br>•  startupProbe absente<br>•  Image utilisant le tag latest<br>•  Image sans tag explicite | •  Exécution non-root<br>(runAsNonRoot = true)<br>•  allowPrivilegeEscalation = false<br>•  readOnlyRootFilesystem = true<br>•  privileged = false<br>•  Capabilities Linux réduites (drop:<br>ALL)<br>•  Requests et Limits définies<br>•  Probes configurées<br>•  Security Context conforme<br>•  Image versionnée avec un tag<br>explicite |
 
 
-## Fonctionnement
 
 
 ![Slide 215](/securite-cloud/09-securite-conteneurs-kubernetes/p215_05_Image68.jpg)
 
 
-## Falco : Runtime Security & Détection Comportementale
+## Falco : Runtime security & détection comportementale
 
 - Projet CNCF open source de détection des menaces en temps réel pour Linux, containers et Kubernetes.
 - Analyse les syscalls et les événements K8s pour détecter les comportements anormaux pendant l'exécution.
@@ -209,11 +199,10 @@ conteneurs et déclenche des alertes dès qu'un comportement suspect est détect
 
 
 | Activités suspectes | Kubernetes | Hôtes Linux | Exemples de détections |
-|---|---|---|---|
-| ● Shell lancé dans un conteneur ● Exécution d'outils d'administration ● Téléchargement de fichiers suspects ● Modification de fichiers système ● Escalade de privilèges | ● Création de Pods privilégiés ● Utilisation de conteneurs root ● Modification de ressources sensibles ● Accès anormaux à l'API Kubernetes | ● Exécution de commandes sensibles ● Connexions réseau suspectes ● Accès aux fichiers critiques | ● Shell interactif dans un conteneur ● Conteneur exécuté en mode privilégié ● Écriture dans /etc ● Exécution de curl, wget ou nc dans un Pod applicatif ● Connexion réseau vers une adresse inconnue ● Lecture de secrets Kubernetes |
+| --- | --- | --- | --- |
+| •  Shell lancé dans un<br>conteneur<br>•  Exécution d'outils<br>d'administration<br>•  Téléchargement de<br>fichiers suspects<br>•  Modification de<br>fichiers système<br>•  Escalade de<br>privilèges | •  Création de Pods<br>privilégiés<br>•  Utilisation de<br>conteneurs root<br>•  Modification de<br>ressources<br>sensibles<br>•  Accès anormaux<br>à l'API<br>Kubernetes | •  Exécution de<br>commandes sensibles<br>•  Connexions réseau<br>suspectes<br>•  Accès aux fichiers<br>critiques | •  Shell interactif dans un<br>conteneur<br>•  Conteneur exécuté en mode<br>privilégié<br>•  Écriture dans /etc<br>•  Exécution de curl, wget ou nc<br>dans un Pod applicatif<br>•  Connexion réseau vers une<br>adresse inconnue<br>•  Lecture de secrets Kubernetes |
 
 
-## FONCTIONNEMENT
 
 Le SOAR (Security Orchestration, Automation and Response) est une plateforme qui orchestre les outils de sécurité,
 automatise les processus de réponse aux incidents et assiste les équipes SOC dans la gestion des cyberattaques.
@@ -224,21 +213,20 @@ Operations et Tines.
 
 
 | NeuVector : Sécurité Containers & K8s Full Lifecycle |  |
-|---|---|
-|  | ● NeuVector (open source depuis 2022, racheté par SUSE) est une plateforme CWPP complète pour Kubernetes : Réseau Zero Trust, analyse des vulnérabilités et conformité. |
+| --- | --- |
+|  | •  NeuVector (open source depuis 2022, racheté par SUSE) est une plateforme CWPP complète pour Kubernetes : Réseau Zero Trust,<br>analyse des vulnérabilités et conformité. |
 
 | Concept & position | Fonctionnalités clés |
-|---|---|
-| ● CWPP (Cloud Workload Protection Platform) pour Kubernetes ● Concurrent : Falco (runtime) + Trivy (scan) + Calico ● NeuVector = solution tout-en-un : scan + runtime + réseau ● Déployé en DaemonSet sur chaque nœud Kubernetes ● Alternatives : Aqua Security, Sysdig, Prisma Cloud Compute ● Forces : réseau Zero Trust natif, sans agent séparé | ● Sécurité réseau : micro-segmentation automatique des Pods et contrôle des communications ● Apprentissage comportemental : identification automatique des flux et comportements légitimes ● Protection à l'exécution (runtime) : détection et blocage des activités anormales ou malveillantes ● Analyse des vulnérabilités : scan continu des images de conteneurs et des nœuds Kubernetes ● Conformité réglementaire : vérification automatisée des référentiels CIS Kubernetes, PCI-DSS et HIPAA ● Pare-feu applicatif (WAF) : protection des applications et des flux HTTP/HTTPS (couche 7) ● Prévention des fuites de données (DLP) : détection des données sensibles circulant dans les communications réseau |
+| --- | --- |
+| •  CWPP (Cloud Workload Protection Platform) pour<br>Kubernetes<br>•  Concurrent : Falco (runtime) + Trivy (scan) + Calico<br>•  NeuVector = solution tout-en-un : scan + runtime +<br>réseau<br>•  Déployé en DaemonSet sur chaque nœud Kubernetes<br>•  Alternatives : Aqua Security, Sysdig, Prisma Cloud<br>Compute<br>•  Forces : réseau Zero Trust natif, sans agent séparé | •  Sécurité réseau : micro-segmentation automatique des Pods<br>et contrôle des communications<br>•  Apprentissage comportemental : identification automatique<br>des flux et comportements légitimes<br>•  Protection à l'exécution (runtime) : détection et blocage des<br>activités anormales ou malveillantes<br>•  Analyse des vulnérabilités : scan continu des images de<br>conteneurs et des nœuds Kubernetes<br>•  Conformité réglementaire : vérification automatisée des<br>référentiels CIS Kubernetes, PCI-DSS et HIPAA<br>•  Pare-feu applicatif (WAF) : protection des applications et des<br>flux HTTP/HTTPS (couche 7)<br>•  Prévention des fuites de données (DLP) : détection des<br>données sensibles circulant dans les communications réseau |
 
 
-## FONCTIONNEMENT
 
 
 ![Slide 222](/securite-cloud/09-securite-conteneurs-kubernetes/p222_07_Image70.jpg)
 
 
-## KSPM & CIS Kubernetes Benchmark (kube-bench)
+## KSPM & CIS Kubernetes benchmark (kube-bench)
 
 - KSPM (Kubernetes Security Posture Management) évalue en continu la configuration de vos clusters
 Kubernetes contre des référentiels de sécurité (CIS Benchmarks, MITRE ATT&CK for Kubernetes, NSA
@@ -254,21 +242,21 @@ Recommandation : lancer kube-bench à chaque nouveau nœud ajouté et hebdomadai
 cluster.
 
 
-## Kubescape : Kubernetes Security Posture Management
+## Kubescape : Kubernetes security posture management
 
 - Kubescape est le scanner KSPM de référence de la CNCF.
 - Il audite votre cluster K8s contre les frameworks CIS Benchmark, NSA/CISA, MITRE ATT&CK et les contrôles RBAC.
 
 | Concept & position | Commandes clés | vs kube-bench & Polaris |  |
-|---|---|---|---|
-| ● KSPM (K8s Security Posture Management) open source CNCF ● Audite clusters K8s / EKS / AKS / GKE / OpenShift ● Frameworks : CIS K8s 1.8 · NSA/CISA · MITRE ATT&CK ● Analyse : RBAC · Network Policies · PSS · Images ● Score de risque 0-100 par namespace et par cluster ● Alternatives : kube-bench (CIS uniquement) · Polaris · Trivy ● ARMO Platform : version cloud avec monitoring continu | $> kubescape scan --submit (scan + dashboard cloud) $> kubescape scan framework cis-eks (scan CIS EKS spécifique) $> kubescape scan framework nsa (framework NSA/CISA) $> kubescape scan control C-0013 (1 contrôle précis) $> kubescape scan --severity critical (filtrer par criticité) $> kubescape scan --exceptions ./exceptions.json $> kubescape scan image nginx:latest (scan image) | ● kube-bench : CIS K8s uniquement, très léger, nodes only ● Kubescape : multi-framework, ressources K8s + images ● Polaris : best practices Fairwinds, UX orientée devs ● Kubescape : plus complet mais plus lourd que kube-bench ● Trivy : scan images + misconfigs K8s (alt. léger) ● Recommandation : Kubescape (complet) + kube-bench (CIS nodes) ● Tous peuvent coexister dans un pipeline CI/CD |  |
+| --- | --- | --- | --- |
+| •  KSPM (K8s Security Posture<br>Management) open source CNCF<br>•  Audite clusters K8s / EKS / AKS /<br>GKE / OpenShift<br>•  Frameworks : CIS K8s 1.8 ·<br>NSA/CISA · MITRE ATT&CK<br>•  Analyse : RBAC · Network Policies ·<br>PSS · Images<br>•  Score de risque 0-100 par<br>namespace et par cluster<br>•  Alternatives : kube-bench (CIS<br>uniquement) · Polaris · Trivy<br>•  ARMO Platform : version cloud<br>avec monitoring continu | $> kubescape scan --submit (scan +<br>dashboard cloud)<br>$> kubescape scan framework cis-eks<br>(scan CIS EKS spécifique)<br>$> kubescape scan framework nsa<br>(framework NSA/CISA)<br>$> kubescape scan control C-0013 (1<br>contrôle précis)<br>$> kubescape scan --severity critical<br>(filtrer par criticité)<br>$> kubescape scan --exceptions<br>./exceptions.json<br>$> kubescape scan image nginx:latest<br>(scan image) | •  kube-bench : CIS K8s uniquement, très<br>léger, nodes only<br>•  Kubescape : multi-framework,<br>ressources K8s + images<br>•  Polaris : best practices Fairwinds, UX<br>orientée devs<br>•  Kubescape : plus complet mais plus<br>lourd que kube-bench<br>•  Trivy : scan images + misconfigs K8s (alt.<br>léger)<br>•  Recommandation : Kubescape (complet)<br>+ kube-bench (CIS nodes)<br>•  Tous peuvent coexister dans un pipeline<br>CI/CD |  |
 |  |  |  | 2 |
 
 
 ## Prêt pour lundi
 
 | # | Action | Commande | Durée / Coût | Impact |
-|---|--------|----------|--------------|--------|
+| --- | --- | --- | --- | --- |
 | 1 | Auditer les RBAC ClusterRoleBindings avec cluster-admin | `kubectl get clusterrolebindings -o json | jq '.items[] | select(.roleRef.name=="cluster-admin") | .subjects'` | 2 min / Gratuit | Chaque binding cluster-admin non justifié est un vecteur d'escalade |
 | 2 | Vérifier qu'il n'y a pas de pods avec allowPrivilegeEscalation: true | `kubectl get pods --all-namespaces -o json | jq '.items[].spec.containers[].securityContext.allowPrivilegeEscalation'` | 2 min / Gratuit | Un pod privilégié peut compromettre le nœud entier (container escape) |
 | 3 | Installer Falco en 5 minutes avec Helm | `helm repo add falcosecurity https://falcosecurity.github.io/charts && helm install falco falcosecurity/falco --namespace falco --create-namespace` | 10 min / Gratuit | Détection comportementale runtime (alertes si un pod exécute des commandes suspectes) |

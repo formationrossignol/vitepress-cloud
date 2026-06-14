@@ -1,19 +1,14 @@
 ---
-title: "13. Gouvernance & Conformité Cloud"
+title: "13. Gouvernance & Conformité cloud"
 ---
 
-# 13. Gouvernance & Conformité Cloud
+# 13. Gouvernance & Conformité cloud
 
-## 13. Gouvernance &
-
-Conformité Cloud
-
-
-## LEs Certifications de personnes de sécurité du Cloud
+## Les certifications de personnes de sécurité du cloud
 
 
 | Certification | Organisme | Positionnement |
-|---|---|---|
+| --- | --- | --- |
 | CCSK | Cloud Security Alliance | Fondamentaux de la sécurité cloud, approche vendor-neutral |
 | CCSP | ISC2 | Expertise avancée sécurité, architecture et gouvernance cloud |
 | AWS Certified Security -Specialty | AWS | Sécurité avancée des environnements AWS |
@@ -22,10 +17,10 @@ Conformité Cloud
 | SC-200 | Microsoft | SOC cloud, détection et réponse avec Sentinel / Defender |
 | Professional Cloud Security Engineer | Google Cloud | Sécurité des environnements Google Cloud |
 | CKS | CNCF / Linux Foundation | Sécurité Kubernetes et workloads cloud native |
-| CISSP | ISC2 | Gouvernance et architecture cybersécurité, utile mais non spécifique cloud |
+| CISSP | ISC2 | Gouvernance et architecture cybersécurité, utile mais non<br>spécifique cloud |
 
 
-## Tableau de Bord CISO : KPIs Sécurité Cloud
+## Tableau de bord CISO : KPIs sécurité cloud
 
 Un Tableau de Bord CISO est un tableau de pilotage destiné au RSSI/CISO (Chief Information Security Officer)
 permettant de suivre l’état de sécurité des environnements cloud à travers des indicateurs clés (KPIs).
@@ -39,13 +34,12 @@ Les objectifs sont de :
 - Etc.
 
 
-## Tableau de Bord CISO : KPIs Sécurité Cloud
 
 
 ![Slide 292](/securite-cloud/13-gouvernance-conformite-cloud/p292_00_Image82.jpg)
 
 
-## La Défense en Profondeur
+## La défense en profondeur
 
 - La défense en profondeur consiste à superposer plusieurs couches de sécurité
 complémentaires afin de réduire le risque qu'une défaillance unique compromettre
@@ -62,7 +56,7 @@ protéger les actifs.
   - Sauvegardes et plans de reprise
 
 
-## Les huit couches de la Défense en Profondeur
+## Les huit couches de la défense en profondeur
 
 
 ![Slide 294](/securite-cloud/13-gouvernance-conformite-cloud/p294_01_Image83.jpg)

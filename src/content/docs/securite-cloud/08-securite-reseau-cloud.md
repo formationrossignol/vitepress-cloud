@@ -4,12 +4,12 @@ title: "08. Sécurité réseau cloud"
 
 # 08. Sécurité réseau cloud
 
-## AMAZON VIRTUAL
+## Amazon Virtual
 
 PRIVATE CLOUD
 
 
-## Virtual Private Cloud, c'est quoi ?
+## Virtual private cloud, c'est quoi ?
 
 Un Nuage Privé Virtuel, ou Cloud Virtuel Privé,
 ou Virtual Private Cloud (VPC) est un groupe de
@@ -23,8 +23,8 @@ qui utilisent ces ressources.
 
 
 | Amazon Virtual Private Cloud |
-|---|
-| ● Amazon Virtual Private Cloud (VPC) donne un contrôle total sur un environnement réseau virtuel, notamment le placement des ressources, la connectivité et la sécurité : ○ La première étape consiste à créer votre VPC. ○ Vous pourrez ensuite y ajouter des ressources, telles que des instances Amazon Elastic Compute Cloud (EC2) et Amazon Relational Database Service (RDS). ○ Enfin, vous pourrez définir comment vos VPC communiquent entre eux, entre les comptes, les zones de disponibilité (AZ) ou les régions. |
+| --- |
+| •  Amazon Virtual Private Cloud (VPC) donne un contrôle total sur un environnement<br>réseau virtuel, notamment le placement des ressources, la connectivité et la sécurité :<br>  ◦  La première étape consiste à créer votre VPC.<br>  ◦  Vous pourrez ensuite y ajouter des ressources, telles que des instances Amazon Elastic<br>Compute Cloud (EC2) et Amazon Relational Database Service (RDS).<br>  ◦  Enfin, vous pourrez définir comment vos VPC communiquent entre eux, entre les<br>comptes, les zones de disponibilité (AZ) ou les régions. |
 
 
 ## Fonctionnement
@@ -56,7 +56,6 @@ services.
 applicatifs et communications inter-services.
 
 
-## Les groupes de sécurité
 
 - Les groupes de
 sécurité permettent :
@@ -74,13 +73,13 @@ réseau sortant.
 
 
 | Quelques informations supplémentaires sur les groupes de |
-|---|
-| sécurité ● Peut être attaché à plusieurs instances. ● Verrouillé sur une combinaison région/VPC. ● Il est bon de maintenir un groupe de sécurité distinct pour l'accès SSH. ● Si votre application n'est pas accessible (expiration du délai) : ○ Problème de groupe de sécurité. ● Si votre application donne une erreur « connexion refusée » : ○ Application en erreur ou pas lancée. ● Tout le trafic entrant est bloqué par défaut. ● Tout le trafic sortant est autorisé par défaut. |
+| --- |
+| sécurité<br>•  Peut être attaché à plusieurs instances.<br>•  Verrouillé sur une combinaison région/VPC.<br>•  Il est bon de maintenir un groupe de sécurité distinct pour l'accès SSH.<br>•  Si votre application n'est pas accessible (expiration du délai) :<br>  ◦  Problème de groupe de sécurité.<br>•  Si votre application donne une erreur « connexion refusée » :<br>  ◦  Application en erreur ou pas lancée.<br>•  Tout le trafic entrant est bloqué par défaut.<br>•  Tout le trafic sortant est autorisé par défaut. |
 
 
 | listes de contrôle d'accès réseau (NACLs) |
-|---|
-| ● Un NACL est un mécanisme de filtrage réseau stateless appliqué au niveau d’un sous-réseau (Subnet). ● Il contrôle les flux entrants et sortants en autorisant ou refusant explicitement le trafic selon des règles réseau. ● Fonctionne par ordre de priorité : la première règle correspondante est appliquée. ● Règles entrantes (Inbound) : contrôle du trafic entrant vers les ressources du sous-réseau. ● Règles sortantes (Outbound) : contrôle du trafic quittant le sous-réseau. ● Filtrage réseau : adresses IP, protocoles (TCP, UDP, ICMP) et ports. ● Stateless : les flux retour doivent être explicitement autorisés par une règle correspondante. ● Ordre de traitement : évaluation des règles par numéro croissant, puis application du premier match. ● Deny explicite : possibilité de bloquer directement des plages IP, ports ou protocoles. ● Cas d’usage : segmentation réseau, blocage d’adresses IP malveillantes, contrôle des flux entre sous-réseaux, couche de protection complémentaire aux Security Groups. |
+| --- |
+| •  Un NACL est un mécanisme de filtrage réseau stateless appliqué au niveau d’un sous-réseau<br>(Subnet).<br>•  Il contrôle les flux entrants et sortants en autorisant ou refusant explicitement le trafic selon<br>des règles réseau.<br>•  Fonctionne par ordre de priorité : la première règle correspondante est appliquée.<br>•  Règles entrantes (Inbound) : contrôle du trafic entrant vers les ressources du sous-réseau.<br>•  Règles sortantes (Outbound) : contrôle du trafic quittant le sous-réseau.<br>•  Filtrage réseau : adresses IP, protocoles (TCP, UDP, ICMP) et ports.<br>•  Stateless : les flux retour doivent être explicitement autorisés par une règle<br>correspondante.<br>•  Ordre de traitement : évaluation des règles par numéro croissant, puis application du<br>premier match.<br>•  Deny explicite : possibilité de bloquer directement des plages IP, ports ou protocoles.<br>•  Cas d’usage : segmentation réseau, blocage d’adresses IP malveillantes, contrôle des flux<br>entre sous-réseaux, couche de protection complémentaire aux Security Groups. |
 
 
 ## Listes de contrôle d'accès réseau (NACLs)
@@ -89,11 +88,11 @@ réseau sortant.
 ![Slide 163](/securite-cloud/08-securite-reseau-cloud/p163_03_Image54.jpg)
 
 
-## Groupe de sécurité vs nacls
+## Groupe de sécurité vs NACLs
 
 
 | Critère | Groupe de sécurité | NACL |
-|---|---|---|
+| --- | --- | --- |
 | Niveau | Ressource | Sous-réseau |
 | Type | Stateful | Stateless |
 | Trafic retour | Automatique | Règle requise |
@@ -105,11 +104,11 @@ réseau sortant.
 
 
 | Private Endpoints : Accès Privé aux Services Managés |
-|---|
-| ● |
+| --- |
+| • |
 
 
-## WEB APPLICATION Firewall
+## Web application firewall
 
 - Service de pare-feu applicatif web qui protège les applications web et API contre les requêtes
 malveillantes.
@@ -126,13 +125,13 @@ requêtes
 - S’intègre avec AWS Firewall Manager pour une gestion centralisée.
 
 
-## AWS WEB APPLICATION Firewall
+## AWS Web Application Firewall
 
 
 ![Slide 168](/securite-cloud/08-securite-reseau-cloud/p168_04_Image55.jpg)
 
 
-## Hôte Bastion
+## Hôte bastion
 
 - Un hôte bastion est un serveur sécurisé servant de point d'entrée unique pour accéder aux
 ressources situées dans un réseau privé.
@@ -151,13 +150,12 @@ environnements de production, gestion des infrastructures cloud privées.
 Guacamole, JumpServer.
 
 
-## Hôte Bastion
 
 
 ![Slide 171](/securite-cloud/08-securite-reseau-cloud/p171_05_Image56.jpg)
 
 
-## Zero Trust Network Access (ZTNA)
+## Zero trust network access (ZTNA)
 
 - Le ZTNA est un modèle de contrôle d'accès qui applique le principe « Ne jamais faire confiance,
 toujours vérifier ».
@@ -175,7 +173,6 @@ de risque.
 BeyondCorp Enterprise, Netskope Private Access, Palo Alto Prisma Access.
 
 
-## Zero Trust Network Access (ZTNA)
 
 
 ![Slide 173](/securite-cloud/08-securite-reseau-cloud/p173_06_Image57.jpg)
@@ -187,11 +184,11 @@ BeyondCorp Enterprise, Netskope Private Access, Palo Alto Prisma Access.
 ![Slide 174](/securite-cloud/08-securite-reseau-cloud/p174_07_Image58.jpg)
 
 
-## Zero Trust Network Access (ZTNA) vs VPN
+## Zero trust network access (ZTNA) vs VPN
 
 
 | VPN | ZTNA |
-|---|---|
+| --- | --- |
 | J'accède au réseau | J'accède à une application |
 | Une authentification au départ | Vérification continue |
 | Confiance implicite après connexion | Aucune confiance implicite |
@@ -214,28 +211,27 @@ production, automatisation opérationnelle.
 - Services associés : Systems Manager, IAM, CloudTrail, CloudWatch Logs, AWS Identity Center.
 
 
-## AWS Systems Manager Session Manager
 
 
 ![Slide 177](/securite-cloud/08-securite-reseau-cloud/p177_08_Image59.jpg)
 
 
-## EN résumé
+## En résumé
 
 
 | Concept | Résumé |
-|---|---|
+| --- | --- |
 | Bastion Host | Point d'entrée d'administration sécurisé |
 | VPN | Tunnel chiffré vers un réseau privé |
 | ZTNA | Accès aux applications basé sur l'identité |
 | Session Manager | Accès aux ressources privées sans bastion |
 
 
-## API Gateway
+## API gateway
 
 
-| ● Amazon API Gateway est un service AWS pour créer, publier et sécuriser des API : ○ Sert de point d’entrée entre les clients et les services backend. ○ Peut exposer des API REST, HTTP ou WebSocket. ○ S’intègre avec AWS Lambda, EC2, ECS, services AWS ou endpoints HTTP. ○ Permet de gérer l’authentification, le throttling et les quotas. ○ Service managé, scalable et hautement disponible. ○ Très utilisé dans les architectures serverless. ● Cas d’usage : ○ Exposer une fonction Lambda via une API. ○ Créer une API pour une application web ou mobile. ○ Centraliser l’accès à plusieurs services backend. ○ Protéger et contrôler l’usage d’une API. ● En résumé : API Gateway expose une API et les services backend exécutent le traitement. 1 |  |
-|---|---|
+| •  Amazon API Gateway est un service AWS pour créer, publier et sécuriser des API :<br>  ◦  Sert de point d’entrée entre les clients et les services backend.<br>  ◦  Peut exposer des API REST, HTTP ou WebSocket.<br>  ◦  S’intègre avec AWS Lambda, EC2, ECS, services AWS ou endpoints HTTP.<br>  ◦  Permet de gérer l’authentification, le throttling et les quotas.<br>  ◦  Service managé, scalable et hautement disponible.<br>  ◦  Très utilisé dans les architectures serverless.<br>•  Cas d’usage :<br>  ◦  Exposer une fonction Lambda via une API.<br>  ◦  Créer une API pour une application web ou mobile.<br>  ◦  Centraliser l’accès à plusieurs services backend.<br>  ◦  Protéger et contrôler l’usage d’une API.<br>•  En résumé : API Gateway expose une API et les services backend exécutent le traitement.<br>1 |  |
+| --- | --- |
 |  | 1 |
 
 
@@ -253,7 +249,7 @@ management sans modifier le code applicatif).
 ![Slide 183](/securite-cloud/08-securite-reseau-cloud/p183_10_Image61.jpg)
 
 
-## Service Mesh (Istio/Linkerd) : Zero Trust entre Microservices
+## Service mesh (istio/linkerd) : Zero trust entre microservices
 
 ●
 
@@ -281,13 +277,13 @@ Bonnes pratiques : Définir une architecture distribuée (multi-AZ, CDN) · Rate
 documenté
 
 
-## Fonctionnement Protection DDoS
+## Fonctionnement protection DDoS
 
 
 ![Slide 187](/securite-cloud/08-securite-reseau-cloud/p187_11_Image62.jp2)
 
 
-## VPC Flow Logs : Analyse et Détection du Trafic Réseau
+## VPC Flow Logs : Analyse et détection du trafic réseau
 
 - VPC Flow Logs : Journal du trafic réseau cloud
 - Objectif : Capture des métadonnées du trafic IP entrant et sortant de chaque interface réseau (ENI) de votre
@@ -304,7 +300,7 @@ Exemple de requête Athena : détecter tous les scans de port 22 refusés depuis
 ## Prêt pour lundi
 
 | # | Action | Commande | Durée / Coût | Impact |
-|---|--------|----------|--------------|--------|
+| --- | --- | --- | --- | --- |
 | 1 | Auditer tous les Security Groups avec des règles 0.0.0.0/0 | `aws ec2 describe-security-groups --query 'SecurityGroups[?IpPermissions[?IpRanges[?CidrIp==`0.0.0.0/0`]]]'` | 2 min / Gratuit | Chaque SG avec 0.0.0.0/0 sur port sensible = porte ouverte sur internet |
 | 2 | Activer VPC Flow Logs sur tous vos VPCs | `aws ec2 create-flow-logs --resource-type VPC --resource-ids vpc-xxx --traffic-type ALL --log-destination-type s3 --log-destination arn:aws:s3:::my-flowlogs` | 15 min / ~10€ | mois / Sans Flow Logs, vous êtes aveugle sur le trafic réseau de votre VPC |
 | 3 | Vérifier qu'aucune RDS/ElasticSearch n'est en subnet public | `aws rds describe-db-instances --query 'DBInstances[?PubliclyAccessible==`true`].[DBInstanceIdentifier,Endpoint.Address]'` | 1 min / Gratuit | Une base de données publique = credential stuffing automatisé garanti |

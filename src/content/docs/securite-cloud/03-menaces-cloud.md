@@ -4,7 +4,7 @@ title: "03. Les menaces cloud"
 
 # 03. Les menaces cloud
 
-## Les Common vulnerabilities and Exposures (CVE)
+## Les common vulnerabilities and exposures (CVE)
 
 Une CVE est un identifiant standardisé attribué à une vulnérabilité de cybersécurité publiquement connue. Elle permet de
 désigner une faille de manière unique et partagée entre les éditeurs, les outils de sécurité, les équipes SOC, les scanners et
@@ -12,7 +12,7 @@ les bases de vulnérabilités. Le programme CVE a pour mission d’identifier, d
 publiquement divulguées.
 
 | Élément | Description |
-|---|---|
+| --- | --- |
 | CVE | Identifiant unique d’une vulnérabilité connue |
 | Format | CVE-année-numéro, par exemple CVE-2021-44228 |
 | Rôle | Référencer une faille de manière standardisée |
@@ -27,29 +27,29 @@ publiquement divulguées.
 ![Slide 48](/securite-cloud/03-menaces-cloud/p048_00_Image30.jpg)
 
 
-## Common Vulnerability Scoring System
+## Common vulnerability scoring system
 
 Le CVSS est un standard ouvert qui permet de décrire les caractéristiques principales d’une vulnérabilité et de produire un score numérique de
 sévérité.
 
 | Élément | Description |  |
-|---|---|---|
+| --- | --- | --- |
 | Rôle | Évaluer la sévérité technique d’une vulnérabilité |  |
-| Score | ● 0.0 : None ● 0.1-3.9 : Low ● 4.0-6.9 : Medium ● 7.0-8.9 : High ● 9.0-10.0 : Critical |  |
+| Score | •  0.0 : None<br>•  0.1-3.9 : Low<br>•  4.0-6.9 : Medium<br>•  7.0-8.9 : High<br>•  9.0-10.0 : Critical |  |
 | Version actuelle | CVSS v4.0 |  |
 | Utilisation | Aide à prioriser les vulnérabilités, sans remplacer l’analyse du risque réel |  |
-| ● La NVD (National Vulnerability Database) précise que CVSS fournit une mesure qualitative de sévérité, mais que ce n’est pas une mesure du risque. Le risque dépend aussi de l’exposition, de l’exploitabilité réelle, des actifs concernés, des compensating controls et du contexte métier. ● La NVD est une base de données de vulnérabilités maintenue par le NIST. Elle reprend les CVE publiées et les enrichit avec des scores CVSS, des références, des produits affectés et des classifications CWE. |  |  |
+| •  La NVD (National Vulnerability Database) précise que CVSS fournit une mesure qualitative de sévérité, mais que ce n’est pas une mesure du<br>risque. Le risque dépend aussi de l’exposition, de l’exploitabilité réelle, des actifs concernés, des compensating controls et du contexte<br>métier.<br>•  La NVD est une base de données de vulnérabilités maintenue par le NIST. Elle reprend les CVE publiées et les enrichit avec des scores CVSS,<br>des références, des produits affectés et des classifications CWE. |  |  |
 |  |  | 4 |
 
 
-## Common Weakness Enumeration
+## Common weakness enumeration
 
 Common Weakness Enumeration (CWE) est un référentiel qui classe les types de faiblesses logicielles ou matérielles pouvant
 conduire à des vulnérabilités. MITRE le décrit comme une liste communautaire de faiblesses pouvant apparaître dans
 l’architecture, la conception, le code ou l’implémentation d’un produit.
 
 |  | CWE | Type de faiblesse | Exemple |  |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 |  | CWE-79 | Cross-Site Scripting | Entrée utilisateur injectée dans une page web |  |
 |  | CWE-89 | SQL Injection | Requête SQL construite avec une entrée non filtrée |  |
 |  | CWE-22 | Path Traversal | Accès à un fichier via ../ |  |
@@ -64,13 +64,13 @@ l’architecture, la conception, le code ou l’implémentation d’un produit.
 
 
 | Notion | Signification | Question associée | Rôle | Exemple |
-|---|---|---|---|---|
-| CVE | Common Vulnerabilities and Exposures | Quelle vulnérabilité précise a été identifiée ? | Identifie une vulnérabilité connue | CVE-2021-44228 pour Log4Shell |
-| CVSS | Common Vulnerability Scoring System | Quelle est la sévérité de cette vulnérabilité ? | Évalue la gravité d’une vulnérabilité | Score 9.8 Critical |
-| CWE | Common Weakness Enumeration | Quel type de faiblesse est à l’origine du problème ? | Classe le type de faiblesse logicielle | CWE-89 pour SQL Injection |
+| --- | --- | --- | --- | --- |
+| CVE | Common Vulnerabilities<br>and Exposures | Quelle vulnérabilité précise a été<br>identifiée ? | Identifie une<br>vulnérabilité connue | CVE-2021-44228 pour<br>Log4Shell |
+| CVSS | Common Vulnerability<br>Scoring System | Quelle est la sévérité de cette<br>vulnérabilité ? | Évalue la gravité d’une<br>vulnérabilité | Score 9.8 Critical |
+| CWE | Common Weakness<br>Enumeration | Quel type de faiblesse est à l’origine<br>du problème ? | Classe le type de<br>faiblesse logicielle | CWE-89 pour SQL<br>Injection |
 
 
-## Gestion des vulnérabilités cloud : vulnerabily management program
+## Gestion des vulnérabilités cloud : Vulnerabily management program
 
 (VMP)
 Trouver, prioriser et corriger les failles avant l'attaquant. Un CVE non patché en prod = une fenêtre d'opportunité
@@ -79,7 +79,6 @@ ouverte.
 ![Slide 52](/securite-cloud/03-menaces-cloud/p052_01_Image31.jpg)
 
 
-## Gestion des vulnérabilités cloud : vulnerabily management program
 
 (VMP)
 
@@ -90,25 +89,25 @@ ouverte.
 
 
 | Élément | Niveau | Rôle |
-|---|---|---|
-| CVE | Vulnérabilité individuelle | Identifie une faille connue à traiter |
-| Cycle de traitement d’une CVE | Processus opérationnel | Décrit comment une CVE est découverte, évaluée, corrigée puis vérifiée |
-| Vulnerability Management Program | Programme global | Organise la gestion continue de toutes les vulnérabilités : inventaire, scan, priorisation, remédiation, suivi |
+| --- | --- | --- |
+| CVE | Vulnérabilité<br>individuelle | Identifie une faille connue à traiter |
+| Cycle de traitement<br>d’une CVE | Processus<br>opérationnel | Décrit comment une CVE est découverte, évaluée, corrigée puis<br>vérifiée |
+| Vulnerability<br>Management Program | Programme<br>global | Organise la gestion continue de toutes les vulnérabilités : inventaire,<br>scan, priorisation, remédiation, suivi |
 
 
-## Outils de Gestion des Vulnérabilités
+## Outils de gestion des vulnérabilités
 
 Chaque couche de votre stack nécessite un outil spécifique. L'objectif : 0 CVE critique non détecté.
 
 | Infrastructure cloud | Containers et images |  |
-|---|---|---|
-| ● AWS Inspector : scan EC2, Lambda, ECR continu et automatique ● Microsoft Defender for Cloud : vulnerability assessment intégré Azure ● GCP Security Command Center : findings de vulnérabilités GCP natifc | ● Trivy (Aqua) : scanner images Docker : CVE + mauvaises configs + secrets ● Grype (Anchore) : scan SBOM CycloneDX/SPDX contre NVD + OSV + GitHub ● Snyk Container : scan + fix suggestions + monitoring en continu |  |
+| --- | --- | --- |
+| •  AWS Inspector : scan EC2, Lambda, ECR continu et<br>automatique<br>•  Microsoft Defender for Cloud : vulnerability assessment<br>intégré Azure<br>•  GCP Security Command Center : findings de<br>vulnérabilités GCP natifc | •  Trivy (Aqua) : scanner images Docker : CVE + mauvaises<br>configs + secrets<br>•  Grype (Anchore) : scan SBOM CycloneDX/SPDX contre<br>NVD + OSV + GitHub<br>•  Snyk Container : scan + fix suggestions + monitoring en<br>continu |  |
 | Code et dépendances | IaC & Configuration |  |
-| ● Dependabot / Renovate : mise à jour automatique des dépendances vulnérables ● OWASP Dependency-Check / Snyk SCA : analyse Software Composition ● GitHub Advanced Security : alertes CVE directement dans les PRsdé | ● tfsec / Checkov : détection misconfigurations Terraform, CloudFormation, Bicep ● Prowler : 300+ checks AWS CIS Benchmark, PCI-DSS, HIPAA en CLI/SaaS ● KICS (Checkmarx) : scan multi-IaC : Terraform, Docker, K8s, Ansible |  |
+| •  Dependabot / Renovate : mise à jour automatique des<br>dépendances vulnérables<br>•  OWASP Dependency-Check / Snyk SCA : analyse<br>Software Composition<br>•  GitHub Advanced Security : alertes CVE directement<br>dans les PRsdé | •  tfsec / Checkov : détection misconfigurations<br>Terraform, CloudFormation, Bicep<br>•  Prowler : 300+ checks AWS CIS Benchmark, PCI-DSS,<br>HIPAA en CLI/SaaS<br>•  KICS (Checkmarx) : scan multi-IaC : Terraform, Docker,<br>K8s, Ansible |  |
 |  |  | 5 |
 
 
-## CSA Top 11 : LEs Principales Menaces Cloud (Egregious Eleven)
+## CSA Top 11 : Les principales menaces cloud (egregious eleven)
 
 1. Violations de données (Data Breaches)
 2. Mauvaise configuration & contrôles inadéquats
@@ -128,12 +127,12 @@ Chaque couche de votre stack nécessite un outil spécifique. L'objectif : 0 CVE
 80% des incidents cloud sont causés par des erreurs de configuration côté client - Gartner 2024.
 
 | Bucket S3 / Blob Storage public | Security Group trop ouvert |
-|---|---|
-| ACL public-read · Bucket policy sans restriction d'IP · Absence de Block Public Access · Log désactivé | 0.0.0.0/0 en inbound sur port 22 (SSH), 3389 (RDP), 3306 (MySQL) · All traffic autorisé entre subnets |
+| --- | --- |
+| ACL public-read · Bucket policy sans restriction d'IP ·<br>Absence de Block Public Access · Log désactivé | 0.0.0.0/0 en inbound sur port 22 (SSH), 3389 (RDP),<br>3306 (MySQL) · All traffic autorisé entre subnets |
 | Credentials en clair dans le code | Compte root / admin sans MFA |
-| AWS_ACCESS_KEY dans GitHub · Password DB en clair dans Dockerfile · Secrets dans les logs d'application | Console AWS sans MFA · Compte Global Admin Azure non protégé · Root account utilisé au quotidien |
+| AWS_ACCESS_KEY dans GitHub · Password DB en clair<br>dans Dockerfile · Secrets dans les logs d'application | Console AWS sans MFA · Compte Global Admin Azure<br>non protégé · Root account utilisé au quotidien |
 | Logs désactivés | Chiffrement non activé par défaut |
-| CloudTrail non activé dans toutes les régions · Logs S3 non activés · Durée rétention insuffisante (<1 an) | Volume EBS non chiffré · Bucket S3 sans SSE · RDS sans encryption at rest · Snapshots non chiffrés |
+| CloudTrail non activé dans toutes les régions · Logs S3<br>non activés · Durée rétention insuffisante (<1 an) | Volume EBS non chiffré · Bucket S3 sans SSE · RDS sans<br>encryption at rest · Snapshots non chiffrés |
 
 
 ## Ransomwares ciblés cloud
@@ -152,18 +151,17 @@ sauvegardes, voler des credentials cloud, compromettre IAM / CI-CD / Kubernetes,
   - Exfiltration des données
   - Chiffrement / Double extorsion
 
-| Le ransomware moderne ne cible plus uniquement les postes utilisateurs : il vise désormais toute l’infrastructure cloud. |  |
-|---|---|
+| Le ransomware moderne ne cible plus uniquement les postes utilisateurs : il vise désormais toute<br>l’infrastructure cloud. |  |
+| --- | --- |
 |  | 5 |
 
 
-## Ransomwares ciblés cloud
 
 
 ![Slide 59](/securite-cloud/03-menaces-cloud/p059_03_Image33.jpg)
 
 
-## LE Shadow IT c’est quoi ?
+## Le shadow IT c’est quoi ?
 
 - Le Shadow IT ou informatique parallèle est l’utilisation de systèmes, d’appareils, de logiciels,
 d’applications et de services informatiques qui n’ont pas reçu l’approbation explicite du
@@ -176,11 +174,11 @@ fuites de données, de violations potentielles de la conformité, etc.
 
 
 | Risques |
-|---|
-| ● Fuite ou perte de données sensibles ● Utilisation d’outils non sécurisés ou non maîtrisés ● Non-conformité réglementaire (RGPD, NIS2, etc.) ● Multiplication des accès et comptes non contrôlés ● Absence de supervision, logs et traçabilité ● Fragmentation et dispersion des données ● Mauvaise gestion des identités et permissions ● Introduction de malwares ou applications malveillantes ● Dépendance à des services SaaS non validés ● Difficulté de gouvernance et d’inventaire IT ● Risques réputationnels en cas d’incident ● Coûts cachés et duplication des solutions IT |
+| --- |
+| •  Fuite ou perte de données sensibles<br>•  Utilisation d’outils non sécurisés ou non maîtrisés<br>•  Non-conformité réglementaire (RGPD, NIS2, etc.)<br>•  Multiplication des accès et comptes non contrôlés<br>•  Absence de supervision, logs et traçabilité<br>•  Fragmentation et dispersion des données<br>•  Mauvaise gestion des identités et permissions<br>•  Introduction de malwares ou applications malveillantes<br>•  Dépendance à des services SaaS non validés<br>•  Difficulté de gouvernance et d’inventaire IT<br>•  Risques réputationnels en cas d’incident<br>•  Coûts cachés et duplication des solutions IT |
 
 
-## LE Shadow AI c’est quoi ?
+## Le shadow AI c’est quoi ?
 
 - Le Shadow AI désigne les usages d’intelligence artificielle qui apparaissent en dehors du
 cadre officiel de l’entreprise : comptes personnels, outils non validés, extensions de
@@ -195,24 +193,24 @@ métiers.
 
 
 | Risques |
-|---|
-| ● Fuite de données sensibles vers des services externes ● Exposition de code source, secrets ou informations internes ● Non-conformité RGPD, NIS2 ou politiques internes ● Réponses erronées ou hallucinations utilisées comme vérité ● Absence de traçabilité et d’audit des usages IA ● Dépendance à des modèles ou fournisseurs non maîtrisés ● Réutilisation des données saisies pour l’entraînement des modèles ● Contournement des contrôles sécurité et de gouvernance ● Génération de contenu ou code vulnérable ● Risque juridique, réputationnel et propriété intellectuelle ● Multiplication d’outils IA non validés dans l’entreprise ● Shadow SaaS et fragmentation des données aggravés par l’IA |
+| --- |
+| •  Fuite de données sensibles vers des services externes<br>•  Exposition de code source, secrets ou informations internes<br>•  Non-conformité RGPD, NIS2 ou politiques internes<br>•  Réponses erronées ou hallucinations utilisées comme vérité<br>•  Absence de traçabilité et d’audit des usages IA<br>•  Dépendance à des modèles ou fournisseurs non maîtrisés<br>•  Réutilisation des données saisies pour l’entraînement des modèles<br>•  Contournement des contrôles sécurité et de gouvernance<br>•  Génération de contenu ou code vulnérable<br>•  Risque juridique, réputationnel et propriété intellectuelle<br>•  Multiplication d’outils IA non validés dans l’entreprise<br>•  Shadow SaaS et fragmentation des données aggravés par l’IA |
 
 
 |  | Quelques statistiques sur le Shadow IT/AI |  |  |  |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | Thème |  |  | Source |  |
-| Applications cloud non gérées / Shadow IT |  | Les entreprises utilisent en moyenne 1 295 applications et services cloud, avec moins de 2 % administrés par l’IT. | Netskope, page “Shadow IT and Unmanaged Cloud Protection”. (Netskope) |  |
-| Shadow AI |  | 72 % de l’usage GenAI en entreprise relève du Shadow IT, souvent via des comptes personnels. | Netskope, Cloud and Threat Report: Generative AI 2025. (Netskope) |  |
-| Adoption GenAI |  | 90 % des organisations utilisent des applications GenAI, et 98 % utilisent des applications intégrant des fonctionnalités GenAI. | Netskope, Cloud and Threat Report: Generative AI 2025. (Netskope) |  |
-| Risque de fuite via apps personnelles |  | 60 % des incidents de menace interne impliquent des instances personnelles d’applications cloud. | Netskope, Cloud and Threat Report: 2026. (Netskope) |  |
-| Applications non autorisées |  | 52 % des employés déclarent avoir téléchargé des applications non autorisées. | 1Password, cité par TechRadar, 2025. (TechRadar) |  |
-| Données confidentielles dans l’IA |  | Environ 38 % des employés déclarent partager des données confidentielles avec des plateformes IA sans approbation. | Cloud Security Alliance citant une recherche CybSafe / NCA. (cloudsecurityalliance.org) |  |
-| Malware via cloud / plateformes légitimes |  | En Europe, Netskope observe que 16 % des organisations subissent chaque mois des téléchargements de malwares depuis GitHub. | Netskope, Threat Labs Report: Europe 2025. (Netskope) 6 |  |
+| Applications cloud non<br>gérées / Shadow IT |  | Les entreprises utilisent en moyenne 1 295 applications et services<br>cloud, avec moins de 2 % administrés par l’IT. | Netskope, page “Shadow IT and Unmanaged Cloud<br>Protection”. (Netskope) |  |
+| Shadow AI |  | 72 % de l’usage GenAI en entreprise relève du Shadow IT, souvent via<br>des comptes personnels. | Netskope, Cloud and Threat Report: Generative AI 2025.<br>(Netskope) |  |
+| Adoption GenAI |  | 90 % des organisations utilisent des applications GenAI, et 98 %<br>utilisent des applications intégrant des fonctionnalités GenAI. | Netskope, Cloud and Threat Report: Generative AI 2025.<br>(Netskope) |  |
+| Risque de fuite via apps<br>personnelles |  | 60 % des incidents de menace interne impliquent des instances<br>personnelles d’applications cloud. | Netskope, Cloud and Threat Report: 2026. (Netskope) |  |
+| Applications non autorisées |  | 52 % des employés déclarent avoir téléchargé des applications non<br>autorisées. | 1Password, cité par TechRadar, 2025. (TechRadar) |  |
+| Données confidentielles<br>dans l’IA |  | Environ 38 % des employés déclarent partager des données<br>confidentielles avec des plateformes IA sans approbation. | Cloud Security Alliance citant une recherche CybSafe /<br>NCA. (cloudsecurityalliance.org) |  |
+| Malware via cloud /<br>plateformes légitimes |  | En Europe, Netskope observe que 16 % des organisations subissent<br>chaque mois des téléchargements de malwares depuis GitHub. | Netskope, Threat Labs Report: Europe 2025. (Netskope)<br>6 |  |
 |  |  |  |  | 6 |
 
 
-## Attaques Supply Chain : Compromission de la Chaîne
+## Attaques supply chain : Compromission de la chaîne
 
 d'Approvisionnement
 Définition : Compromission d'un composant tiers (bibliothèque, outil, fournisseur) utilisé dans votre processus
@@ -220,66 +218,66 @@ de build ou livraison. L'attaquant vise un fournisseur pour atteindre ses client
 utilisateurs du composant.
 
 | SolarWinds (2020) | CodeCov (2021) | Log4Shell (2021) | XZ Utils (2024) |
-|---|---|---|---|
-| Mise à jour Orion IT compromettante · 18.000 clients touchés dont des agences US gouvernementales · Attribué à APT29 (Cozy Bear) | Script bash compromis dans l'image Docker · Vol de variables d'environnement CI/CD · Credentials AWS, GitHub tokens exfiltrés | CVE-2021-44228 dans Log4j (Java) · Présent dans des milliers d'applications · RCE sans auth — CVSS 10.0 (score maximal) | Backdoor injectée via contribution open source sur 2 ans · Ciblait SSH sur Linux · Découverte par hasard via benchmark CPU |
+| --- | --- | --- | --- |
+| Mise à jour Orion IT<br>compromettante ·<br>18.000 clients touchés<br>dont des agences US<br>gouvernementales ·<br>Attribué à APT29<br>(Cozy Bear) | Script bash<br>compromis dans<br>l'image Docker · Vol<br>de variables<br>d'environnement<br>CI/CD · Credentials<br>AWS, GitHub tokens<br>exfiltrés | CVE-2021-44228 dans<br>Log4j (Java) · Présent<br>dans des milliers<br>d'applications · RCE<br>sans auth — CVSS<br>10.0 (score maximal) | Backdoor injectée via<br>contribution open<br>source sur 2 ans ·<br>Ciblait SSH sur Linux ·<br>Découverte par<br>hasard via benchmark<br>CPU |
 
 
 | Menaces Internes (Insider Threats) |
-|---|
-| Risque de sécurité provenant de l'intérieur de l'organisation : employés malveillants, comptes compromis, erreurs involontaires. Particulièrement dangereux car l'accès est souvent légitime au départ. |
+| --- |
+| Risque de sécurité provenant de l'intérieur de l'organisation : employés malveillants, comptes compromis,<br>erreurs involontaires. Particulièrement dangereux car l'accès est souvent légitime au départ. |
 
-| Rôles surdimensionnés | (Over-permissioned) : utilisateurs avec plus de droits que nécessaire → violation du Least Privilege |
-|---|---|
-| Credentials compromis | clés AWS en clair dans GitHub · tokens non rotés · accès partagés sans traçabilité |
+| Rôles surdimensionnés | (Over-permissioned) : utilisateurs avec plus de droits que nécessaire<br>→ violation du Least Privilege |
+| --- | --- |
+| Credentials compromis | clés AWS en clair dans GitHub · tokens non rotés · accès partagés<br>sans traçabilité |
 | Absence de MFA | Comptes admin sans MFA → cible prioritaire phishing / brute force |
-| Détection comportementale | AWS GuardDuty, Azure Defender for Identity, Google Chronicle : connexions inhabituelles, volume d'accès excessif, heure atypique |
-| Contrôles | Revues régulières des accès IAM · Alerte sur création de nouvelles clés root · Monitoring des téléchargements massifs |
+| Détection<br>comportementale | AWS GuardDuty, Azure Defender for Identity, Google Chronicle :<br>connexions inhabituelles, volume d'accès excessif, heure atypique |
+| Contrôles | Revues régulières des accès IAM · Alerte sur création de nouvelles<br>clés root · Monitoring des téléchargements massifs |
 
 
-## OWASP Top 10 : 2025 : Mapping Cloud Security
+## OWASP top 10 : 2025 : Mapping cloud security
 
 
 
-## Architecture Zero Trust
+## Architecture zero trust
 
 "Never trust, always verify"
 Le Zero Trust remplace la confiance accordée au réseau par une décision d’accès continue, contextuelle et fondée sur
 le risque.
 
 | Idée clé | Description |
-|---|---|
+| --- | --- |
 | Principe | Aucun utilisateur, terminal, application ou réseau n’est considéré comme fiable par défaut |
-| Décision d’accès | Chaque demande est évaluée selon l’identité, le terminal, le contexte, le risque et les politiques |
+| Décision<br>d’accès | Chaque demande est évaluée selon l’identité, le terminal, le contexte, le risque et les politiques |
 | Contrôle | L’accès est accordé uniquement au strict nécessaire, pour une durée limitée |
 | Surveillance | Les sessions, comportements, logs et événements alimentent une réévaluation continue |
 | Objectif | Réduire la confiance implicite et limiter l’impact d’un compte, terminal ou service compromis |
 
 
 | Architecture Zero Trust : NIST 800-207 |
-|---|
-| Le NIST SP 800-207 formalise l’architecture Zero Trust autour d’un principe simple : chaque demande d’accès est évaluée dynamiquement par un moteur de décision, puis appliquée par un point de contrôle avant d’atteindre la ressource. |
+| --- |
+| Le NIST SP 800-207 formalise l’architecture Zero Trust autour d’un principe simple : chaque demande d’accès est évaluée<br>dynamiquement par un moteur de décision, puis appliquée par un point de contrôle avant d’atteindre la ressource. |
 
-| PDP (Policy Decision Point) = décide / PEP (Policy Enforcement Point)= applique. 7 |  |
-|---|---|
+| PDP (Policy Decision Point) = décide / PEP (Policy Enforcement Point)= applique.<br>7 |  |
+| --- | --- |
 |  | 7 |
 
 ![Slide 71](/securite-cloud/03-menaces-cloud/p071_04_Image35.jpg)
 
 
 | BeyondCorp (google) : exemple d’implémentation réelle |
-|---|
-| BeyondCorp illustre le passage d’une sécurité fondée sur le réseau interne à une sécurité fondée sur l’identité, le terminal et le contexte d’accès. |
+| --- |
+| BeyondCorp illustre le passage d’une sécurité fondée sur le réseau interne à une sécurité fondée sur l’identité, le<br>terminal et le contexte d’accès. |
 
 ![Slide 72](/securite-cloud/03-menaces-cloud/p072_05_Image36.jpg)
 
 
-## CISA Zero Trust Maturity Model (ZTMM v2.0)
+## CISA zero trust maturity model (ZTMM v2.0)
 
 
 ![Slide 73](/securite-cloud/03-menaces-cloud/p073_06_Image37.jpg)
 
 
-## LAB : les menaces du cloud
+## LAB : Les menaces du cloud
 
 dhdfhfgh
 

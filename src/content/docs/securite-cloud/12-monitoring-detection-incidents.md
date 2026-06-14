@@ -1,36 +1,31 @@
 ---
-title: "12. Monitoring, Détection & Réponse aux Incidents"
+title: "12. Monitoring, Détection & Réponse aux incidents"
 ---
 
-# 12. Monitoring, Détection & Réponse aux Incidents
+# 12. Monitoring, Détection & Réponse aux incidents
 
-## 12. Monitoring, Détection
-
-& Réponse aux Incidents
-
-
-## AWS CloudTrail : Journal de Toutes les Actions Cloud
+## AWS CloudTrail : Journal de toutes les actions cloud
 
 AWS CloudTrail est le service d'audit natif d'AWS qui enregistre les actions effectuées dans un compte
 AWS afin d'assurer la traçabilité, la conformité, l'investigation et la détection d'incidents de sécurité.
 
 | Ce que CloudTrail enregistre |  |
-|---|---|
+| --- | --- |
 | CloudTrail capture les appels API réalisés via … | Pour chaque action, CloudTrail enregistre notamment : |
-| ● Console AWS ● AWS CLI ● SDK AWS ● Services AWS | ● Qui a effectué l'action ● Quelle action a été réalisée ● Quand elle a eu lieu ● Depuis quelle adresse IP ● Sur quelle ressource ● Quel a été le résultat |
+| •  Console AWS<br>•  AWS CLI<br>•  SDK AWS<br>•  Services AWS | •  Qui a effectué l'action<br>•  Quelle action a été réalisée<br>•  Quand elle a eu lieu<br>•  Depuis quelle adresse IP<br>•  Sur quelle ressource<br>•  Quel a été le résultat |
 
-| 2 7 |
-|---|
+| 2<br>7 |
+| --- |
 | 2 |
 
 
-## AWS CloudTrail : FONCTIONNEMENT
+## AWS CloudTrail : Fonctionnement
 
 
 ![Slide 273](/securite-cloud/12-monitoring-detection-incidents/p273_00_Image79.jpg)
 
 
-## MITRE ATT&CK pour le Cloud : Tactiques et Techniques
+## MITRE ATT&CK pour le cloud : Tactiques et techniques
 
 - MITRE ATT&CK Cloud est une déclinaison du référentiel MITRE ATT&CK dédiée aux
 techniques d’attaque observées dans les environnements cloud.
@@ -46,30 +41,30 @@ afin d’améliorer la détection, la réponse à incident et le durcissement de
 ![Slide 278](/securite-cloud/12-monitoring-detection-incidents/p278_01_Image80.jpg)
 
 
-## EXEMPLES de techniques courantes
+## Exemples de techniques courantes
 
 
 ![Slide 279](/securite-cloud/12-monitoring-detection-incidents/p279_02_Image81.jpg)
 
 
-## Réponse aux Incidents Cloud : Phases PICERL
+## Réponse aux incidents cloud : Phases picerl
 
 PIRCEL est un modèle de réponse aux incidents permettant de structurer les actions depuis la préparation jusqu'à l'amélioration
 continue après l'incident.
 
 | Préparation | Identification | Confinement |
-|---|---|---|
-| ● Procédures et runbooks ● Contacts d'urgence ● Outils d'investigation ● Exercices de crise ● Sauvegardes et preuves forensiques | ● Analyse des alertes ● Confirmation du compromis ● Qualification de l'impact Identification du périmètre affecté Priorisation de l'incident | ● Isolation des systèmes compromis Révocation des accès ● Blocage des flux malveillants ● Préservation des preuves ● Réduction de la surface d'attaque |
+| --- | --- | --- |
+| •  Procédures et runbooks<br>•  Contacts d'urgence<br>•  Outils d'investigation<br>•  Exercices de crise<br>•  Sauvegardes et preuves<br>forensiques | •  Analyse des alertes<br>•  Confirmation du compromis<br>•  Qualification de l'impact<br>Identification du périmètre<br>affecté Priorisation de l'incident | •  Isolation des systèmes<br>compromis Révocation des accès<br>•  Blocage des flux malveillants<br>•  Préservation des preuves<br>•  Réduction de la surface<br>d'attaque |
 | Éradication | Rétablissement | Leçons apprises |
-| ● Suppression des malwares ● Fermeture des vecteurs d'attaque ● Correction des vulnérabilités ● Rotation des secrets ● Nettoyage des ressources compromises | ● Restauration des systèmes ● Validation de sécurité ● Réouverture progressive ● Surveillance renforcée ● Retour à la production | ● Analyse post-incident ● Identification des causes racines ● Mise à jour des procédures ● Amélioration des contrôles ● Capitalisation du retour d'expérience |
+| •  Suppression des malwares<br>•  Fermeture des vecteurs<br>d'attaque<br>•  Correction des vulnérabilités<br>•  Rotation des secrets<br>•  Nettoyage des ressources<br>compromises | •  Restauration des systèmes<br>•  Validation de sécurité<br>•  Réouverture progressive<br>•  Surveillance renforcée<br>•  Retour à la production | •  Analyse post-incident<br>•  Identification des causes racines<br>•  Mise à jour des procédures<br>•  Amélioration des contrôles<br>•  Capitalisation du retour<br>d'expérience |
 
 
-## LAB : Monitoring, Détection
+## LAB : Monitoring, détection
 
 & Réponse aux Incidents
 
 
-## QCM : Monitoring, Détection
+## QCM : Monitoring, détection
 
 & Réponse aux Incidents
 
