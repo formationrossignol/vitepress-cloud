@@ -111,7 +111,13 @@ export default defineConfig({
               ],
             },
             { label: '09. Sécurité des conteneurs & Kubernetes', slug: 'securite-cloud/09-securite-conteneurs-kubernetes' },
-            { label: '10. Sécurité DevSecOps & CI/CD', slug: 'securite-cloud/10-securite-devsecops-cicd' },
+            {
+              label: '10. Sécurité DevSecOps & CI/CD',
+              items: [
+                { label: 'Cours', slug: 'securite-cloud/10-securite-devsecops-cicd' },
+                { label: 'TP : Pipeline DevSecOps locale avec Gitea, Woodpecker, Trivy et Semgrep', slug: 'securite-cloud/tp-pipeline-devsecops-local' },
+              ],
+            },
             {
               label: "11. Sécurité de l'Infrastructure as Code",
               items: [
