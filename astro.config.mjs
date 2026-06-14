@@ -112,7 +112,13 @@ export default defineConfig({
             },
             { label: '09. Sécurité des conteneurs & Kubernetes', slug: 'securite-cloud/09-securite-conteneurs-kubernetes' },
             { label: '10. Sécurité DevSecOps & CI/CD', slug: 'securite-cloud/10-securite-devsecops-cicd' },
-            { label: "11. Sécurité de l'Infrastructure as Code", slug: 'securite-cloud/11-securite-infrastructure-as-code' },
+            {
+              label: "11. Sécurité de l'Infrastructure as Code",
+              items: [
+                { label: 'Cours', slug: 'securite-cloud/11-securite-infrastructure-as-code' },
+                { label: 'TP : Scanner du code IaC avec Checkov et Trivy', slug: 'securite-cloud/tp-iac-checkov-trivy' },
+              ],
+            },
             {
               label: '12. Monitoring, Détection & Réponse aux incidents',
               items: [
