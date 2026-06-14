@@ -8,6 +8,11 @@ function formatDate(d: Date) {
 
 const updatedDate = lastUpdated instanceof Date ? lastUpdated : undefined;
 const isSplash = template === 'splash';
+
+// Reading time (~200 words/min for technical content)
+const rawBody: string = (entry as any).body ?? '';
+const wordCount = rawBody.trim().split(/\s+/).filter((w: string) => w.length > 0).length;
+const readingTime = Math.max(1, Math.ceil(wordCount / 200));
 ---
 
 <h1 id="_top">{title}</h1>
@@ -25,6 +30,7 @@ const isSplash = template === 'splash';
         Mis à jour le {formatDate(updatedDate)}
       </time>
     )}
+    <span class="meta-item">{readingTime} min de lecture</span>
   </div>
 )}
 
