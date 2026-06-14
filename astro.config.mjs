@@ -107,6 +107,7 @@ export default defineConfig({
               items: [
                 { label: 'Cours', slug: 'securite-cloud/08-securite-reseau-cloud' },
                 { label: 'TP : Sécuriser un VPC avec Security Group, NACL et Session Manager', slug: 'securite-cloud/tp-vpc-sg-nacl-session-manager' },
+                { label: 'TP : Protéger une API locale avec limitation de débit', slug: 'securite-cloud/tp-api-rate-limit' },
               ],
             },
             { label: '09. Sécurité des conteneurs & Kubernetes', slug: 'securite-cloud/09-securite-conteneurs-kubernetes' },
