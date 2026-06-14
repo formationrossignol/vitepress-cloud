@@ -70,7 +70,13 @@ export default defineConfig({
           items: [
             { label: 'Cours : Sécurité AWS', slug: 'cours/securite-aws' },
             { label: '01. Généralités sur le cloud computing', slug: 'securite-cloud/01-generalites-cloud-computing' },
-            { label: '02. Plateformes de sécurité cloud', slug: 'securite-cloud/02-plateformes-securite-cloud' },
+            {
+              label: '02. Plateformes de sécurité cloud',
+              items: [
+                { label: 'Cours', slug: 'securite-cloud/02-plateformes-securite-cloud' },
+                { label: 'TP : Mini-CNAPP locale avec Trivy, Syft, Grype et Kubescape', slug: 'securite-cloud/tp-mini-cnapp-locale' },
+              ],
+            },
             {
               label: '03. Les menaces cloud',
               items: [
