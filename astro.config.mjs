@@ -93,7 +93,13 @@ export default defineConfig({
                 { label: 'TP : Détecter des permissions IAM excessives avec Cloudsplaining et Parliament', slug: 'securite-cloud/tp-iam-permissions-excessives' },
               ],
             },
-            { label: '07. Sécurité des données cloud', slug: 'securite-cloud/07-securite-donnees-cloud' },
+            {
+              label: '07. Sécurité des données cloud',
+              items: [
+                { label: 'Cours', slug: 'securite-cloud/07-securite-donnees-cloud' },
+                { label: 'TP : Détecter des secrets dans un dépôt Git avec Gitleaks, TruffleHog et detect-secrets', slug: 'securite-cloud/tp-detection-secrets-gitleaks' },
+              ],
+            },
             { label: '08. Sécurité réseau cloud', slug: 'securite-cloud/08-securite-reseau-cloud' },
             { label: '09. Sécurité des conteneurs & Kubernetes', slug: 'securite-cloud/09-securite-conteneurs-kubernetes' },
             { label: '10. Sécurité DevSecOps & CI/CD', slug: 'securite-cloud/10-securite-devsecops-cicd' },
