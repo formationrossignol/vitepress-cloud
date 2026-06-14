@@ -117,6 +117,7 @@ export default defineConfig({
               items: [
                 { label: 'Cours', slug: 'securite-cloud/11-securite-infrastructure-as-code' },
                 { label: 'TP : Scanner du code IaC avec Checkov et Trivy', slug: 'securite-cloud/tp-iac-checkov-trivy' },
+                { label: 'TP : Sécuriser le tfstate avec un backend S3 minimal', slug: 'securite-cloud/tp-tfstate-s3-minimal' },
               ],
             },
             {
