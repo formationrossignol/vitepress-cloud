@@ -150,6 +150,7 @@ export default defineConfig({
               items: [
                 { label: 'Cours', slug: 'securite-cloud/14-outils-securite-aws-azure-gcp' },
                 { label: 'TP : Scanner un compte AWS minimal avec Prowler sans coûts', slug: 'securite-cloud/tp-prowler-aws-minimal' },
+                { label: "TP : Cartographier les chemins d'attaque AWS avec CloudFox", slug: 'securite-cloud/tp-cloudfox-aws-attack-paths' },
               ],
             },
             { label: '15. Zero Trust : Architecture avancée', slug: 'securite-cloud/15-zero-trust-architecture' },
