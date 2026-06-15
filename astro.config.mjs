@@ -145,7 +145,13 @@ export default defineConfig({
               ],
             },
             { label: '13. Gouvernance & Conformité cloud', slug: 'securite-cloud/13-gouvernance-conformite-cloud' },
-            { label: '14. Outils de sécurité : AWS, Azure et GCP', slug: 'securite-cloud/14-outils-securite-aws-azure-gcp' },
+            {
+              label: '14. Outils de sécurité : AWS, Azure et GCP',
+              items: [
+                { label: 'Cours', slug: 'securite-cloud/14-outils-securite-aws-azure-gcp' },
+                { label: 'TP : Scanner un compte AWS minimal avec Prowler sans coûts', slug: 'securite-cloud/tp-prowler-aws-minimal' },
+              ],
+            },
             { label: '15. Zero Trust : Architecture avancée', slug: 'securite-cloud/15-zero-trust-architecture' },
             { label: '16. Cas réels : incidents cloud majeurs', slug: 'securite-cloud/16-cas-reels-incidents-cloud' },
             {
