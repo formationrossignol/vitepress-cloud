@@ -117,6 +117,7 @@ export default defineConfig({
                 { label: 'TP : Créer un cluster Kind vulnérable et manipuler pods, namespaces et RBAC', slug: 'securite-cloud/tp-kind-cluster-vulnerable' },
                 { label: 'TP : Scanner un cluster Kubernetes avec Kubescape', slug: 'securite-cloud/tp-kubescape-cluster-scan' },
                 { label: 'TP : Vérifier le CIS Kubernetes Benchmark avec kube-bench', slug: 'securite-cloud/tp-kube-bench-cis' },
+                { label: 'TP : Détection runtime avec Falco sur Kind', slug: 'securite-cloud/tp-falco-kind-runtime' },
               ],
             },
             {
