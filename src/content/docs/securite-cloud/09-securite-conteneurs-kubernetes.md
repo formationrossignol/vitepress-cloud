@@ -243,6 +243,39 @@ cluster.
 | •  KSPM (K8s Security Posture<br>Management) open source CNCF<br>•  Audite clusters K8s / EKS / AKS /<br>GKE / OpenShift<br>•  Frameworks : CIS K8s 1.8 ·<br>NSA/CISA · MITRE ATT&CK<br>•  Analyse : RBAC · Network Policies ·<br>PSS · Images<br>•  Score de risque 0-100 par<br>namespace et par cluster<br>•  Alternatives : kube-bench (CIS<br>uniquement) · Polaris · Trivy<br>•  ARMO Platform : version cloud<br>avec monitoring continu | $> kubescape scan --submit (scan +<br>dashboard cloud)<br>$> kubescape scan framework cis-eks<br>(scan CIS EKS spécifique)<br>$> kubescape scan framework nsa<br>(framework NSA/CISA)<br>$> kubescape scan control C-0013 (1<br>contrôle précis)<br>$> kubescape scan --severity critical<br>(filtrer par criticité)<br>$> kubescape scan --exceptions<br>./exceptions.json<br>$> kubescape scan image nginx:latest<br>(scan image) | •  kube-bench : CIS K8s uniquement, très<br>léger, nodes only<br>•  Kubescape : multi-framework,<br>ressources K8s + images<br>•  Polaris : best practices Fairwinds, UX<br>orientée devs<br>•  Kubescape : plus complet mais plus<br>lourd que kube-bench<br>•  Trivy : scan images + misconfigs K8s (alt.<br>léger)<br>•  Recommandation : Kubescape (complet)<br>+ kube-bench (CIS nodes)<br>•  Tous peuvent coexister dans un pipeline<br>CI/CD |
 
 
+## NeuVector : Sécurité containers & K8s full lifecycle
+
+NeuVector (open source depuis 2022, racheté par SUSE) est une plateforme CWPP complète pour Kubernetes : Réseau Zero Trust, analyse des vulnérabilités et conformité.
+
+| Concept & position | Fonctionnalités clés |
+| --- | --- |
+| CWPP (Cloud Workload Protection Platform) pour Kubernetes | Sécurité réseau : micro-segmentation automatique des Pods et contrôle des communications |
+| Concurrent : Falco (runtime) + Trivy (scan) + Calico | Apprentissage comportemental : identification automatique des flux et comportements légitimes |
+| NeuVector = solution tout-en-un : scan + runtime + réseau | Protection à l'exécution (runtime) : détection et blocage des activités anormales ou malveillantes |
+| Déployé en DaemonSet sur chaque nœud Kubernetes | Analyse des vulnérabilités : scan continu des images de conteneurs et des nœuds Kubernetes |
+| Alternatives : Aqua Security, Sysdig, Prisma Cloud Compute | Conformité réglementaire : vérification automatisée des référentiels CIS Kubernetes, PCI-DSS et HIPAA |
+| Forces : réseau Zero Trust natif, sans agent séparé | Pare-feu applicatif (WAF) : protection des applications et des flux HTTP/HTTPS (couche 7) |
+| — | Prévention des fuites de données (DLP) : détection des données sensibles circulant dans les communications réseau |
+
+
+## NeuVector vs Falco
+
+| Critère | Falco | NeuVector |
+| --- | --- | --- |
+| Positionnement | Détection comportementale à l'exécution | Plateforme complète de sécurité Kubernetes |
+| Détection | Détection des comportements suspects | Détection des menaces et anomalies |
+| Prévention | Alertes uniquement | Détection et blocage des menaces |
+| Sécurité réseau | Non | Micro-segmentation et réseau Zero Trust |
+| Analyse des vulnérabilités | Non | Scan des images, conteneurs et nœuds |
+| Conformité | Non | Contrôles CIS Benchmarks, PCI-DSS, HIPAA, etc. |
+| Approche | Outil spécialisé runtime sécurité | Solution tout-en-un (runtime + réseau + scan) |
+| Configuration | Règles Falco (YAML) | Interface graphique, API et CRD Kubernetes |
+| Complexité | Léger et simple à déployer | Plus complet mais plus complexe |
+| Cas d'usage privilégié | Détection d'intrusion et surveillance runtime | Protection globale des workloads Kubernetes |
+| Avantages | Léger, flexible, modulaire | Couverture sécurité étendue |
+| Limites | Pas de prévention native ni de sécurité réseau | Plus lourd et plus riche fonctionnellement |
+
+
 ## Prêt pour lundi
 
 | # | Action | Commande | Durée / Coût | Impact |

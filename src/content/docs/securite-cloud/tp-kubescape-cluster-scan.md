@@ -1017,30 +1017,4 @@ rm -rf tp-kubescape-cluster-scan
 | Rapport | Un rapport Markdown est disponible dans `reports/` |
 | Nettoyage | Le cluster Kind est supprimé |
 
-Les fichiers suivants doivent avoir été produits :
-
-```text
-kind/kind-config.yaml
-manifests/secure/01-serviceaccount.yaml
-manifests/secure/02-role.yaml
-manifests/secure/03-rolebinding.yaml
-manifests/secure/04-secure-pod.yaml
-manifests/secure/05-networkpolicy.yaml
-manifests/vulnerable/01-secret.yaml
-manifests/vulnerable/02-serviceaccount.yaml
-manifests/vulnerable/03-cluster-admin-binding.yaml
-manifests/vulnerable/04-vulnerable-pod.yaml
-manifests/vulnerable/05-vulnerable-deployment.yaml
-reports/00-tools-diagnostic.txt
-reports/05-kubescape-manifests-vulnerable-nsa.json
-reports/11-kubescape-cluster-global.json
-reports/13-kubescape-cluster-nsa.json
-reports/15-kubescape-namespace-vulnerable-nsa.json
-reports/22-kubescape-image-nginx.json
-reports/32-kubescape-namespace-secure-nsa.json
-reports/36-kubescape-comparison.md
-reports/rapport-tp-kubescape-cluster-scan.md
-scripts/env.sh
-```
-
 Aucune ressource cloud, aucune clé AWS et aucun compte externe ne sont utilisés pendant ce TP.

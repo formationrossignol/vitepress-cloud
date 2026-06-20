@@ -110,6 +110,75 @@ rollback est instantané. Idéal pour les nœuds K8s.
 | Auditabilité | Difficile : état peut diverger | Totale : infrastructure as code = source de vérité |
 
 
-## Checklist de hardening production (CIS k8s benchmark)
+## Focus sur NixOS
 
+- Distribution Linux basée sur le gestionnaire de paquets Nix.
+- Créateur : Eelco Dolstra
+- Origine : projet de recherche universitaire, débuté vers 2003, Université d'Utrecht (Pays-Bas).
+- Compatible avec : AWS, GCP, Azure, Terraform, Kubernetes, etc.
+- NixOS transforme Linux en plateforme :
+  - **Déclarative** : système où l'on décrit l'état souhaité de l'infrastructure ou du système, sans écrire les étapes détaillées pour y arriver.
+  - **Reproductible** : système pouvant reconstruire exactement le même environnement, à l'identique, sur n'importe quelle machine.
+  - **Immuable** : système qu'on ne modifie pas directement en production.
+- Alternatives : Flatcar Container Linux, Bottlerocket (AWS), Talos Linux, RHCOS (OpenShift).
+
+
+## Checklist de hardening production (CIS K8s Benchmark)
+
+### Control Plane & Worker Nodes
+
+**API Server :**
+- `--anonymous-auth=false`
+- `--authorization-mode=Node,RBAC`
+
+**etcd :**
+- chiffrement au repos (encryption-config)
+- TLS client auth
+
+**Controller Manager :**
+- `--use-service-account-credentials=true`
+
+**Scheduler :**
+- `--authorization-mode=RBAC`
+- pas de Webhook sans authentification
+
+**Kubelet :**
+- `--anonymous-auth=false`
+- `--authorization-mode=Webhook`
+- droits 600 sur kubelet.conf, ca.crt, etc.
+- pas de ports inutiles ouverts sur les nodes
+- SSH (22) uniquement via bastion
+
+**OS :**
+- CIS Linux Benchmark niveau 2
+- auditd configuré
+- SELinux/AppArmor activé
+
+### Workloads & Réseau
+
+**Pod Security Standards :**
+- profil Restricted pour les workloads critiques
+- `runAsNonRoot: true` + `runAsUser > 1000`
+- `ReadOnlyRootFilesystem: true` sur tous les containers
+- `resources.limits` obligatoires (CPU + mémoire)
+
+**Réseau :**
+- Network Policies : default deny all dans chaque namespace
+- Pas de `hostNetwork: true` (sauf cas très spécifiques CNI plugins)
+- Services de type LoadBalancer uniquement si nécessaire (préférer Ingress)
+- Ingress avec TLS obligatoire : cert-manager pour rotation automatique
+
+### RBAC & Secrets
+
+**RBAC & ServiceAccounts :**
+- `automountServiceAccountToken: false` si le pod n'a pas besoin de l'API Kubernetes
+- ServiceAccounts dédiés par application (ne jamais utiliser le ServiceAccount par défaut)
+- Pas de ClusterRoleBinding avec wildcards (`*` dans verbs ou resources interdit)
+- Revues régulières : `kubectl auth can-i --list --as=system:serviceaccount:...`
+
+**Secrets & Config :**
+- Encryption at rest activée pour les secrets etcd (EncryptionConfiguration)
+- Secrets Kubernetes uniquement pour données temporaires — préférer Vault / Secrets Manager
+- ConfigMaps : ne pas stocker de données sensibles (même encodées en Base64)
+- IRSA / Workload Identity pour accès au fournisseur de cloud — pas de clés statiques
 

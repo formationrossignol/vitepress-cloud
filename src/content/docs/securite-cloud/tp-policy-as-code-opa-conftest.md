@@ -1072,33 +1072,4 @@ rm -rf tp-policy-as-code-terraform-plan
 | Rapport | Un rapport Markdown est disponible dans `reports/` |
 | Nettoyage | Aucun état Terraform ni ressource cloud ne reste présent |
 
-Les fichiers suivants doivent avoir été produits :
-
-```text
-policy/terraform_plan.rego
-reports/00-tools-diagnostic.txt
-reports/01-non-conformites-attendues.md
-reports/02-conftest-policy-verify.txt
-reports/03-vulnerable-validate.txt
-reports/04-vulnerable-plan-resources.tsv
-reports/05-vulnerable-policy-violations.txt
-reports/06-vulnerable-policy-gate.txt
-reports/07-vulnerable-policy-gate-status.txt
-reports/08-vulnerable-plan-blocked.txt
-reports/09-secure-validate.txt
-reports/10-secure-plan-resources.tsv
-reports/11-secure-policy-gate.txt
-reports/12-vulnerable-violation-count.txt
-reports/13-secure-violation-count.txt
-reports/14-policy-comparison.md
-reports/rapport-tp-policy-as-code-terraform-plan.md
-scripts/apply-with-policy-gate.sh
-scripts/env.sh
-scripts/policy-gate.sh
-scripts/select-iac-cli.sh
-secure/main.tf
-secure/terraform.tfvars.example
-vulnerable/main.tf
-```
-
 Aucune ressource cloud, aucun état Terraform et aucun `apply` ne doivent être produits pendant ce TP.

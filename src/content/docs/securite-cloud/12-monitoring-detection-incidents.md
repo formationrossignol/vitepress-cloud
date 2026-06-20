@@ -20,6 +20,45 @@ AWS afin d'assurer la traçabilité, la conformité, l'investigation et la déte
 ![Slide 273](/securite-cloud/12-monitoring-detection-incidents/p273_00_Image79.jpg)
 
 
+## Architecture SIEM cloud : Sources, transport et corrélation
+
+Un SIEM cloud agrège les journaux issus des services, applications et infrastructures, les normalise, les corrèle, puis déclenche des alertes exploitables pour accélérer l'investigation et la réponse aux incidents.
+
+
+## Microsoft Sentinel : SIEM/SOAR cloud-native
+
+Microsoft Sentinel est une solution SIEM/SOAR cloud-native qui centralise les signaux de sécurité, détecte les menaces, facilite l'investigation et automatise la réponse aux incidents.
+
+| Capacité Sentinel | Rôle dans le SOC |
+| --- | --- |
+| Collecte | Ingestion des logs cloud, endpoint, identité, réseau, SaaS et applications |
+| Détection | Règles analytiques, corrélation, threat intelligence et UEBA |
+| Investigation | Regroupement des alertes en incidents exploitables par le SOC |
+| Réponse | Automatisation via playbooks, workflows et actions de remédiation |
+| Chasse (Hunting) | Interroger les logs avec le langage KQL (Kusto Query Language) pour rechercher des signaux faibles, anomalies ou traces d'attaque |
+| Usage principal | Superviser, détecter, investiguer et répondre aux menaces à l'échelle cloud |
+
+### Exemple de KQL
+
+```kql
+SecurityEvent
+| where TimeGenerated > ago(1h)
+| where EventID == 4625
+| summarize NombreEchecs = count() by Account, Computer, bin(TimeGenerated, 10m)
+| where NombreEchecs >= 5
+| order by NombreEchecs desc
+```
+
+| Étape | Rôle |
+| --- | --- |
+| SecurityEvent | Interroge les événements de sécurité Windows collectés dans Sentinel |
+| where TimeGenerated > ago(1h) | Limite l'analyse à la dernière heure |
+| where EventID == 4625 | Filtre les échecs de connexion Windows |
+| summarize count() | Compte les échecs par compte, machine et fenêtre de temps |
+| where NombreEchecs >= 5 | Remonte les cas suspects |
+| order by | Affiche les résultats les plus importants en premier |
+
+
 ## MITRE ATT&CK pour le cloud : Tactiques et techniques
 
 - MITRE ATT&CK Cloud est une déclinaison du référentiel MITRE ATT&CK dédiée aux
@@ -42,9 +81,9 @@ afin d’améliorer la détection, la réponse à incident et le durcissement de
 ![Slide 279](/securite-cloud/12-monitoring-detection-incidents/p279_02_Image81.jpg)
 
 
-## Réponse aux incidents cloud : Phases picerl
+## Réponse aux incidents cloud : Phases PICERL
 
-PIRCEL est un modèle de réponse aux incidents permettant de structurer les actions depuis la préparation jusqu'à l'amélioration
+PICERL est un modèle de réponse aux incidents permettant de structurer les actions depuis la préparation jusqu'à l'amélioration
 continue après l'incident.
 
 | Préparation | Identification | Confinement |

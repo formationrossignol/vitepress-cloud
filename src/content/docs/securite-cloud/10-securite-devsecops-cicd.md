@@ -177,18 +177,67 @@ infrastructures et identités tout au long de leur cycle de vie.
 ![Slide 255](/securite-cloud/10-securite-devsecops-cicd/p255_07_Image78.jpg)
 
 
-## Lambda, step functions, cloud run
+## Lambda, Step Functions, Cloud Run
 
-Sans serveur, sans réseau traditionnel, sans OS à patcher mais avec une surface d'attaque radicalement différente centrée sur les
-permissions IAM et les déclencheurs d'événements.
-Paradigme Serverless : Pas de serveur à gérer → Pas de port 22 → Pas de OS à patcher. MAIS : chaque fonction = 1 identité IAM · chaque
-déclencheur = 1 vecteur d'attaque · chaque variable d'env = 1 risque de secret exposure.
+Sans serveur, sans réseau traditionnel, sans OS à patcher mais avec une surface d'attaque radicalement différente centrée sur les permissions IAM et les déclencheurs d'événements.
+Paradigme Serverless : Pas de serveur à gérer → Pas de port 22 → Pas d'OS à patcher. MAIS : chaque fonction = 1 identité IAM · chaque déclencheur = 1 vecteur d'attaque · chaque variable d'env = 1 risque de secret exposure.
 
 
-## Step functions, cloud run & event-driven architecture
+## Sécurité du serverless
 
-Les orchestrateurs serverless (Step Functions, Cloud Run, EventBridge) enchaînent des Lambdas. Une faille dans la chaîne = compromission
-de l'ensemble du pipeline.
+Le serverless réduit la gestion de l'infrastructure, mais déplace les risques vers les identités, les événements, les permissions, les dépendances, les secrets et l'observabilité.
+
+| Dimension | Enjeu de sécurité |
+| --- | --- |
+| Identités d'exécution | Chaque fonction ou service serverless doit utiliser une identité dédiée avec des permissions minimales |
+| Déclencheurs | Les sources capables d'invoquer une fonction doivent être strictement contrôlées |
+| Événements | Les messages entrants doivent être filtrés, validés et limités pour éviter les traitements non prévus |
+| Secrets | Les secrets ne doivent pas être stockés dans le code ou exposés dans les variables d'environnement |
+| Dépendances | Les bibliothèques, layers, images ou packages utilisés par les fonctions doivent être scannés et maintenus |
+| Réseau privé | Les fonctions doivent accéder aux ressources sensibles via VPC/VNet, points de terminaison privés ou connectivité maîtrisée |
+| Journalisation | Les logs doivent permettre l'audit sans exposer de secrets, tokens ou données sensibles |
+| Résilience | Retries, timeouts, quotas et dead-letter queues doivent éviter les boucles, pertes ou surcoûts |
+| Surface d'attaque | APIs, points de terminaison publics, permissions excessives et intégrations événementielles deviennent les principaux points d'exposition |
+
+
+## Secrets Management & architecture sécurisée Lambda
+
+Une fonction Lambda ne doit jamais embarquer de secrets en dur : elle doit récupérer des secrets à la demande, avec une identité IAM limitée et des accès réseau contrôlés.
+
+| Élément | Description |
+| --- | --- |
+| Principe | La fonction Lambda utilise son rôle IAM pour récupérer uniquement les secrets nécessaires |
+| Stockage des secrets | AWS Secrets Manager ou Systems Manager Parameter Store |
+| Accès aux secrets | Récupération dynamique, éventuellement avec cache via l'extension AWS Parameters and Secrets Lambda Extension |
+| Permissions | Rôle IAM dédié, principe du moindre privilège, accès limité par secret, ressource et action |
+| Réseau | Lambda placée dans un VPC si elle doit accéder à des ressources privées |
+| Accès privé | VPC Endpoint / PrivateLink pour accéder à Secrets Manager sans passer par Internet public |
+| Journalisation | Logs CloudWatch sans exposition de secrets dans les traces, erreurs ou variables affichées |
+
+Cas d'usage :
+- Connexion sécurisée à une base de données depuis Lambda
+- Récupération d'un mot de passe, token API ou certificat depuis Secrets Manager
+- Rotation centralisée des secrets sans redéployer le code
+- Accès privé à une base RDS, un cache Redis ou une API interne
+- Suppression des secrets stockés dans le code, les variables CI/CD ou les dépôts Git
+- Contrôle fin des permissions par fonction Lambda
+
+
+## Sécurité des architectures serverless et événementielles
+
+Les orchestrateurs serverless (Step Functions, Cloud Run, EventBridge) enchaînent des fonctions. Une faille dans la chaîne = compromission de l'ensemble du pipeline.
+
+| Composant serverless | Objectif de sécurité | AWS | Azure | GCP |
+| --- | --- | --- | --- | --- |
+| Source d'événement | Autoriser uniquement les événements issus de sources légitimes | S3, EventBridge, SNS | Event Grid, Blob Storage, Service Bus | Eventarc, Cloud Storage, Pub/Sub |
+| Routage événementiel | Filtrer les événements pour éviter les déclenchements non prévus | EventBridge rules | Event Grid subscriptions | Eventarc triggers |
+| Traitement serverless | Exécuter le traitement avec une identité dédiée et des droits minimaux | Lambda | Azure Functions | Cloud Functions, Cloud Run |
+| Orchestration | Encadrer les étapes, conditions, erreurs, retries et compensations | Step Functions | Durable Functions, Logic Apps | Workflows |
+| File / message broker | Découpler les traitements et absorber les pics sans perte d'événements | SQS, SNS | Service Bus, Storage Queues | Pub/Sub |
+| Messages en échec | Isoler les événements non traités pour analyse, reprise ou investigation | SQS DLQ, EventBridge DLQ | Service Bus DLQ, Event Grid dead-letter | Pub/Sub dead-letter topic |
+| Retries automatiques | Maîtriser les relances pour éviter doublons, boucles ou surconsommation | Lambda retries, EventBridge retries | Azure Functions retries, Event Grid retry policy | Eventarc retries, Pub/Sub retry policy |
+| Payload événementiel | Limiter les données sensibles et valider le contenu avant traitement | Validation applicative, IAM, KMS | Managed identities, Key Vault, RBAC | IAM, Secret Manager, Cloud KMS |
+| Traçabilité | Suivre le cycle complet d'un événement, du déclenchement au traitement | CloudWatch, X-Ray, CloudTrail | Monitor, Application Insights, Activity Logs | Cloud Logging, Cloud Trace, Audit Logs |
 
 
 ## Prêt pour lundi

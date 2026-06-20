@@ -67,24 +67,6 @@ Les conteneurs doivent être arrêtés à la fin du TP.
 * Comparer le comportement de deux clients avec des quotas indépendants.
 * Produire un rapport local des tests réalisés.
 
-## Architecture cible
-
-```text
-Client
-  |
-  | http://localhost:8000/api/hello
-  v
-Kong OSS (port 8000)
-  |
-  | http://api:8080/hello
-  v
-API locale Python (port 8080 interne, 9000 externe)
-```
-
-L'API locale est exposée sur le port `9000` pour les tests directs.
-
-Kong OSS est exposé sur le port `8000` pour les tests via API Gateway.
-
 ## Commandes
 
 ### 1. Créer l'arborescence du TP

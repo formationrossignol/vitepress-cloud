@@ -1001,32 +1001,4 @@ rm -rf tp-kind-cluster-vulnerable
 | Correction RBAC | Permissions limitées à la lecture des Pods |
 | Nettoyage | Cluster Kind supprimé |
 
-Les fichiers suivants doivent avoir été produits :
-
-```text
-kind/kind-config.yaml
-manifests/secure/01-limited-serviceaccount.yaml
-manifests/secure/02-limited-role.yaml
-manifests/secure/03-limited-rolebinding.yaml
-manifests/secure/04-secure-pod.yaml
-manifests/vulnerable/01-secret.yaml
-manifests/vulnerable/02-bad-serviceaccount.yaml
-manifests/vulnerable/03-cluster-admin-binding.yaml
-manifests/vulnerable/04-vulnerable-pod.yaml
-manifests/vulnerable/05-prod-pod.yaml
-manifests/vulnerable/06-wide-role.yaml
-manifests/vulnerable/07-dev-user-sa.yaml
-manifests/vulnerable/08-wide-rolebinding.yaml
-reports/03-nodes.txt
-reports/05-namespaces-created.txt
-reports/10-bad-sa-can-i-all.txt
-reports/14-vulnerable-pod-security-summary.json
-reports/26-audit-vulnerable-cluster.txt
-reports/35-secure-pod-security-summary.json
-reports/36-audit-after-fix.txt
-reports/rapport-tp-kind-cluster-vulnerable.md
-scripts/audit-cluster.sh
-scripts/env.sh
-```
-
 Aucune ressource cloud, aucune clé AWS et aucun compte externe ne sont utilisés pendant ce TP.

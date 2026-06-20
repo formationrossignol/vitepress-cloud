@@ -99,15 +99,35 @@ applications ou services, sans avoir à se reconnecter ni à gérer plusieurs mo
 ![Slide 122](/securite-cloud/06-identity-access-management/p122_02_Image44.jpg)
 
 
-## SAML 2.0 : 
+## SAML 2.0 : Security Assertion Markup Language
 
-Security Assertion Markup Language
+SAML 2.0 (Security Assertion Markup Language) est un standard XML permettant d'échanger des informations d'authentification et d'autorisation entre un fournisseur d'identité (IdP) et un fournisseur de service (SP).
+
+| Rôle | Description |
+| --- | --- |
+| Fournisseur d'identité | Authentifie l'utilisateur et émet l'assertion SAML |
+| Fournisseur de service | Application qui reçoit l'assertion et donne l'accès |
+| Usage principal | SSO entreprise vers applications SaaS ou cloud |
+
+Cas d'usage :
+- SSO entreprise : accès à Salesforce, ServiceNow, Microsoft 365
+- Fournisseur de cloud : connexion fédérée à AWS, Azure ou GCP
+- Partenaires : accès inter-entreprises sans créer de comptes locaux
+- Gestion centralisée : départ d'un collaborateur = révocation côté fournisseur d'identité
 
 
-## SAML 2.0 : Security assertion markup language
+## L'assertion SAML 2.0
 
-Le Single Sign-On (SSO) permet à un utilisateur de s'authentifier une seule fois afin d'accéder de manière sécurisée à plusieurs
-applications ou services, sans avoir à se reconnecter ni à gérer plusieurs mots de passe.
+L'assertion SAML est une preuve XML signée : elle indique qui est l'utilisateur, qui l'a authentifié, pour quelle application et avec quels attributs.
+
+| Extrait de code XML | Explication |
+| --- | --- |
+| `<saml:Issuer>https://idp.entreprise.com</saml:Issuer>` | Qui émet l'assertion : le fournisseur d'identité (Azure AD, Okta, Keycloak…) |
+| `<saml:NameID>alice@entreprise.com</saml:NameID>` | Qui est l'utilisateur : l'identité principale transmise à l'application |
+| `<saml:Conditions NotOnOrAfter="10:20Z">` | Quand l'assertion est valide : durée courte pour limiter le risque de réutilisation |
+| `<saml:Audience>https://app.example.com</saml:Audience>` | Pour quelle application : l'assertion ne doit être acceptée que par ce fournisseur de service |
+| `<saml:AuthnStatement AuthnInstant="10:14Z" />` | Preuve d'authentification : indique que l'utilisateur a bien été authentifié par l'IdP |
+| `<saml:Attribute Name="role">cloud-security-admin</saml:Attribute>` | Attributs transmis : rôle, groupe, email ou autre information utilisée pour autoriser l'accès |
 
 
 ## Fonctionnement
@@ -134,9 +154,9 @@ applications ou services, sans avoir à se reconnecter ni à gérer plusieurs mo
 ![Slide 131](/securite-cloud/06-identity-access-management/p131_05_Image48.jpg)
 
 
-## Workload identity federation
+## Workload Identity Federation
 
-
+Workload Identity Federation n'est pas un protocole unique, mais un modèle permettant à une charge de travail d'utiliser une identité externe vérifiable pour obtenir des accès temporaires, sans clé ou secret longue durée. Le principe existe chez Google Cloud, Microsoft Entra et AWS, notamment via OIDC et STS.
 
 
 

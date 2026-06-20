@@ -834,26 +834,4 @@ rm -rf tp-prowler-aws-minimal
 | Gate | High et Critical utilisés comme critère de blocage |
 | Rapport | Synthèse Markdown disponible |
 
-Les fichiers suivants doivent avoir été produits :
-
-```text
-reports/00-aws-identity.json
-reports/03-cost-scope.md
-reports/14-prowler-scan-console.txt
-reports/22-prowler-summary.md
-reports/23-prowler-failures.tsv
-reports/25-prowler-high-critical.md
-reports/35-prowler-gate.txt
-reports/37-prowler-gate-result.txt
-reports/rapport-tp-prowler-aws-minimal.md
-reports/prowler/*.csv
-reports/prowler/*.json
-reports/prowler/*.html
-scripts/analyze-prowler-csv.py
-scripts/env.sh
-scripts/extract-prowler-failures.py
-scripts/extract-prowler-high-critical.py
-scripts/prowler-gate.py
-```
-
 Aucune ressource AWS n'est créée, modifiée ou supprimée pendant ce TP.

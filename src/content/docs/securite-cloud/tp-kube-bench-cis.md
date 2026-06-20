@@ -136,20 +136,6 @@ Le cluster doit être supprimé à la fin du TP.
 * Comparer les résultats avant et après correction.
 * Produire un rapport local des résultats.
 
-## Architecture cible
-
-```text
-Poste local
-  |
-  | kube-bench run (local)
-  | kubectl apply -f job.yaml (dans Kubernetes)
-  v
-kube-bench Pod (hostPID, accès aux fichiers hôte)
-  |
-  v
-Rapport CIS Kubernetes Benchmark
-```
-
 ## Commandes
 
 ### 1. Créer l'arborescence du TP
@@ -1047,30 +1033,5 @@ rm -rf tp-kube-bench-cis
 | Correction workload | Pod sécurisé et NetworkPolicy créés |
 | Comparaison | Résultats avant et après comparés |
 | Nettoyage | Cluster Kind supprimé |
-
-Les fichiers suivants doivent avoir été produits :
-
-```text
-kind/kind-config.yaml
-manifests/demo/01-weak-pod.yaml
-manifests/kube-bench/01-kube-bench-text-job.yaml
-manifests/kube-bench/02-kube-bench-json-job.yaml
-manifests/kube-bench/03-kube-bench-text-job-after.yaml
-manifests/kube-bench/04-kube-bench-json-job-after.yaml
-manifests/secure/01-secure-pod.yaml
-manifests/secure/02-networkpolicy.yaml
-reports/00-tools-diagnostic.txt
-reports/11-kube-bench-text-results.txt
-reports/13-kube-bench-results.json
-reports/15-kube-bench-failures.tsv
-reports/16-kube-bench-remediations.md
-reports/21-cis-domains-summary.md
-reports/26-kube-bench-results-after.json
-reports/27-kube-bench-comparison.md
-reports/rapport-tp-kube-bench-cis.md
-scripts/compare-kube-bench.sh
-scripts/env.sh
-scripts/kube-bench-summary.sh
-```
 
 Aucune ressource cloud, aucune clé AWS et aucun compte externe ne sont utilisés pendant ce TP.

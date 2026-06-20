@@ -72,7 +72,7 @@ title: "14. Outils de sécurité : AWS, Azure et GCP"
 | Audit Manager | Compliance Manager | Assured Workloads | Pilotage de la conformité réglementaire |
 
 
-## Panaroma des services de sécurité AWS
+## Panorama des services de sécurité AWS
 
 
 | Identité | Réseau | Données |
@@ -83,6 +83,18 @@ title: "14. Outils de sécurité : AWS, Azure et GCP"
 
 
 ## AWS GuardDuty
+
+- Détection intelligente des menaces pour protéger le compte AWS.
+- Utilise des algorithmes de machine learning, détection d'anomalies, des données tierces.
+- Un clic pour activer (essai de 30 jours), pas besoin d'installer de logiciel.
+- Les données d'entrée :
+  - Journaux d'événements CloudTrail : appels d'API inhabituels, déploiements non autorisés :
+    - Événements de gestion CloudTrail : créer un sous-réseau VPC, créer un suivi, etc.
+    - Événements de données CloudTrail S3 : obtenir un objet, lister des objets, supprimer un objet, etc.
+  - Journaux de flux VPC : trafic interne inhabituel, adresse IP inhabituelle.
+  - Journaux DNS : instances EC2 compromises envoyant des données codées dans les requêtes DNS.
+  - Journaux d'audit Kubernetes : activités suspectes et compromis potentiels de cluster EKS.
+- Les alertes de sécurité (findings) GuardDuty peuvent être routées via Amazon EventBridge vers AWS Lambda, Amazon SNS ou AWS Security Hub.
 
 
 ![Slide 308](/securite-cloud/14-outils-securite-aws-azure-gcp/p308_00_Image84.jpg)
@@ -154,22 +166,18 @@ réseau).
 
 ## AWS CloudTrail Lake : Analyse et investigation des journaux
 
-CloudTraiL
-- Service AWS managé permettant de centraliser, conserver et interroger les événements CloudTrail via
-SQL, sans infrastructure Athena, S3 ou Glue à administrer.
+- Service AWS managé permettant de centraliser, conserver et interroger les événements CloudTrail via SQL, sans infrastructure Athena, S3 ou Glue à administrer.
 - Fonctionnalités clés :
   - Requêtes SQL natives : Interrogation directe des événements CloudTrail avec SQL standard
-    - SELECT eventTime, eventName, userIdentity.arn, sourceIPAddress
-FROM my_event_data_store
-WHERE eventName = 'DeleteBucket';
-  - Rétention longue durée : Conservation configurable des journaux de 90 jours à 7 ans avec accès
-immédiat aux données historiques.
-  - Intégration native AWS : Compatible avec AWS Organizations, AWS Config et CloudTrail Insights
-pour une visibilité centralisée.
-  - Détection d'anomalies : CloudTrail Insights identifie automatiquement les comportements
-inhabituels et les pics d'activité API.
-  - Investigation et : Recherche rapide des actions réalisées par un utilisateur
-IAM, un rôle ou u lusieurs mois ou années.
+    ```sql
+    SELECT eventTime, eventName, userIdentity.arn, sourceIPAddress
+    FROM my_event_data_store
+    WHERE eventName = 'DeleteBucket';
+    ```
+  - Rétention longue durée : Conservation configurable des journaux de 90 jours à 7 ans avec accès immédiat aux données historiques.
+  - Intégration native AWS : Compatible avec AWS Organizations, AWS Config et CloudTrail Insights pour une visibilité centralisée.
+  - Détection d'anomalies : CloudTrail Insights identifie automatiquement les comportements inhabituels et les pics d'activité API.
+  - Investigation et analyse forensique : Recherche rapide des actions réalisées par un utilisateur IAM, un rôle ou une adresse IP sur plusieurs mois ou années.
 
 
 ## AWS CloudTrail Lake : Fonctionnement
@@ -180,11 +188,27 @@ IAM, un rôle ou u lusieurs mois ou années.
 
 ## IAM Identity Center
 
+- Service AWS pour centraliser les accès des utilisateurs.
+- Permet le SSO (Single Sign-On) vers plusieurs comptes AWS et applications.
+- Peut se connecter à un fournisseur d'identité existant :
+  - Microsoft Entra ID.
+  - Okta.
+  - Google Workspace.
+  - Active Directory.
+- Permet d'attribuer des accès par utilisateur ou groupe.
+- Utilise des permission sets pour définir les droits dans les comptes AWS.
+- Réduit le besoin de créer des utilisateurs IAM dans chaque compte.
+- Adapté aux environnements multi-comptes avec AWS Organizations.
+- Améliore la gouvernance, l'audit et l'application du moindre privilège.
+- En résumé :
+  - IAM Identity Center centralise les accès humains aux comptes AWS.
+  - IAM reste utilisé pour gérer les permissions, rôles et politiques AWS.
+
 
 ![Slide 318](/securite-cloud/14-outils-securite-aws-azure-gcp/p318_05_Image89.jpg)
 
 
-## Panaroma des services de sécurité Azure
+## Panorama des services de sécurité Azure
 
 
 | Identité | Réseau | Données |
@@ -193,6 +217,72 @@ IAM, un rôle ou u lusieurs mois ou années.
 | Charge de travail | Détection | Gourvernance |
 | Defender for Cloud<br>AKS Security<br>Container Registry<br>VM Protection<br>App Service Security | Microsoft Sentinel<br>Defender XDR<br>Monitor<br>Log Analytics<br>Defender for Cloud<br>Defender for Cloud Apps<br>Defender Threat Intelligence | Azure Policy<br>Blueprints<br>Landing Zones<br>Groupes d'administration<br>Cost Management<br>Microsoft Priva<br>Compliance Manager |
 
+
+## Microsoft Defender for Cloud
+
+Microsoft Defender for Cloud est la plateforme CNAPP de Microsoft Azure, combinant CSPM, protection des workloads et sécurité DevOps pour renforcer la posture de sécurité des environnements cloud, hybrides et multicloud.
+
+| Capacité Defender for Cloud | Contribution sécurité |
+| --- | --- |
+| Gestion de posture (CSPM) | Identifie les mauvaises configurations et évalue en continu le niveau de sécurité des ressources cloud. |
+| Secure Score | Mesure l'exposition au risque et fournit des recommandations de remédiation priorisées. |
+| Protection des workloads (CWPP) | Protège les VM, conteneurs, bases de données, stockages et services PaaS contre les menaces. |
+| Analyse des vulnérabilités | Détecte les vulnérabilités des systèmes, conteneurs et dépendances logicielles. |
+| Protection Kubernetes | Surveille les clusters Kubernetes et détecte les comportements anormaux ou malveillants. |
+| Sécurité DevOps | Analyse les dépôts Git, pipelines CI/CD et configurations IaC afin d'identifier les risques en amont. |
+| Détection des menaces | Génère des alertes de sécurité basées sur les signaux collectés et les modèles d'analyse Microsoft. |
+| Attack Path Analysis | Identifie les chemins d'attaque potentiels exploitables par un attaquant. |
+| Multicloud et hybride | Couvre AWS, GCP et les environnements on-premise en plus d'Azure. |
+| Conformité réglementaire | Évalue le respect des référentiels tels que ISO 27001, PCI-DSS, SOC 2 et RGPD. |
+
+
+## Microsoft Entra ID : Identité et accès Zero Trust
+
+Microsoft Entra ID est le socle d'identité Zero Trust de Microsoft : il centralise les accès, applique le MFA, le conditionnel et le moindre privilège.
+
+| Capacité Microsoft Entra ID | Contribution sécurité |
+| --- | --- |
+| Gestion des identités | Centralise les utilisateurs, groupes, applications et comptes de service. |
+| SSO | Permet un accès unifié aux applications cloud, SaaS et internes. |
+| MFA | Renforce l'authentification avec un second facteur. |
+| Accès conditionnel | Adapte l'accès selon l'utilisateur, l'appareil, la localisation, le risque et le contexte. |
+| Zero Trust | Vérifie explicitement chaque demande d'accès avant d'autoriser l'utilisateur. |
+| Protection des identités | Détecte les connexions suspectes et les comptes à risque. |
+| Moindre privilège | Limite les droits via les rôles, groupes et accès temporaires. |
+| Gouvernance des accès | Encadre les revues d'accès, les droits invités et le cycle de vie des identités. |
+
+
+## Microsoft Entra ID : Exemples de politiques d'accès conditionnel
+
+L'accès conditionnel applique les principes Zero Trust en adaptant dynamiquement les contrôles d'accès selon l'identité, le contexte, le niveau de risque et l'état de l'appareil.
+
+| Politique d'accès conditionnel | Signal analysé | Action appliquée | Priorité |
+| --- | --- | --- | --- |
+| MFA obligatoire pour les administrateurs | Utilisateur membre d'un rôle privilégié (Global Admin, Security Admin…) | Exiger une authentification multifacteur forte (FIDO2 recommandé) | Critique |
+| Blocage des authentifications héritées | Utilisation de protocoles legacy (IMAP, POP3, SMTP Auth, ActiveSync…) | Refuser la connexion | Élevée |
+| Appareil conforme obligatoire | Accès à Microsoft 365 depuis un terminal non géré ou non conforme | Autoriser uniquement les appareils conformes Intune | Élevée |
+| Blocage des utilisateurs à risque élevé | Niveau de risque utilisateur élevé détecté par Identity Protection | Bloquer l'accès jusqu'à remédiation | Critique |
+| MFA renforcé sur connexion à risque | Connexion inhabituelle ou niveau de risque de connexion moyen/élevé | Exiger une authentification supplémentaire | Élevée |
+| Accès limité pour les utilisateurs invités | Utilisateur externe B2B | Limiter l'accès aux applications autorisées et imposer le MFA | Moyenne |
+
+
+## Microsoft Purview
+
+Microsoft Purview permet de découvrir, classifier, protéger et gouverner les données sensibles afin de réduire les risques de fuite, de perte ou de non-conformité.
+
+| Capacité Microsoft Purview | Contribution sécurité |
+| --- | --- |
+| Découverte des données | Identifie automatiquement les données présentes dans les environnements cloud, SaaS et on-premise. |
+| Classification | Détecte et étiquette les données sensibles (RGPD, données financières, santé, secrets, etc.). |
+| Protection de l'information | Applique des labels de sensibilité, du chiffrement et des restrictions d'usage. |
+| Data Loss Prevention (DLP) | Empêche le partage ou l'exfiltration de données sensibles. |
+| Gouvernance des données | Cartographie les données, leurs propriétaires et leurs flux de circulation. |
+| Gestion des risques internes | Détecte les comportements pouvant entraîner une fuite de données ou une violation de conformité. |
+| eDiscovery & Audit | Facilite les enquêtes, audits et investigations réglementaires. |
+| Conformité | Aide à répondre aux exigences réglementaires telles que RGPD, ISO 27001, NIS2 ou PCI-DSS. |
+
+
+## Panorama des services de sécurité GCP
 
 | Identité | Réseau | Données |
 | --- | --- | --- |
@@ -204,6 +294,65 @@ IAM, un rôle ou u lusieurs mois ou années.
 ![Slide 333](/securite-cloud/14-outils-securite-aws-azure-gcp/p333_06_Image90.jp2)
 
 ![Slide 333](/securite-cloud/14-outils-securite-aws-azure-gcp/p333_07_Image91.jpg)
+
+
+## Security Command Center
+
+Security Command Center est le CSPM natif de Google Cloud, conçu pour centraliser la visibilité, détecter les mauvaises configurations et prioriser les risques de sécurité des environnements GCP.
+
+| Capacité Security Command Center | Contribution sécurité |
+| --- | --- |
+| Vision unifiée | Centralise les alertes, vulnérabilités, mauvaises configurations et menaces dans une console unique. |
+| Gestion de posture (CSPM) | Détecte les erreurs de configuration, les ressources exposées et les écarts par rapport aux bonnes pratiques. |
+| Détection des menaces | Identifie les comportements suspects, compromissions de comptes et activités malveillantes. |
+| Gestion des vulnérabilités | Analyse les VM, conteneurs et workloads afin d'identifier les vulnérabilités exploitables. |
+| Priorisation des risques | Corrèle les informations de sécurité pour mettre en avant les risques les plus critiques. |
+| Conformité | Aide à évaluer le respect des référentiels de sécurité et des exigences réglementaires. |
+| Intégration native GCP | S'appuie sur les services Google Cloud tels que Cloud Asset Inventory, Event Threat Detection et Container Scanning. |
+| Remédiation | Facilite l'investigation et l'application des actions correctives sur les ressources concernées. |
+
+
+## Google Security Operations (SecOps)
+
+Google Security Operations (SecOps) est la plateforme SIEM/SOAR de Google Cloud. Elle centralise les événements de sécurité, détecte les comportements malveillants, facilite les investigations et automatise la réponse aux incidents.
+
+| Capacité SecOps | Contribution sécurité |
+| --- | --- |
+| Collecte centralisée | Agrège les logs, alertes et événements provenant du cloud, du réseau, des endpoints et des applications. |
+| Détection avancée | Identifie les comportements suspects grâce aux règles de détection, à l'analyse comportementale et à l'IA. |
+| Threat Intelligence | Enrichit les alertes avec les renseignements de Google Threat Intelligence et Mandiant. |
+| Threat Hunting | Permet aux analystes de rechercher proactivement des indicateurs de compromission dans l'ensemble des données collectées. |
+| Investigation | Corrèle les événements et reconstitue la chronologie des attaques pour accélérer l'analyse. |
+| SOAR | Automatise les workflows de réponse, la qualification des alertes et les actions de remédiation. |
+| Visibilité unifiée | Fournit une vue centralisée des menaces, incidents et activités de sécurité. |
+| Pilotage SOC | Réduit les temps de détection (MTTD) et de réponse (MTTR) aux incidents. |
+
+
+## GCP Cloud Armor
+
+Google Cloud Armor protège les applications exposées contre les attaques DDoS et les attaques applicatives comme XSS ou SQL injection, via des politiques de sécurité appliquées au niveau des load balancers.
+
+| Capacité Cloud Armor | Contribution sécurité |
+| --- | --- |
+| Protection DDoS | Absorbe et filtre les attaques volumétriques avant qu'elles n'atteignent les workloads. |
+| WAF managé | Utilise des règles préconfigurées contre les risques applicatifs courants, dont l'OWASP Top 10. |
+| Règles personnalisées | Autorise, bloque ou limite le trafic selon IP, géolocalisation, en-têtes ou attributs de requête. |
+| Rate limiting | Réduit les abus, le scraping et les pics de requêtes anormaux. |
+| Adaptive Protection | Détecte les attaques L7 avec des modèles ML et suggère des règles de mitigation. |
+| Observabilité | Expose les décisions de filtrage dans Cloud Logging et Cloud Monitoring. |
+
+
+## IAM Recommender
+
+IAM Recommender analyse l'usage réel des permissions IAM et propose de supprimer ou réduire les rôles trop permissifs.
+
+| Capacité IAM Recommender | Contribution sécurité |
+| --- | --- |
+| Analyse d'usage IAM | Observe les permissions réellement utilisées par les utilisateurs, groupes et comptes de service. |
+| Détection des excès | Identifie les rôles trop larges ou inutilisés. |
+| Moindre privilège | Recommande des rôles plus précis ou la suppression de droits inutiles. |
+| Réduction du risque | Limite l'impact potentiel d'un compte compromis. |
+| Aide à la remédiation | Propose des actions concrètes pour ajuster les accès. |
 
 
 ## Comparatif : Quel outil pour quel besoin ?
@@ -242,17 +391,46 @@ risques les plus critiques.
 
 ## Top 10 OWASP pour les LLM 2025 & surface d'attaque cloud IA
 
-- AWS Bedrock, Azure OpenAI et Vertex AI facilitent le déploiement de LLM en production,
-mais créent une nouvelle surface d'attaque.
-- Les principaux risques concernent les injections de prompts, les fuites de données
-sensibles, les attaques sur les modèles et les données, ainsi que l'excès d'autonomie
-accordé aux systèmes d'IA.
+- AWS Bedrock, Azure OpenAI et Vertex AI facilitent le déploiement de LLM en production, mais créent une nouvelle surface d'attaque.
+- Les principaux risques concernent les injections de prompts, les fuites de données sensibles, les attaques sur les modèles et les données, ainsi que l'excès d'autonomie accordé aux systèmes d'IA.
+
+| Risque | Retenir |
+| --- | --- |
+| LLM01 - Prompt Injection | Manipulation du modèle via des instructions malveillantes |
+| LLM02 - Sensitive Information Disclosure | Divulgation de données sensibles ou confidentielles |
+| LLM03 - Supply Chain | Compromission des modèles, datasets ou dépendances |
+| LLM04 - Data and Model Poisoning | Altération des données d'entraînement ou du modèle |
+| LLM05 - Improper Output Handling | Exploitation des réponses du modèle par des systèmes aval |
+| LLM06 - Excessive Agency | Modèle disposant de trop de privilèges ou d'autonomie |
+| LLM07 - System Prompt Leakage | Fuite des instructions internes et règles du modèle |
+| LLM08 - Vector and Embedding Weaknesses | Attaques sur les bases vectorielles et mécanismes RAG |
+| LLM09 - Misinformation | Production d'informations erronées ou trompeuses |
+| LLM10 - Unbounded Consumption | Consommation excessive de ressources et coûts incontrôlés |
+
+## L'injection de prompts : risque n°1 des applications LLM
+
+L'injection de prompt consiste à manipuler les instructions fournies à un modèle d'IA afin de contourner les règles prévues par l'application et influencer son comportement.
 
 
 ![Slide 341](/securite-cloud/14-outils-securite-aws-azure-gcp/p341_09_Image93.jpg)
 
 
-## Cinq grande famille de guardials
+## Guardrails
+
+- Les Guardrails sont une couche de sécurité placée autour du LLM afin de :
+  - Contrôler les entrées
+  - Contrôler les sorties
+  - Contrôler les actions
+  - Appliquer des politiques de sécurité
+  - Protéger les données sensibles
+  - Limiter l'autonomie du modèle
+- Ils permettent de réduire les risques d'injection de prompts, de fuite de données sensibles et d'exécution d'actions non autorisées.
+- Ils jouent pour l'IA un rôle proche de celui d'un :
+  - WAF pour une application web
+  - Les groupes de sécurité pour un serveur
+  - Admission Controller pour Kubernetes
+
+## Cinq grandes familles de guardrails
 
 
 | Famille de<br>Guardrails | Rôle principal | Exemples de contrôles | Risques atténués |
@@ -339,21 +517,66 @@ générative en production en adressant les enjeux de confiance, de risque, de s
 | Management<br>(Gouvernance) | Superviser l’exploitation et assurer la<br>conformité | Audit des usages, surveillance continue, gestion des versions,<br>gouvernance des données |
 
 
-## Les nouveaux risques introduits par l'IA selon Gartner
+## Les nouveaux risques introduits par l’IA selon Gartner
 
 
 ![Slide 352](/securite-cloud/14-outils-securite-aws-azure-gcp/p352_14_Image98.jpg)
 
 
-## Pip install principalmapper
+## Tests de red teaming IA
 
+Le Red Teaming IA reproduit les comportements d’attaquants réels afin d’évaluer la robustesse des systèmes d’IA générative.
+Il permet d’identifier les vulnérabilités de sécurité, de sûreté et de conformité des LLM, des systèmes RAG et des agents IA avant qu’elles ne puissent être exploitées en production.
+
+
+## Sécuriser un pipeline RAG sur AWS Bedrock
+
+La sécurisation d’Amazon Bedrock repose sur une approche de défense en profondeur combinant IAM, Bedrock Guardrails, contrôle d’accès aux bases de connaissances, chiffrement des données et surveillance continue des usages du modèle.
+
+
+## AWS STS (Security Token Service) : Sessions temporaires
+
+AWS STS fournit des identifiants temporaires, limités dans le temps et traçables, pour accéder aux ressources AWS de manière plus sécurisée.
+
+| Élément | Description | Rôle |
+| --- | --- | --- |
+| Objectif | Émettre des identifiants temporaires | Remplacer les accès permanents par des accès limités dans le temps |
+| Credentials retournés | AccessKeyId, SecretAccessKey, SessionToken | — |
+| Durée | De 15 minutes à 12 heures selon la configuration du rôle | — |
+| Bénéfice sécurité | Réduit l’usage de clés statiques et améliore la traçabilité | — |
+
+### Capacités principales
+
+| Usage | Description |
+| --- | --- |
+| AssumeRole | Endosser temporairement un rôle IAM |
+| Fédération OIDC | Utiliser un fournisseur d’identité externe ou un workload |
+| Fédération SAML | Permettre l’accès via un fournisseur d’identité d’entreprise |
+| Accès cross-account | Accéder à des ressources dans un autre compte AWS |
+| Workloads temporaires | Fournir des accès temporaires aux Pods, applications ou pipelines |
+
+
+## PMapper : Analyse des chemins d’escalade de privilèges
+
+- PMapper (Principal Mapper) est un outil open source permettant d’analyser les relations IAM AWS afin d’identifier :
+  - les chemins d’escalade de privilèges
+  - les accès indirects à des rôles administrateurs
+  - les permissions dangereuses
+  - les chaînes d’attaque IAM
+- Il construit un graphe des relations entre :
+  - Utilisateurs IAM
+  - Relations de confiance
+  - Rôles IAM
+  - Politiques
+  - Permissions AWS
+
+```bash
+# Installer et analyser
+pip install principalmapper
 pmapper --account 123456789012 graph create
 pmapper --account 123456789012 analysis find_risks
-pmapper --account 123456789012 query 'who can becomeadmin?'
-
-| •  PMapper (Principal Mapper) est un outil open source permettant d’analyser les relations IAM AWS afin<br>d’identifier :<br>  ◦  les chemins d’escalade de privilèges<br>  ◦  les accès indirects à des rôles administrateurs<br>  ◦  les permissions dangereuses<br>  ◦  les chaînes d’attaque IAM<br>•  Il construit un graphe des relations entre :<br>  ◦  Utilisateurs IAM<br>  ◦  Relations de confiance<br>  ◦  Rôles IAM<br>  ◦  Politiques<br>  ◦  Permissions AWS # Installer et analyser |  |
-| --- | --- |
-|  | # Installer et analyser |
+pmapper --account 123456789012 query ‘who can becomeadmin?’
+```
 
 
 ## PMapper : Exemple

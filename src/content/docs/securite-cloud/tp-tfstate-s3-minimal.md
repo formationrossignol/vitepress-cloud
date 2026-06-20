@@ -174,20 +174,6 @@ Ne pas exécuter ce TP dans un compte de production.
 * Générer une policy IAM minimale pour le backend.
 * Nettoyer proprement le bucket et les fichiers locaux.
 
-## Architecture cible
-
-```text
-Poste local
-  |
-  | terraform plan / apply / state
-  v
-Backend S3 (chiffré, versionné, non public, HTTPS uniquement)
-  |
-  | terraform.tfstate
-  v
-Bucket S3 dédié
-```
-
 ## Commandes
 
 ### 1. Créer l'arborescence du TP
@@ -1010,31 +996,5 @@ rm -rf tp-tfstate-s3-minimal
 | Vérification | Objet `terraform.tfstate` visible dans S3 |
 | Historique | Plusieurs versions du state disponibles |
 | Nettoyage | Bucket, state et fichiers locaux supprimés |
-
-Les fichiers suivants doivent avoir été produits :
-
-```text
-app/backend.tf
-app/main.tf
-bootstrap/main.tf
-bootstrap/terraform.tfvars
-reports/01-tools-diagnostic.txt
-reports/02-bootstrap-validation.txt
-reports/03-bootstrap-outputs.json
-reports/04-bucket-location.json
-reports/05-public-access-block.json
-reports/06-bucket-versioning.json
-reports/07-bucket-encryption.json
-reports/08-bucket-policy.json
-reports/09-bucket-objects-before-migration.json
-reports/13-bucket-objects-after-migration.json
-reports/17-state-object-versions.json
-reports/20-public-access-test.txt
-reports/21-iam-policy-minimale-tfstate.json
-reports/rapport-tp-tfstate-s3-minimal.md
-scripts/empty-versioned-bucket.sh
-scripts/env.sh
-scripts/select-iac-cli.sh
-```
 
 Aucune instance EC2, aucune fonction Lambda et aucun coût supérieur au stockage S3 ne doivent être générés pendant ce TP.

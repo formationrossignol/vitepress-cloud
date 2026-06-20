@@ -76,24 +76,6 @@ Ne pas exécuter ce TP dans un compte de production.
 * Attacher une action SNS à une alarme CloudWatch.
 * Nettoyer les ressources créées pendant le TP.
 
-## Architecture cible
-
-```text
-Poste local
-  |
-  | aws cloudwatch put-metric-data
-  v
-Amazon CloudWatch Metric
-  |
-  | seuil > 80
-  v
-Amazon CloudWatch Alarm
-  |
-  | optionnel
-  v
-Amazon SNS Email
-```
-
 ## Compatibilité Free Tier
 
 | Ressource | Quantité utilisée |
@@ -537,17 +519,5 @@ rm -rf tp-cloudwatch-alerte-basique
 | Retour normal | L'alarme est revenue à l'état OK |
 | Notification optionnelle | SNS a envoyé un email si configuré et confirmé |
 | Nettoyage | L'alarme et le topic SNS optionnel ont été supprimés |
-
-Les fichiers suivants doivent avoir été produits :
-
-```text
-reports/01-caller-identity.json
-reports/02-metric-publication.txt
-reports/03-alarm-created.json
-reports/04-alarm-state-after-breach.json
-reports/05-alarm-state-after-recovery.json
-reports/rapport-tp-cloudwatch-alerte-basique.md
-scripts/env.sh
-```
 
 Aucune instance EC2, aucune fonction Lambda et aucun dashboard CloudWatch ne sont créés pendant ce TP.

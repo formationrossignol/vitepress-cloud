@@ -4,7 +4,7 @@ date: 2026-05-28
 description: Utiliser PMapper pour analyser les permissions IAM et détecter un chemin d'escalade de privilèges via sts:AssumeRole.
 ---
 
-## Objectif
+## Objectifs
 
 Utiliser **PMapper** pour analyser les permissions IAM d'un compte AWS de test et détecter un chemin d'escalade de privilèges basé sur `sts:AssumeRole`.
 
@@ -662,7 +662,7 @@ Billing
 
 ---
 
-## Résultat attendu final
+## Résultat attendu
 
 À la fin du TP, vous devez savoir :
 

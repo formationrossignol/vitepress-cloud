@@ -79,23 +79,6 @@ Le mot de passe du dashboard Wazuh est défini en clair dans le fichier `scripts
 * Produire un rapport local des résultats.
 * Nettoyer l'environnement.
 
-## Architecture cible
-
-```text
-Poste local
-  |
-  | Événements Docker (docker.sock + fichier de log)
-  | Événements Kubernetes (fichier de log)
-  v
-Wazuh Manager
-  |
-  v
-Wazuh Indexer
-  |
-  v
-Wazuh Dashboard (https://localhost)
-```
-
 ## Commandes
 
 ### 1. Créer l'arborescence du TP
@@ -772,27 +755,5 @@ rm -rf tp-mini-siem-local
 | Détection Kubernetes | Alertes `100200`, `100201`, `100202` visibles dans Wazuh |
 | Rapport | Rapport Markdown disponible dans `reports/` |
 | Nettoyage | Conteneurs, volumes et cluster Kind supprimés |
-
-Les fichiers suivants doivent avoir été produits :
-
-```text
-logs/docker/docker-events.log
-logs/kubernetes/kind-events.log
-reports/01-vm-max-map-count.txt
-reports/02-wazuh-single-node-files.txt
-reports/03-compose-override.txt
-reports/04-wazuh-collection-config.txt
-reports/05-wazuh-certificates.txt
-reports/06-wazuh-containers.txt
-reports/07-wazuh-dashboard-logs.txt
-reports/08-wazuh-dashboard-http.txt
-reports/09-local-rules.txt
-reports/10-wazuh-manager-after-rules.txt
-reports/15-wazuh-docker-alerts.json
-reports/22-wazuh-kubernetes-alerts.json
-reports/rapport-tp-mini-siem-local.md
-scripts/env.sh
-scripts/collect-k8s-events.sh
-```
 
 Aucune ressource cloud, aucune clé AWS et aucun compte externe ne sont utilisés pendant ce TP.

@@ -1055,30 +1055,4 @@ rm -rf tp-pipeline-devsecops-local
 | Correction | La pipeline corrigée passe |
 | Nettoyage | Conteneurs et volumes supprimés |
 
-Les fichiers suivants doivent avoir été produits :
-
-```text
-demo-app/.woodpecker.yaml
-demo-app/README.md
-demo-app/requirements.txt
-demo-app/app/config.py
-demo-app/app/main.py
-demo-app/rules/semgrep.yml
-demo-app/scripts/security-gate.sh
-demo-app/reports/trivy-secrets.json
-demo-app/reports/semgrep-sast.json
-demo-app/reports/trivy-sca.json
-demo-app/reports/sbom.cdx.json
-platform/.env
-platform/docker-compose.yml
-reports/01-gitea-http.txt
-reports/02-gitea-user-check.txt
-reports/03-platform-containers.txt
-reports/04-woodpecker-http.txt
-reports/05-gitea-repo-create.json
-reports/06-gitea-repo-check.txt
-reports/rapport-tp-pipeline-devsecops-local.md
-scripts/env.sh
-```
-
 Aucune ressource cloud, aucune clé AWS et aucun compte externe ne sont utilisés pendant ce TP.

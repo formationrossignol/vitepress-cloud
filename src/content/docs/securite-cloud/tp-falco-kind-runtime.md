@@ -965,30 +965,4 @@ rm -rf tp-falco-kind-runtime
 | Rapport | Rapport Markdown généré |
 | Nettoyage | Cluster Kind supprimé |
 
-Les fichiers suivants doivent avoir été produits :
-
-```text
-kind/kind-config.yaml
-manifests/app/01-nginx-deployment.yaml
-manifests/app/02-debug-pod.yaml
-manifests/app/03-nginx-secure-deployment.yaml
-manifests/falco/custom-rules.yaml
-manifests/falco/values.yaml
-reports/00-tools-diagnostic.txt
-reports/05-falco-pods.txt
-reports/06-falco-startup-logs.txt
-reports/13-falco-alerts-shell.txt
-reports/15-falco-alerts-sensitive-files.txt
-reports/18-falco-alerts-write-etc.txt
-reports/20-falco-alerts-token.txt
-reports/22-falco-alerts-network-tool.txt
-reports/24-falco-alerts-debug-pod.txt
-reports/25-falco-alerts-summary.md
-reports/26-detection-matrix.md
-reports/28-secure-pod-summary.json
-reports/rapport-tp-falco-kind-runtime.md
-scripts/env.sh
-scripts/extract-falco-alerts.sh
-```
-
 Aucune ressource cloud, aucune clé AWS et aucun compte externe ne sont utilisés pendant ce TP.

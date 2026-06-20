@@ -1079,33 +1079,4 @@ rm -rf tp-cloudfox-aws-attack-paths
 | Chemins d'attaque | Matrice et graphe local produits |
 | Rapport | Rapport Markdown disponible |
 
-Les fichiers suivants doivent avoir été produits :
-
-```text
-graphs/aws-attack-paths.dot
-graphs/aws-attack-paths.svg
-reports/00-aws-identity.json
-reports/07-scope.md
-reports/08-cloudfox-inventory-console.txt
-reports/12-cloudfox-principals-console.txt
-reports/14-cloudfox-permissions-console.txt
-reports/16-cloudfox-role-trusts-console.txt
-reports/18-cloudfox-iam-simulator-console.txt
-reports/25-cloudfox-workloads-console.txt
-reports/31-cloudfox-network-ports-console.txt
-reports/33-cloudfox-endpoints-console.txt
-reports/35-cloudfox-buckets-console.txt
-reports/37-cloudfox-secrets-console.txt
-reports/analysis/50-cloudfox-risk-summary.md
-reports/analysis/51-attack-path-matrix.md
-reports/analysis/54-cloudfox-reading-list.md
-reports/analysis/55-attack-paths-workshop.md
-reports/cloudfox/
-reports/rapport-tp-cloudfox-aws-attack-paths.md
-scripts/analyze-cloudfox-csv.py
-scripts/build-attack-path-graph.py
-scripts/env.sh
-scripts/find-cloudfox-output.sh
-```
-
 Aucune ressource AWS n'est créée, modifiée ou supprimée pendant ce TP.

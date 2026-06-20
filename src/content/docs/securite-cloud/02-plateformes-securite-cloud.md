@@ -86,6 +86,20 @@ Defender for Containers, Red Hat ACS, Check Point CloudGuard, etc.
 ![Slide 41](/securite-cloud/02-plateformes-securite-cloud/p041_05_Image28.jpg)
 
 
+## Une solution CNAPP open-source ?
+
+Aujourd'hui, il n'existe pas de solution open source qui couvre de manière mature et intégrée l'ensemble du périmètre CNAPP. Le plus proche est généralement un assemblage de plusieurs outils open source.
+
+| Domaine | Open Source |
+| --- | --- |
+| CSPM | Prowler, Cloudsplaining, ScoutSuite, Cartography |
+| CWPP | Falco, Kubescape, Wazuh, Tracee |
+| CIEM | PMapper, Cloudsplaining, Cartography |
+| DSPM | Peu mature en open source (solution la plus crédible mais limitée : OpenMetadata) |
+| KSPM | Kubescape, kube-bench, kube-hunter |
+| Analyse des chemins d'attaque | Cartography, PMapper, BloodHound (adapté cloud) |
+
+
 ## Synthèse
 
 

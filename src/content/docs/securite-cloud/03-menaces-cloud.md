@@ -211,11 +211,23 @@ utilisateurs du composant.
 | Contrôles | Revues régulières des accès IAM · Alerte sur création de nouvelles<br>clés root · Monitoring des téléchargements massifs |
 
 
-## OWASP top 10 : 2025 : Mapping cloud security
+## OWASP Top 10 : 2025 : Mapping cloud security
+
+| Risque | Impact cloud |
+| --- | --- |
+| A01:2025 - Contrôle d'accès défaillant | IAM sur-privilégié, rôles administrateur excessifs, bucket S3 public, accès inter-comptes mal maîtrisé |
+| A02:2025 - Mauvaise configuration de sécurité | Security Groups ouverts, CloudTrail désactivé, services exposés publiquement, configurations par défaut dangereuses |
+| A03:2025 - Défaillances de la chaîne d'approvisionnement logicielle | Images Docker non signées, dépendances vulnérables, pipeline CI/CD compromis, artefacts non vérifiés |
+| A04:2025 - Défaillances cryptographiques | Secrets en clair, chiffrement absent, KMS mal configuré, mauvaise gestion des clés |
+| A05:2025 - Injection | Injection SQL dans API/Lambda, command injection dans containers, template injection dans l'IaC |
+| A06:2025 - Conception non sécurisée | Absence de threat modeling, architecture sans Zero Trust, Landing Zone mal conçue, absence de least privilege |
+| A07:2025 - Défaillances d'authentification | MFA absent, fatigue MFA, attaque AiTM, mauvaise configuration OIDC/SAML, tokens non expirés |
+| A08:2025 - Défaillances d'intégrité logicielle et des données | Artifacts non signés, SBOM absent, drift Terraform, provenance logicielle non vérifiée |
+| A09:2025 - Défaillances de journalisation et de supervision | Logs CloudTrail absents, SIEM non centralisé, alertes absentes, MTTD trop élevé |
+| A10:2025 - Mauvaise gestion des conditions exceptionnelles | Fail-open, erreurs silencieuses dans Lambda/API Gateway, timeouts mal gérés, rollback impossible |
 
 
-
-## Architecture zero trust
+## Architecture Zero Trust
 
 "Never trust, always verify"
 Le Zero Trust remplace la confiance accordée au réseau par une décision d’accès continue, contextuelle et fondée sur
@@ -236,7 +248,19 @@ le risque.
 ![Slide 72](/securite-cloud/03-menaces-cloud/p072_05_Image36.jpg)
 
 
-## CISA zero trust maturity model (ZTMM v2.0)
+## Architecture Zero Trust : NIST 800-207
+
+Le NIST SP 800-207 formalise l'architecture Zero Trust autour d'un principe simple : chaque demande d'accès est évaluée dynamiquement par un moteur de décision, puis appliquée par un point de contrôle avant d'atteindre la ressource.
+
+**PDP (Policy Decision Point)** = décide / **PEP (Policy Enforcement Point)** = applique.
+
+
+## BeyondCorp (Google) : exemple d'implémentation réelle
+
+BeyondCorp illustre le passage d'une sécurité fondée sur le réseau interne à une sécurité fondée sur l'identité, le terminal et le contexte d'accès.
+
+
+## CISA Zero Trust Maturity Model (ZTMM v2.0)
 
 
 ![Slide 73](/securite-cloud/03-menaces-cloud/p073_06_Image37.jpg)

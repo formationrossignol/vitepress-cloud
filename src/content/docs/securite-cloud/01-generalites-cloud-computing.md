@@ -18,6 +18,15 @@ Ce modèle de cloud favorise la disponibilité et est composé de :
 cloud hybride.
 
 
+## Les 5 caractéristiques essentielles du cloud
+
+- **Libre-service à la demande** : les utilisateurs peuvent provisionner des ressources et les utiliser sans intervention humaine du service.
+- **Large accès au réseau** : ressources disponibles sur le réseau et accessibles par diverses plates-formes clientes.
+- **Mise en commun des ressources** : plusieurs clients peuvent partager la même infrastructure et les mêmes applications avec sécurité et confidentialité. Plusieurs clients sont desservis à partir des mêmes ressources physiques.
+- **Flexibilité rapide** : acquérir et disposer automatiquement et rapidement des ressources en cas de besoin. Évoluer rapidement et facilement en fonction de la demande.
+- **Service mesuré** : l'utilisation est mesurée, les utilisateurs paient correctement pour ce qu'ils ont utilisé.
+
+
 ## Les modèles de cloud computing
 
 
@@ -58,6 +67,21 @@ incendie, etc.) ?
 
 
 ![Slide 19](/securite-cloud/01-generalites-cloud-computing/p019_04_Image18.jpg)
+
+
+## Quelques cas d'usage
+
+- **Faire face à des pics d'activité** : auto-scaling pendant le Black Friday, événements sportifs, soldes, etc. (payer uniquement la capacité consommée).
+- **Sauvegarder ses données quotidiennement** : snapshots automatisés, réplication multi-région, Plan de Reprise d'Activité (PRA) cloud (RTO/RPO) maîtrisés et testables.
+- **Se libérer des machines physiques** : réduction CAPEX, virtualisation totale, fin de vie datacenter, migration datacenter-out.
+- **Porter des projets de nouvelles technologies** : IA/ML managé (SageMaker, Vertex AI, etc.), IoT, Big Data (Spark/EMR) : accès immédiat aux services spécialisés.
+- **Accélérer le time-to-market et les MVPs** : provisionner un environnement complet en quelques minutes, itérer rapidement, supprimer les ressources inutilisées.
+- **Migrer vers le cloud** : stratégie de migration 7R (Rehost, Replatform, Refactor, Repurchase, Retain, Retire, Relocate), lift & shift ou modernisation.
+
+
+## Modèle de responsabilités partagées
+
+Dans le cloud, la sécurité est partagée : le fournisseur protège l'infrastructure cloud, tandis que le client reste responsable de la configuration, des accès, des données et des usages.
 
 
 ## Lift & shift

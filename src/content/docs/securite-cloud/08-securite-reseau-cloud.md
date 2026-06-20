@@ -67,6 +67,17 @@ réseau sortant.
 ![Slide 160](/securite-cloud/08-securite-reseau-cloud/p160_02_Image53.jpg)
 
 
+## Groupes de sécurité : compléments
+
+- Peut être attaché à plusieurs instances.
+- Verrouillé sur une combinaison région/VPC.
+- Il est bon de maintenir un groupe de sécurité distinct pour l'accès SSH.
+- Si votre application n'est pas accessible (expiration du délai) → problème de groupe de sécurité.
+- Si votre application donne une erreur « connexion refusée » → application en erreur ou pas lancée.
+- Tout le trafic entrant est bloqué par défaut.
+- Tout le trafic sortant est autorisé par défaut.
+
+
 ## Listes de contrôle d'accès réseau (NACLs)
 
 
@@ -86,6 +97,25 @@ réseau sortant.
 | Ordre des règles | Non | Oui |
 | Granularité | Fine | Large |
 | Usage principal | Protection des ressources | Filtrage réseau |
+
+
+## Private Endpoints : accès privé aux services managés
+
+Un Private Endpoint est un point d'accès réseau privé permettant de connecter un VPC/VNet à un service managé sans exposer le trafic à Internet public. Le service est accessible via une adresse IP privée dans le réseau du client, avec un contrôle par routage, DNS privé et règles réseau.
+
+| Élément | Description |
+| --- | --- |
+| Principe | Le service reçoit une adresse privée dans le VPC/VNet |
+| Cible | Bases de données, stockage, APIs cloud, services SaaS |
+| Contrôle | Accès limité au réseau privé, aux DNS privés et aux règles réseau |
+| Usage principal | Réduire l'exposition publique des services critiques |
+
+Cas d'usage :
+- Accès privé à une base managée
+- Stockage cloud sans endpoint public
+- Connexion sécurisée entre VPC/VNet et SaaS
+- Réduction des flux Internet sortants
+- Segmentation réseau des services sensibles
 
 
 ## Web application firewall

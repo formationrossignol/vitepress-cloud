@@ -29,12 +29,22 @@ title: "05. Les référentiels normatifs"
 
 
 
-## ISO/CEI 27018 : Protection des données personnelles dans le
+## ISO/CEI 27018 : Protection des données personnelles dans le cloud
 
-Cloud
+ISO/CEI 27018 complète l'ISO/CEI 27017 pour les fournisseurs cloud agissant comme sous-traitants de données personnelles.
+Objectif : garantir que les données personnelles confiées au cloud sont collectées, traitées, stockées et supprimées de manière sécurisée et transparente.
 
+### Principes clés
 
+| Principe | Détails |
+| --- | --- |
+| Consentement et finalité | Traitement uniquement selon les instructions du client · Utilisation limitée aux finalités prévues · Interdiction d'utiliser les données à des fins non autorisées |
+| Gestion du cycle de vie | Conservation maîtrisée · Suppression sécurisée des données · Restitution des données à la fin du contrat |
+| Transparence | Information claire sur les traitements réalisés · Communication des sous-traitants impliqués · Visibilité sur les localisations de stockage des données |
+| Protection des données personnelles | Chiffrement des données sensibles · Contrôles d'accès adaptés aux risques · Limitation des accès administrateurs |
+| Gestion des incidents | Détection des violations de données · Notification des incidents de sécurité · Mise à disposition des éléments nécessaires aux enquêtes |
 
+### Exemples de contrôles
 
 | Domaine | Exemples de mesures |
 | --- | --- |
@@ -49,10 +59,45 @@ Cloud
 
 ## Bénéfices & lien avec RGPD
 
+Bénéfices :
+- Renforcement de la protection des données personnelles
+- Réduction des risques de fuite ou d'usage abusif
+- Amélioration de la transparence vis-à-vis des clients
+- Facilitation de la conformité réglementaire
+- Renforcement de la confiance dans les services cloud
+
+Lien avec le RGPD : l'ISO/CEI 27018 n'est pas une certification RGPD, mais elle apporte des mesures concrètes permettant de soutenir plusieurs exigences du RGPD :
+- Protection des données dès la conception (Privacy by Design)
+- Confidentialité et intégrité des données
+- Limitation des finalités
+- Gestion des sous-traitants
+- Notification des violations de données
 
 
 ## CIS Benchmarks : Configurations sécurisées de référence
 
+Les CIS Benchmarks fournissent des recommandations de configuration sécurisée pour durcir les environnements cloud et réduire les mauvaises configurations.
+
+| Aspect | Rôle dans un CIS Benchmark |
+| --- | --- |
+| Périmètre | Couvrir les principaux services : IAM, réseau, stockage, logs, chiffrement et supervision |
+| Usage | Comparer la configuration réelle avec les bonnes pratiques attendues |
+| Contrôles types | Vérifier le MFA, les accès publics, les ports exposés, les logs et le chiffrement |
+| Valeur sécurité | Réduire les mauvaises configurations et améliorer la posture de sécurité |
+| Valeur conformité | Fournir une base d'audit reconnue et réutilisable |
+| Limite | Ne remplace pas l'analyse de risque, le contexte métier ni les exigences réglementaires |
+
+### Axes de durcissement
+
+| Axe de durcissement | Ce que le CIS Benchmark permet de vérifier |
+| --- | --- |
+| Identités et accès | MFA, comptes privilégiés, permissions excessives, usage du compte root |
+| Journalisation | Activation des logs, centralisation, protection et conservation des événements |
+| Réseau | Exposition publique, ports sensibles, règles trop permissives, segmentation |
+| Stockage et données | Chiffrement, accès publics, versioning, protection contre la suppression |
+| Surveillance | Alertes sur les actions sensibles, changements de configuration et comportements à risque |
+| Conformité | Écarts entre la configuration réelle et une base de sécurité reconnue |
+| Remédiation | Priorisation des corrections pour réduire les mauvaises configurations |
 
 
 ## SOC 2 : Standard de confiance pour les fournisseurs saas
