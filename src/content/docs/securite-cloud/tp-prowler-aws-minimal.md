@@ -91,15 +91,6 @@ jq --version
 python3 --version
 ```
 
-### Compatibilité Windows
-
-| Système | Terminal recommandé |
-|---|---|
-| Linux | Bash |
-| macOS | Terminal ou iTerm2 |
-| Windows | WSL2 Ubuntu |
-| Windows alternatif | Git Bash |
-
 Sur Windows WSL2, les credentials AWS se trouvent dans `$HOME/.aws` côté WSL. Si les credentials sont configurés côté Windows natif, les copier dans le home WSL2 ou reconfigurer `aws configure` depuis WSL.
 
 ### Permissions AWS nécessaires

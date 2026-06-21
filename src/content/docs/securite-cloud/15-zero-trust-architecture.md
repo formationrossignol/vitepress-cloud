@@ -1,8 +1,8 @@
 ---
-title: "15. Zero Trust : Architecture avancée"
+title: "12. Zero Trust : Architecture avancée"
 ---
 
-# 15. Zero Trust : Architecture avancée
+# 12. Zero Trust : Architecture avancée
 
 ## MTLS (mutual TLS) : Authentification mutuelle
 
@@ -40,8 +40,6 @@ s'authentifient mutuellement avant l'établissement de la connexion chiffrée.
 
 ![Slide 363](/securite-cloud/15-zero-trust-architecture/p363_01_Image101.jpg)
 
-
-![Slide 364](/securite-cloud/15-zero-trust-architecture/p364_02_Image90.jp2)
 
 ![Slide 364](/securite-cloud/15-zero-trust-architecture/p364_03_Image91.jpg)
 
@@ -89,8 +87,6 @@ YAML
 
 ![Slide 369](/securite-cloud/15-zero-trust-architecture/p369_05_Image104.jpg)
 
-
-![Slide 370](/securite-cloud/15-zero-trust-architecture/p370_06_Image90.jp2)
 
 ![Slide 370](/securite-cloud/15-zero-trust-architecture/p370_07_Image91.jpg)
 

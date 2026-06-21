@@ -1,8 +1,8 @@
 ---
-title: "05. Les référentiels normatifs"
+title: "13. Référentiels normatifs"
 ---
 
-# 05. Les référentiels normatifs
+# 13. Référentiels normatifs
 
 ## ISO/CEI 27017 : Sécurité des services cloud
 

@@ -86,15 +86,6 @@ curl --version
 jq --version
 ```
 
-### Compatibilité Windows
-
-| Système | Terminal recommandé |
-|---|---|
-| Linux | Bash |
-| macOS | Terminal ou iTerm2 |
-| Windows | WSL2 Ubuntu |
-| Windows alternatif | Git Bash |
-
 ### Précaution
 
 Ce TP crée uniquement un environnement local.

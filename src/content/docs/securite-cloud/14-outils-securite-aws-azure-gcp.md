@@ -1,8 +1,8 @@
 ---
-title: "14. Outils de sécurité : AWS, Azure et GCP"
+title: "11. Outils de sécurité : AWS, Azure et GCP"
 ---
 
-# 14. Outils de sécurité : AWS, Azure et GCP
+# 11. Outils de sécurité : AWS, Azure et GCP
 
 ## Identité & accès
 
@@ -290,8 +290,6 @@ Microsoft Purview permet de découvrir, classifier, protéger et gouverner les d
 | Charge de travail | Détection | Gourvernance |
 | Security Command<br>Center<br>GKE Security<br>Artifact Analysis<br>Binary Authorization<br>VM Manager<br>Container Threat Detection<br>GKE Enterprise security posture | Security Command<br>Security Operations (SecOps)<br>Center<br>Event Threat<br>Detection<br>Cloud Logging<br>Cloud Monitoring<br>Mandiant Threat Intelligence<br>Cloud Audit Logs | Organization Policies<br>Resource Manager<br>Assured Workloads<br>Policy Controller<br>Security Health Analytics<br>Cloud Asset Inventory<br>Risk Manager<br>Cloud Compliance<br>Access Transparency |
 
-
-![Slide 333](/securite-cloud/14-outils-securite-aws-azure-gcp/p333_06_Image90.jp2)
 
 ![Slide 333](/securite-cloud/14-outils-securite-aws-azure-gcp/p333_07_Image91.jpg)
 

@@ -1,8 +1,8 @@
 ---
-title: "08. Sécurité réseau cloud"
+title: "05. Sécurité réseau cloud"
 ---
 
-# 08. Sécurité réseau cloud
+# 05. Sécurité réseau cloud
 
 ## Amazon Virtual
 
@@ -286,7 +286,7 @@ documenté
 ## Fonctionnement protection DDoS
 
 
-![Slide 187](/securite-cloud/08-securite-reseau-cloud/p187_11_Image62.jp2)
+![Slide 187](/securite-cloud/08-securite-reseau-cloud/p187_11_Image62.jpg)
 
 
 ## VPC Flow Logs : Analyse et détection du trafic réseau

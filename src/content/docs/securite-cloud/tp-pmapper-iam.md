@@ -664,18 +664,16 @@ Billing
 
 ## Résultat attendu
 
-À la fin du TP, vous devez savoir :
-
-```text
-Installer PMapper
-Créer un graphe IAM
-Analyser les relations users/roles
-Identifier une escalade via sts:AssumeRole
-Tester l'escalade avec AWS CLI
-Corriger la configuration IAM
-Vérifier la correction avec PMapper
-Retrouver les événements dans CloudTrail
-```
+| Compétence acquise | Validation |
+| --- | --- |
+| Installation PMapper | PMapper installé et opérationnel |
+| Graphe IAM | Graphe créé avec les relations entre principals |
+| Analyse des relations | Relations users/roles cartographiées |
+| Escalade via `sts:AssumeRole` | Chemin d'escalade identifié dans le graphe PMapper |
+| Test d'escalade | Escalade simulée et confirmée via AWS CLI |
+| Correction IAM | Permission `sts:AssumeRole` restreinte ou supprimée |
+| Vérification après correction | PMapper ne détecte plus l'escalade |
+| Traçabilité CloudTrail | Événements `sts:AssumeRole` retrouvés dans CloudTrail |
 
 ---
 

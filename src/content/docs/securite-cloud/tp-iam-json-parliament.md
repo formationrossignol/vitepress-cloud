@@ -598,34 +598,22 @@ aws iam get-role --role-name "${IAM_ROLE_NAME}" 2>&1 \
 
 ## Résultat attendu
 
-À la fin du TP, l'apprenant doit avoir produit les fichiers suivants :
+| Fichier produit | Description |
+| --- | --- |
+| `policies/bad-s3-policy.json` | Policy IAM volontairement incorrecte pour illustration Parliament |
+| `policies/group-s3-list-policy.json` | Policy IAM autorisant le listage S3 pour le groupe |
+| `policies/role-s3-read-policy.json` | Policy IAM autorisant la lecture S3 pour le rôle |
+| `policies/role-trust-policy.json` | Politique de confiance permettant à EC2 d'assumer le rôle |
+| `reports/create-group-policy.json` | Réponse AWS à la création de la policy de groupe |
+| `reports/create-role.json` | Réponse AWS à la création du rôle IAM |
+| `reports/create-role-policy.json` | Réponse AWS à l'attachement de la policy au rôle |
+| `reports/tp.env` | Variables d'environnement du TP (ARN des ressources créées) |
+| `reports/iam-json-parliament-summary.md` | Rapport de synthèse du TP |
 
-```text
-policies/bad-s3-policy.json
-policies/group-s3-list-policy.json
-policies/role-s3-read-policy.json
-policies/role-trust-policy.json
-reports/create-group-policy.json
-reports/create-role.json
-reports/create-role-policy.json
-reports/tp.env
-reports/iam-json-parliament-summary.md
-```
-
-Les ressources IAM suivantes doivent avoir été créées puis supprimées :
-
-```text
-Utilisateur IAM
-Groupe IAM
-Rôle IAM
-Policy managée client attachée au groupe
-Policy managée client attachée au rôle
-```
-
-La policy incorrecte doit être analysée par Parliament afin d'illustrer la détection d'une action IAM invalide.
-
-Les policies déployées doivent être valides en JSON et exploitables par AWS IAM.
-
-Le bucket référencé dans la policy du rôle n'est pas créé dans ce TP. Il sert uniquement à illustrer la syntaxe d'un ARN S3 objet dans une policy IAM.
-
-Aucune clé d'accès IAM ni aucun mot de passe console ne doivent être créés pendant le TP.
+| Contrôle | Résultat attendu |
+| --- | --- |
+| Ressources IAM créées | Utilisateur, groupe, rôle, deux policies managées créés et supprimés |
+| Analyse Parliament | La policy incorrecte est signalée avec une action IAM invalide |
+| Policies JSON | Valides en JSON et acceptées par AWS IAM lors du déploiement |
+| Bucket S3 référencé | Non créé — utilisé uniquement comme ARN illustratif dans la policy du rôle |
+| Clés d'accès IAM | Aucune clé d'accès ni mot de passe console créés pendant le TP |

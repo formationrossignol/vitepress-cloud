@@ -1,8 +1,8 @@
 ---
-title: "13. Gouvernance & Conformité cloud"
+title: "14. Gouvernance & Conformité cloud"
 ---
 
-# 13. Gouvernance & Conformité cloud
+# 14. Gouvernance & Conformité cloud
 
 ## Les landing zones
 

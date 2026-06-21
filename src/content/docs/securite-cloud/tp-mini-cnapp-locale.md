@@ -460,23 +460,20 @@ echo "Code de retour Trivy bloquant : $?"
 
 ## Résultat attendu
 
-Le répertoire `reports` doit contenir les fichiers suivants :
+| Fichier produit | Description |
+| --- | --- |
+| `reports/trivy-image.json` | Rapport Trivy de vulnérabilités sur l'image |
+| `reports/syft-sbom.json` | SBOM généré par Syft au format JSON |
+| `reports/syft-cyclonedx.json` | SBOM généré par Syft au format CycloneDX |
+| `reports/grype-image.json` | Rapport Grype de vulnérabilités sur l'image |
+| `reports/grype-sbom.json` | Rapport Grype de vulnérabilités sur le SBOM Syft |
+| `reports/trivy-config-k8s.json` | Rapport Trivy de misconfigurations sur les manifests Kubernetes |
+| `reports/kubescape-k8s.json` | Rapport Kubescape de conformité sur les manifests Kubernetes |
+| `reports/mini-cnapp-summary.md` | Rapport de synthèse centralisant les résultats de tous les outils |
 
-```text
-trivy-image.json
-syft-sbom.json
-syft-cyclonedx.json
-grype-image.json
-grype-sbom.json
-trivy-config-k8s.json
-kubescape-k8s.json
-mini-cnapp-summary.md
-```
-
-Le rapport `mini-cnapp-summary.md` doit centraliser les résultats principaux des différents outils.
-
-Le TP doit montrer comment plusieurs contrôles de sécurité peuvent être regroupés localement pour simuler une approche CNAPP simplifiée.
-
-Le scan Grype avec `--fail-on high` doit retourner un code de retour différent de `0` si des vulnérabilités `high` ou `critical` sont détectées.
-
-Le scan Trivy avec `--exit-code 1` doit retourner un code de retour différent de `0` si des vulnérabilités `HIGH` ou `CRITICAL` sont détectées.
+| Contrôle | Résultat attendu |
+| --- | --- |
+| Rapport de synthèse | `mini-cnapp-summary.md` centralise les résultats principaux de chaque outil |
+| Approche CNAPP | Plusieurs contrôles regroupés localement simulent une approche CNAPP simplifiée |
+| Gate Grype `--fail-on high` | Code de retour différent de `0` si vulnérabilités `high` ou `critical` détectées |
+| Gate Trivy `--exit-code 1` | Code de retour différent de `0` si vulnérabilités `HIGH` ou `CRITICAL` détectées |

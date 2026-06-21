@@ -957,27 +957,22 @@ rm -rf tp-mini-dspm-local
 
 ## Résultat attendu
 
-À la fin du TP, l'apprenant doit avoir produit les fichiers suivants :
+| Fichier produit | Description |
+| --- | --- |
+| `reports/minio-inventory.jsonl` | Inventaire des objets MinIO générés par le script de découverte |
+| `reports/classification-findings.json` | Résultats de classification des données sensibles |
+| `reports/classification-summary.csv` | Synthèse CSV des données classifiées par type et sensibilité |
+| `reports/gitleaks-minio-mirror.json` | Secrets détectés dans les fichiers par Gitleaks |
+| `reports/dspm-priorities.csv` | Priorisation des données selon sensibilité, exposition et présence de secrets |
+| `reports/dspm-report.md` | Rapport DSPM avec remédiations recommandées |
+| `reports/mini-dspm-summary.md` | Rapport de synthèse du TP |
 
-```text
-reports/minio-inventory.jsonl
-reports/classification-findings.json
-reports/classification-summary.csv
-reports/gitleaks-minio-mirror.json
-reports/dspm-priorities.csv
-reports/dspm-report.md
-reports/mini-dspm-summary.md
-```
-
-L'analyse doit permettre d'observer :
-
-```text
-Des données personnelles peuvent être découvertes dans des fichiers RH ou client.
-Des données financières peuvent être détectées dans des exports CSV.
-Des secrets techniques peuvent être détectés par script et par Gitleaks.
-Une donnée sensible placée dans un bucket public simulé devient prioritaire.
-La priorisation combine sensibilité, exposition et présence de secrets.
-La remédiation consiste à restreindre l'exposition, déplacer les données sensibles et révoquer les secrets.
-```
-
-Aucun vrai secret, aucune vraie donnée personnelle et aucune vraie donnée financière ne doivent être utilisés pendant ce TP.
+| Observation | Résultat attendu |
+| --- | --- |
+| Données personnelles dans fichiers RH | Découvertes et classifiées par le script de classification |
+| Données financières dans exports CSV | Détectées par le script de classification |
+| Secrets techniques | Détectés par script et par Gitleaks |
+| Donnée sensible dans bucket public | Marquée prioritaire dans la priorisation DSPM |
+| Priorisation DSPM | Combine sensibilité, exposition et présence de secrets |
+| Remédiation | Restriction de l'exposition, déplacement des données sensibles, révocation des secrets |
+| Données réelles | Aucun vrai secret, aucune vraie donnée personnelle ni financière utilisés pendant le TP |

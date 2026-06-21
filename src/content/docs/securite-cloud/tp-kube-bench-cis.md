@@ -103,15 +103,6 @@ kube-bench version 2>/dev/null || echo "kube-bench non disponible en local - uti
 jq --version
 ```
 
-### Compatibilité Windows
-
-| Système | Terminal recommandé |
-|---|---|
-| Linux | Bash |
-| macOS | Terminal ou iTerm2 |
-| Windows | WSL2 Ubuntu |
-| Windows alternatif | Git Bash |
-
 ### Précaution
 
 Ce TP crée un cluster Kubernetes local de formation.

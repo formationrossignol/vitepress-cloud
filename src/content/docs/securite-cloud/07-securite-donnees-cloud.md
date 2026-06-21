@@ -1,12 +1,22 @@
 ---
-title: "07. Sécurité des données cloud"
+title: "06. Sécurité des données cloud"
 ---
 
-# 07. Sécurité des données cloud
+# 06. Sécurité des données cloud
 
 ## Chiffrement des données : At rest & in transit
 
+Le chiffrement des données se distingue selon l'état de la donnée dans le système d'information.
 
+| Dimension | At rest (au repos) | In transit (en transit) |
+| --- | --- | --- |
+| Définition | Données stockées sur un support (disque, base, objet) | Données circulant sur le réseau entre deux points |
+| Objectif | Protéger contre l'accès physique ou logique non autorisé | Protéger contre l'interception et le man-in-the-middle |
+| Standard | AES-256 | TLS 1.2 / 1.3 |
+| AWS | SSE-S3, SSE-KMS, EBS Encryption, RDS Encryption | ACM, HTTPS, VPN Site-to-Site, PrivateLink |
+| Azure | SSE + CMK, Azure Disk Encryption, Transparent Data Encryption | TLS, VPN Gateway, ExpressRoute |
+| GCP | CMEK, Cloud KMS, Persistent Disk Encryption | TLS, Cloud VPN, Dedicated Interconnect |
+| Risque si absent | Exfiltration de données, violation RGPD / PCI-DSS | Interception des credentials, exfiltration réseau |
 
 ## KMS & Hiérarchie des Clés : AWS, Azure, GCP
 
@@ -18,7 +28,17 @@ title: "07. Sécurité des données cloud"
 
 ## Bring your own key (BYOK)
 
+BYOK (Bring Your Own Key) est une approche permettant aux organisations de générer, posséder et gérer leurs propres clés de chiffrement tout en utilisant des services cloud. Le fournisseur chiffre les données mais ne peut jamais accéder à la clé maîtresse.
 
+| Aspect | Description |
+| --- | --- |
+| Principe | Vous importez votre clé maîtresse — le provider applique le chiffrement sans y accéder |
+| AWS | KMS CMK + Import key material · CloudHSM pour génération offline |
+| Azure | Key Vault + BYOK HSM · Azure Dedicated HSM |
+| GCP | Cloud KMS + CMEK · Cloud EKM (External Key Manager, clé hors GCP) |
+| Avantage | Séparation des clés et des données — le provider applique le chiffrement en aveugle |
+| Risque | Perte ou corruption de la clé = perte permanente et irréversible des données |
+| Conformité | Exigé pour données soumises au Cloud Act, RGPD niveau Secret, PCI-DSS, SecNumCloud |
 
 ## Classification des données : Niveaux et outils
 

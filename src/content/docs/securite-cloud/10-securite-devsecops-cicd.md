@@ -1,8 +1,8 @@
 ---
-title: "10. Sécurité DevSecOps & CI/CD"
+title: "08. Sécurité DevSecOps & CI/CD"
 ---
 
-# 10. Sécurité DevSecOps & CI/CD
+# 08. Sécurité DevSecOps & CI/CD
 
 ## Pipeline DevSecOps complet : Sécurité shift-left
 

@@ -549,31 +549,25 @@ rm -rf tp-detection-secrets-git
 
 ## Résultat attendu
 
-À la fin du TP, l'apprenant doit avoir produit les fichiers suivants :
+| Fichier produit | Description |
+| --- | --- |
+| `reports/gitleaks-dir.json` | Secrets détectés dans le répertoire par Gitleaks |
+| `reports/gitleaks-git.json` | Secrets détectés dans l'historique Git par Gitleaks |
+| `reports/trufflehog-filesystem.json` | Secrets détectés dans les fichiers par TruffleHog |
+| `reports/trufflehog-git.json` | Secrets détectés dans l'historique Git par TruffleHog |
+| `reports/detect-secrets-baseline.json` | Baseline initiale créée par detect-secrets |
+| `reports/detect-secrets-baseline-updated.json` | Baseline mise à jour après ajout d'un nouveau secret |
+| `reports/gitleaks-dir-updated.json` | Scan Gitleaks après ajout du nouveau secret |
+| `reports/trufflehog-filesystem-updated.json` | Scan TruffleHog après ajout du nouveau secret |
+| `reports/secrets-detection-summary.md` | Rapport de synthèse du TP |
 
-```text
-reports/gitleaks-dir.json
-reports/gitleaks-git.json
-reports/trufflehog-filesystem.json
-reports/trufflehog-git.json
-reports/detect-secrets-baseline.json
-reports/detect-secrets-baseline-updated.json
-reports/gitleaks-dir-updated.json
-reports/trufflehog-filesystem-updated.json
-reports/secrets-detection-summary.md
-```
-
-Le dépôt local `repo-vulnerable` doit contenir des secrets factices détectables par les outils.
-
-L'analyse doit permettre d'observer :
-
-```text
-Des clés cloud peuvent être détectées dans des fichiers de configuration.
-Des tokens peuvent être détectés dans le dépôt.
-Une clé privée peut être détectée comme secret sensible.
-L'historique Git peut conserver des secrets même après modification du code.
-Une baseline permet de suivre l'existant et de détecter les nouveaux secrets.
-Un contrôle de secrets peut rendre un pipeline ou un hook Git bloquant.
-```
+| Observation | Résultat attendu |
+| --- | --- |
+| Clés cloud dans des fichiers de configuration | Détectées par Gitleaks et TruffleHog |
+| Tokens dans le dépôt | Détectés par au moins un outil |
+| Clé privée sensible | Détectée comme secret à haut risque |
+| Historique Git | Des secrets supprimés du code restent détectables dans l'historique |
+| Baseline detect-secrets | Permet de distinguer les secrets connus des nouveaux secrets |
+| Hook Git ou pipeline bloquant | Un contrôle de secrets peut bloquer un commit ou une merge request |
 
 Aucun vrai secret ne doit être utilisé pendant ce TP.

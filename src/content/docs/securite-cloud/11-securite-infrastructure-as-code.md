@@ -1,12 +1,20 @@
 ---
-title: "11. Sécurité de l'Infrastructure as Code"
+title: "07. Sécurité de l'Infrastructure as Code"
 ---
 
-# 11. Sécurité de l'Infrastructure as Code
+# 07. Sécurité de l'Infrastructure as Code
 
 ## Sécuriser le code de l’infrastructure
 
+La sécurité de l’Infrastructure as Code repose sur trois piliers : analyser le code avant déploiement (shift-left), sécuriser l’état Terraform (tfstate) et imposer des politiques automatisées dans la CI/CD.
 
+| Pilier | Objectif | Outils |
+| --- | --- | --- |
+| Analyse statique (SAST IaC) | Détecter les misconfigurations avant apply | tfsec, Checkov, KICS |
+| Gestion des secrets | Éviter les secrets en clair dans le code IaC | git-secrets, detect-secrets, HashiCorp Vault |
+| Policy as Code | Valider les plans contre des règles métier et de conformité | OPA/Conftest, Sentinel (Terraform Cloud) |
+| Backend sécurisé | Protéger le tfstate (clés, IPs, mots de passe en clair) | S3 chiffré + DynamoDB lock |
+| Gates CI/CD | Bloquer les merge requests qui introduisent des misconfigs | Checkov en pipeline, GitHub Actions SARIF |
 
 ## Mauvaises configurations Terraform fréquentes (ici AWS)
 
@@ -39,8 +47,28 @@ title: "11. Sécurité de l'Infrastructure as Code"
 
 ## Sécurisation du fichier d’état Terraform
 
+Le fichier `terraform.tfstate` contient l’état réel de l’infrastructure : adresses IP, ARN de ressources, identifiants et parfois des secrets en clair. Un tfstate exposé constitue une fuite critique.
+
+| Risque | Mitigation |
+| --- | --- |
+| Stockage local (`terraform.tfstate`) | Migrer vers un backend distant chiffré (S3, GCS, Azure Blob) |
+| Secrets en clair dans le state | Activer le chiffrement du backend + KMS (SSE-KMS pour S3) |
+| Accès concurrent / corruption | Activer le locking (DynamoDB pour S3 backend) |
+| Accès non contrôlé au bucket | Restreindre les accès IAM : lecture seule en dehors du pipeline |
+| Historique Git exposé | Ne jamais committer le tfstate — ajouter `*.tfstate*` à `.gitignore` |
+
+```hcl
+terraform {
+  backend "s3" {
+    bucket         = "mon-tfstate-bucket"
+    key            = "prod/terraform.tfstate"
+    region         = "eu-west-1"
+    encrypt        = true
+    kms_key_id     = "arn:aws:kms:eu-west-1:123456789012:key/xxx"
+    dynamodb_table = "tfstate-lock"
+  }
 }
-}
+```
 
 
 ## Prêt pour lundi

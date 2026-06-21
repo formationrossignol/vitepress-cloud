@@ -38,15 +38,6 @@ L'exécution directe en PowerShell est possible mais certaines commandes nécess
 
 Pour garder un TP homogène, utiliser WSL2 ou Git Bash sur Windows.
 
-### Terminal recommandé par système
-
-| Système | Terminal recommandé |
-|---|---|
-| Linux | Bash |
-| macOS | Terminal ou iTerm2 |
-| Windows | WSL2 Ubuntu |
-| Windows alternatif | Git Bash |
-
 ## Installation des outils
 
 ### Sur Debian / Ubuntu (ou WSL2 Ubuntu)

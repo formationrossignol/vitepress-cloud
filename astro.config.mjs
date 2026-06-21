@@ -71,22 +71,14 @@ export default defineConfig({
             { label: 'Cours : Sécurité AWS', slug: 'cours/securite-aws' },
             { label: '01. Généralités sur le cloud computing', slug: 'securite-cloud/01-generalites-cloud-computing' },
             {
-              label: '02. Plateformes de sécurité cloud',
-              items: [
-                { label: 'Cours', slug: 'securite-cloud/02-plateformes-securite-cloud' },
-                { label: 'TP : Mini-CNAPP locale avec Trivy, Syft, Grype et Kubescape', slug: 'securite-cloud/tp-mini-cnapp-locale' },
-              ],
-            },
-            {
-              label: '03. Les menaces cloud',
+              label: '02. Les menaces cloud',
               items: [
                 { label: 'Cours', slug: 'securite-cloud/03-menaces-cloud' },
                 { label: 'TP : Scanner une image vulnérable', slug: 'securite-cloud/tp-trivy-scan-image' },
               ],
             },
-            { label: '05. Les référentiels normatifs', slug: 'securite-cloud/05-referentiels-normatifs' },
             {
-              label: '06. Identity & Access Management',
+              label: '03. Identity & Access Management',
               items: [
                 { label: 'Cours', slug: 'securite-cloud/06-identity-access-management' },
                 { label: 'TP : Utilisateurs, groupes, rôles et policies avec JSON IAM et Parliament', slug: 'securite-cloud/tp-iam-json-parliament' },
@@ -94,24 +86,7 @@ export default defineConfig({
               ],
             },
             {
-              label: '07. Sécurité des données cloud',
-              items: [
-                { label: 'Cours', slug: 'securite-cloud/07-securite-donnees-cloud' },
-                { label: 'TP : Détecter des secrets dans un dépôt Git avec Gitleaks, TruffleHog et detect-secrets', slug: 'securite-cloud/tp-detection-secrets-gitleaks' },
-                { label: 'TP : Sécuriser un bucket S3 avec Block Public Access, chiffrement et policy restrictive', slug: 'securite-cloud/tp-s3-bucket-securise' },
-                { label: 'TP : Mini-DSPM local avec MinIO, scripts de classification et Gitleaks', slug: 'securite-cloud/tp-mini-dspm-local' },
-              ],
-            },
-            {
-              label: '08. Sécurité réseau cloud',
-              items: [
-                { label: 'Cours', slug: 'securite-cloud/08-securite-reseau-cloud' },
-                { label: 'TP : Sécuriser un VPC avec Security Group, NACL et Session Manager', slug: 'securite-cloud/tp-vpc-sg-nacl-session-manager' },
-                { label: 'TP : Protéger une API locale avec limitation de débit', slug: 'securite-cloud/tp-api-rate-limit' },
-              ],
-            },
-            {
-              label: '09. Sécurité des conteneurs & Kubernetes',
+              label: '04. Sécurité des conteneurs & Kubernetes',
               items: [
                 { label: 'Cours', slug: 'securite-cloud/09-securite-conteneurs-kubernetes' },
                 { label: 'TP : Créer un cluster Kind vulnérable et manipuler pods, namespaces et RBAC', slug: 'securite-cloud/tp-kind-cluster-vulnerable' },
@@ -121,14 +96,24 @@ export default defineConfig({
               ],
             },
             {
-              label: '10. Sécurité DevSecOps & CI/CD',
+              label: '05. Sécurité réseau cloud',
               items: [
-                { label: 'Cours', slug: 'securite-cloud/10-securite-devsecops-cicd' },
-                { label: 'TP : Pipeline DevSecOps locale avec Gitea, Woodpecker, Trivy et Semgrep', slug: 'securite-cloud/tp-pipeline-devsecops-local' },
+                { label: 'Cours', slug: 'securite-cloud/08-securite-reseau-cloud' },
+                { label: 'TP : Sécuriser un VPC avec Security Group, NACL et Session Manager', slug: 'securite-cloud/tp-vpc-sg-nacl-session-manager' },
+                { label: 'TP : Protéger une API locale avec limitation de débit', slug: 'securite-cloud/tp-api-rate-limit' },
               ],
             },
             {
-              label: "11. Sécurité de l'Infrastructure as Code",
+              label: '06. Sécurité des données cloud',
+              items: [
+                { label: 'Cours', slug: 'securite-cloud/07-securite-donnees-cloud' },
+                { label: 'TP : Détecter des secrets dans un dépôt Git avec Gitleaks, TruffleHog et detect-secrets', slug: 'securite-cloud/tp-detection-secrets-gitleaks' },
+                { label: 'TP : Sécuriser un bucket S3 avec Block Public Access, chiffrement et policy restrictive', slug: 'securite-cloud/tp-s3-bucket-securise' },
+                { label: 'TP : Mini-DSPM local avec MinIO, scripts de classification et Gitleaks', slug: 'securite-cloud/tp-mini-dspm-local' },
+              ],
+            },
+            {
+              label: "07. Sécurité de l'Infrastructure as Code",
               items: [
                 { label: 'Cours', slug: 'securite-cloud/11-securite-infrastructure-as-code' },
                 { label: 'TP : Scanner du code IaC avec Checkov et Trivy', slug: 'securite-cloud/tp-iac-checkov-trivy' },
@@ -137,24 +122,39 @@ export default defineConfig({
               ],
             },
             {
-              label: '12. Monitoring, Détection & Réponse aux incidents',
+              label: '08. Sécurité DevSecOps & CI/CD',
+              items: [
+                { label: 'Cours', slug: 'securite-cloud/10-securite-devsecops-cicd' },
+                { label: 'TP : Pipeline DevSecOps locale avec Gitea, Woodpecker, Trivy et Semgrep', slug: 'securite-cloud/tp-pipeline-devsecops-local' },
+              ],
+            },
+            {
+              label: '09. Monitoring, Détection & Réponse aux incidents',
               items: [
                 { label: 'Cours', slug: 'securite-cloud/12-monitoring-detection-incidents' },
                 { label: 'TP : Mettre en place une alerte basique avec Amazon CloudWatch', slug: 'securite-cloud/tp-cloudwatch-alerte-basique' },
                 { label: 'TP : Mini-SIEM local avec Wazuh', slug: 'securite-cloud/tp-mini-siem-local-wazuh' },
               ],
             },
-            { label: '13. Gouvernance & Conformité cloud', slug: 'securite-cloud/13-gouvernance-conformite-cloud' },
             {
-              label: '14. Outils de sécurité : AWS, Azure et GCP',
+              label: '10. Plateformes de sécurité cloud',
+              items: [
+                { label: 'Cours', slug: 'securite-cloud/02-plateformes-securite-cloud' },
+                { label: 'TP : Mini-CNAPP locale avec Trivy, Syft, Grype et Kubescape', slug: 'securite-cloud/tp-mini-cnapp-locale' },
+              ],
+            },
+            {
+              label: '11. Outils de sécurité : AWS, Azure et GCP',
               items: [
                 { label: 'Cours', slug: 'securite-cloud/14-outils-securite-aws-azure-gcp' },
                 { label: 'TP : Scanner un compte AWS minimal avec Prowler sans coûts', slug: 'securite-cloud/tp-prowler-aws-minimal' },
                 { label: "TP : Cartographier les chemins d'attaque AWS avec CloudFox", slug: 'securite-cloud/tp-cloudfox-aws-attack-paths' },
               ],
             },
-            { label: '15. Zero Trust : Architecture avancée', slug: 'securite-cloud/15-zero-trust-architecture' },
-            { label: '16. Cas réels : incidents cloud majeurs', slug: 'securite-cloud/16-cas-reels-incidents-cloud' },
+            { label: '12. Zero Trust : Architecture avancée', slug: 'securite-cloud/15-zero-trust-architecture' },
+            { label: '13. Référentiels normatifs', slug: 'securite-cloud/05-referentiels-normatifs' },
+            { label: '14. Gouvernance & Conformité cloud', slug: 'securite-cloud/13-gouvernance-conformite-cloud' },
+            { label: '15. Cas réels : incidents cloud majeurs', slug: 'securite-cloud/16-cas-reels-incidents-cloud' },
             {
               label: 'Travaux Pratiques',
               items: [

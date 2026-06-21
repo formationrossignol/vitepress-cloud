@@ -1,8 +1,8 @@
 ---
-title: "09. Sécurité des conteneurs & Kubernetes"
+title: "04. Sécurité des conteneurs & Kubernetes"
 ---
 
-# 09. Sécurité des conteneurs & Kubernetes
+# 04. Sécurité des conteneurs & Kubernetes
 
 ## Sécurité de Docker : Hardening des images et des conteneurs
 

@@ -664,43 +664,24 @@ aws iam get-policy --policy-arn "${IAM_STAR_POLICY_ARN}" 2>&1 \
 
 ## Résultat attendu
 
-À la fin du TP, l'apprenant doit avoir produit les fichiers suivants :
+| Fichier produit | Description |
+| --- | --- |
+| `policies/iam-star-policy.json` | Policy avec `iam:*` utilisée pour illustrer les permissions excessives |
+| `policies/admin-equivalent-policy.json` | Policy avec `Action: "*" / Resource: "*"` illustrant un accès administrateur |
+| `policies/least-privilege-iam-read-policy.json` | Policy en lecture seule suivant le principe du moindre privilège |
+| `policies/role-trust-policy.json` | Politique de confiance permettant à EC2 d'assumer le rôle |
+| `exclusions.yml` | Fichier d'exclusions Cloudsplaining pour filtrer les faux positifs |
+| `reports/tp.env` | Variables d'environnement du TP (ARN des ressources créées) |
+| `reports/account-authorization-details.json` | Dump complet de l'autorisation IAM du compte |
+| `reports/cloudsplaining/` | Rapports HTML et JSON générés par Cloudsplaining |
+| `reports/iam-excessive-permissions-summary.md` | Rapport de synthèse du TP |
 
-```text
-policies/iam-star-policy.json
-policies/admin-equivalent-policy.json
-policies/least-privilege-iam-read-policy.json
-policies/role-trust-policy.json
-exclusions.yml
-reports/tp.env
-reports/account-authorization-details.json
-reports/iam-excessive-permissions-summary.md
-```
-
-Le dossier suivant doit contenir les rapports Cloudsplaining :
-
-```text
-reports/cloudsplaining
-```
-
-Les ressources IAM suivantes doivent avoir été créées puis supprimées :
-
-```text
-Utilisateur IAM
-Groupe IAM
-Rôle IAM
-Policy AWS managée AdministratorAccess attachée au groupe
-Policy managée client contenant iam:* attachée au rôle
-```
-
-L'analyse doit permettre d'observer :
-
-```text
-AdministratorAccess est une permission excessive.
-iam:* donne un contrôle très large sur IAM.
-Action "*" avec Resource "*" correspond à un accès administrateur.
-Une policy peut être valide en JSON tout en étant contraire au principe du moindre privilège.
-Une policy plus ciblée réduit l'exposition et facilite l'audit.
-```
-
-Aucune clé d'accès IAM ni aucun mot de passe console ne doivent être créés pendant le TP.
+| Contrôle | Résultat attendu |
+| --- | --- |
+| Ressources IAM créées | Utilisateur, groupe, rôle, AdministratorAccess et policy `iam:*` créés puis supprimés |
+| Détection AdministratorAccess | Cloudsplaining / Parliament signalent les permissions administrateur excessives |
+| Détection `iam:*` | Marquée comme permission excessivement large sur IAM |
+| Détection `Action: "*"` | Identifiée comme équivalente à un accès administrateur |
+| Policy JSON valide | Valide syntaxiquement mais non conforme au moindre privilège |
+| Policy moindre privilège | Réduit la surface d'attaque et facilite l'audit |
+| Clés d'accès IAM | Aucune clé d'accès ni mot de passe console créés pendant le TP |

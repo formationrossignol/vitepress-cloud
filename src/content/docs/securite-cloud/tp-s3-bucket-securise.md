@@ -618,31 +618,25 @@ aws s3api head-bucket --bucket "${BUCKET_NAME}" 2>&1 \
 
 ## Résultat attendu
 
-À la fin du TP, l'apprenant doit avoir produit les fichiers suivants :
+| Fichier produit | Description |
+| --- | --- |
+| `policies/block-public-access.json` | Configuration Block Public Access appliquée au bucket |
+| `policies/public-read-bucket-policy.json` | Policy publique utilisée pour tester le blocage BPA |
+| `policies/bucket-encryption-sse-s3.json` | Configuration de chiffrement par défaut SSE-S3 |
+| `policies/restrictive-bucket-policy.json` | Bucket policy défensive refusant les actions non autorisées |
+| `policies/iam-s3-least-privilege-policy.json` | Policy IAM en lecture seule suivant le moindre privilège |
+| `reports/simulate-list-bucket.json` | Résultat de simulation IAM pour `s3:ListBucket` |
+| `reports/simulate-object-actions.json` | Résultat de simulation IAM pour les actions sur les objets |
+| `reports/simulate-admin-actions.json` | Résultat de simulation IAM pour les actions d'administration |
+| `reports/tp.env` | Variables d'environnement du TP (nom du bucket, région) |
+| `reports/s3-bucket-security-summary.md` | Rapport de synthèse du TP |
 
-```text
-policies/block-public-access.json
-policies/public-read-bucket-policy.json
-policies/bucket-encryption-sse-s3.json
-policies/restrictive-bucket-policy.json
-policies/iam-s3-least-privilege-policy.json
-reports/simulate-list-bucket.json
-reports/simulate-object-actions.json
-reports/simulate-admin-actions.json
-reports/tp.env
-reports/s3-bucket-security-summary.md
-```
-
-Le bucket S3 doit avoir été créé, sécurisé, testé puis supprimé.
-
-L'analyse doit permettre d'observer :
-
-```text
-Block Public Access empêche l'application d'une policy publique.
-Le chiffrement par défaut protège les objets au repos.
-Une bucket policy restrictive peut ajouter des garde-fous défensifs.
-Une policy IAM peut autoriser uniquement les actions nécessaires.
-Les actions d'administration du bucket doivent rester refusées.
-```
-
-Aucune clé d'accès IAM, aucun mot de passe console et aucun accès public ne doivent être créés pendant ce TP.
+| Contrôle | Résultat attendu |
+| --- | --- |
+| Cycle de vie du bucket | Créé, sécurisé, testé puis supprimé |
+| Block Public Access | Empêche l'application d'une bucket policy publique |
+| Chiffrement par défaut | Tous les objets déposés sont chiffrés au repos (SSE-S3) |
+| Bucket policy restrictive | Ajoute des garde-fous défensifs contre les actions non autorisées |
+| Policy IAM moindre privilège | Autorise uniquement les actions nécessaires sur le bucket |
+| Actions d'administration | Refusées par la simulation IAM |
+| Clés d'accès et accès public | Aucune clé d'accès IAM ni accès public créés pendant le TP |

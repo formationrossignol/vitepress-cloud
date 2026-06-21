@@ -1,8 +1,8 @@
 ---
-title: "16. Cas réels : incidents cloud majeurs"
+title: "15. Cas réels : incidents cloud majeurs"
 ---
 
-# 16. Cas réels : incidents cloud majeurs
+# 15. Cas réels : incidents cloud majeurs
 
 ## Exposition de bucket S3 (capital one 2019)
 

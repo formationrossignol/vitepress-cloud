@@ -961,37 +961,32 @@ aws ec2 describe-vpcs --vpc-ids "${VPC_ID}" 2>&1 \
 
 ## Résultat attendu
 
-À la fin du TP, l'apprenant doit avoir produit les fichiers suivants :
+| Fichier produit | Description |
+| --- | --- |
+| `policies/ec2-ssm-trust-policy.json` | Politique de confiance permettant à EC2 d'assumer le rôle SSM |
+| `reports/create-vpc.json` | Réponse AWS à la création du VPC |
+| `reports/create-subnet.json` | Réponse AWS à la création du subnet |
+| `reports/create-igw.json` | Réponse AWS à la création de l'Internet Gateway |
+| `reports/create-route-table.json` | Réponse AWS à la création de la table de routage |
+| `reports/associate-route-table.json` | Réponse AWS à l'association table de routage / subnet |
+| `reports/create-security-group.json` | Réponse AWS à la création du Security Group |
+| `reports/security-group.json` | Vérification des règles du Security Group |
+| `reports/create-nacl.json` | Réponse AWS à la création de la NACL |
+| `reports/network-acl.json` | Vérification des règles de la NACL |
+| `reports/create-iam-role.json` | Réponse AWS à la création du rôle IAM |
+| `reports/create-instance-profile.json` | Réponse AWS à la création du profil d'instance |
+| `reports/run-instance.json` | Réponse AWS au lancement de l'instance EC2 |
+| `reports/ssm-instance-information.json` | Confirmation que l'instance est gérée par SSM |
+| `reports/tp.env` | Variables d'environnement du TP (IDs des ressources créées) |
+| `reports/vpc-sg-nacl-session-manager-summary.md` | Rapport de synthèse du TP |
 
-```text
-policies/ec2-ssm-trust-policy.json
-reports/create-vpc.json
-reports/create-subnet.json
-reports/create-igw.json
-reports/create-route-table.json
-reports/associate-route-table.json
-reports/create-security-group.json
-reports/security-group.json
-reports/create-nacl.json
-reports/network-acl.json
-reports/create-iam-role.json
-reports/create-instance-profile.json
-reports/run-instance.json
-reports/ssm-instance-information.json
-reports/tp.env
-reports/vpc-sg-nacl-session-manager-summary.md
-```
-
-L'analyse doit permettre d'observer :
-
-```text
-Le Security Group ne contient aucune règle entrante.
-Le trafic sortant de l'instance est limité à HTTPS.
-La NACL refuse explicitement SSH.
-La NACL autorise le retour des connexions sortantes via les ports éphémères.
-L'instance est administrable sans SSH grâce à Session Manager.
-Le rôle IAM AmazonSSMManagedInstanceCore permet à l'agent SSM de communiquer avec Systems Manager.
-Session Manager remplace le besoin d'un bastion SSH pour ce cas d'usage.
-```
-
-Aucune clé SSH, aucun bastion et aucun port entrant ne doivent être créés pendant ce TP.
+| Contrôle de sécurité | Résultat attendu |
+| --- | --- |
+| Security Group — règles entrantes | Aucune règle entrante (port 22/SSH absent) |
+| Trafic sortant de l'instance | Limité à HTTPS (port 443) |
+| NACL — SSH | La NACL refuse explicitement SSH (port 22) |
+| NACL — ports éphémères | Autorise le retour des connexions sortantes (1024-65535) |
+| Administration de l'instance | Accessible via Session Manager sans SSH ni bastion |
+| Rôle IAM | `AmazonSSMManagedInstanceCore` attaché, permettant à SSM de communiquer |
+| Clé SSH | Aucune clé SSH créée pendant le TP |
+| Bastion | Aucun bastion créé pendant le TP |

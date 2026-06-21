@@ -191,12 +191,8 @@ echo "Code de retour : $?"
 
 ## Résultat attendu
 
-Le scan doit afficher les vulnérabilités détectées dans l'image `python:3.4-alpine`.
-
-Le rapport `trivy-report.json` doit être généré dans le répertoire courant.
-
-Le scan avec `--exit-code 1` doit retourner un code d'erreur si au moins une vulnérabilité correspondant aux sévérités demandées est détectée.
-
-```bash
-echo "Code de retour : $?"
-```
+| Contrôle | Résultat attendu |
+| --- | --- |
+| Scan de vulnérabilités | Les vulnérabilités de l'image `python:3.4-alpine` sont affichées dans le terminal |
+| Rapport JSON | `trivy-report.json` est généré dans le répertoire courant |
+| Gate `--exit-code 1` | Code de retour différent de `0` si au moins une vulnérabilité de la sévérité demandée est détectée |

@@ -1,8 +1,8 @@
 ---
-title: "02. Plateformes de sécurité cloud"
+title: "10. Plateformes de sécurité cloud"
 ---
 
-# 02. Plateformes de sécurité cloud
+# 10. Plateformes de sécurité cloud
 
 ## Cloud security posture management (CSPM)
 

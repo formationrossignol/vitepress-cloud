@@ -98,15 +98,6 @@ python3 --version
 dot -V
 ```
 
-### Compatibilité Windows
-
-| Système | Terminal recommandé |
-|---|---|
-| Linux | Bash |
-| macOS | Terminal ou iTerm2 |
-| Windows | WSL2 Ubuntu |
-| Windows alternatif | Git Bash |
-
 ### Permissions AWS recommandées
 
 CloudFox fonctionne en lecture seule. Il a besoin de suffisamment de permissions pour lire IAM, EC2, S3, CloudTrail, Lambda, ECS, EKS, RDS et d'autres services.

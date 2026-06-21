@@ -1,8 +1,8 @@
 ---
-title: "06. Identity & Access Management (IAM)"
+title: "03. Identity & Access Management"
 ---
 
-# 06. Identity & Access Management (IAM)
+# 03. Identity & Access Management
 
 ## Les fondamentaux de l’IAM cloud
 
