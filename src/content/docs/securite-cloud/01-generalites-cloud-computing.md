@@ -83,6 +83,8 @@ incendie, etc.) ?
 
 Dans le cloud, la sécurité est partagée : le fournisseur protège l'infrastructure cloud, tandis que le client reste responsable de la configuration, des accès, des données et des usages.
 
+![Slide 23](/securite-cloud/01-generalites-cloud-computing/p023_v37_Image19.jpg)
+
 
 ## Lift & shift
 

@@ -242,12 +242,6 @@ le risque.
 | Objectif | Réduire la confiance implicite et limiter l’impact d’un compte, terminal ou service compromis |
 
 
-![Slide 71](/securite-cloud/03-menaces-cloud/p071_04_Image35.jpg)
-
-
-![Slide 72](/securite-cloud/03-menaces-cloud/p072_05_Image36.jpg)
-
-
 ## Architecture Zero Trust : NIST 800-207
 
 Le NIST SP 800-207 formalise l'architecture Zero Trust autour d'un principe simple : chaque demande d'accès est évaluée dynamiquement par un moteur de décision, puis appliquée par un point de contrôle avant d'atteindre la ressource.
@@ -259,9 +253,11 @@ Le NIST SP 800-207 formalise l'architecture Zero Trust autour d'un principe simp
 
 BeyondCorp illustre le passage d'une sécurité fondée sur le réseau interne à une sécurité fondée sur l'identité, le terminal et le contexte d'accès.
 
+![Slide 58](/securite-cloud/03-menaces-cloud/p058_v37_Image30.jpg)
+
 
 ## CISA Zero Trust Maturity Model (ZTMM v2.0)
 
 
-![Slide 73](/securite-cloud/03-menaces-cloud/p073_06_Image37.jpg)
+![Slide 59](/securite-cloud/03-menaces-cloud/p059_v37_Image31.jpg)
 

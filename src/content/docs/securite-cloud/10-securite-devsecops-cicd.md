@@ -154,11 +154,23 @@ tierces.
 
 
 
-## Vulnerability exploitability exchange (vex) : Réduire le bruit
+## Vulnerability Exploitability eXchange (VEX)
 
-des CVEs
-VEX permet au créateur d'un logiciel de communiquer si une CVE connue est réellement exploitable dans son produit.
-Intégré nativement dans CycloneDX 1.4+.
+VEX permet au créateur d'un logiciel de communiquer si une CVE connue est réellement exploitable dans son produit. Intégré nativement dans CycloneDX 1.4+.
+
+| Information VEX | Utilité sécurité |
+| --- | --- |
+| Rôle | Fournir un statut d'exploitabilité pour une vulnérabilité identifiée dans un produit ou composant |
+| Lien avec le SBOM | Le SBOM liste les composants et VEX précise si les vulnérabilités associées ont un impact réel |
+| Vulnérabilité concernée | Référencer une CVE ou une faille connue analysée dans un contexte précis |
+| Statut d'impact | Indiquer si le produit est affecté, non affecté, corrigé ou encore en cours d'analyse |
+| Justification | Expliquer pourquoi une vulnérabilité est ou n'est pas exploitable dans ce produit |
+| Priorisation | Concentrer les efforts sur les vulnérabilités réellement exploitables |
+| Réduction du bruit | Limiter les faux positifs générés par les scanners SCA ou les analyses SBOM |
+| Automatisation | Permettre aux outils de sécurité de trier automatiquement les vulnérabilités selon leur impact réel |
+| Décision sécurité | Justifier une absence d'action, déclencher une correction, appliquer une mitigation ou surveiller un risque |
+
+![Slide 217](/securite-cloud/10-securite-devsecops-cicd/p217_v37_Image71.jpg)
 
 
 ## Dependency-Track : Plateforme de gestion continue des sboms

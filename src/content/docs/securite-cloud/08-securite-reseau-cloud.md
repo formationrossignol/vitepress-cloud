@@ -257,12 +257,29 @@ management sans modifier le code applicatif).
 
 ## Service mesh (istio/linkerd) : Zero trust entre microservices
 
-●
+| Dimension | Istio | Linkerd | En synthèse |
+| --- | --- | --- | --- |
+| Positionnement | Service mesh complet et très configurable | Service mesh léger et simple à exploiter | Istio = richesse fonctionnelle / Linkerd = simplicité |
+| Architecture | Envoy sidecar ou mode ambient | Micro-proxy sidecar léger | Istio offre plus d'options d'architecture |
+| Sécurité | mTLS, authentification, autorisation, politiques fines | mTLS automatique et politiques d'accès simples | Les deux sécurisent les échanges inter-services |
+| Gestion du trafic | Routage avancé, canary, retries, timeouts, circuit breaking | Traffic split, retries et timeouts plus simples | Istio est plus adapté aux scénarios complexes |
+| Observabilité | Métriques, traces et logs via Envoy | Métriques et dashboards intégrés | Linkerd est plus rapide à prendre en main |
+| Complexité | Plus puissant mais plus complexe à maintenir | Plus simple, plus lisible, plus léger | Le choix dépend de la maturité de l'équipe |
+| Cas d'usage | Grandes plateformes, multi-cluster, Zero Trust avancé | Adoption progressive, mTLS rapide | Istio pour les besoins avancés, Linkerd pour démarrer |
 
 
 ## WAF vs API Gateway vs Service Mesh : Quand utiliser quoi ?
 
-●
+Ces 3 outils se complètent mais ne se remplacent pas. Choisir le mauvais = protection incomplète ou coût inutile.
+
+| Contexte | Décision recommandée | Pourquoi |
+| --- | --- | --- |
+| API publique avec authentification | Passerelle API | Centralise l'authentification, le routage, la limitation de débit et les quotas |
+| Protection contre les attaques web courantes | WAF | Filtre les attaques applicatives : injection SQL, XSS, inclusion de fichiers, règles managées et règles spécifiques |
+| Site e-commerce / application grand public | WAF + Passerelle API | Combine protection applicative, contrôle d'accès, quotas et limitation du trafic |
+| Robots, aspiration de contenu, DDoS applicatif | WAF + protection DDoS | Ajoute filtrage, règles anti-robots, limitation de débit et absorption du trafic malveillant |
+| Microservices internes sans exposition publique | Maillage de services | Sécurise les échanges service à service avec mTLS, identité de workload et politiques d'accès fines |
+| Architecture Zero Trust complète | WAF + Passerelle API + Maillage de services | Combine toutes les couches de sécurité : périmètre, accès et communication interne |
 
 
 ## Protection DDoS : AWS Shield, Azure DDoS Protection, Cloud

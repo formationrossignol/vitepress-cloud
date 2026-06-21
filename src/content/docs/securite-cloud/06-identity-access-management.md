@@ -48,20 +48,27 @@ plus, jamais.
 | Certificat client (mTLS) | Certificat client (mTLS) | Expert | Idéal pour service accounts,<br>automatisé | PKI complexe, rotation des certificats |
 
 
-## AiTM (adversary-in-the-middle)
+## AiTM (adversary-in-the-Middle)
 
+Une attaque AiTM (Adversary-in-the-Middle) intercepte la session entre l'utilisateur et le service légitime afin de voler les identifiants, le jeton de session ou le cookie d'authentification, ce qui peut permettre à l'attaquant de contourner le MFA sans avoir besoin de le casser.
 
-![Slide 115](/securite-cloud/06-identity-access-management/p115_00_Image41.jpg)
+![Slide 67](/securite-cloud/06-identity-access-management/p067_v37_Image33.jpg)
 
 
 ## MFA fatigue : Contourner le MFA sans jamais le craquer
 
+Le MFA fatigue consiste à bombarder un utilisateur de demandes d'authentification jusqu'à ce qu'il en valide une par lassitude, distraction ou erreur, permettant ainsi à l'attaquant de contourner une protection MFA pourtant activée.
 
-![Slide 116](/securite-cloud/06-identity-access-management/p116_01_Image42.jpg)
+![Slide 68](/securite-cloud/06-identity-access-management/p068_v37_Image34.jpg)
 
 
-## Vol de token de session cloud : Bypasser IAM sans MFA ni mot de
+## Vol de token de session cloud : Bypasser IAM sans MFA ni mot de passe
 
+Une fois authentifié, l'attaquant n'a plus besoin de vos credentials. Il lui suffit de voler votre token de session AWS/Azure. Durée de vie : jusqu'à 12 heures.
+
+| Cookie Session Hijacking (Browser) | STS Token Theft (API Access) |
+| --- | --- |
+| ● Comment : Vol du cookie de session AWS Console via XSS, malware, ou AiTM proxy. Le cookie contient un JWT valide.<br>● Impact : Accès AWS Console complet pour toute la durée de validité du cookie (8h par défaut).<br>● Détection : CloudTrail : ConsoleLogin depuis IP inhabituelle APRÈS une session légitime.<br>● Remède : ForceDestroyingSessions IAM · Conditional Access par IP · Session revocation API | ● Comment : Credentials temporaires STS volés depuis une Lambda, une instance EC2 (metadata), ou un pipeline CI/CD.<br>● Impact : `aws configure --profile stolen` puis accès API complet jusqu'à expiration (max 12h).<br>● Détection : Même AssumeRole utilisé depuis 2 IPs différentes → impossible travel.<br>● Remède : Conditions IAM `aws:SourceIp` · IMDSv2 obligatoire · STS session revocation |
 
 
 ## Fédération d'identités
@@ -138,29 +145,61 @@ L'assertion SAML est une preuve XML signée : elle indique qui est l'utilisateur
 
 ## OAuth 2.0 : Délégation d'autorisation
 
+OAuth 2.0 permet à une application d'accéder à une ressource au nom d'un utilisateur, sans connaître son mot de passe.
+
+| Élément | Description |
+| --- | --- |
+| Type | Framework d'autorisation permettant à une application d'obtenir un accès limité à une ressource protégée |
+| Format | Jetons d'accès, souvent de type Bearer (le format exact du jeton n'est pas imposé par OAuth 2.0) |
+| Propriétaire de la ressource | Utilisateur ou entité qui possède les données ou ressources protégées |
+| Client | Application qui demande l'accès à une ressource au nom de l'utilisateur |
+| Serveur d'autorisation | Authentifie l'utilisateur, recueille son consentement et émet les jetons |
+| Serveur de ressources | API ou service qui héberge les ressources protégées et valide le jeton d'accès |
+| Usage principal | Autoriser une application tierce à accéder à une API sans partager le mot de passe de l'utilisateur |
+| Cas d'usage | ● Accès API délégué : Une application accède aux données d'un utilisateur avec son accord<br>● Applications mobiles ou web : Connexion à une API via un jeton d'accès limité<br>● CI/CD cloud : Un pipeline accède à des ressources cloud via un jeton à portée limitée |
 
 
-
-
-![Slide 128](/securite-cloud/06-identity-access-management/p128_04_Image46.jpg)
+![Slide 79](/securite-cloud/06-identity-access-management/p079_v37_Image35.jpg)
 
 
 ## OpenID connect (OIDC) : Couche d'identité sur OAuth 2.0
 
+| Élément | Description |
+| --- | --- |
+| Format | Jetons OAuth 2.0 + ID Token, généralement au format JWT |
+| Utilisateur final | Personne dont l'identité doit être vérifiée |
+| Client | Application qui souhaite authentifier l'utilisateur |
+| Fournisseur d'identité | Service qui authentifie l'utilisateur et émet les jetons OIDC |
+| ID Token | Jeton contenant des informations d'identité vérifiables sur l'utilisateur |
+| Access Token | Jeton permettant d'accéder à une API ou à une ressource protégée |
+| UserInfo Endpoint | Point d'accès permettant de récupérer des informations complémentaires sur l'utilisateur |
+| Usage principal | Authentifier un utilisateur et transmettre son identité à une application |
+| Cas d'usage | ● SSO moderne : Connexion à une application web avec un fournisseur d'identité centralisé<br>● Connexion sociale : "Se connecter avec Google", Microsoft, Apple ou GitHub<br>● Fédération cloud : Accès à AWS/Azure/GCP avec une identité d'entreprise via OIDC |
 
 
-
-
-![Slide 131](/securite-cloud/06-identity-access-management/p131_05_Image48.jpg)
+![Slide 82](/securite-cloud/06-identity-access-management/p082_v37_Image35.jpg)
 
 
 ## Workload Identity Federation
 
-Workload Identity Federation n'est pas un protocole unique, mais un modèle permettant à une charge de travail d'utiliser une identité externe vérifiable pour obtenir des accès temporaires, sans clé ou secret longue durée. Le principe existe chez Google Cloud, Microsoft Entra et AWS, notamment via OIDC et STS.
+| Élément | Description |
+| --- | --- |
+| Type | Mécanisme de fédération d'identité pour workloads, services, pipelines CI/CD, conteneurs, VM ou scripts |
+| Format | Jetons courts ou assertions émises par un fournisseur d'identité externe, souvent via OIDC ou équivalent |
+| Workload | Charge de travail non humaine qui doit accéder à une ressource cloud ou à une API |
+| Fournisseur d'identité | Système qui atteste l'identité du workload : plateforme CI/CD, cluster Kubernetes, autre cloud, IdP d'entreprise |
+| Fournisseur cloud | Plateforme qui fait confiance à l'identité externe et échange cette identité contre des permissions temporaires |
+| Jetons temporaires | Identifiants à durée limitée permettant d'accéder aux ressources sans clé statique longue durée |
+| Relation de confiance | Configuration qui définit quels workloads externes sont autorisés à obtenir quels droits |
+| Usage principal | Permettre à un workload externe d'accéder à des ressources cloud sans stocker de secret ou de clé de service longue durée |
 
+Cas d'usage :
+- **CI/CD sans secret statique** : Un pipeline GitHub Actions, GitLab CI ou Azure DevOps accède au cloud sans stocker de clé longue durée
+- **Kubernetes vers un fournisseur de cloud** : Un pod ou service Kubernetes obtient une identité fédérée pour appeler des API cloud
+- **Multicloud** : Une VM ou un service AWS/Azure/GCP accède à un autre cloud via une relation de confiance
+- **Workloads on-premise** : Un service interne accède à des ressources cloud sans compte local permanent
 
-
-![Slide 134](/securite-cloud/06-identity-access-management/p134_06_Image49.jpg)
+![Slide 85](/securite-cloud/06-identity-access-management/p085_v37_Image35.jpg)
 
 
 ## Synthèse
@@ -199,11 +238,13 @@ Workload Identity Federation n'est pas un protocole unique, mais un modèle perm
 
 ## Attaques IAM : Privilege escalation (MITRE ATT&CK t1098)
 
+La technique Account Manipulation (T1098) décrit les actions d'un attaquant visant à modifier un compte existant afin de maintenir son accès ou d'obtenir davantage de privilèges. Cette technique est utilisée principalement pour la persistance et l'élévation de privilèges.
 
+Objectifs de l'attaquant :
+- Maintenir un accès persistant : ajouter ses propres identifiants, modifier un mot de passe, ajouter une clé SSH, créer une méthode d'authentification alternative
+- Augmenter ses privilèges : ajouter un utilisateur à un groupe administrateur, modifier une policy IAM, attacher un rôle avec plus de droits
 
-## MITRE ATT&CK t1098 : Indicateurs de compromission & mesures de
-
-protection
+## MITRE ATT&CK t1098 : Indicateurs de compromission & mesures de protection
 
 | Indicateurs de compromission | Prévention | Détection |
 | --- | --- | --- |

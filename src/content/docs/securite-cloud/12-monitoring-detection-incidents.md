@@ -72,13 +72,13 @@ afin d’améliorer la détection, la réponse à incident et le durcissement de
 ## Inventaire des techniques
 
 
-![Slide 278](/securite-cloud/12-monitoring-detection-incidents/p278_01_Image80.jpg)
+![Slide 239](/securite-cloud/12-monitoring-detection-incidents/p239_v37_Image79.jpg)
 
 
 ## Exemples de techniques courantes
 
 
-![Slide 279](/securite-cloud/12-monitoring-detection-incidents/p279_02_Image81.jpg)
+![Slide 240](/securite-cloud/12-monitoring-detection-incidents/p240_v37_Image80.jpg)
 
 
 ## Réponse aux incidents cloud : Phases PICERL
