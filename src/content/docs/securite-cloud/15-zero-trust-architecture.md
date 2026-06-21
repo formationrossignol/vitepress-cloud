@@ -41,8 +41,6 @@ s'authentifient mutuellement avant l'établissement de la connexion chiffrée.
 ![Slide 333](/securite-cloud/15-zero-trust-architecture/p333_v37_Image111.jpg)
 
 
-![Slide 364](/securite-cloud/15-zero-trust-architecture/p364_03_Image91.jpg)
-
 
 ## Informations générales
 
@@ -87,8 +85,6 @@ YAML
 
 ![Slide 339](/securite-cloud/15-zero-trust-architecture/p339_v37_Image114.jpg)
 
-
-![Slide 370](/securite-cloud/15-zero-trust-architecture/p370_07_Image91.jpg)
 
 
 ## Systèmes d'exploitation immuables (sécurité cloud par design)
