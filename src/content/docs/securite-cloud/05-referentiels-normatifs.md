@@ -6,10 +6,17 @@ title: "13. Référentiels normatifs"
 
 ## ISO/CEI 27017 : Sécurité des services cloud
 
+L'ISO/CEI 27017 est une norme internationale qui complète l'ISO/CEI 27002 en fournissant des recommandations spécifiques à la sécurité des environnements cloud.
+Elle s'adresse à la fois aux fournisseurs de services cloud (CSP) et aux clients utilisateurs de services cloud (CSC).
+Objectif : renforcer la sécurité des services cloud en clarifiant les responsabilités et en appliquant des contrôles adaptés aux modèles IaaS, PaaS et SaaS.
 
 
 ## ISO/CEI 27017 : Principes clés
 
+- **Clarification des responsabilités** : définition du modèle de responsabilité partagée, répartition explicite des contrôles entre fournisseur et client, réduction des zones grises de gouvernance.
+- **Protection des environnements mutualisés** : séparation logique des clients (multi-tenancy), prévention des accès non autorisés entre locataires.
+- **Gestion des accès et des identités** : MFA, moindre privilège, revue des droits et traçabilité des accès.
+- **Continuité et reprise d'activité** : exigences de disponibilité et de résilience adaptées aux services cloud.
 
 
 ## ISO/CEI 27017 : Exemples de contrôles
@@ -27,6 +34,11 @@ title: "13. Référentiels normatifs"
 
 ## Bénéfices
 
+- Réduction des risques liés au cloud
+- Clarification des responsabilités fournisseur/client
+- Renforcement de la conformité réglementaire
+- Amélioration de la confiance des clients
+- Alignement avec les référentiels ISO 27001 et sécurité cloud
 
 
 ## ISO/CEI 27018 : Protection des données personnelles dans le cloud
@@ -102,6 +114,13 @@ Les CIS Benchmarks fournissent des recommandations de configuration sécurisée 
 
 ## SOC 2 : Standard de confiance pour les fournisseurs saas
 
+Développé par l'American Institute of CPAs (AICPA), SOC 2 permet de démontrer, via un audit indépendant, l'efficacité des contrôles de sécurité et la fiabilité d'un fournisseur de services numériques.
+
+Objectifs :
+- Démontrer la maturité des contrôles de sécurité
+- Renforcer la confiance des clients et partenaires
+- Répondre aux exigences des grandes entreprises
+- Faciliter les audits fournisseurs (Vendor Assessment)
 
 | Type I | Type II |
 | --- | --- |
@@ -120,6 +139,14 @@ Le critère Sécurité est obligatoire !
 
 ## Les points de contrôle
 
+- Gestion des accès et des identités
+- Authentification multifacteur (MFA)
+- Journalisation et audit
+- Gestion des vulnérabilités
+- Gestion des incidents de sécurité
+- Sauvegardes et reprise d'activité
+- Gestion des changements
+- Sécurité des fournisseurs tiers
 
 
 ## SOC 2 et ISO 27001
@@ -155,7 +182,7 @@ souveraineté numérique et protection contre les législations extraterritorial
 ## Le processus de qualification
 
 
-![Slide 97](/securite-cloud/05-referentiels-normatifs/p097_01_Image39.jpg)
+![Slide 370](/securite-cloud/05-referentiels-normatifs/p370_v37_Image118.jpg)
 
 
 ## Les fournisseurs qualifiés
@@ -237,6 +264,19 @@ démontrer une gestion efficace des incidents, y compris ceux liés à leurs fou
 
 ## La cyber-résilience selon NIS2
 
+| Domaine | Attendu par NIS2 |
+| --- | --- |
+| Gouvernance | Politique de sécurité, implication de la direction |
+| Gestion des risques | Analyse et traitement des risques cyber |
+| Gestion des accès | MFA, contrôle des privilèges, moindre privilège |
+| Gestion des vulnérabilités | Détection, correction, suivi des failles |
+| Protection des systèmes | Durcissement, segmentation, sécurisation des actifs |
+| Journalisation | Collecte et conservation des logs |
+| Détection | Supervision et détection des incidents |
+| Réponse à incident | Processus et capacités de réaction |
+| Continuité d'activité | Sauvegardes, PRA/PCA |
+| Chaîne d'approvisionnement | Évaluation des fournisseurs et sous-traitants |
+| Sensibilisation | Formation et culture cybersécurité des équipes |
 
 
 ## Qui est concerné ?

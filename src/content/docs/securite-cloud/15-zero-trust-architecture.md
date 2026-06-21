@@ -38,7 +38,7 @@ s'authentifient mutuellement avant l'établissement de la connexion chiffrée.
 ## Fonctionnement de spiffe/spire
 
 
-![Slide 363](/securite-cloud/15-zero-trust-architecture/p363_01_Image101.jpg)
+![Slide 333](/securite-cloud/15-zero-trust-architecture/p333_v37_Image111.jpg)
 
 
 ![Slide 364](/securite-cloud/15-zero-trust-architecture/p364_03_Image91.jpg)
@@ -85,7 +85,7 @@ YAML
 ## Falco et falcosidekick
 
 
-![Slide 369](/securite-cloud/15-zero-trust-architecture/p369_05_Image104.jpg)
+![Slide 339](/securite-cloud/15-zero-trust-architecture/p339_v37_Image114.jpg)
 
 
 ![Slide 370](/securite-cloud/15-zero-trust-architecture/p370_07_Image91.jpg)

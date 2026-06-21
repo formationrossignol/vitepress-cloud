@@ -183,7 +183,7 @@ réseau).
 ## AWS CloudTrail Lake : Fonctionnement
 
 
-![Slide 316](/securite-cloud/14-outils-securite-aws-azure-gcp/p316_04_Image88.jpg)
+![Slide 281](/securite-cloud/14-outils-securite-aws-azure-gcp/p281_v37_Image92.jpg)
 
 
 ## IAM Identity Center
@@ -384,7 +384,7 @@ risques les plus critiques.
 ## Fonctionnement
 
 
-![Slide 337](/securite-cloud/14-outils-securite-aws-azure-gcp/p337_08_Image92.jpg)
+![Slide 306](/securite-cloud/14-outils-securite-aws-azure-gcp/p306_v37_Image101.jpg)
 
 
 ## Top 10 OWASP pour les LLM 2025 & surface d'attaque cloud IA
@@ -443,7 +443,7 @@ L'injection de prompt consiste à manipuler les instructions fournies à un mod�
 ## Fonctionnement des guardrails
 
 
-![Slide 344](/securite-cloud/14-outils-securite-aws-azure-gcp/p344_10_Image94.jpg)
+![Slide 313](/securite-cloud/14-outils-securite-aws-azure-gcp/p313_v37_Image103.jpg)
 
 
 ## LLM-as-a-judge
@@ -477,7 +477,7 @@ réponses d'un autre modèle selon des critères de pertinence, de sécurité et
 ## Fonctionnement d’un llm-as-a-judge
 
 
-![Slide 347](/securite-cloud/14-outils-securite-aws-azure-gcp/p347_11_Image95.jpg)
+![Slide 316](/securite-cloud/14-outils-securite-aws-azure-gcp/p316_v37_Image104.jpg)
 
 
 ![Slide 348](/securite-cloud/14-outils-securite-aws-azure-gcp/p348_12_Image96.jpg)
@@ -518,7 +518,7 @@ générative en production en adressant les enjeux de confiance, de risque, de s
 ## Les nouveaux risques introduits par l’IA selon Gartner
 
 
-![Slide 352](/securite-cloud/14-outils-securite-aws-azure-gcp/p352_14_Image98.jpg)
+![Slide 321](/securite-cloud/14-outils-securite-aws-azure-gcp/p321_v37_Image107.jpg)
 
 
 ## Tests de red teaming IA
@@ -580,5 +580,5 @@ pmapper --account 123456789012 query ‘who can becomeadmin?’
 ## PMapper : Exemple
 
 
-![Slide 356](/securite-cloud/14-outils-securite-aws-azure-gcp/p356_15_Image99.jpg)
+![Slide 324](/securite-cloud/14-outils-securite-aws-azure-gcp/p324_v37_Image108.jpg)
 

@@ -210,5 +210,5 @@ protéger les actifs.
 ## Les huit couches de la défense en profondeur
 
 
-![Slide 294](/securite-cloud/13-gouvernance-conformite-cloud/p294_01_Image83.jpg)
+![Slide 409](/securite-cloud/13-gouvernance-conformite-cloud/p409_v37_Image128.jpg)
 

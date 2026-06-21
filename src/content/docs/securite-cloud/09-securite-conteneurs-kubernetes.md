@@ -47,7 +47,7 @@ Attention : Par défaut dans Kubernetes, tout le trafic est autorisé entre tous
 ## Fonctionnement
 
 
-![Slide 198](/securite-cloud/09-securite-conteneurs-kubernetes/p198_00_Image63.jpg)
+![Slide 153](/securite-cloud/09-securite-conteneurs-kubernetes/p153_v37_Image56.jpg)
 
 
 ## Pod security standards (PSS)
@@ -58,7 +58,7 @@ configurations autorisées des Pods Kubernetes afin de réduire les risques de c
 
 
 
-![Slide 201](/securite-cloud/09-securite-conteneurs-kubernetes/p201_01_Image64.jpg)
+![Slide 156](/securite-cloud/09-securite-conteneurs-kubernetes/p156_v37_Image57.jpg)
 
 
 ## Admission controllers : Contrôler les ressources avant leur
@@ -88,7 +88,7 @@ modifier, valider ou refuser une ressource afin d’appliquer des règles de sé
 | 6 | Un contrôleur validating vérifie la conformité |
 | 7 | La ressource est acceptée ou refusée avant<br>création |
 
-![Slide 204](/securite-cloud/09-securite-conteneurs-kubernetes/p204_02_Image65.jpg)
+![Slide 159](/securite-cloud/09-securite-conteneurs-kubernetes/p159_v37_Image58.jpg)
 
 
 ## Admission controllers courants
@@ -125,7 +125,7 @@ exécutées par OPA.
 
 
 
-![Slide 208](/securite-cloud/09-securite-conteneurs-kubernetes/p208_03_Image66.jpg)
+![Slide 163](/securite-cloud/09-securite-conteneurs-kubernetes/p163_v37_Image59.jpg)
 
 
 ## Exemples de politiques
@@ -146,7 +146,7 @@ l’entrée du cluster.
 ## Synthèse
 
 
-![Slide 211](/securite-cloud/09-securite-conteneurs-kubernetes/p211_04_Image67.jpg)
+![Slide 166](/securite-cloud/09-securite-conteneurs-kubernetes/p166_v37_Image60.jpg)
 
 
 ## Polaris : Validateur des meilleures pratiques Kubernetes
@@ -171,7 +171,7 @@ CI/CD ou en admission webhook en temps réel.
 
 
 
-![Slide 215](/securite-cloud/09-securite-conteneurs-kubernetes/p215_05_Image68.jpg)
+![Slide 170](/securite-cloud/09-securite-conteneurs-kubernetes/p170_v37_Image61.jpg)
 
 
 ## Falco : Runtime security & détection comportementale
@@ -204,7 +204,7 @@ automatise les processus de réponse aux incidents et assiste les équipes SOC d
 Exemples de solutions : Cortex XSOAR, Splunk SOAR, Microsoft Sentinel, IBM QRadar SOAR, FortiSOAR, Google Security
 Operations et Tines.
 
-![Slide 219](/securite-cloud/09-securite-conteneurs-kubernetes/p219_06_Image69.jpg)
+![Slide 174](/securite-cloud/09-securite-conteneurs-kubernetes/p174_v37_Image62.jpg)
 
 
 | Concept & position | Fonctionnalités clés |
@@ -214,7 +214,7 @@ Operations et Tines.
 
 
 
-![Slide 222](/securite-cloud/09-securite-conteneurs-kubernetes/p222_07_Image70.jpg)
+![Slide 177](/securite-cloud/09-securite-conteneurs-kubernetes/p177_v37_Image63.jpg)
 
 
 ## KSPM & CIS Kubernetes benchmark (kube-bench)
